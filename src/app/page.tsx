@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import heic2any from 'heic2any';
 
 export default function Home() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -32,14 +31,15 @@ export default function Home() {
     setErrorMsg(null);
 
     try {
-      // heic2any kullanarak tarayıcı içinde (client-side) dönüştürme
+      // ÇÖZÜM: heic2any kütüphanesini sadece butona basılınca dinamik olarak tarayıcıda yüklüyoruz.
+      const heic2any = (await import('heic2any')).default;
+
       const conversionResult = await heic2any({
         blob: selectedFile,
         toType: 'image/jpeg',
         quality: 0.9,
       });
 
-      // Sonuç tek bir blob veya blob dizisi dönebilir
       const resultBlob = Array.isArray(conversionResult) 
         ? conversionResult[0] 
         : conversionResult;
@@ -56,7 +56,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-zinc-100 flex flex-col items-center justify-between p-8 selection:bg-zinc-800 font-sans">
-      {/* Header */}
       <header className="w-full max-w-4xl flex items-center justify-between py-4 border-b border-zinc-800/60">
         <div className="flex items-center gap-3">
           <div className="w-7 h-7 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-100 shadow-inner">
@@ -71,7 +70,6 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Main Converter Box */}
       <div className="w-full max-w-xl flex flex-col items-center gap-8 my-auto">
         <div className="text-center space-y-3">
           <h1 className="text-4xl font-semibold tracking-tight text-zinc-100">
@@ -82,7 +80,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Dropzone */}
         <div 
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
@@ -113,7 +110,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* Action / Result Area */}
         {selectedFile && !convertedUrl && (
           <button 
             onClick={handleConvert}
@@ -141,7 +137,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* SEO & Footer Info */}
       <footer className="w-full max-w-4xl flex flex-col md:flex-row items-center justify-between py-6 border-t border-zinc-800/60 text-xs text-zinc-500 gap-4">
         <p>© 2026 Convrs. Built for performance and privacy.</p>
         <div className="flex gap-6 font-mono">
