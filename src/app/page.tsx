@@ -3,13 +3,13 @@ import Link from 'next/link';
 const tools = [
   {
     href: '/heic-to-jpg',
-    title: 'HEIC to JPG',
+    title: 'HEIC → JPG',
     description: 'Apple HEIC fotoğraflarını evrensel JPG formatına dönüştürün.',
     badge: 'Available',
   },
   {
     href: '/jpg-to-webp',
-    title: 'JPG to WebP',
+    title: 'JPG → WebP',
     description: "JPG dosyalarını WebAssembly ile Google'ın hafif WebP formatına çevirin.",
     badge: 'Available',
   },
@@ -21,8 +21,20 @@ const tools = [
   },
   {
     href: '/svg-to-png',
-    title: 'SVG ➝ PNG',
+    title: 'SVG → PNG',
     description: 'Vektör SVG dosyalarını 2× çözünürlükte, şeffaf PNG bitmap olarak dışa aktarın.',
+    badge: 'Available',
+  },
+  {
+    href: '/webp-to-png',
+    title: 'WebP → PNG',
+    description: 'Hafif WebP görsellerini, saydamlığı koruyarak kayıpsız PNG formatına çevirin.',
+    badge: 'Available',
+  },
+  {
+    href: '/ico-to-png',
+    title: 'ICO → PNG',
+    description: 'ICO ikon dosyalarını tarayıcıda şeffaf PNG görsellerine dönüştürün.',
     badge: 'Available',
   },
   {

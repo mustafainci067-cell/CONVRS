@@ -19,7 +19,9 @@ export type ConverterMode =
   | 'jpg-to-webp'
   | 'png-to-jpg'
   | 'jpg-to-png'
-  | 'svg-to-png';
+  | 'svg-to-png'
+  | 'webp-to-png'
+  | 'ico-to-png';
 
 type ConverterConfig = {
   title: string;
@@ -83,6 +85,26 @@ const VIOLET_ACCENT: Accent = {
   pill: 'bg-violet-600 text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]',
 };
 
+const ROSE_ACCENT: Accent = {
+  dropzone:
+    'border-rose-300 bg-rose-50 hover:border-rose-400 dark:border-rose-900/50 dark:bg-rose-950/10 dark:hover:border-rose-700/50',
+  iconBox:
+    'border-rose-200 bg-rose-100 text-rose-600 dark:border-rose-800/50 dark:bg-rose-900/40 dark:text-rose-400',
+  button: 'bg-rose-600 text-white hover:bg-rose-500',
+  resultCard: 'border-rose-200 bg-rose-50 dark:border-rose-900/30 dark:bg-rose-950/30',
+  pill: 'bg-rose-600 text-white shadow-[0_0_15px_rgba(225,29,72,0.4)]',
+};
+
+const EMERALD_ACCENT: Accent = {
+  dropzone:
+    'border-emerald-300 bg-emerald-50 hover:border-emerald-400 dark:border-emerald-900/50 dark:bg-emerald-950/10 dark:hover:border-emerald-700/50',
+  iconBox:
+    'border-emerald-200 bg-emerald-100 text-emerald-600 dark:border-emerald-800/50 dark:bg-emerald-900/40 dark:text-emerald-400',
+  button: 'bg-emerald-600 text-white hover:bg-emerald-500',
+  resultCard: 'border-emerald-200 bg-emerald-50 dark:border-emerald-900/30 dark:bg-emerald-950/30',
+  pill: 'bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.4)]',
+};
+
 const isPng = (file: File) =>
   file.name.toLowerCase().endsWith('.png') || file.type === 'image/png';
 
@@ -90,6 +112,14 @@ const isJpg = (file: File) => {
   const name = file.name.toLowerCase();
   return name.endsWith('.jpg') || name.endsWith('.jpeg') || file.type === 'image/jpeg';
 };
+
+const isWebp = (file: File) =>
+  file.name.toLowerCase().endsWith('.webp') || file.type === 'image/webp';
+
+const isIco = (file: File) =>
+  file.name.toLowerCase().endsWith('.ico') ||
+  file.type === 'image/x-icon' ||
+  file.type === 'image/vnd.microsoft.icon';
 
 const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
   'heic-to-jpg': {
@@ -171,6 +201,34 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     isValidFile: (file) =>
       file.name.toLowerCase().endsWith('.svg') || file.type === 'image/svg+xml',
     accent: VIOLET_ACCENT,
+  },
+  'webp-to-png': {
+    title: 'WebP to PNG Converter',
+    description:
+      'Convert compact WebP images into lossless, transparent PNG bitmaps right in your browser with HTML5 Canvas.',
+    accept: '.webp,.WEBP,image/webp',
+    inputLabel: 'WebP',
+    outputLabel: 'PNG',
+    outputExtension: 'png',
+    engine: 'canvas',
+    canvas: { mime: 'image/png' },
+    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece WebP dosyası yükleyin.',
+    isValidFile: isWebp,
+    accent: ROSE_ACCENT,
+  },
+  'ico-to-png': {
+    title: 'ICO to PNG Converter',
+    description:
+      'Turn ICO icon files into crisp, transparent PNG images with the browser native Image API — no upload.',
+    accept: '.ico,.ICO,image/x-icon,image/vnd.microsoft.icon',
+    inputLabel: 'ICO',
+    outputLabel: 'PNG',
+    outputExtension: 'png',
+    engine: 'canvas',
+    canvas: { mime: 'image/png' },
+    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece ICO dosyası yükleyin.',
+    isValidFile: isIco,
+    accent: EMERALD_ACCENT,
   },
 };
 
