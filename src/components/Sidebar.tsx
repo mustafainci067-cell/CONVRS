@@ -8,14 +8,12 @@ import { cn } from '@/lib/utils';
 
 type NavItem = {
   name: string;
-  href: string;
-  active: boolean;
-  icon: React.ReactNode;
+  path: string;
+  status: 'active' | 'coming-soon';
 };
 
 type NavCategory = {
   title: string;
-  comingSoon?: boolean;
   items: NavItem[];
 };
 
@@ -54,7 +52,7 @@ const MediaIcon = (
   </svg>
 );
 
-const categories = [
+const categories: NavCategory[] = [
   {
     title: "Image Converters",
     items: [
@@ -81,7 +79,7 @@ const categories = [
     items: [
       { name: "Base64 Encoder", path: "#", status: "coming-soon" },
       { name: "URL Converter", path: "#", status: "coming-soon" },
-      { name: "QR Generator", path: "#", status: "coming-soon" },
+      { name: "QR Generator", path: "/qr-generator", status: "active" },
     ],
   },
   {
@@ -208,29 +206,24 @@ export default function Sidebar() {
             {isOpen && (
               <p className="flex items-center gap-2 px-2 font-mono text-[11px] uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
                 <span>{category.title}</span>
-                {category.comingSoon && (
-                  <span className="rounded border border-zinc-200 bg-zinc-100 px-1.5 py-0.5 text-[9px] normal-case tracking-normal text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-500">
-                    Coming Soon
-                  </span>
-                )}
               </p>
             )}
             <div className="space-y-1">
-              {category.items.map((item) =>
-                item.active ? (
+              {category.items.map((item) => {
+                const isActiveRoute = item.status === 'active' && pathname === item.path;
+                return item.status === 'active' ? (
                   <Link
                     key={item.name}
-                    href={item.href}
+                    href={item.path}
                     title={item.name}
                     className={cn(
                       'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all',
-                      pathname === item.href
+                      isActiveRoute
                         ? 'bg-zinc-200/70 text-zinc-900 shadow-sm dark:bg-zinc-800/80 dark:text-zinc-100'
                         : 'text-zinc-600 hover:bg-zinc-200/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-200',
                       !isOpen && 'justify-center px-0'
                     )}
                   >
-                    {item.icon}
                     {isOpen && <span className="flex-1 truncate">{item.name}</span>}
                     <span
                       className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"
@@ -249,7 +242,6 @@ export default function Sidebar() {
                       !isOpen && 'justify-center px-0'
                     )}
                   >
-                    {item.icon}
                     {isOpen && <span className="flex-1 truncate">{item.name}</span>}
                     {isOpen && (
                       <span className="rounded border border-zinc-200 bg-white px-1.5 py-0.5 font-mono text-[10px] text-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-500">
@@ -257,8 +249,8 @@ export default function Sidebar() {
                       </span>
                     )}
                   </div>
-                )
-              )}
+                );
+              })}
             </div>
           </div>
         ))}
