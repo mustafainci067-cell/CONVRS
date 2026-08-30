@@ -21,7 +21,9 @@ export type ConverterMode =
   | 'jpg-to-png'
   | 'svg-to-png'
   | 'webp-to-png'
-  | 'ico-to-png';
+  | 'ico-to-png'
+  | 'webp-to-jpg'
+  | 'png-to-webp';
 
 type ConverterConfig = {
   title: string;
@@ -152,8 +154,24 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     outputLabel: 'WebP',
     outputExtension: 'webp',
     engine: 'ffmpeg',
+    swapWith: 'webp-to-jpg',
     invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece JPG dosyası yükleyin.',
     isValidFile: isJpg,
+    accent: BLUE_ACCENT,
+  },
+  'webp-to-jpg': {
+    title: 'WebP to JPG Converter',
+    description:
+      'Convert WebP images back into universal JPG files, flattening transparency onto a white background — right in your browser with HTML5 Canvas.',
+    accept: '.webp,.WEBP,image/webp',
+    inputLabel: 'WebP',
+    outputLabel: 'JPG',
+    outputExtension: 'jpg',
+    engine: 'canvas',
+    canvas: { mime: 'image/jpeg', quality: 0.92, background: '#ffffff' },
+    swapWith: 'jpg-to-webp',
+    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece WebP dosyası yükleyin.',
+    isValidFile: isWebp,
     accent: BLUE_ACCENT,
   },
   'png-to-jpg': {
@@ -212,8 +230,24 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     outputExtension: 'png',
     engine: 'canvas',
     canvas: { mime: 'image/png' },
+    swapWith: 'png-to-webp',
     invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece WebP dosyası yükleyin.',
     isValidFile: isWebp,
+    accent: ROSE_ACCENT,
+  },
+  'png-to-webp': {
+    title: 'PNG to WebP Converter',
+    description:
+      'Compress PNG images into compact WebP files with HTML5 Canvas — the lossy result keeps your PNG transparency.',
+    accept: '.png,.PNG,image/png',
+    inputLabel: 'PNG',
+    outputLabel: 'WebP',
+    outputExtension: 'webp',
+    engine: 'canvas',
+    canvas: { mime: 'image/webp', quality: 0.92 },
+    swapWith: 'webp-to-png',
+    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece PNG dosyası yükleyin.',
+    isValidFile: isPng,
     accent: ROSE_ACCENT,
   },
   'ico-to-png': {

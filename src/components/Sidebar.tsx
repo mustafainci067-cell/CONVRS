@@ -60,10 +60,10 @@ const categories: NavCategory[] = [
     title: "Image Converters",
     items: [
       { name: "HEIC → JPG", path: "/heic-to-jpg", status: "active" },
-      { name: "JPG → WebP", path: "/jpg-to-webp", status: "active" },
+      { name: "JPG ↔ WebP", path: "/jpg-to-webp", status: "active" },
       { name: "PNG ↔ JPG", path: "/png-to-jpg", status: "active" },
       { name: "SVG → PNG", path: "/svg-to-png", status: "active" },
-      { name: "WebP → PNG", path: "/webp-to-png", status: "active" },
+      { name: "WebP ↔ PNG", path: "/webp-to-png", status: "active" },
       { name: "ICO → PNG", path: "/ico-to-png", status: "active" },
     ],
   },
@@ -72,9 +72,9 @@ const categories: NavCategory[] = [
     items: [
       { name: "JSON ↔ CSV", path: "/json-to-csv", status: "active" },
       { name: "XML ↔ JSON", path: "/xml-to-json", status: "active" },
-      { name: "Markdown → HTML", path: "#", status: "coming-soon" },
+      { name: "Markdown → HTML", path: "/markdown-to-html", status: "active" },
       { name: "PDF → JPG", path: "#", status: "coming-soon" },
-      { name: "XLSX → CSV", path: "#", status: "coming-soon" },
+      { name: "XLSX → CSV", path: "/xlsx-to-csv", status: "active" },
     ],
   },
   {
