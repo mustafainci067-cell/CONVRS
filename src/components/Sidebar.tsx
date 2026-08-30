@@ -75,7 +75,7 @@ const categories: NavCategory[] = [
       { name: "JSON ↔ CSV", path: "/json-to-csv", status: "active" },
       { name: "XML ↔ JSON", path: "/xml-to-json", status: "active" },
       { name: "Markdown ↔ HTML", path: "/markdown-to-html", status: "active" },
-      { name: "PDF → JPG", path: "/pdf-to-jpg", status: "active" },
+      { name: "PDF ↔ Image", path: "/pdf-to-jpg", status: "active" },
       { name: "PDF Merge & Split", path: "#", status: "coming-soon" },
       { name: "DOCX ↔ PDF", path: "#", status: "coming-soon" },
       { name: "XLSX ↔ CSV", path: "/xlsx-to-csv", status: "active" },

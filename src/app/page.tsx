@@ -53,8 +53,8 @@ const tools: Tool[] = [
   },
   {
     href: '/pdf-to-jpg',
-    title: 'PDF → JPG',
-    description: 'PDF’in ilk sayfasını pdf.js ile canvas’a çizip yüksek çözünürlüklü JPG olarak indirin.',
+    title: 'PDF ↔ Image',
+    description: 'PDF sayfalarını JPG olarak çıkarın ya da birden çok görseli pdf-lib ile tek PDF’te birleştirin.',
     badge: 'Available',
     status: 'active',
   },

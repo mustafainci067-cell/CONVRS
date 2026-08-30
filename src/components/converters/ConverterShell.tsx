@@ -133,15 +133,28 @@ export function Dropzone({
   inputLabel,
   fileName,
   onFile,
+  onFiles,
+  multiple,
   accent,
 }: {
   accept: string;
   inputLabel: string;
   fileName?: string;
-  onFile: (file: File) => void;
+  onFile?: (file: File) => void;
+  onFiles?: (files: File[]) => void;
+  multiple?: boolean;
   accent: Accent;
 }) {
   const [isDragging, setIsDragging] = useState(false);
+
+  const collect = (fileList: FileList | null) => {
+    const files = Array.from(fileList ?? []);
+    if (onFiles) {
+      if (files.length) onFiles(files);
+    } else if (files[0] && onFile) {
+      onFile(files[0]);
+    }
+  };
 
   return (
     <div
@@ -153,8 +166,7 @@ export function Dropzone({
       onDrop={(e) => {
         e.preventDefault();
         setIsDragging(false);
-        const file = e.dataTransfer.files?.[0];
-        if (file) onFile(file);
+        collect(e.dataTransfer.files);
       }}
       className={cn(
         'group relative flex w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-2xl border border-dashed p-12 shadow-sm transition-all',
@@ -165,12 +177,12 @@ export function Dropzone({
       <input
         type="file"
         accept={accept}
+        multiple={multiple}
         onChange={(e) => {
-          const file = e.target.files?.[0];
-          if (file) onFile(file);
+          collect(e.target.files);
           e.target.value = '';
         }}
-        aria-label={`Select a ${inputLabel} file`}
+        aria-label={`Select ${multiple ? '' : 'a '}${inputLabel} file${multiple ? 's' : ''}`}
         className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
       />
       <div
