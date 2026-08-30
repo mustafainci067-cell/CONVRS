@@ -54,30 +54,41 @@ const MediaIcon = (
   </svg>
 );
 
-const categories: NavCategory[] = [
+const categories = [
   {
-    title: 'Image Converters',
+    title: "Image Converters",
     items: [
-      { name: 'HEIC ↔ JPG', href: '/heic-to-jpg', active: true, icon: ImageIcon },
-      { name: 'JPG ↔ WebP', href: '/jpg-to-webp', active: true, icon: ImageIcon },
-      { name: 'PNG ↔ JPG', href: '/png-to-jpg', active: true, icon: ImageIcon },
-      { name: 'SVG ➝ PNG', href: '/svg-to-png', active: true, icon: ImageIcon },
+      { name: "HEIC ↔ JPG", path: "/heic-to-jpg", status: "active" },
+      { name: "JPG ↔ WebP", path: "/jpg-to-webp", status: "active" },
+      { name: "PNG ↔ JPG", path: "/png-to-jpg", status: "active" },
+      { name: "SVG ➝ PNG", path: "/svg-to-png", status: "active" },
+      { name: "WEBP ➝ PNG", path: "#", status: "coming-soon" },
+      { name: "ICO ➝ PNG", path: "#", status: "coming-soon" },
     ],
   },
   {
-    title: 'Document & Data',
+    title: "Document & Data",
     items: [
-      { name: 'JSON ↔ CSV', href: '/json-to-csv', active: true, icon: DocIcon },
-      { name: 'PDF ➝ JPG', href: '#', active: false, icon: DocIcon },
-      { name: 'XLSX ➝ CSV', href: '#', active: false, icon: DocIcon },
+      { name: "JSON ↔ CSV", path: "/json-to-csv", status: "active" },
+      { name: "XML ↔ JSON", path: "#", status: "coming-soon" },
+      { name: "Markdown ➝ HTML", path: "#", status: "coming-soon" },
+      { name: "PDF ➝ JPG", path: "#", status: "coming-soon" },
+      { name: "XLSX ➝ CSV", path: "#", status: "coming-soon" },
     ],
   },
   {
-    title: 'Video & Audio',
-    comingSoon: true,
+    title: "Developer Tools",
     items: [
-      { name: 'MP4 ↔ WebM', href: '#', active: false, icon: MediaIcon },
-      { name: 'WAV ↔ MP3', href: '#', active: false, icon: MediaIcon },
+      { name: "Base64 Encoder", path: "#", status: "coming-soon" },
+      { name: "URL Converter", path: "#", status: "coming-soon" },
+      { name: "QR Generator", path: "#", status: "coming-soon" },
+    ],
+  },
+  {
+    title: "Video & Audio",
+    items: [
+      { name: "MP4 ↔ WebM", path: "#", status: "coming-soon" },
+      { name: "WAV ↔ MP3", path: "#", status: "coming-soon" },
     ],
   },
 ];
