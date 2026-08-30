@@ -68,7 +68,7 @@ const categories: NavCategory[] = [
     title: "Document & Data",
     items: [
       { name: "JSON ↔ CSV", path: "/json-to-csv", status: "active" },
-      { name: "XML ↔ JSON", path: "#", status: "coming-soon" },
+      { name: "XML ↔ JSON", path: "/xml-to-json", status: "active" },
       { name: "Markdown ➝ HTML", path: "#", status: "coming-soon" },
       { name: "PDF ➝ JPG", path: "#", status: "coming-soon" },
       { name: "XLSX ➝ CSV", path: "#", status: "coming-soon" },
