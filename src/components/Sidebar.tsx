@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
@@ -18,6 +18,9 @@ type NavCategory = {
 };
 
 const iconClass = 'w-4 h-4 shrink-0';
+
+// Mobilde sidebar'i sola/sağa kaydirarak kapatmak/acmak icin min. kaydirma mesafesi (px)
+const SWIPE_THRESHOLD = 60;
 
 const ImageIcon = (
   <svg className={iconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,11 +158,39 @@ function ThemeSwitch({ isOpen }: { isOpen: boolean }) {
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const pathname = usePathname();
+  const swipeStart = useRef<{ x: number; y: number } | null>(null);
+
+  // Mobil dokunmatik: sola kaydirmak sidebar'i kapatir, saga kaydirmak acar.
+  // Yalnizca yatay-dominant hareket swipe sayilir; dikey kaydirma scroll'a birakilir.
+  const handleTouchStart = (e: React.TouchEvent<HTMLElement>) => {
+    if (window.innerWidth >= 768) return; // yalnızca mobil görünüm
+    swipeStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
+    const start = swipeStart.current;
+    swipeStart.current = null;
+    if (!start) return;
+
+    const touch = e.changedTouches[0];
+    const dx = touch.clientX - start.x;
+    const dy = touch.clientY - start.y;
+
+    if (Math.abs(dx) < SWIPE_THRESHOLD) return; // eşiği aşmayan dokunuş/tap
+    if (Math.abs(dx) <= Math.abs(dy) * 1.5) return; // dikey dominant -> swipe değil
+
+    setIsOpen(dx > 0);
+  };
 
   return (
     <aside
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={() => {
+        swipeStart.current = null;
+      }}
       className={cn(
-        'z-50 flex h-full shrink-0 select-none flex-col border-r transition-all duration-300',
+        '[touch-action:pan-y] z-50 flex h-full shrink-0 select-none flex-col border-r transition-all duration-300',
         'border-zinc-200 bg-zinc-50 dark:border-zinc-800/60 dark:bg-[#0e0e0e]',
         isOpen ? 'w-72' : 'w-20'
       )}

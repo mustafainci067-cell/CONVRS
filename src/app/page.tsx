@@ -31,6 +31,30 @@ const tools = [
     description: 'JSON kayıtlarını tabloya, CSV tablolarını JSON’a çevirin. Saf JavaScript, sıfır istek.',
     badge: 'Available',
   },
+  {
+    href: '/xml-to-json',
+    title: 'XML ↔ JSON',
+    description: 'XML’i DOMParser ile JSON’a, JSON’u da XML’e çevirin. Çift yönlü ve anlık.',
+    badge: 'Available',
+  },
+  {
+    href: '/base64-encoder',
+    title: 'Base64 Encoder',
+    description: 'Metni UTF-8 güvenli Base64’e çevirin ya da Base64 kodunu geri okuyun.',
+    badge: 'Available',
+  },
+  {
+    href: '/url-converter',
+    title: 'URL Converter',
+    description: 'URL’leri encode/decode edin. İki alan anlık senkron çalışır, veri cihazdan çıkmaz.',
+    badge: 'Available',
+  },
+  {
+    href: '/qr-generator',
+    title: 'QR Generator',
+    description: 'Metin, bağlantı veya mesajınızı tarayıcıda anında taranabilir QR koda çevirin.',
+    badge: 'Available',
+  },
 ];
 
 export default function Home() {
