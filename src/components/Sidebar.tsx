@@ -65,6 +65,8 @@ const categories: NavCategory[] = [
       { name: "SVG ↔ PNG", path: "/svg-to-png", status: "active" },
       { name: "WebP ↔ PNG", path: "/webp-to-png", status: "active" },
       { name: "ICO ↔ PNG", path: "/ico-to-png", status: "active" },
+      { name: "Image Compressor", path: "#", status: "coming-soon" },
+      { name: "Remove Background", path: "#", status: "coming-soon" },
     ],
   },
   {
@@ -73,7 +75,9 @@ const categories: NavCategory[] = [
       { name: "JSON ↔ CSV", path: "/json-to-csv", status: "active" },
       { name: "XML ↔ JSON", path: "/xml-to-json", status: "active" },
       { name: "Markdown ↔ HTML", path: "/markdown-to-html", status: "active" },
-      { name: "PDF → JPG", path: "#", status: "coming-soon" },
+      { name: "PDF → JPG", path: "/pdf-to-jpg", status: "active" },
+      { name: "PDF Merge & Split", path: "#", status: "coming-soon" },
+      { name: "DOCX ↔ PDF", path: "#", status: "coming-soon" },
       { name: "XLSX ↔ CSV", path: "/xlsx-to-csv", status: "active" },
     ],
   },
@@ -83,6 +87,9 @@ const categories: NavCategory[] = [
       { name: "Base64 Encoder", path: "/base64-encoder", status: "active" },
       { name: "URL Converter", path: "/url-converter", status: "active" },
       { name: "QR Generator", path: "/qr-generator", status: "active" },
+      { name: "JWT Decoder", path: "#", status: "coming-soon" },
+      { name: "Hash Generator", path: "#", status: "coming-soon" },
+      { name: "Color Converter", path: "#", status: "coming-soon" },
     ],
   },
   {
@@ -90,6 +97,7 @@ const categories: NavCategory[] = [
     items: [
       { name: "MP4 ↔ WebM", path: "#", status: "coming-soon" },
       { name: "WAV ↔ MP3", path: "#", status: "coming-soon" },
+      { name: "Video to MP3", path: "#", status: "coming-soon" },
     ],
   },
 ];
