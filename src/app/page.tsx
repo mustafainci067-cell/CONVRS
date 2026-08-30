@@ -21,8 +21,8 @@ const tools = [
   },
   {
     href: '/svg-to-png',
-    title: 'SVG → PNG',
-    description: 'Vektör SVG dosyalarını 2× çözünürlükte, şeffaf PNG bitmap olarak dışa aktarın.',
+    title: 'SVG ↔ PNG',
+    description: 'Vektör SVG’yi şeffaf PNG’ye rasterleştirin ya da PNG’yi tekrar SVG’ye gömün.',
     badge: 'Available',
   },
   {
@@ -33,8 +33,8 @@ const tools = [
   },
   {
     href: '/ico-to-png',
-    title: 'ICO → PNG',
-    description: 'ICO ikon dosyalarını tarayıcıda şeffaf PNG görsellerine dönüştürün.',
+    title: 'ICO ↔ PNG',
+    description: 'ICO ikonlarını şeffaf PNG’ye çevirin ya da PNG’den ICO ikonu üretin.',
     badge: 'Available',
   },
   {
@@ -51,14 +51,14 @@ const tools = [
   },
   {
     href: '/markdown-to-html',
-    title: 'Markdown → HTML',
-    description: 'Markdown metnini anında temiz HTML’e dönüştürün. Çıktı XSS’e karşı otomatik arındırılır.',
+    title: 'Markdown ↔ HTML',
+    description: 'Markdown’ı temiz HTML’e çevirin ya da HTML’i Markdown’a döndürün. Çıktı XSS’e karşı arındırılır.',
     badge: 'Available',
   },
   {
     href: '/xlsx-to-csv',
-    title: 'XLSX → CSV',
-    description: 'Excel (.xlsx) dosyalarınızı tarayıcıda saniyeler içinde CSV’ye çevirip indirin.',
+    title: 'XLSX ↔ CSV',
+    description: 'Excel (.xlsx) dosyalarınızı CSV’ye çevirin ya da CSV’yi Excel çalışma kitabına dönüştürün.',
     badge: 'Available',
   },
   {

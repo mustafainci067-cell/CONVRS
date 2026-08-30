@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ImageConverter from '@/components/converters/ImageConverter';
 
 export const metadata: Metadata = {
-  title: 'ICO to PNG Converter — Convrs',
+  title: 'ICO ↔ PNG Converter — Convrs',
   description:
-    'Convert ICO icon files to crisp, transparent PNG with the browser native Image API. Runs entirely on your device.',
+    'Convert ICO icon files to crisp, transparent PNG — or build an ICO icon from a PNG. Runs entirely on your device.',
 };
 
 export default function IcoToPngPage() {

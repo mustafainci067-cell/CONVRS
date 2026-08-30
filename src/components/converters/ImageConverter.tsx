@@ -2,7 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { FFmpeg } from '@ffmpeg/ffmpeg';
-import { convertWithCanvas, resolveSvgSize, type CanvasTarget } from '@/lib/canvas-convert';
+import {
+  convertPngToIco,
+  convertPngToSvg,
+  convertWithCanvas,
+  resolveSvgSize,
+  type CanvasTarget,
+} from '@/lib/canvas-convert';
 import {
   ConvertButton,
   ConverterHeading,
@@ -20,8 +26,10 @@ export type ConverterMode =
   | 'png-to-jpg'
   | 'jpg-to-png'
   | 'svg-to-png'
+  | 'png-to-svg'
   | 'webp-to-png'
   | 'ico-to-png'
+  | 'png-to-ico'
   | 'webp-to-jpg'
   | 'png-to-webp';
 
@@ -34,7 +42,7 @@ type ConverterConfig = {
   outputLabel: string;
   outputExtension: string;
   /** heic2any ve canvas tarayicida calisir, ffmpeg WebAssembly cekirdegini indirir */
-  engine: 'heic2any' | 'ffmpeg' | 'canvas';
+  engine: 'heic2any' | 'ffmpeg' | 'canvas' | 'svg' | 'ico';
   /** engine === 'canvas' icin cikti ayarlari */
   canvas?: CanvasTarget;
   /** SVG gibi ictrinsik boyutu olmayabilen vektor kaynaklar */
@@ -215,9 +223,24 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     engine: 'canvas',
     canvas: { mime: 'image/png', scale: 2 },
     vector: true,
+    swapWith: 'png-to-svg',
     invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece SVG dosyası yükleyin.',
     isValidFile: (file) =>
       file.name.toLowerCase().endsWith('.svg') || file.type === 'image/svg+xml',
+    accent: VIOLET_ACCENT,
+  },
+  'png-to-svg': {
+    title: 'PNG to SVG Converter',
+    description:
+      'Embed a PNG bitmap inside a scalable SVG file — keeping every pixel and its transparency — entirely in your browser.',
+    accept: '.png,.PNG,image/png',
+    inputLabel: 'PNG',
+    outputLabel: 'SVG',
+    outputExtension: 'svg',
+    engine: 'svg',
+    swapWith: 'svg-to-png',
+    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece PNG dosyası yükleyin.',
+    isValidFile: isPng,
     accent: VIOLET_ACCENT,
   },
   'webp-to-png': {
@@ -260,8 +283,23 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     outputExtension: 'png',
     engine: 'canvas',
     canvas: { mime: 'image/png' },
+    swapWith: 'png-to-ico',
     invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece ICO dosyası yükleyin.',
     isValidFile: isIco,
+    accent: EMERALD_ACCENT,
+  },
+  'png-to-ico': {
+    title: 'PNG to ICO Converter',
+    description:
+      'Turn a square PNG image into a single-size Windows ICO icon — with PNG-compressed data for full quality and transparency — in your browser.',
+    accept: '.png,.PNG,image/png',
+    inputLabel: 'PNG',
+    outputLabel: 'ICO',
+    outputExtension: 'ico',
+    engine: 'ico',
+    swapWith: 'ico-to-png',
+    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece PNG dosyası yükleyin.',
+    isValidFile: isPng,
     accent: EMERALD_ACCENT,
   },
 };
@@ -365,6 +403,10 @@ export default function ImageConverter({ mode }: { mode: ConverterMode }) {
         if (!config.canvas) throw new Error('Canvas hedefi tanımlı değil.');
         const size = config.vector ? await resolveSvgSize(selectedFile) : undefined;
         blob = await convertWithCanvas(selectedFile, config.canvas, size);
+      } else if (config.engine === 'svg') {
+        blob = await convertPngToSvg(selectedFile);
+      } else if (config.engine === 'ico') {
+        blob = await convertPngToIco(selectedFile);
       } else {
         const ffmpeg = await ensureWasmEngine();
         if (!ffmpeg) return; // hata mesaji ensureWasmEngine icinde set edildi
