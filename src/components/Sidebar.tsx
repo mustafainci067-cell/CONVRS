@@ -78,7 +78,7 @@ const categories: NavCategory[] = [
     title: "Developer Tools",
     items: [
       { name: "Base64 Encoder", path: "/base64-encoder", status: "active" },
-      { name: "URL Converter", path: "#", status: "coming-soon" },
+      { name: "URL Converter", path: "/url-converter", status: "active" },
       { name: "QR Generator", path: "/qr-generator", status: "active" },
     ],
   },
