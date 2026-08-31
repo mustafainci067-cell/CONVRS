@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
             <CookieBanner />
           </NextIntlClientProvider>
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-B25N2GY4TC" />
       </body>
     </html>
   );
