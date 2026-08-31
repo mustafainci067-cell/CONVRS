@@ -12,6 +12,8 @@
 export const IMAGE_SIZE_LIMIT_MB = 20;
 /** Belge formatlari icin hard boyut limiti (byte). */
 export const DOCUMENT_SIZE_LIMIT_MB = 50;
+/** Medya (video/audio) formatlari icin hard boyut limiti (byte). */
+export const MEDIA_SIZE_LIMIT_MB = 100;
 
 export const FILE_SIZE_LIMITS = {
   image: IMAGE_SIZE_LIMIT_MB * 1024 * 1024,
@@ -73,5 +75,15 @@ export function assertFileWithinLimit(file: File) {
     throw new Error(
       `Dosya boyutu çok büyük. ${category === 'image' ? 'Resimler' : 'Belgeler'} için sınır ${label}.`
     );
+  }
+}
+
+/**
+ * Cagriyanin kendi verdigi MB cinsinden limite karsi denetler.
+ * Medya tipi surekli degisebilen araclar icin (video/audio) kullanilir.
+ */
+export function assertWithinLimit(file: File, limitMb: number) {
+  if (file.size > limitMb * 1024 * 1024) {
+    throw new Error(`Dosya boyutu çok büyük. Sınır ${limitMb}MB.`);
   }
 }
