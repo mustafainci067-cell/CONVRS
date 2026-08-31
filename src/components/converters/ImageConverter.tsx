@@ -9,6 +9,7 @@ import {
   resolveSvgSize,
   type CanvasTarget,
 } from '@/lib/canvas-convert';
+import { assertFileWithinLimit, IMAGE_SIZE_LIMIT_MB } from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -372,6 +373,13 @@ export default function ImageConverter({ mode }: { mode: ConverterMode }) {
       setErrorMsg(config.invalidMessage);
       return;
     }
+    // Resimler icin 20MB hard-limit; asarsa islemi aninda durdur
+    try {
+      assertFileWithinLimit(file);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Dosya boyutu çok büyük.');
+      return;
+    }
     setSelectedFile(file);
     setConvertedUrl(null);
     setErrorMsg(null);
@@ -466,6 +474,7 @@ export default function ImageConverter({ mode }: { mode: ConverterMode }) {
         fileName={selectedFile?.name}
         onFile={processFile}
         accent={config.accent}
+        maxSizeMb={IMAGE_SIZE_LIMIT_MB}
       />
 
       {errorMsg && <ErrorBanner message={errorMsg} />}

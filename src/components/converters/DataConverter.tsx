@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { csvToJson, jsonToCsv } from '@/lib/data-convert';
+import { assertFileWithinLimit, DOCUMENT_SIZE_LIMIT_MB } from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -107,6 +108,13 @@ export default function DataConverter({ mode }: { mode: DataMode }) {
       setErrorMsg(config.invalidMessage);
       return;
     }
+    // JSON/CSV belge oldugu icin 50MB hard-limit; asilirsa islemi durdur
+    try {
+      assertFileWithinLimit(file);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Dosya boyutu çok büyük.');
+      return;
+    }
     setSelectedFile(file);
     setConvertedUrl(null);
     setPreview(null);
@@ -155,6 +163,7 @@ export default function DataConverter({ mode }: { mode: DataMode }) {
         fileName={selectedFile?.name}
         onFile={processFile}
         accent={TEAL_ACCENT}
+        maxSizeMb={DOCUMENT_SIZE_LIMIT_MB}
       />
 
       {errorMsg && <ErrorBanner message={errorMsg} />}

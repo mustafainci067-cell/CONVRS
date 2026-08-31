@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
+import { assertFileWithinLimit, DOCUMENT_SIZE_LIMIT_MB } from '@/lib/file-validation';
 import {
   ConverterHeading,
   ConverterShell,
@@ -79,6 +80,14 @@ export default function XlsxToCsv() {
       }
     } else if (!isCsv(file)) {
       setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece .csv dosyası yükleyin.');
+      return;
+    }
+
+    // Excel/CSV belge oldugu icin 50MB hard-limit; asilirsa islemi durdur
+    try {
+      assertFileWithinLimit(file);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Dosya boyutu çok büyük.');
       return;
     }
 
@@ -162,6 +171,7 @@ export default function XlsxToCsv() {
         fileName={fileName ?? undefined}
         onFile={processFile}
         accent={TEAL_ACCENT}
+        maxSizeMb={DOCUMENT_SIZE_LIMIT_MB}
       />
 
       {errorMsg && <ErrorBanner message={errorMsg} />}

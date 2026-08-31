@@ -3,6 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 import {
+  assertFileWithinLimit,
+  DOCUMENT_SIZE_LIMIT_MB,
+  IMAGE_SIZE_LIMIT_MB,
+} from '@/lib/file-validation';
+import {
   ConvertButton,
   ConverterHeading,
   ConverterShell,
@@ -84,12 +89,26 @@ export default function PdfToJpgConverter() {
       setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece PDF dosyası yükleyin.');
       return;
     }
+    // PDF belge oldugu icin 50MB; limit asilirsa islemi aninda durdur
+    try {
+      assertFileWithinLimit(file);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Dosya boyutu çok büyük.');
+      return;
+    }
     setSelectedFile(file);
     setConverted(null);
     setErrorMsg(null);
   };
 
   const processImages = (files: File[]) => {
+    // Her resim icin 20MB hard-limit; tek bir asim tum grubu reddeder
+    try {
+      files.forEach(assertFileWithinLimit);
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : 'Dosya boyutu çok büyük.');
+      return;
+    }
     setImages((prev) => [...prev, ...files]);
     setConverted(null);
     setErrorMsg(null);
@@ -221,6 +240,7 @@ export default function PdfToJpgConverter() {
             fileName={selectedFile?.name}
             onFile={processPdf}
             accent={RED_ACCENT}
+            maxSizeMb={DOCUMENT_SIZE_LIMIT_MB}
           />
         </>
       ) : (
@@ -237,6 +257,7 @@ export default function PdfToJpgConverter() {
             onFiles={processImages}
             multiple
             accent={RED_ACCENT}
+            maxSizeMb={IMAGE_SIZE_LIMIT_MB}
           />
 
           {images.length > 0 && (

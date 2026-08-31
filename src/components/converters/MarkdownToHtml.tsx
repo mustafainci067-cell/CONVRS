@@ -8,6 +8,7 @@ import {
   ConverterHeading,
   ConverterShell,
   DirectionToggle,
+  ErrorBanner,
   type Accent,
 } from './ConverterShell';
 
@@ -48,17 +49,36 @@ export default function MarkdownToHtml() {
   const [direction, setDirection] = useState<Direction>('markdown-to-html');
   const [markdown, setMarkdown] = useState('');
   const [html, setHtml] = useState('');
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const isMdToHtml = direction === 'markdown-to-html';
 
-  // marked varsayilan olarak senkron doner; cikti XSS'e karsi dompurify'dan gecer
-  const toHtml = (value: string) =>
-    value.trim() ? (DOMPurify.sanitize(marked.parse(value) as string) as string) : '';
+  // marked varsayilan olarak senkron doner; cikti XSS'e karsi dompurify'dan gecer.
+  // Bozuk/okunamayan girdi islenirken cokmesin diye butun donusumler try-catch altindadir.
+  const toHtml = (value: string) => {
+    if (!value.trim()) return '';
+    try {
+      return DOMPurify.sanitize(marked.parse(value) as string) as string;
+    } catch (err) {
+      console.error(err);
+      setErrorMsg('Dosya işlenirken bir hata oluştu veya format desteklenmiyor.');
+      return '';
+    }
+  };
 
-  const toMarkdown = (value: string) =>
-    value.trim() ? new TurndownService().turndown(value) : '';
+  const toMarkdown = (value: string) => {
+    if (!value.trim()) return '';
+    try {
+      return new TurndownService().turndown(value);
+    } catch (err) {
+      console.error(err);
+      setErrorMsg('Dosya işlenirken bir hata oluştu veya format desteklenmiyor.');
+      return '';
+    }
+  };
 
   const handleEdit = (value: string) => {
+    setErrorMsg(null);
     if (isMdToHtml) {
       setMarkdown(value);
       setHtml(toHtml(value));
@@ -70,6 +90,7 @@ export default function MarkdownToHtml() {
 
   const handleSwap = () => {
     const next: Direction = isMdToHtml ? 'html-to-markdown' : 'markdown-to-html';
+    setErrorMsg(null);
     // Cikis artik girdi olur; yeni cikti o girdiden yeniden uretilir
     if (next === 'html-to-markdown') {
       setMarkdown(toMarkdown(html));
@@ -152,6 +173,8 @@ export default function MarkdownToHtml() {
           />
         </div>
       </div>
+
+      {errorMsg && <ErrorBanner message={errorMsg} />}
     </ConverterShell>
   );
 }

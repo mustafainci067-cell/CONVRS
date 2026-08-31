@@ -136,6 +136,7 @@ export function Dropzone({
   onFiles,
   multiple,
   accent,
+  maxSizeMb,
 }: {
   accept: string;
   inputLabel: string;
@@ -144,6 +145,8 @@ export function Dropzone({
   onFiles?: (files: File[]) => void;
   multiple?: boolean;
   accent: Accent;
+  /** Varsa, yukleme alaninin altinda gorunen hard boyut limiti notu */
+  maxSizeMb?: number;
 }) {
   const [isDragging, setIsDragging] = useState(false);
 
@@ -206,6 +209,12 @@ export function Dropzone({
         </p>
         <p className="text-xs text-zinc-500">Drag &amp; drop or click to select from your device</p>
       </div>
+
+      {maxSizeMb && (
+        <p className="mt-2 font-mono text-[11px] text-zinc-400 dark:text-zinc-500">
+          Maksimum dosya boyutu: {maxSizeMb} MB
+        </p>
+      )}
     </div>
   );
 }
