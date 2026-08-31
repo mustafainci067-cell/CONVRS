@@ -1,0 +1,187 @@
+{
+  "Sidebar": {
+    "openNav": "Navigationsmenü öffnen",
+    "collapse": "Seitenleiste einklappen",
+    "expand": "Seitenleiste ausklappen",
+    "categories": {
+      "image": "Bildkonverter",
+      "document": "Dokument & Daten",
+      "developer": "Entwicklerwerkzeuge",
+      "media": "Video & Audio"
+    },
+    "tools": {
+      "heic-to-jpg": "HEIC → JPG",
+      "jpg-to-webp": "JPG ↔ WebP",
+      "png-to-jpg": "PNG ↔ JPG",
+      "svg-to-png": "SVG ↔ PNG",
+      "webp-to-png": "WebP ↔ PNG",
+      "ico-to-png": "ICO ↔ PNG",
+      "image-compressor": "Bildkompressor",
+      "remove-background": "Hintergrund entfernen",
+      "json-to-csv": "JSON ↔ CSV",
+      "xml-to-json": "XML ↔ JSON",
+      "markdown-to-html": "Markdown ↔ HTML",
+      "pdf-to-jpg": "PDF ↔ Bild",
+      "pdf-merge-split": "PDF zusammenfügen & teilen",
+      "docx-to-pdf": "DOCX ↔ PDF",
+      "xlsx-to-csv": "XLSX ↔ CSV",
+      "base64-encoder": "Base64-Konverter",
+      "url-converter": "URL-Konverter",
+      "qr-generator": "QR-Generator",
+      "jwt-decoder": "JWT-Decoder",
+      "hash-generator": "Hash-Generator",
+      "color-converter": "Farbkonverter",
+      "mp4-to-webm": "MP4 ↔ WebM",
+      "wav-to-mp3": "WAV ↔ MP3",
+      "video-to-mp3": "Video zu MP3"
+    },
+    "comingSoon": "Bald",
+    "theme": {
+      "toLight": "Zum hellen Modus wechseln",
+      "toDark": "Zum dunklen Modus wechseln",
+      "lightMode": "Heller Modus",
+      "darkMode": "Dunkler Modus"
+    }
+  },
+  "Faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Antworten auf die häufigsten Fragen zu Convrs.",
+    "items": {
+      "security_q": "Sind meine Dateien sicher?",
+      "security_a": "Ja, absolut. Alle Konvertierungen, die Sie mit Convrs durchführen, finden <strong>zu 100% in Ihrem Browser statt (client-side)</strong>. Ihre Dateien verlassen Ihr Gerät niemals; sie werden nie hochgeladen, gespeichert oder mit Dritten geteilt. Video- und Audio-Tools verwenden WebAssembly-Engines, die ebenfalls ausschließlich im Speicher Ihres Geräts laufen. Deshalb behalten Sie immer die vollständige Kontrolle über Ihre persönlichen Fotos, Dokumente oder Arbeitsdateien. Weitere Details finden Sie in unserer <privacy>Datenschutzrichtlinie</privacy>.",
+      "paid_q": "Ist Ihr Service kostenpflichtig?",
+      "paid_a": "Nein, Convrs ist <strong>völlig kostenlos</strong>. Es gibt keine Einschränkungen bei der Anzahl der Dateikonvertierungen oder der Nutzungsdauer. Da jedoch alle Verarbeitungen <strong>zu 100% in Ihrem Browser (client-side) stattfinden</strong>, gibt es Dateigrößenlimits, um ein Überlaufen und Abstürzen des Gerätespeichers zu verhindern (20 MB für Bilder, 50 MB für Dokumente, 100 MB für Medien).",
+      "formats_q": "Welche Dateiformate werden unterstützt?",
+      "formats_a": "Convrs unterstützt ein sehr breites Spektrum an Formaten. Bildwerkzeuge umfassen HEIC-, JPG-, PNG-, WebP-, SVG- und ICO-Dateien; Dokument- und Datenwerkzeuge konvertieren PDF, DOCX, XLSX, JSON, XML und Markdown. Medienwerkzeuge verarbeiten MP4-, WebM-, WAV- und MP3-Formate, während Entwicklerwerkzeuge Base64-, URL-, QR-, JWT-, Hash- und Farbcod-Konvertierungen beinhalten. Alle Werkzeuge finden Sie im Seitenleistenmenü.",
+      "mobile_q": "Funktionieren Konvertierungen auf mobilen Geräten?",
+      "mobile_a": "Ja. Convrs funktioniert auf <strong>allen Geräten mit einem modernen Browser</strong> — Telefon, Tablet oder Desktop. All unsere Konvertierungswerkzeuge haben responsive Designs und sind vollständig mit Touchscreens kompatibel. Keine App-Installation erforderlich; Sie können Ihre Dateien direkt aus Ihrem Browser auswählen und konvertieren. Da die Verarbeitung auf Ihrem Gerät stattfindet, hängt die Leistung nur von der Verarbeitungsleistung Ihres Geräts und der Browserversion ab."
+    }
+  },
+  "Cookie": {
+    "message": "Wir verwenden Cookies, um Ihnen ein besseres Erlebnis zu bieten. Durch die Nutzung unserer Website akzeptieren Sie unsere ",
+    "policyLink": "Cookie-Richtlinie",
+    "accept": "Akzeptieren"
+  },
+  "Dropzone": {
+    "default": "Ihre {file}-Datei hier ablegen oder durchsuchen",
+    "hint": "Ziehen Sie eine Datei hierher oder klicken Sie, um vom Gerät auszuwählen",
+    "maxSize": "Maximale Dateigröße: {size} MB"
+  },
+  "Footer": {
+    "copyright": "© 2026 Convrs",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen"
+  },
+  "LanguageSwitcher": {
+    "label": "Sprache"
+  },
+  "Lang": {
+    "en": "English",
+    "tr": "Türkçe",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "Home": {
+    "tagline": "Alle Konvertierungen finden direkt in Ihrem Browser statt. Ihre Dateien verlassen Ihr Gerät niemals.",
+    "openTool": "Werkzeug öffnen →",
+    "available": "Verfügbar",
+    "tools": {
+      "heic-to-jpg": {
+        "title": "HEIC → JPG",
+        "description": "Apple-HEIC-Fotos in das universelle JPG-Format konvertieren."
+      },
+      "jpg-to-webp": {
+        "title": "JPG ↔ WebP",
+        "description": "JPG-Dateien mit WebAssembly in Googles leichtes WebP-Format konvertieren."
+      },
+      "png-to-jpg": {
+        "title": "PNG ↔ JPG",
+        "description": "Zwei-Wege-PNG/JPG-Konvertierung mit HTML5 Canvas; Transparenz wird auf weißem Grund geglättet."
+      },
+      "svg-to-png": {
+        "title": "SVG ↔ PNG",
+        "description": "Vektorielles SVG in transparentes PNG rastern oder PNG wieder in SVG einbetten."
+      },
+      "webp-to-png": {
+        "title": "WebP ↔ PNG",
+        "description": "Leichte WebP-Bilder unter Beibehaltung der Transparenz in verlustfreies PNG konvertieren."
+      },
+      "ico-to-png": {
+        "title": "ICO ↔ PNG",
+        "description": "ICO-Symbole in transparentes PNG konvertieren oder aus PNG ein ICO-Symbol erzeugen."
+      },
+      "pdf-to-jpg": {
+        "title": "PDF ↔ Bild",
+        "description": "PDF-Seiten als JPG extrahieren oder mehrere Bilder mit pdf-lib zu einem einzigen PDF zusammenführen."
+      },
+      "json-to-csv": {
+        "title": "JSON ↔ CSV",
+        "description": "JSON-Datensätze in eine Tabelle und CSV-Tabellen in JSON umwandeln. Reines JavaScript, null Anfragen."
+      },
+      "xml-to-json": {
+        "title": "XML ↔ JSON",
+        "description": "XML mit DOMParser in JSON und JSON zurück in XML konvertieren. Zwei-Wege und sofort."
+      },
+      "markdown-to-html": {
+        "title": "Markdown ↔ HTML",
+        "description": "Markdown in sauberes HTML konvertieren oder HTML zurück in Markdown bringen. Die Ausgabe wird gegen XSS bereinigt."
+      },
+      "xlsx-to-csv": {
+        "title": "XLSX ↔ CSV",
+        "description": "Ihre Excel-Dateien (.xlsx) in CSV konvertieren oder CSV in eine Excel-Arbeitsmappe umwandeln."
+      },
+      "base64-encoder": {
+        "title": "Base64-Konverter",
+        "description": "Text in UTF-8-sicheres Base64 kodieren oder Base64 zurück in Text dekodieren."
+      },
+      "url-converter": {
+        "title": "URL-Konverter",
+        "description": "URLs kodieren/dekodieren. Die beiden Felder laufen sofort synchron; Daten verlassen nie Ihr Gerät."
+      },
+      "qr-generator": {
+        "title": "QR-Generator",
+        "description": "Text, Link oder Nachricht sofort in einen scannbaren QR-Code im Browser umwandeln."
+      },
+      "pdf-merge-split": {
+        "title": "PDF zusammenfügen & teilen",
+        "description": "Mehrere PDFs mit pdf-lib in Ihrem Browser zu einem einzigen Dokument zusammenführen."
+      },
+      "docx-to-pdf": {
+        "title": "DOCX ↔ PDF",
+        "description": "Ihre Word-Dokumente (.docx) mit mammoth lesen und mit pdf-lib als PDF ausgeben."
+      },
+      "image-compressor": {
+        "title": "Bildkompressor",
+        "description": "JPG-, PNG- und WebP-Bilder mit HTML5 Canvas komprimieren, Qualität senken und Größe reduzieren."
+      },
+      "remove-background": {
+        "title": "Hintergrund entfernen",
+        "description": "Den Hintergrund von JPG-, PNG- und WebP-Bildern mit einem Browser-AI-Modell entfernen und ein transparentes PNG erhalten."
+      },
+      "video-to-mp3": {
+        "title": "Video zu MP3",
+        "description": "Audio aus Videos mit ffmpeg (im Browser) extrahieren und als MP3 exportieren."
+      },
+      "mp4-to-webm": {
+        "title": "MP4 ↔ WebM",
+        "description": "MP4-Video mit ffmpeg in WebM oder WebM in MP4 konvertieren – im Browser."
+      },
+      "wav-to-mp3": {
+        "title": "WAV ↔ MP3",
+        "description": "WAV-Audio mit ffmpeg in MP3 oder MP3 zurück in WAV konvertieren – im Browser."
+      },
+      "jwt-decoder": {
+        "title": "JWT-Decoder",
+        "description": "Header und Payload Ihrer JWT-Tokens direkt im Browser dekodieren und als JSON lesen."
+      },
+      "hash-generator": {
+        "title": "Hash-Generator",
+        "description": "Sofortige SHA-1-, SHA-256- und SHA-512-Hashes für Ihren Text mit Web Crypto erzeugen."
+      },
+      "color-converter": {
+        "title": "Farbkonverter",
+        "description": "HEX-, RGB- und HSL-Farbcodes mathematisch sofort ineinander umrechnen."
+      }
+    }
+  }
+}

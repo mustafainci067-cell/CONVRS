@@ -9,7 +9,11 @@ import {
   resolveSvgSize,
   type CanvasTarget,
 } from '@/lib/canvas-convert';
-import { assertFileWithinLimit, IMAGE_SIZE_LIMIT_MB } from '@/lib/file-validation';
+import {
+  assertFileWithinLimit,
+  IMAGE_SIZE_LIMIT_MB,
+  matchesValidFormat,
+} from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -117,20 +121,19 @@ const EMERALD_ACCENT: Accent = {
 };
 
 const isPng = (file: File) =>
-  file.name.toLowerCase().endsWith('.png') || file.type === 'image/png';
+  matchesValidFormat(file, { mimes: ['image/png'], extensions: ['png'] });
 
-const isJpg = (file: File) => {
-  const name = file.name.toLowerCase();
-  return name.endsWith('.jpg') || name.endsWith('.jpeg') || file.type === 'image/jpeg';
-};
+const isJpg = (file: File) =>
+  matchesValidFormat(file, { mimes: ['image/jpeg'], extensions: ['jpg', 'jpeg'] });
 
 const isWebp = (file: File) =>
-  file.name.toLowerCase().endsWith('.webp') || file.type === 'image/webp';
+  matchesValidFormat(file, { mimes: ['image/webp'], extensions: ['webp'] });
 
 const isIco = (file: File) =>
-  file.name.toLowerCase().endsWith('.ico') ||
-  file.type === 'image/x-icon' ||
-  file.type === 'image/vnd.microsoft.icon';
+  matchesValidFormat(file, {
+    mimes: ['image/x-icon', 'image/vnd.microsoft.icon'],
+    extensions: ['ico'],
+  });
 
 const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
   'heic-to-jpg': {
@@ -142,16 +145,9 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     outputLabel: 'JPG',
     outputExtension: 'jpg',
     engine: 'heic2any',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece HEIC dosyası yükleyin.',
-    isValidFile: (file) => {
-      const name = file.name.toLowerCase();
-      return (
-        name.endsWith('.heic') ||
-        name.endsWith('.heif') ||
-        file.type === 'image/heic' ||
-        file.type === 'image/heif'
-      );
-    },
+    invalidMessage: 'Geçersiz dosya formatı',
+    isValidFile: (file) =>
+      matchesValidFormat(file, { mimes: ['image/heic', 'image/heif'], extensions: ['heic', 'heif'] }),
     accent: ZINC_ACCENT,
   },
   'jpg-to-webp': {
@@ -164,7 +160,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     outputExtension: 'webp',
     engine: 'ffmpeg',
     swapWith: 'webp-to-jpg',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece JPG dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isJpg,
     accent: BLUE_ACCENT,
   },
@@ -179,7 +175,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     engine: 'canvas',
     canvas: { mime: 'image/jpeg', quality: 0.92, background: '#ffffff' },
     swapWith: 'jpg-to-webp',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece WebP dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isWebp,
     accent: BLUE_ACCENT,
   },
@@ -194,7 +190,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     engine: 'canvas',
     canvas: { mime: 'image/jpeg', quality: 0.92, background: '#ffffff' },
     swapWith: 'jpg-to-png',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece PNG dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isPng,
     accent: AMBER_ACCENT,
   },
@@ -209,7 +205,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     engine: 'canvas',
     canvas: { mime: 'image/png' },
     swapWith: 'png-to-jpg',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece JPG dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isJpg,
     accent: AMBER_ACCENT,
   },
@@ -225,9 +221,9 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     canvas: { mime: 'image/png', scale: 2 },
     vector: true,
     swapWith: 'png-to-svg',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece SVG dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: (file) =>
-      file.name.toLowerCase().endsWith('.svg') || file.type === 'image/svg+xml',
+      matchesValidFormat(file, { mimes: ['image/svg+xml'], extensions: ['svg'] }),
     accent: VIOLET_ACCENT,
   },
   'png-to-svg': {
@@ -240,7 +236,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     outputExtension: 'svg',
     engine: 'svg',
     swapWith: 'svg-to-png',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece PNG dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isPng,
     accent: VIOLET_ACCENT,
   },
@@ -255,7 +251,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     engine: 'canvas',
     canvas: { mime: 'image/png' },
     swapWith: 'png-to-webp',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece WebP dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isWebp,
     accent: ROSE_ACCENT,
   },
@@ -270,7 +266,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     engine: 'canvas',
     canvas: { mime: 'image/webp', quality: 0.92 },
     swapWith: 'webp-to-png',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece PNG dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isPng,
     accent: ROSE_ACCENT,
   },
@@ -285,7 +281,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     engine: 'canvas',
     canvas: { mime: 'image/png' },
     swapWith: 'png-to-ico',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece ICO dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isIco,
     accent: EMERALD_ACCENT,
   },
@@ -299,7 +295,7 @@ const CONVERTERS: Record<ConverterMode, ConverterConfig> = {
     outputExtension: 'ico',
     engine: 'ico',
     swapWith: 'ico-to-png',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece PNG dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: isPng,
     accent: EMERALD_ACCENT,
   },

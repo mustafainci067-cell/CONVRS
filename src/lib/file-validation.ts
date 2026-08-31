@@ -62,6 +62,52 @@ const LIMIT_LABEL: Record<FileCategory, string> = {
 };
 
 /**
+ * Izin verilen giris formatlari. `mimes` onceliklidir (file.type otoritesi);
+ * `extensions` yalnizca tarayici/OS dosyanin MIME'ini bos biraktiginda yedek
+ * olarak kullanilir.
+ */
+export type AllowedFormat = {
+  mimes: string[];
+  extensions?: string[];
+};
+
+/**
+ * Siki MIME dogrulamasi: dosyanin file.type (MIME) ozniteligi otoritedir.
+ *  - MIME doluysa ve izin verilen listeyle eslesmezse -> 'Gecersiz dosya formatı' hata.
+ *  - MIME bossa, uzanti yedegine dusulur (gorsel zarari onler).
+ * Yedeklerde de eslesen yoksa ayni hata firlatilir.
+ */
+export function assertValidFormat(file: File, allowed: AllowedFormat): void {
+  const matchMime = (m: string) =>
+    m.endsWith('/') ? file.type.startsWith(m) : file.type === m;
+
+  // MIME doluysa birinci inceleme yontemi odur; uyumsuz dosya aninda reddedilir.
+  if (file.type) {
+    if (allowed.mimes.some(matchMime)) return;
+    throw new Error('Geçersiz dosya formatı');
+  }
+
+  // Bazi tarayicilar/OS dosyanin MIME'ini bos birakabilir: uzanti yedegi
+  const dot = file.name.lastIndexOf('.');
+  const ext = dot === -1 ? '' : file.name.slice(dot + 1).toLowerCase();
+  if (allowed.extensions?.includes(ext)) return;
+  throw new Error('Geçersiz dosya formatı');
+}
+
+/**
+ * assertValidFormat'in bolern (predicate) varyanti: format eslesmezse hata
+ * firlatmak yerine false doner. Config tabanli dogrulayicilarda kullanilir.
+ */
+export function matchesValidFormat(file: File, allowed: AllowedFormat): boolean {
+  try {
+    assertValidFormat(file, allowed);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * Yuklenen dosyanin boyut limitini asip asmadigini denetler.
  * Asarsa kullanici dostu bir mesajla hata firlatir.
  */

@@ -3,6 +3,23 @@
  * hicbir veri cihazdan disari cikmaz.
  */
 
+import DOMPurify from 'dompurify';
+
+/** Kaynak dosyanin SVG olup olmadigini (MIME oncelikli) belirler. */
+const isSvgFile = (file: File) =>
+  file.type === 'image/svg+xml' || file.name.toLowerCase().endsWith('.svg');
+
+/**
+ * SVG icerigini DOMPurify ile temizler: gomulu <script>, on* event
+ * handler, javascript: URL vb. zararli icerik kaldirilir. Temizlenmis
+ * icerik yeni bir File'a aktarilir; rasterizasyon akisi degismez.
+ */
+async function sanitizeSvg(file: File): Promise<File> {
+  const raw = await file.text();
+  const clean = DOMPurify.sanitize(raw, { USE_PROFILES: { svg: true, svgFilters: true } });
+  return new File([clean], file.name, { type: 'image/svg+xml' });
+}
+
 export type CanvasTarget = {
   /** Cikti MIME turu, orn. 'image/jpeg' */
   mime: string;
@@ -32,8 +49,9 @@ function loadImage(url: string): Promise<HTMLImageElement> {
 export async function resolveSvgSize(file: File): Promise<{ width: number; height: number }> {
   const fallback = { width: 1024, height: 1024 };
   try {
+    const source = isSvgFile(file) ? await sanitizeSvg(file) : file;
     const svg = new DOMParser()
-      .parseFromString(await file.text(), 'image/svg+xml')
+      .parseFromString(await source.text(), 'image/svg+xml')
       .querySelector('svg');
     if (!svg) return fallback;
 
@@ -63,7 +81,9 @@ export async function convertWithCanvas(
   target: CanvasTarget,
   size?: { width: number; height: number }
 ): Promise<Blob> {
-  const objectUrl = URL.createObjectURL(file);
+  // SVG girdisini render oncesi temizle; XSS iceren dosyalar betik calistiramaz
+  const source = isSvgFile(file) ? await sanitizeSvg(file) : file;
+  const objectUrl = URL.createObjectURL(source);
 
   try {
     const img = await loadImage(objectUrl);

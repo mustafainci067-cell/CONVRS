@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
 /**
@@ -28,7 +29,7 @@ export function ConverterShell({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex min-h-full flex-col items-center justify-between p-8 font-sans selection:bg-zinc-200 dark:selection:bg-zinc-800">
+    <main className="flex min-h-full flex-col items-center justify-between p-5 font-sans selection:bg-zinc-200 sm:p-8 dark:selection:bg-zinc-800">
       <header className="flex w-full max-w-4xl items-center justify-between border-b border-zinc-200 py-4 dark:border-zinc-800/60">
         <span className="font-mono text-xs uppercase tracking-wider text-zinc-500">
           {from} ➝ {to}
@@ -40,7 +41,7 @@ export function ConverterShell({
         )}
       </header>
 
-      <div className="my-auto flex w-full max-w-xl flex-col items-center gap-8 py-10">{children}</div>
+      <div className="my-auto flex w-full max-w-xl flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10">{children}</div>
 
       <footer className="mt-8 flex w-full max-w-4xl flex-col items-center justify-between gap-4 border-t border-zinc-200 py-6 text-xs text-zinc-500 md:flex-row dark:border-zinc-800/60">
         <p>© 2026 Convrs. Built for performance and privacy.</p>
@@ -149,6 +150,7 @@ export function Dropzone({
   maxSizeMb?: number;
 }) {
   const [isDragging, setIsDragging] = useState(false);
+  const t = useTranslations('Dropzone');
 
   const collect = (fileList: FileList | null) => {
     const files = Array.from(fileList ?? []);
@@ -172,7 +174,7 @@ export function Dropzone({
         collect(e.dataTransfer.files);
       }}
       className={cn(
-        'group relative flex w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-2xl border border-dashed p-12 shadow-sm transition-all',
+        'group relative flex w-full cursor-pointer touch-manipulation select-none flex-col items-center justify-center gap-4 rounded-2xl border border-dashed p-8 shadow-sm transition-all sm:p-12',
         accent.dropzone,
         isDragging && 'scale-[1.01] border-emerald-500'
       )}
@@ -205,14 +207,14 @@ export function Dropzone({
       </div>
       <div className="space-y-1 text-center">
         <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
-          {fileName ?? `Drop your ${inputLabel} file here, or browse`}
+          {fileName ?? t('default', { file: inputLabel })}
         </p>
-        <p className="text-xs text-zinc-500">Drag &amp; drop or click to select from your device</p>
+        <p className="text-xs text-zinc-500">{t('hint')}</p>
       </div>
 
       {maxSizeMb && (
-        <p className="mt-2 font-mono text-[11px] text-zinc-400 dark:text-zinc-500">
-          Maksimum dosya boyutu: {maxSizeMb} MB
+        <p className="mt-2 max-w-full text-center font-mono text-[11px] leading-relaxed text-zinc-400 dark:text-zinc-500">
+          {t('maxSize', { size: maxSizeMb })}
         </p>
       )}
     </div>
@@ -223,7 +225,7 @@ export function ErrorBanner({ message }: { message: string }) {
   return (
     <div
       role="alert"
-      className="w-full rounded-xl border border-red-200 bg-red-50 p-3 text-center font-mono text-xs text-red-600 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400"
+      className="w-full max-w-full break-words rounded-xl border border-red-200 bg-red-50 p-3 text-center font-mono text-xs leading-relaxed text-red-600 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400"
     >
       {message}
     </div>

@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
-import { assertFileWithinLimit, DOCUMENT_SIZE_LIMIT_MB } from '@/lib/file-validation';
+import {
+  assertFileWithinLimit,
+  DOCUMENT_SIZE_LIMIT_MB,
+  matchesValidFormat,
+} from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -23,14 +27,11 @@ const SLATE_ACCENT: Accent = {
   pill: 'bg-slate-700 text-white shadow-[0_0_15px_rgba(71,85,105,0.4)]',
 };
 
-const isDocx = (file: File) => {
-  const name = file.name.toLowerCase();
-  return (
-    name.endsWith('.docx') ||
-    file.type ===
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-  );
-};
+const isDocx = (file: File) =>
+  matchesValidFormat(file, {
+    mimes: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+    extensions: ['docx'],
+  });
 
 const PAGE = { width: 612, height: 792 };
 const MARGIN = 55;
@@ -101,7 +102,7 @@ export default function DocxToPdf() {
 
   const processFile = (file: File) => {
     if (!isDocx(file)) {
-      setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece DOCX dosyası yükleyin.');
+      setErrorMsg('Geçersiz dosya formatı');
       return;
     }
     // Belge oldugu icin 50MB hard-limit; asilirsa islemi aninda durdur

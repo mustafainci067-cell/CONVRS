@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { FFmpeg } from '@ffmpeg/ffmpeg';
-import { assertWithinLimit, MEDIA_SIZE_LIMIT_MB } from '@/lib/file-validation';
+import { assertWithinLimit, matchesValidFormat, MEDIA_SIZE_LIMIT_MB } from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -48,13 +48,6 @@ type MediaConfig = {
   run: (ffmpeg: FFmpeg, file: File) => Promise<Blob>;
 };
 
-const isExt = (file: File, exts: string[]) => {
-  const name = file.name.toLowerCase();
-  const dot = name.lastIndexOf('.');
-  const ext = dot === -1 ? '' : name.slice(dot + 1);
-  return exts.some((e) => ext === e);
-};
-
 /** ffmpeg ciktisini okur ve Blob'a cevirir */
 const readBlob = async (ffmpeg: FFmpeg, name: string, mime: string): Promise<Blob> => {
   const data = await ffmpeg.readFile(name);
@@ -72,8 +65,8 @@ const MEDIA_CONVERTERS: Record<MediaMode, MediaConfig> = {
     outputExtension: 'webm',
     outputMime: 'video/webm',
     swapWith: 'webm-to-mp4',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece MP4 dosyası yükleyin.',
-    isValidFile: (file) => isExt(file, ['mp4']) || file.type === 'video/mp4',
+    invalidMessage: 'Geçersiz dosya formatı',
+    isValidFile: (file) => matchesValidFormat(file, { mimes: ['video/mp4'], extensions: ['mp4'] }),
     run: async (ffmpeg, file) => {
       const { fetchFile } = await import('@ffmpeg/util');
       await ffmpeg.writeFile('input.mp4', await fetchFile(file));
@@ -91,8 +84,8 @@ const MEDIA_CONVERTERS: Record<MediaMode, MediaConfig> = {
     outputExtension: 'mp4',
     outputMime: 'video/mp4',
     swapWith: 'mp4-to-webm',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece WebM dosyası yükleyin.',
-    isValidFile: (file) => isExt(file, ['webm']) || file.type === 'video/webm',
+    invalidMessage: 'Geçersiz dosya formatı',
+    isValidFile: (file) => matchesValidFormat(file, { mimes: ['video/webm'], extensions: ['webm'] }),
     run: async (ffmpeg, file) => {
       const { fetchFile } = await import('@ffmpeg/util');
       await ffmpeg.writeFile('input.webm', await fetchFile(file));
@@ -120,8 +113,12 @@ const MEDIA_CONVERTERS: Record<MediaMode, MediaConfig> = {
     outputExtension: 'mp3',
     outputMime: 'audio/mpeg',
     swapWith: 'mp3-to-wav',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece WAV dosyası yükleyin.',
-    isValidFile: (file) => isExt(file, ['wav']) || file.type.includes('wav'),
+    invalidMessage: 'Geçersiz dosya formatı',
+    isValidFile: (file) =>
+      matchesValidFormat(file, {
+        mimes: ['audio/wav', 'audio/wave', 'audio/x-wav', 'audio/vnd.wave'],
+        extensions: ['wav'],
+      }),
     run: async (ffmpeg, file) => {
       const { fetchFile } = await import('@ffmpeg/util');
       await ffmpeg.writeFile('input.wav', await fetchFile(file));
@@ -139,8 +136,9 @@ const MEDIA_CONVERTERS: Record<MediaMode, MediaConfig> = {
     outputExtension: 'wav',
     outputMime: 'audio/wav',
     swapWith: 'wav-to-mp3',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece MP3 dosyası yükleyin.',
-    isValidFile: (file) => isExt(file, ['mp3']) || file.type === 'audio/mpeg',
+    invalidMessage: 'Geçersiz dosya formatı',
+    isValidFile: (file) =>
+      matchesValidFormat(file, { mimes: ['audio/mpeg', 'audio/mp3'], extensions: ['mp3'] }),
     run: async (ffmpeg, file) => {
       const { fetchFile } = await import('@ffmpeg/util');
       await ffmpeg.writeFile('input.mp3', await fetchFile(file));
@@ -157,10 +155,12 @@ const MEDIA_CONVERTERS: Record<MediaMode, MediaConfig> = {
     outputLabel: 'MP3',
     outputExtension: 'mp3',
     outputMime: 'audio/mpeg',
-    invalidMessage:
-      'Desteklenmeyen dosya formatı! Lütfen bir video dosyası (MP4, WebM, MOV, MKV, AVI) yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: (file) =>
-      file.type.startsWith('video/') || isExt(file, ['mp4', 'webm', 'mov', 'mkv', 'avi']),
+      matchesValidFormat(file, {
+        mimes: ['video/'],
+        extensions: ['mp4', 'webm', 'mov', 'mkv', 'avi'],
+      }),
     run: async (ffmpeg, file) => {
       const { fetchFile } = await import('@ffmpeg/util');
       const dot = file.name.lastIndexOf('.');

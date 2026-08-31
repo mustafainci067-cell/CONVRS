@@ -2,7 +2,11 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
-import { assertFileWithinLimit, DOCUMENT_SIZE_LIMIT_MB } from '@/lib/file-validation';
+import {
+  assertFileWithinLimit,
+  DOCUMENT_SIZE_LIMIT_MB,
+  matchesValidFormat,
+} from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -24,7 +28,7 @@ const INDIGO_ACCENT: Accent = {
 };
 
 const isPdf = (file: File) =>
-  file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf';
+  matchesValidFormat(file, { mimes: ['application/pdf'], extensions: ['pdf'] });
 
 export default function PdfMerge() {
   const [files, setFiles] = useState<File[]>([]);
@@ -47,7 +51,7 @@ export default function PdfMerge() {
       return;
     }
     if (incoming.some((f) => !isPdf(f))) {
-      setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece PDF dosyaları yükleyin.');
+      setErrorMsg('Geçersiz dosya formatı');
       return;
     }
     setFiles((prev) => [...prev, ...incoming]);

@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { csvToJson, jsonToCsv } from '@/lib/data-convert';
-import { assertFileWithinLimit, DOCUMENT_SIZE_LIMIT_MB } from '@/lib/file-validation';
+import {
+  assertFileWithinLimit,
+  DOCUMENT_SIZE_LIMIT_MB,
+  matchesValidFormat,
+} from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -52,9 +56,12 @@ const CONFIGS: Record<
     outputExtension: 'csv',
     outputMime: 'text/csv;charset=utf-8',
     swapWith: 'csv-to-json',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece JSON dosyası yükleyin.',
+    invalidMessage: 'Geçersiz dosya formatı',
     isValidFile: (file) =>
-      file.name.toLowerCase().endsWith('.json') || file.type.includes('json'),
+      matchesValidFormat(file, {
+        mimes: ['application/json', 'text/json'],
+        extensions: ['json'],
+      }),
     convert: jsonToCsv,
   },
   'csv-to-json': {
@@ -67,8 +74,9 @@ const CONFIGS: Record<
     outputExtension: 'json',
     outputMime: 'application/json;charset=utf-8',
     swapWith: 'json-to-csv',
-    invalidMessage: 'Desteklenmeyen dosya formatı! Lütfen sadece CSV dosyası yükleyin.',
-    isValidFile: (file) => file.name.toLowerCase().endsWith('.csv') || file.type === 'text/csv',
+    invalidMessage: 'Geçersiz dosya formatı',
+    isValidFile: (file) =>
+      matchesValidFormat(file, { mimes: ['text/csv'], extensions: ['csv'] }),
     convert: csvToJson,
   },
 };

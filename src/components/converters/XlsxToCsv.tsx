@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
-import { assertFileWithinLimit, DOCUMENT_SIZE_LIMIT_MB } from '@/lib/file-validation';
+import {
+  assertFileWithinLimit,
+  DOCUMENT_SIZE_LIMIT_MB,
+  matchesValidFormat,
+} from '@/lib/file-validation';
 import {
   ConverterHeading,
   ConverterShell,
@@ -25,24 +29,17 @@ const TEAL_ACCENT: Accent = {
 
 type Direction = 'xlsx-to-csv' | 'csv-to-xlsx';
 
-const isXlsx = (file: File) => {
-  const name = file.name.toLowerCase();
-  return (
-    name.endsWith('.xlsx') ||
-    file.type ===
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-  );
-};
+const isXlsx = (file: File) =>
+  matchesValidFormat(file, {
+    mimes: ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'],
+    extensions: ['xlsx'],
+  });
 
-const isCsv = (file: File) => {
-  const name = file.name.toLowerCase();
-  return (
-    name.endsWith('.csv') ||
-    file.type === 'text/csv' ||
-    file.type === 'application/vnd.ms-excel' ||
-    file.type === 'text/plain'
-  );
-};
+const isCsv = (file: File) =>
+  matchesValidFormat(file, {
+    mimes: ['text/csv', 'application/vnd.ms-excel'],
+    extensions: ['csv'],
+  });
 
 export default function XlsxToCsv() {
   const [direction, setDirection] = useState<Direction>('xlsx-to-csv');
@@ -75,11 +72,11 @@ export default function XlsxToCsv() {
   const processFile = async (file: File) => {
     if (isXlsxToCsv) {
       if (!isXlsx(file)) {
-        setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece .xlsx dosyası yükleyin.');
+        setErrorMsg('Geçersiz dosya formatı');
         return;
       }
     } else if (!isCsv(file)) {
-      setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece .csv dosyası yükleyin.');
+      setErrorMsg('Geçersiz dosya formatı');
       return;
     }
 

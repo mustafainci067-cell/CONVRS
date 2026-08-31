@@ -1,0 +1,187 @@
+{
+  "Sidebar": {
+    "openNav": "Gezinti menüsünü aç",
+    "collapse": "Kenar çubuğunu daralt",
+    "expand": "Kenar çubuğunu genişlet",
+    "categories": {
+      "image": "Görsel Dönüştürücüler",
+      "document": "Belge & Veri",
+      "developer": "Geliştirici Araçları",
+      "media": "Video & Ses"
+    },
+    "tools": {
+      "heic-to-jpg": "HEIC → JPG",
+      "jpg-to-webp": "JPG ↔ WebP",
+      "png-to-jpg": "PNG ↔ JPG",
+      "svg-to-png": "SVG ↔ PNG",
+      "webp-to-png": "WebP ↔ PNG",
+      "ico-to-png": "ICO ↔ PNG",
+      "image-compressor": "Görsel Sıkıştırıcı",
+      "remove-background": "Arka Plan Kaldırma",
+      "json-to-csv": "JSON ↔ CSV",
+      "xml-to-json": "XML ↔ JSON",
+      "markdown-to-html": "Markdown ↔ HTML",
+      "pdf-to-jpg": "PDF ↔ Görsel",
+      "pdf-merge-split": "PDF Birleştir & Ayır",
+      "docx-to-pdf": "DOCX ↔ PDF",
+      "xlsx-to-csv": "XLSX ↔ CSV",
+      "base64-encoder": "Base64 Dönüştürücü",
+      "url-converter": "URL Dönüştürücü",
+      "qr-generator": "QR Oluşturucu",
+      "jwt-decoder": "JWT Çözücü",
+      "hash-generator": "Hash Oluşturucu",
+      "color-converter": "Renk Dönüştürücü",
+      "mp4-to-webm": "MP4 ↔ WebM",
+      "wav-to-mp3": "WAV ↔ MP3",
+      "video-to-mp3": "Video'dan MP3"
+    },
+    "comingSoon": "Yakında",
+    "theme": {
+      "toLight": "Açık moda geç",
+      "toDark": "Koyu moda geç",
+      "lightMode": "Açık mod",
+      "darkMode": "Koyu mod"
+    }
+  },
+  "Faq": {
+    "title": "Sıkça Sorulan Sorular",
+    "subtitle": "Convrs hakkında en çok merak edilen soruların yanıtları.",
+    "items": {
+      "security_q": "Dosyalarım güvende mi?",
+      "security_a": "Evet, kesinlikle. Convrs üzerinde yaptığınız tüm dönüştürme işlemleri <strong>%100 tarayıcınızın içinde (client-side) gerçekleşir</strong>. Dosyalarınız cihazınızdan hiçbir zaman çıkmaz; hiçbir sunucuya yüklenmez, kaydedilmez veya üçüncü şahıslarla paylaşılmaz. Video ve ses gibi bazı araçlar tarayıcı içinde çalışan WebAssembly (WASM) motorlarını kullanır; bunlar da yalnızca cihazınızın belleğinde çalışır. Bu yüzden özel fotoğraflar, belgeler veya iş dosyalarınız üzerinde her zaman tam kontrole siz sahipsiniz. Detaylar için <privacy>Gizlilik Politikası</privacy> sayfamıza göz atabilirsiniz.",
+      "paid_q": "Hizmetiniz ücretli mi?",
+      "paid_a": "Hayır, Convrs <strong>tamamen ücretsizdir</strong>. Dosya dönüştürme sayısında veya kullanım süresinde hiçbir sınırlama yoktur. Ancak işlemler <strong>%100 tarayıcınızda (client-side) gerçekleştiği için</strong> cihazınızın belleğinin şişip çökmemesi adına dosya boyutlarında güvenlik sınırları bulunmaktadır (Görseller için 20 MB, Belgeler için 50 MB, Medya için 100 MB).",
+      "formats_q": "Hangi dosya formatları destekleniyor?",
+      "formats_a": "Convrs, çok geniş bir yelpazede formatı destekler. Görsel araçlarımız HEIC, JPG, PNG, WebP, SVG ve ICO dosyalarını kapsar; belge ve veri araçları PDF, DOCX, XLSX, JSON, XML ve Markdown dönüşümlerini sunar. Medya araçları MP4, WebM, WAV ve MP3 formatlarını işlerken, geliştirici araçları Base64, URL, QR, JWT, hash ve renk kodu dönüşümlerini içerir. Soldaki menüden tüm araçlara ulaşabilirsiniz.",
+      "mobile_q": "Dönüşümler mobil cihazlarda çalışır mı?",
+      "mobile_a": "Evet. Convrs, <strong>tüm cihazlarda sorunsuz çalışır</strong> — telefon, tablet veya masaüstü fark etmez. Tüm dönüştürme araçlarımız duyarlı (responsive) tasarıma sahiptir ve dokunmatik ekranlarla tam uyumludur. Herhangi bir uygulama indirmenize gerek yoktur; dosyalarınızı doğrudan tarayıcınızdan seçip dönüştürebilirsiniz. İşlemler cihazınızda gerçekleştiği için, performans yalnızca cihazınızın işlem gücüne ve tarayıcınızın güncelliğine bağlıdır."
+    }
+  },
+  "Cookie": {
+    "message": "Size daha iyi bir deneyim sunmak için çerezler kullanıyoruz. Sitemizi kullanarak ",
+    "policyLink": "çerez politikamızı",
+    "accept": "Kabul Et"
+  },
+  "Dropzone": {
+    "default": "{file} dosyanızı buraya sürükle-bırak veya gözat",
+    "hint": "Sürükle-bırak veya cihazınızdan seçmek için tıklayın",
+    "maxSize": "Maksimum dosya boyutu: {size} MB"
+  },
+  "Footer": {
+    "copyright": "© 2026 Convrs",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Şartları"
+  },
+  "LanguageSwitcher": {
+    "label": "Dil"
+  },
+  "Lang": {
+    "en": "English",
+    "tr": "Türkçe",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "Home": {
+    "tagline": "Tüm dönüşümler doğrudan tarayıcınızda gerçekleşir. Dosyalarınız cihazınızdan asla çıkmaz.",
+    "openTool": "Aracı aç →",
+    "available": "Kullanılabilir",
+    "tools": {
+      "heic-to-jpg": {
+        "title": "HEIC → JPG",
+        "description": "Apple HEIC fotoğraflarını evrensel JPG formatına dönüştürün."
+      },
+      "jpg-to-webp": {
+        "title": "JPG ↔ WebP",
+        "description": "JPG dosyalarını WebAssembly ile Google'ın hafif WebP formatına çevirin."
+      },
+      "png-to-jpg": {
+        "title": "PNG ↔ JPG",
+        "description": "HTML5 Canvas ile iki yönlü PNG/JPG dönüşümü; şeffaflık beyaz zemine düzleştirilir."
+      },
+      "svg-to-png": {
+        "title": "SVG ↔ PNG",
+        "description": "Vektör SVG'yi şeffaf PNG'ye rasterleştirin ya da PNG'yi tekrar SVG'ye gömün."
+      },
+      "webp-to-png": {
+        "title": "WebP ↔ PNG",
+        "description": "Hafif WebP görsellerini, saydamlığı koruyarak kayıpsız PNG formatına çevirin."
+      },
+      "ico-to-png": {
+        "title": "ICO ↔ PNG",
+        "description": "ICO ikonlarını şeffaf PNG'ye çevirin ya da PNG'den ICO ikonu üretin."
+      },
+      "pdf-to-jpg": {
+        "title": "PDF ↔ Image",
+        "description": "PDF sayfalarını JPG olarak çıkarın ya da birden çok görseli pdf-lib ile tek PDF'te birleştirin."
+      },
+      "json-to-csv": {
+        "title": "JSON ↔ CSV",
+        "description": "JSON kayıtlarını tabloya, CSV tablolarını JSON'a çevirin. Saf JavaScript, sıfır istek."
+      },
+      "xml-to-json": {
+        "title": "XML ↔ JSON",
+        "description": "XML'i DOMParser ile JSON'a, JSON'u da XML'e çevirin. Çift yönlü ve anlık."
+      },
+      "markdown-to-html": {
+        "title": "Markdown ↔ HTML",
+        "description": "Markdown'ı temiz HTML'e çevirin ya da HTML'i Markdown'a döndürün. Çıktı XSS'e karşı arındırılır."
+      },
+      "xlsx-to-csv": {
+        "title": "XLSX ↔ CSV",
+        "description": "Excel (.xlsx) dosyalarınızı CSV'ye çevirin ya da CSV'yi Excel çalışma kitabına dönüştürün."
+      },
+      "base64-encoder": {
+        "title": "Base64 Encoder",
+        "description": "Metni UTF-8 güvenli Base64'e çevirin ya da Base64 kodunu geri okuyun."
+      },
+      "url-converter": {
+        "title": "URL Converter",
+        "description": "URL'leri encode/decode edin. İki alan anlık senkron çalışır, veri cihazdan çıkmaz."
+      },
+      "qr-generator": {
+        "title": "QR Generator",
+        "description": "Metin, bağlantı veya mesajınızı tarayıcıda anında taranabilir QR koda çevirin."
+      },
+      "pdf-merge-split": {
+        "title": "PDF Merge & Split",
+        "description": "Birden çok PDF'i pdf-lib ile tarayıcınızda tek bir belgede birleştirin."
+      },
+      "docx-to-pdf": {
+        "title": "DOCX ↔ PDF",
+        "description": "Word (.docx) belgelerinizi mammoth ile okuyup pdf-lib ile PDF olarak basın."
+      },
+      "image-compressor": {
+        "title": "Image Compressor",
+        "description": "JPG, PNG ve WebP görsellerinizi HTML5 Canvas ile kalitesini düşürüp boyutunu küçülterek sıkıştırın."
+      },
+      "remove-background": {
+        "title": "Remove Background",
+        "description": "JPG, PNG ve WebP görsellerinizin arka planını tarayıcı içi AI modeliyle kaldırıp şeffaf PNG elde edin."
+      },
+      "video-to-mp3": {
+        "title": "Video to MP3",
+        "description": "Videolardan sesi ffmpeg ile (tarayıcı içinde) çekip MP3 olarak dışa aktarın."
+      },
+      "mp4-to-webm": {
+        "title": "MP4 ↔ WebM",
+        "description": "MP4 videoyu WebM'e ya da WebM'i MP4'e ffmpeg ile tarayıcınızda çevirin."
+      },
+      "wav-to-mp3": {
+        "title": "WAV ↔ MP3",
+        "description": "WAV sesini MP3'e ya da MP3'ü WAV'a ffmpeg ile tarayıcınızda çevirin."
+      },
+      "jwt-decoder": {
+        "title": "JWT Decoder",
+        "description": "JWT token'larınızın header ve payload bölümlerini doğrudan tarayıcıda çözüp JSON olarak okuyun."
+      },
+      "hash-generator": {
+        "title": "Hash Generator",
+        "description": "Metinlerinize Web Crypto ile anlık SHA-1, SHA-256 ve SHA-512 hash üretin."
+      },
+      "color-converter": {
+        "title": "Color Converter",
+        "description": "HEX, RGB ve HSL renk kodlarını matematiksel olarak anında birbirine dönüştürün."
+      }
+    }
+  }
+}

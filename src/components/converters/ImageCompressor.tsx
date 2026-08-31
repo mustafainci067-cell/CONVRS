@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { assertFileWithinLimit, IMAGE_SIZE_LIMIT_MB } from '@/lib/file-validation';
+import {
+  assertFileWithinLimit,
+  IMAGE_SIZE_LIMIT_MB,
+  matchesValidFormat,
+} from '@/lib/file-validation';
 import {
   ConvertButton,
   ConverterHeading,
@@ -27,18 +31,11 @@ const COMPRESS_QUALITY = 0.6;
 /** Çıktının en buyuk kenarı; daha buyukler bu değere indirilir. */
 const MAX_OUTPUT_DIMENSION = 2048;
 
-const isSupportedImage = (file: File) => {
-  const name = file.name.toLowerCase();
-  return (
-    name.endsWith('.jpg') ||
-    name.endsWith('.jpeg') ||
-    name.endsWith('.png') ||
-    name.endsWith('.webp') ||
-    file.type === 'image/jpeg' ||
-    file.type === 'image/png' ||
-    file.type === 'image/webp'
-  );
-};
+const isSupportedImage = (file: File) =>
+  matchesValidFormat(file, {
+    mimes: ['image/jpeg', 'image/png', 'image/webp'],
+    extensions: ['jpg', 'jpeg', 'png', 'webp'],
+  });
 
 function loadImage(url: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
@@ -105,7 +102,7 @@ export default function ImageCompressor() {
 
   const processFile = (file: File) => {
     if (!isSupportedImage(file)) {
-      setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece JPG, PNG veya WebP yükleyin.');
+      setErrorMsg('Geçersiz dosya formatı');
       return;
     }
     // Resim oldugu icin 20MB hard-limit; asilirsa islemi aninda durdur

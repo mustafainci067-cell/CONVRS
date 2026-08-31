@@ -1,0 +1,187 @@
+{
+  "Sidebar": {
+    "openNav": "Open navigation menu",
+    "collapse": "Collapse sidebar",
+    "expand": "Expand sidebar",
+    "categories": {
+      "image": "Image Converters",
+      "document": "Document & Data",
+      "developer": "Developer Tools",
+      "media": "Video & Audio"
+    },
+    "tools": {
+      "heic-to-jpg": "HEIC → JPG",
+      "jpg-to-webp": "JPG ↔ WebP",
+      "png-to-jpg": "PNG ↔ JPG",
+      "svg-to-png": "SVG ↔ PNG",
+      "webp-to-png": "WebP ↔ PNG",
+      "ico-to-png": "ICO ↔ PNG",
+      "image-compressor": "Image Compressor",
+      "remove-background": "Remove Background",
+      "json-to-csv": "JSON ↔ CSV",
+      "xml-to-json": "XML ↔ JSON",
+      "markdown-to-html": "Markdown ↔ HTML",
+      "pdf-to-jpg": "PDF ↔ Image",
+      "pdf-merge-split": "PDF Merge & Split",
+      "docx-to-pdf": "DOCX ↔ PDF",
+      "xlsx-to-csv": "XLSX ↔ CSV",
+      "base64-encoder": "Base64 Encoder",
+      "url-converter": "URL Converter",
+      "qr-generator": "QR Generator",
+      "jwt-decoder": "JWT Decoder",
+      "hash-generator": "Hash Generator",
+      "color-converter": "Color Converter",
+      "mp4-to-webm": "MP4 ↔ WebM",
+      "wav-to-mp3": "WAV ↔ MP3",
+      "video-to-mp3": "Video to MP3"
+    },
+    "comingSoon": "Soon",
+    "theme": {
+      "toLight": "Switch to light mode",
+      "toDark": "Switch to dark mode",
+      "lightMode": "Light mode",
+      "darkMode": "Dark mode"
+    }
+  },
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the most common questions about Convrs.",
+    "items": {
+      "security_q": "Are my files safe?",
+      "security_a": "Yes, absolutely. All conversions you perform on Convrs happen <strong>100% inside your browser (client-side)</strong>. Your files never leave your device; they are never uploaded, saved, or shared with third parties. Video and audio tools use WebAssembly engines that also run entirely in your device's memory. That's why you always have full control over your personal photos, documents, or work files. For more details, check out our <privacy>Privacy Policy</privacy>.",
+      "paid_q": "Is your service paid?",
+      "paid_a": "No, Convrs is <strong>completely free</strong>. There are no limits on the number of file conversions or usage duration. However, since all processing happens <strong>100% in your browser (client-side)</strong>, file size limits are in place to prevent your device's memory from overflowing and crashing (20 MB for images, 50 MB for documents, 100 MB for media).",
+      "formats_q": "Which file formats are supported?",
+      "formats_a": "Convrs supports a very wide range of formats. Image tools cover HEIC, JPG, PNG, WebP, SVG, and ICO files; document and data tools handle PDF, DOCX, XLSX, JSON, XML, and Markdown conversions. Media tools process MP4, WebM, WAV, and MP3 formats, while developer tools include Base64, URL, QR, JWT, hash, and color code conversions. You can find all tools in the sidebar menu.",
+      "mobile_q": "Do conversions work on mobile devices?",
+      "mobile_a": "Yes. Convrs works seamlessly on <strong>all devices with a modern browser</strong> — phone, tablet, or desktop. All our conversion tools have responsive designs and are fully compatible with touch screens. No app installation required; you can select and convert your files directly from your browser. Since processing happens on your device, performance depends only on your device's processing power and browser version."
+    }
+  },
+  "Cookie": {
+    "message": "We use cookies to provide you with a better experience. By using our site, you accept our ",
+    "policyLink": "cookie policy",
+    "accept": "Accept"
+  },
+  "Dropzone": {
+    "default": "Drop your {file} file here, or browse",
+    "hint": "Drag & drop or click to select from your device",
+    "maxSize": "Maximum file size: {size} MB"
+  },
+  "Footer": {
+    "copyright": "© 2026 Convrs",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  },
+  "LanguageSwitcher": {
+    "label": "Language"
+  },
+  "Lang": {
+    "en": "English",
+    "tr": "Türkçe",
+    "de": "Deutsch",
+    "es": "Español"
+  },
+  "Home": {
+    "tagline": "All conversions happen directly in your browser. Your files never leave your device.",
+    "openTool": "Open tool →",
+    "available": "Available",
+    "tools": {
+      "heic-to-jpg": {
+        "title": "HEIC → JPG",
+        "description": "Convert Apple HEIC photos to the universal JPG format."
+      },
+      "jpg-to-webp": {
+        "title": "JPG ↔ WebP",
+        "description": "Convert JPG files to Google's lightweight WebP format with WebAssembly."
+      },
+      "png-to-jpg": {
+        "title": "PNG ↔ JPG",
+        "description": "Two-way PNG/JPG conversion with HTML5 Canvas; transparency is flattened onto a white background."
+      },
+      "svg-to-png": {
+        "title": "SVG ↔ PNG",
+        "description": "Rasterize vector SVG into transparent PNG, or embed PNG back into SVG."
+      },
+      "webp-to-png": {
+        "title": "WebP ↔ PNG",
+        "description": "Convert lightweight WebP images into lossless PNG, preserving transparency."
+      },
+      "ico-to-png": {
+        "title": "ICO ↔ PNG",
+        "description": "Convert ICO icons to transparent PNG, or generate an ICO icon from a PNG."
+      },
+      "pdf-to-jpg": {
+        "title": "PDF ↔ Image",
+        "description": "Extract PDF pages as JPG, or combine multiple images into a single PDF with pdf-lib."
+      },
+      "json-to-csv": {
+        "title": "JSON ↔ CSV",
+        "description": "Turn JSON records into a table, and CSV tables into JSON. Pure JavaScript, zero requests."
+      },
+      "xml-to-json": {
+        "title": "XML ↔ JSON",
+        "description": "Convert XML to JSON with DOMParser and JSON back to XML. Two-way and instant."
+      },
+      "markdown-to-html": {
+        "title": "Markdown ↔ HTML",
+        "description": "Convert Markdown to clean HTML, or bring HTML back to Markdown. Output is sanitized against XSS."
+      },
+      "xlsx-to-csv": {
+        "title": "XLSX ↔ CSV",
+        "description": "Convert your Excel (.xlsx) files to CSV, or turn CSV into an Excel workbook."
+      },
+      "base64-encoder": {
+        "title": "Base64 Encoder",
+        "description": "Encode text into UTF-8-safe Base64, or decode Base64 back to text."
+      },
+      "url-converter": {
+        "title": "URL Converter",
+        "description": "Encode/decode URLs. The two fields stay in sync instantly; data never leaves your device."
+      },
+      "qr-generator": {
+        "title": "QR Generator",
+        "description": "Turn your text, link, or message into an instantly scannable QR code in your browser."
+      },
+      "pdf-merge-split": {
+        "title": "PDF Merge & Split",
+        "description": "Combine multiple PDFs into a single document in your browser with pdf-lib."
+      },
+      "docx-to-pdf": {
+        "title": "DOCX ↔ PDF",
+        "description": "Read your Word (.docx) documents with mammoth and print them as PDF with pdf-lib."
+      },
+      "image-compressor": {
+        "title": "Image Compressor",
+        "description": "Compress JPG, PNG, and WebP images with HTML5 Canvas, lowering quality and reducing size."
+      },
+      "remove-background": {
+        "title": "Remove Background",
+        "description": "Remove the background from JPG, PNG, and WebP images with an in-browser AI model and get a transparent PNG."
+      },
+      "video-to-mp3": {
+        "title": "Video to MP3",
+        "description": "Extract audio from videos with ffmpeg (in your browser) and export it as MP3."
+      },
+      "mp4-to-webm": {
+        "title": "MP4 ↔ WebM",
+        "description": "Convert MP4 video to WebM, or WebM to MP4, with ffmpeg in your browser."
+      },
+      "wav-to-mp3": {
+        "title": "WAV ↔ MP3",
+        "description": "Convert WAV audio to MP3, or MP3 back to WAV, with ffmpeg in your browser."
+      },
+      "jwt-decoder": {
+        "title": "JWT Decoder",
+        "description": "Decode the header and payload of your JWT tokens directly in your browser and read them as JSON."
+      },
+      "hash-generator": {
+        "title": "Hash Generator",
+        "description": "Generate instant SHA-1, SHA-256, and SHA-512 hashes for your text with Web Crypto."
+      },
+      "color-converter": {
+        "title": "Color Converter",
+        "description": "Convert HEX, RGB, and HSL color codes into one another instantly, mathematically."
+      }
+    }
+  }
+}

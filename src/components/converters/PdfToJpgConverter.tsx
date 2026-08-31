@@ -6,6 +6,7 @@ import {
   assertFileWithinLimit,
   DOCUMENT_SIZE_LIMIT_MB,
   IMAGE_SIZE_LIMIT_MB,
+  matchesValidFormat,
 } from '@/lib/file-validation';
 import {
   ConvertButton,
@@ -17,6 +18,7 @@ import {
   ResultPanel,
   type Accent,
 } from './ConverterShell';
+import { useObjectUrls } from '@/hooks/useObjectUrls';
 
 const RED_ACCENT: Accent = {
   dropzone:
@@ -34,7 +36,13 @@ const PDF_LABEL = 'PDF';
 const IMAGE_LABEL = 'Image';
 
 const isPdf = (file: File) =>
-  file.name.toLowerCase().endsWith('.pdf') || file.type === 'application/pdf';
+  matchesValidFormat(file, { mimes: ['application/pdf'], extensions: ['pdf'] });
+
+const isJpgOrPng = (file: File) =>
+  matchesValidFormat(file, {
+    mimes: ['image/jpeg', 'image/png'],
+    extensions: ['jpg', 'jpeg', 'png'],
+  });
 
 /** pdfjs-dist'i ve worker'unu yalnizca ilk dönüsüm aninda, tarayicida yukler. */
 async function loadPdfJs() {
@@ -86,7 +94,7 @@ export default function PdfToJpgConverter() {
 
   const processPdf = (file: File) => {
     if (!isPdf(file)) {
-      setErrorMsg('Desteklenmeyen dosya formatı! Lütfen sadece PDF dosyası yükleyin.');
+      setErrorMsg('Geçersiz dosya formatı');
       return;
     }
     // PDF belge oldugu icin 50MB; limit asilirsa islemi aninda durdur
@@ -102,6 +110,11 @@ export default function PdfToJpgConverter() {
   };
 
   const processImages = (files: File[]) => {
+    // Uyumsuz MIME/uzantiya sahip bir dosya tum grubu aninda reddeder
+    if (files.some((f) => !isJpgOrPng(f))) {
+      setErrorMsg('Geçersiz dosya formatı');
+      return;
+    }
     // Her resim icin 20MB hard-limit; tek bir asim tum grubu reddeder
     try {
       files.forEach(assertFileWithinLimit);
@@ -117,6 +130,9 @@ export default function PdfToJpgConverter() {
   const removeImage = (index: number) => {
     setImages((prev) => prev.filter((_, i) => i !== index));
   };
+
+  // Resim onizleme URL'lerini yalnizca bir kez uretir; silinince/unmount'da revoke eder.
+  const previewUrls = useObjectUrls(images);
 
   /** PDF'in tum sayfalarini canvas ile JPG'ye cikarir. */
   const convertPdfToImages = async (file: File) => {
@@ -269,7 +285,7 @@ export default function PdfToJpgConverter() {
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element -- yerel onizleme, optimize edilemez */}
                   <img
-                    src={URL.createObjectURL(img)}
+                    src={previewUrls[i]}
                     alt={img.name}
                     className="h-full w-full object-cover"
                   />
