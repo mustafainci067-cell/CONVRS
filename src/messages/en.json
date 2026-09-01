@@ -47,7 +47,11 @@
       "image-to-base64": "Image to Base64",
       "px-rem-em-converter": "PX ↔ REM/EM Converter",
       "html-encode-decode": "HTML Encode / Decode",
-      "screen-viewport-checker": "Screen / Viewport Checker"
+      "screen-viewport-checker": "Screen / Viewport Checker",
+      "sql-formatter": "SQL Formatter & Minifier",
+      "text-diff": "Text Diff Checker",
+      "box-shadow-generator": "CSS Box-Shadow Generator",
+      "meta-tag-generator": "Meta Tag (SEO) Generator"
     },
     "comingSoon": "Soon",
     "theme": {
@@ -244,6 +248,22 @@
       "screen-viewport-checker": {
         "title": "Screen / Viewport Checker",
         "description": "See your current screen resolution, window size (innerWidth/Height) and pixel ratio live, updating as you resize."
+      },
+      "sql-formatter": {
+        "title": "SQL Formatter & Minifier",
+        "description": "Format complex SQL queries with proper indentation or minify them to a single line."
+      },
+      "text-diff": {
+        "title": "Text Diff Checker",
+        "description": "Compare two texts side by side with highlighted added, removed and changed lines."
+      },
+      "box-shadow-generator": {
+        "title": "CSS Box-Shadow Generator",
+        "description": "Visually create CSS box-shadow with live preview, adjustable sliders and instant code copy."
+      },
+      "meta-tag-generator": {
+        "title": "Meta Tag (SEO) Generator",
+        "description": "Generate HTML meta and Open Graph tags with a live Google search preview."
       }
     }
   }

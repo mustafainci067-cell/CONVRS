@@ -47,7 +47,11 @@
       "image-to-base64": "Görselden Base64",
       "px-rem-em-converter": "PX ↔ REM/EM Dönüştürücü",
       "html-encode-decode": "HTML Encode / Decode",
-      "screen-viewport-checker": "Ekran / Görünüm Denetleyici"
+      "screen-viewport-checker": "Ekran / Görünüm Denetleyici",
+      "sql-formatter": "SQL Biçimlendirici & Sıkıştırıcı",
+      "text-diff": "Metin Fark Bulucu",
+      "box-shadow-generator": "CSS Box-Shadow Oluşturucu",
+      "meta-tag-generator": "Meta Etiket (SEO) Üretici"
     },
     "comingSoon": "Yakında",
     "theme": {
@@ -244,6 +248,22 @@
       "screen-viewport-checker": {
         "title": "Ekran / Görünüm Denetleyici",
         "description": "Mevcut ekran çözünürlüğünü, tarayıcı pencere boyutunu (innerWidth/Height) ve piksel yoğunluğunu canlı olarak gösterir; pencere boyutlandıkça güncellenir."
+      },
+      "sql-formatter": {
+        "title": "SQL Biçimlendirici & Sıkıştırıcı",
+        "description": "Karmaşık SQL sorgularını düzgün girintilemeyle biçimlendirir veya tek satıra sıkıştırır."
+      },
+      "text-diff": {
+        "title": "Metin Fark Bulucu",
+        "description": "İki metni yan yana karşılaştırır; eklenen, silinen ve değişen satırları renkli olarak gösterir."
+      },
+      "box-shadow-generator": {
+        "title": "CSS Box-Shadow Oluşturucu",
+        "description": "Canlı önizleme, ayarlanabilir kaydırıcılar ve anında kod kopyalama ile CSS box-shadow oluşturun."
+      },
+      "meta-tag-generator": {
+        "title": "Meta Etiket (SEO) Üretici",
+        "description": "HTML meta ve Open Graph etiketlerini canlı Google arama önizlemesiyle üretir."
       }
     }
   }

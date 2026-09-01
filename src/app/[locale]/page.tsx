@@ -45,6 +45,10 @@ const tools: Tool[] = [
   { href: '/px-rem-em-converter', nameKey: 'px-rem-em-converter', status: 'active' },
   { href: '/html-encode-decode', nameKey: 'html-encode-decode', status: 'active' },
   { href: '/screen-viewport-checker', nameKey: 'screen-viewport-checker', status: 'active' },
+  { href: '/sql-formatter', nameKey: 'sql-formatter', status: 'active' },
+  { href: '/text-diff', nameKey: 'text-diff', status: 'active' },
+  { href: '/box-shadow-generator', nameKey: 'box-shadow-generator', status: 'active' },
+  { href: '/meta-tag-generator', nameKey: 'meta-tag-generator', status: 'active' },
 ];
 
 export default async function Home() {

@@ -47,7 +47,11 @@
       "image-to-base64": "Imagen a Base64",
       "px-rem-em-converter": "Convertidor PX ↔ REM/EM",
       "html-encode-decode": "Codificar / Decodificar HTML",
-      "screen-viewport-checker": "Verificador de Pantalla/Vista"
+      "screen-viewport-checker": "Verificador de Pantalla/Vista",
+      "sql-formatter": "Formateador/Minificador SQL",
+      "text-diff": "Comparador de Textos",
+      "box-shadow-generator": "Generador de CSS Box-Shadow",
+      "meta-tag-generator": "Generador de Meta Etiquetas (SEO)"
     },
     "comingSoon": "Próximamente",
     "theme": {
@@ -244,6 +248,22 @@
       "screen-viewport-checker": {
         "title": "Verificador de Pantalla/Vista",
         "description": "Muestra en vivo la resolución de pantalla, el tamaño de ventana (innerWidth/Height) y la densidad de píxeles, actualizándose al redimensionar."
+      },
+      "sql-formatter": {
+        "title": "Formateador/Minificador SQL",
+        "description": "Formatea consultas SQL complejas con sangría adecuada o las minifica a una sola línea."
+      },
+      "text-diff": {
+        "title": "Comparador de Textos",
+        "description": "Compara dos textos lado a lado con las líneas añadidas, eliminadas y modificadas resaltadas."
+      },
+      "box-shadow-generator": {
+        "title": "Generador de CSS Box-Shadow",
+        "description": "Crea CSS box-shadow visualmente con vista previa en vivo, controles deslizantes y copia de código instantánea."
+      },
+      "meta-tag-generator": {
+        "title": "Generador de Meta Etiquetas (SEO)",
+        "description": "Genera meta tags HTML y Open Graph con una vista previa en vivo de Google."
       }
     }
   }

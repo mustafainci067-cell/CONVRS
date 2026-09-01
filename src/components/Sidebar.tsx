@@ -99,6 +99,9 @@ const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: "css-js-minifier", path: "/css-js-minifier", status: "active" },
       { nameKey: "px-rem-em-converter", path: "/px-rem-em-converter", status: "active" },
       { nameKey: "html-encode-decode", path: "/html-encode-decode", status: "active" },
+      { nameKey: "sql-formatter", path: "/sql-formatter", status: "active" },
+      { nameKey: "box-shadow-generator", path: "/box-shadow-generator", status: "active" },
+      { nameKey: "meta-tag-generator", path: "/meta-tag-generator", status: "active" },
     ],
   },
   {
@@ -107,6 +110,7 @@ const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: "case-converter", path: "/case-converter", status: "active" },
       { nameKey: "word-counter", path: "/word-counter", status: "active" },
       { nameKey: "lorem-ipsum", path: "/lorem-ipsum", status: "active" },
+      { nameKey: "text-diff", path: "/text-diff", status: "active" },
     ],
   },
   {
