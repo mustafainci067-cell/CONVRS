@@ -69,7 +69,13 @@
       "chmod-calculator": "Chmod-Rechner",
       "js-keycode": "JS-Tastencode-Anzeiger",
       "tailwind-palette": "Tailwind-Farbpaletten-Generator",
-      "url-parser": "URL-Parameter-Parser"
+      "url-parser": "URL-Parameter-Parser",
+      "json-to-yaml": "JSON ↔ YAML",
+      "csv-to-sql": "CSV ↔ SQL",
+      "xml-to-csv": "XML ↔ CSV",
+      "pdf-to-text": "PDF zu Text",
+      "xlsx-to-json": "XLSX ↔ JSON",
+      "vcf-to-csv": "VCF (vCard) ↔ CSV"
     },
     "comingSoon": "Bald",
     "theme": {
@@ -354,6 +360,30 @@
       "url-parser": {
         "title": "URL-Parameter-Parser",
         "description": "Zerlegt jede komplexe URL in ihre Teile und Query-Parameter in einer übersichtlichen Tabelle."
+      },
+      "json-to-yaml": {
+        "title": "JSON ↔ YAML",
+        "description": "Konvertieren Sie JSON in YAML oder YAML in JSON. Alles bleibt in Ihrem Browser."
+      },
+      "csv-to-sql": {
+        "title": "CSV ↔ SQL",
+        "description": "Verwandeln Sie eine CSV-Tabelle in INSERT-SQL-Anweisungen — wählen Sie Ihren eigenen Tabellennamen."
+      },
+      "xml-to-csv": {
+        "title": "XML ↔ CSV",
+        "description": "Flachen Sie wiederholte XML-Datensätze zu einer CSV-Tabelle ab oder schließen Sie CSV-Zeilen in XML ein."
+      },
+      "pdf-to-text": {
+        "title": "PDF zu Text",
+        "description": "Extrahieren Sie Text aus einer PDF im Browser und kopieren oder laden Sie ihn als .txt."
+      },
+      "xlsx-to-json": {
+        "title": "XLSX ↔ JSON",
+        "description": "Konvertieren Sie eine Excel-Arbeitsmappe in JSON-Datensätze oder ein JSON-Array in eine .xlsx-Datei."
+      },
+      "vcf-to-csv": {
+        "title": "VCF (vCard) ↔ CSV",
+        "description": "Konvertieren Sie einen vCard-Kontaktexport in eine CSV-Tabelle oder eine CSV-Kontaktliste in eine .vcf-Datei."
       }
     }
   }

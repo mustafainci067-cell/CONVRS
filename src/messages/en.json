@@ -69,7 +69,13 @@
       "chmod-calculator": "Chmod Calculator",
       "js-keycode": "JS KeyCode Viewer",
       "tailwind-palette": "Tailwind Color Palette",
-      "url-parser": "URL Parameter Parser"
+      "url-parser": "URL Parameter Parser",
+      "json-to-yaml": "JSON ↔ YAML",
+      "csv-to-sql": "CSV ↔ SQL",
+      "xml-to-csv": "XML ↔ CSV",
+      "pdf-to-text": "PDF to Text",
+      "xlsx-to-json": "XLSX ↔ JSON",
+      "vcf-to-csv": "VCF (vCard) ↔ CSV"
     },
     "comingSoon": "Soon",
     "theme": {
@@ -354,6 +360,30 @@
       "url-parser": {
         "title": "URL Parameter Parser",
         "description": "Break any complex URL into its parts and query parameters in a readable table."
+      },
+      "json-to-yaml": {
+        "title": "JSON ↔ YAML",
+        "description": "Convert JSON to YAML or YAML to JSON instantly. Nothing leaves your browser."
+      },
+      "csv-to-sql": {
+        "title": "CSV ↔ SQL",
+        "description": "Turn a CSV table into INSERT SQL statements — pick your own table name."
+      },
+      "xml-to-csv": {
+        "title": "XML ↔ CSV",
+        "description": "Flatten repeated XML records into a CSV table, or wrap CSV rows into well-formed XML."
+      },
+      "pdf-to-text": {
+        "title": "PDF to Text",
+        "description": "Extract text from a PDF in your browser and copy or download it as .txt."
+      },
+      "xlsx-to-json": {
+        "title": "XLSX ↔ JSON",
+        "description": "Convert an Excel workbook to JSON records, or a JSON array to an .xlsx file."
+      },
+      "vcf-to-csv": {
+        "title": "VCF (vCard) ↔ CSV",
+        "description": "Convert a vCard contact export to a CSV table, or a CSV contact list into an importable .vcf."
       }
     }
   }

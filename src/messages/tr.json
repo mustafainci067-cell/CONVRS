@@ -69,7 +69,13 @@
       "chmod-calculator": "Chmod Hesaplayıcı",
       "js-keycode": "JS Tuş Kodu Görüntüleyici",
       "tailwind-palette": "Tailwind Renk Paleti Üretici",
-      "url-parser": "URL Parametre Ayrıştırıcı"
+      "url-parser": "URL Parametre Ayrıştırıcı",
+      "json-to-yaml": "JSON ↔ YAML",
+      "csv-to-sql": "CSV ↔ SQL",
+      "xml-to-csv": "XML ↔ CSV",
+      "pdf-to-text": "PDF Metin Çıkarıcı",
+      "xlsx-to-json": "XLSX ↔ JSON",
+      "vcf-to-csv": "VCF (vCard) ↔ CSV"
     },
     "comingSoon": "Yakında",
     "theme": {
@@ -354,6 +360,30 @@
       "url-parser": {
         "title": "URL Parametre Ayrıştırıcı",
         "description": "Karmaşık bir URL'yi parçalarına ve sorgu parametrelerine okunaklı bir tabloya dökün."
+      },
+      "json-to-yaml": {
+        "title": "JSON ↔ YAML",
+        "description": "JSON’u YAML’a ya da YAML’ı JSON’a anında çevirin. Hiçbir veri sunucuya gitmez."
+      },
+      "csv-to-sql": {
+        "title": "CSV ↔ SQL",
+        "description": "CSV tablosunu INSERT SQL ifadelerine çevirin — tablo adını siz belirleyin."
+      },
+      "xml-to-csv": {
+        "title": "XML ↔ CSV",
+        "description": "Yinelenen XML kayıtlarını CSV tablosuna düzleştirin, CSV’yi de iyi biçimli XML’e sarın."
+      },
+      "pdf-to-text": {
+        "title": "PDF Metin Çıkarıcı",
+        "description": "PDF’teki metni tarayıcıda çıkarıp kopyalayın ya da .txt olarak indirin."
+      },
+      "xlsx-to-json": {
+        "title": "XLSX ↔ JSON",
+        "description": "Excel çalışma kitabını JSON kayıtlarına, JSON dizisini de .xlsx dosyasına çevirin."
+      },
+      "vcf-to-csv": {
+        "title": "VCF (vCard) ↔ CSV",
+        "description": "Rehber yedeğinizi (vCard) CSV tablosuna çevirin ya da CSV listesini telefon rehberine aktarın."
       }
     }
   }

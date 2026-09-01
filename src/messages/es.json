@@ -69,7 +69,13 @@
       "chmod-calculator": "Calculadora Chmod",
       "js-keycode": "Visor de código de tecla JS",
       "tailwind-palette": "Generador de paleta de colores Tailwind",
-      "url-parser": "Analizador de parámetros URL"
+      "url-parser": "Analizador de parámetros URL",
+      "json-to-yaml": "JSON ↔ YAML",
+      "csv-to-sql": "CSV ↔ SQL",
+      "xml-to-csv": "XML ↔ CSV",
+      "pdf-to-text": "PDF a Texto",
+      "xlsx-to-json": "XLSX ↔ JSON",
+      "vcf-to-csv": "VCF (vCard) ↔ CSV"
     },
     "comingSoon": "Próximamente",
     "theme": {
@@ -354,6 +360,30 @@
       "url-parser": {
         "title": "Analizador de parámetros URL",
         "description": "Divida cualquier URL compleja en sus partes y parámetros de consulta en una tabla legible."
+      },
+      "json-to-yaml": {
+        "title": "JSON ↔ YAML",
+        "description": "Convierte JSON a YAML o YAML a JSON al instante. Nada sale de tu navegador."
+      },
+      "csv-to-sql": {
+        "title": "CSV ↔ SQL",
+        "description": "Convierte una tabla CSV en sentencias SQL INSERT — elige tu propio nombre de tabla."
+      },
+      "xml-to-csv": {
+        "title": "XML ↔ CSV",
+        "description": "Aplana registros XML repetidos en una tabla CSV o envuelve filas CSV en XML bien formado."
+      },
+      "pdf-to-text": {
+        "title": "PDF a Texto",
+        "description": "Extrae el texto de un PDF en tu navegador y cópialo o descárgáralo como .txt."
+      },
+      "xlsx-to-json": {
+        "title": "XLSX ↔ JSON",
+        "description": "Convierte un libro de Excel a registros JSON o un arreglo JSON a un archivo .xlsx."
+      },
+      "vcf-to-csv": {
+        "title": "VCF (vCard) ↔ CSV",
+        "description": "Convierte una exportación de contactos vCard a una tabla CSV, o una lista CSV en un .vcf importable."
       }
     }
   }

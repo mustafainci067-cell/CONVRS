@@ -53,6 +53,12 @@ export const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: 'pdf-merge-split', path: '/pdf-merge-split', status: 'active' },
       { nameKey: 'docx-to-pdf', path: '/docx-to-pdf', status: 'active' },
       { nameKey: 'xlsx-to-csv', path: '/xlsx-to-csv', status: 'active' },
+      { nameKey: 'json-to-yaml', path: '/json-to-yaml', status: 'active' },
+      { nameKey: 'csv-to-sql', path: '/csv-to-sql', status: 'active' },
+      { nameKey: 'xml-to-csv', path: '/xml-to-csv', status: 'active' },
+      { nameKey: 'pdf-to-text', path: '/pdf-to-text', status: 'active' },
+      { nameKey: 'xlsx-to-json', path: '/xlsx-to-json', status: 'active' },
+      { nameKey: 'vcf-to-csv', path: '/vcf-to-csv', status: 'active' },
     ],
   },
   {
