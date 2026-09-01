@@ -7,7 +7,8 @@
       "image": "Görsel Dönüştürücüler",
       "document": "Belge & Veri",
       "developer": "Geliştirici Araçları",
-      "media": "Video & Ses"
+      "media": "Video & Ses",
+      "text": "Metin Araçları"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -33,7 +34,11 @@
       "color-converter": "Renk Dönüştürücü",
       "mp4-to-webm": "MP4 ↔ WebM",
       "wav-to-mp3": "WAV ↔ MP3",
-      "video-to-mp3": "Video'dan MP3"
+      "video-to-mp3": "Video'dan MP3",
+      "json-formatter": "JSON Biçimlendirici",
+      "unix-timestamp": "Unix Zaman Damgası Dönüştürücü",
+      "uuid-generator": "UUID Oluşturucu",
+      "case-converter": "Metin Harf Çevirici"
     },
     "comingSoon": "Yakında",
     "theme": {
@@ -182,6 +187,22 @@
       "color-converter": {
         "title": "Color Converter",
         "description": "HEX, RGB ve HSL renk kodlarını matematiksel olarak anında birbirine dönüştürün."
+      },
+      "json-formatter": {
+        "title": "JSON Biçimlendirici",
+        "description": "Dağınık JSON'u düzenli, girintili çıktıya dönüştürür veya doğrular; hataları tarayıcıda net şekilde gösterir."
+      },
+      "unix-timestamp": {
+        "title": "Unix Zaman Damgası Dönüştürücü",
+        "description": "Unix epoch zaman damgalarını okunabilir tarihlere, tarihleri de Unix zaman damgasına tarayıcınızda dönüştürür."
+      },
+      "uuid-generator": {
+        "title": "UUID Oluşturucu",
+        "description": "Tarayıcınızın Web Crypto API'sini kullanarak tek tıkla kriptografik olarak rastgele UUID v4 değerleri üretir."
+      },
+      "case-converter": {
+        "title": "Metin Harf Çevirici",
+        "description": "Herhangi bir metni anında UPPERCASE, lowercase, Title Case, camelCase ve snake_case formatlarına dönüştürür."
       }
     }
   }

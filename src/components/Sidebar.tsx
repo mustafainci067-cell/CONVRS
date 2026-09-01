@@ -91,6 +91,15 @@ const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: "jwt-decoder", path: "/jwt-decoder", status: "active" },
       { nameKey: "hash-generator", path: "/hash-generator", status: "active" },
       { nameKey: "color-converter", path: "/color-converter", status: "active" },
+      { nameKey: "json-formatter", path: "/json-formatter", status: "active" },
+      { nameKey: "unix-timestamp", path: "/unix-timestamp", status: "active" },
+      { nameKey: "uuid-generator", path: "/uuid-generator", status: "active" },
+    ],
+  },
+  {
+    titleKey: "text",
+    items: [
+      { nameKey: "case-converter", path: "/case-converter", status: "active" },
     ],
   },
   {

@@ -33,6 +33,10 @@ const tools: Tool[] = [
   { href: '/jwt-decoder', nameKey: 'jwt-decoder', status: 'active' },
   { href: '/hash-generator', nameKey: 'hash-generator', status: 'active' },
   { href: '/color-converter', nameKey: 'color-converter', status: 'active' },
+  { href: '/json-formatter', nameKey: 'json-formatter', status: 'active' },
+  { href: '/unix-timestamp', nameKey: 'unix-timestamp', status: 'active' },
+  { href: '/uuid-generator', nameKey: 'uuid-generator', status: 'active' },
+  { href: '/case-converter', nameKey: 'case-converter', status: 'active' },
 ];
 
 export default async function Home() {

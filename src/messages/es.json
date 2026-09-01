@@ -7,7 +7,8 @@
       "image": "Convertidores de imagen",
       "document": "Documento y datos",
       "developer": "Herramientas para desarrolladores",
-      "media": "Video y audio"
+      "media": "Video y audio",
+      "text": "Herramientas de Texto"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -33,7 +34,11 @@
       "color-converter": "Convertidor de colores",
       "mp4-to-webm": "MP4 ↔ WebM",
       "wav-to-mp3": "WAV ↔ MP3",
-      "video-to-mp3": "Video a MP3"
+      "video-to-mp3": "Video a MP3",
+      "json-formatter": "Formateador JSON",
+      "unix-timestamp": "Convertidor de Marca de Tiempo Unix",
+      "uuid-generator": "Generador de UUID",
+      "case-converter": "Convertidor de Mayúsculas/Minúsculas"
     },
     "comingSoon": "Próximamente",
     "theme": {
@@ -182,6 +187,22 @@
       "color-converter": {
         "title": "Convertidor de colores",
         "description": "Convierta códigos de color HEX, RGB y HSL entre sí al instante, matemáticamente."
+      },
+      "json-formatter": {
+        "title": "Formateador JSON",
+        "description": "Formatea JSON desordenado en una salida limpia e indentada, o valídalo — con errores claros mostrados en tu navegador."
+      },
+      "unix-timestamp": {
+        "title": "Convertidor de Marca de Tiempo Unix",
+        "description": "Convierte marcas de tiempo Unix en fechas legibles, y fechas de vuelta a marcas de tiempo Unix, en tu navegador."
+      },
+      "uuid-generator": {
+        "title": "Generador de UUID",
+        "description": "Genera valores UUID v4 criptográficamente aleatorios con un clic usando la API Web Crypto de tu navegador."
+      },
+      "case-converter": {
+        "title": "Convertidor de Mayúsculas/Minúsculas",
+        "description": "Convierte cualquier texto al instante a MAYÚSCULAS, minúsculas, Título, camelCase o snake_case."
       }
     }
   }

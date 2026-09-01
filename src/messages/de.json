@@ -7,7 +7,8 @@
       "image": "Bildkonverter",
       "document": "Dokument & Daten",
       "developer": "Entwicklerwerkzeuge",
-      "media": "Video & Audio"
+      "media": "Video & Audio",
+      "text": "Textwerkzeuge"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -33,7 +34,11 @@
       "color-converter": "Farbkonverter",
       "mp4-to-webm": "MP4 ↔ WebM",
       "wav-to-mp3": "WAV ↔ MP3",
-      "video-to-mp3": "Video zu MP3"
+      "video-to-mp3": "Video zu MP3",
+      "json-formatter": "JSON-Formatierer",
+      "unix-timestamp": "Unix-Zeitstempel-Konverter",
+      "uuid-generator": "UUID-Generator",
+      "case-converter": "Textfall-Konverter"
     },
     "comingSoon": "Bald",
     "theme": {
@@ -182,6 +187,22 @@
       "color-converter": {
         "title": "Farbkonverter",
         "description": "HEX-, RGB- und HSL-Farbcodes mathematisch sofort ineinander umrechnen."
+      },
+      "json-formatter": {
+        "title": "JSON-Formatierer",
+        "description": "Formatieren Sie unübersichtliches JSON in saubere, eingerückte Ausgabe oder validieren Sie es — Fehler werden klar im Browser angezeigt."
+      },
+      "unix-timestamp": {
+        "title": "Unix-Zeitstempel-Konverter",
+        "description": "Konvertieren Sie Unix-Epoch-Zeitstempel in lesbare Daten und Daten zurück in Unix-Zeitstempel — direkt im Browser."
+      },
+      "uuid-generator": {
+        "title": "UUID-Generator",
+        "description": "Generieren Sie mit einem Klick kryptografisch zufällige UUID-v4-Werte über die Web-Crypto-API Ihres Browsers."
+      },
+      "case-converter": {
+        "title": "Textfall-Konverter",
+        "description": "Wandeln Sie beliebigen Text sofort in GROSSSCHREIBUNG, Kleinschreibung, Titelschreibweise, camelCase oder snake_case um."
       }
     }
   }

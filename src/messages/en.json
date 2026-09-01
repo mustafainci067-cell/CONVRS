@@ -7,7 +7,8 @@
       "image": "Image Converters",
       "document": "Document & Data",
       "developer": "Developer Tools",
-      "media": "Video & Audio"
+      "media": "Video & Audio",
+      "text": "Text Tools"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -33,7 +34,11 @@
       "color-converter": "Color Converter",
       "mp4-to-webm": "MP4 ↔ WebM",
       "wav-to-mp3": "WAV ↔ MP3",
-      "video-to-mp3": "Video to MP3"
+      "video-to-mp3": "Video to MP3",
+      "json-formatter": "JSON Formatter & Validator",
+      "unix-timestamp": "Unix Timestamp Converter",
+      "uuid-generator": "UUID Generator",
+      "case-converter": "Case Converter"
     },
     "comingSoon": "Soon",
     "theme": {
@@ -182,6 +187,22 @@
       "color-converter": {
         "title": "Color Converter",
         "description": "Convert HEX, RGB, and HSL color codes into one another instantly, mathematically."
+      },
+      "json-formatter": {
+        "title": "JSON Formatter & Validator",
+        "description": "Format messy JSON into clean, indented output, or validate it — with clear errors shown in your browser."
+      },
+      "unix-timestamp": {
+        "title": "Unix Timestamp Converter",
+        "description": "Convert Unix epoch timestamps to readable dates, and dates back to Unix timestamps, in your browser."
+      },
+      "uuid-generator": {
+        "title": "UUID Generator",
+        "description": "Generate cryptographically random UUID v4 values with one click using your browser's Web Crypto API."
+      },
+      "case-converter": {
+        "title": "Case Converter",
+        "description": "Instantly convert any text to UPPERCASE, lowercase, Title Case, camelCase or snake_case."
       }
     }
   }
