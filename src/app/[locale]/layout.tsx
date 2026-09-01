@@ -11,6 +11,7 @@ import CookieBanner from "@/components/CookieBanner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -69,6 +70,12 @@ export default async function LocaleLayout({
           </NextIntlClientProvider>
         </ThemeProvider>
         <GoogleAnalytics gaId="G-B25N2GY4TC" />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7839667460775178"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
