@@ -386,5 +386,10 @@
         "description": "Rehber yedeğinizi (vCard) CSV tablosuna çevirin ya da CSV listesini telefon rehberine aktarın."
       }
     }
+  },
+  "NotFound": {
+    "title": "Sayfa bulunamadı",
+    "description": "Aradığınız sayfa bulunamadı veya taşınmış olabilir. Adresi kontrol edin ya da ana sayfaya dönün.",
+    "home": "Ana sayfaya dön"
   }
 }

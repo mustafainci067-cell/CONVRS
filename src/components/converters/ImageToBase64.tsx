@@ -81,6 +81,8 @@ export default function ImageToBase64() {
         {dataUrl && (
           <>
             <div className="flex w-full items-center justify-between gap-4 rounded-2xl border border-cyan-200 bg-white p-4 shadow-sm dark:border-cyan-900/30 dark:bg-zinc-900/60">
+              {/* data: URI onizlemesi — next/image data URI desteklemez, bu yuzden <img> gerekli */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={dataUrl}
                 alt="Base64 preview"

@@ -386,5 +386,10 @@
         "description": "Convert a vCard contact export to a CSV table, or a CSV contact list into an importable .vcf."
       }
     }
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or was moved. Check the URL or head back to the home page.",
+    "home": "Back to home"
   }
 }

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
 /**
@@ -45,20 +46,20 @@ export function ConverterShell({
 
       <footer className="mt-8 flex w-full max-w-4xl flex-col items-center justify-between gap-4 border-t border-zinc-200 py-6 text-xs text-zinc-500 md:flex-row dark:border-zinc-800/60">
         <p>© 2026 Convrs. Built for performance and privacy.</p>
-        <div className="flex gap-6 font-mono">
-          <button
-            type="button"
-            className="cursor-pointer transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"
+        <nav className="flex gap-6 font-mono">
+          <Link
+            href="/privacy-policy"
+            className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"
           >
             Privacy Policy
-          </button>
-          <button
-            type="button"
-            className="cursor-pointer transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"
+          </Link>
+          <Link
+            href="/terms-of-service"
+            className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"
           >
             Terms of Use
-          </button>
-        </div>
+          </Link>
+        </nav>
       </footer>
     </main>
   );

@@ -13,39 +13,6 @@ const iconClass = 'w-4 h-4 shrink-0';
 // Mobilde sidebar'i sola/saga kaydirarak kapatmak/acmak icin min. kaydirma mesafesi (px)
 const SWIPE_THRESHOLD = 60;
 
-const ImageIcon = (
-  <svg className={iconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.6"
-      d="M4 16l4.6-4.6a2 2 0 012.8 0L16 16m-2-2l1.6-1.6a2 2 0 012.8 0L20 14M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1zm9.5 4a.5.5 0 11-1 0 .5.5 0 011 0z"
-    />
-  </svg>
-);
-
-const DocIcon = (
-  <svg className={iconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.6"
-      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h6l6 6v11a2 2 0 01-2 2z"
-    />
-  </svg>
-);
-
-const MediaIcon = (
-  <svg className={iconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.6"
-      d="M15 10l4.55-2.28A1 1 0 0121 8.62v6.76a1 1 0 01-1.45.9L15 14M5 6h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2z"
-    />
-  </svg>
-);
-
 function ThemeSwitch({ isOpen }: { isOpen: boolean }) {
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations('Sidebar');
@@ -54,6 +21,10 @@ function ThemeSwitch({ isOpen }: { isOpen: boolean }) {
   // mounted bayragi theme-sonrasi sonlandirilmadan title/aria-label'i sabit
   // tutar; boylece server ile ilk istemci render'i uyusur (hydration hatasi yok).
   const [mounted, setMounted] = useState(false);
+  // mounted bayragi hydration sonrasi theme'nin bilinmesini saglar; bu desen
+  // CookieBanner'da da aynen kullanilir. setState yalnizca effect basinda
+  // bir kez calisir ve render dongusu yaratmaz.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
   const isDark = mounted && resolvedTheme === 'dark';
 
@@ -170,7 +141,7 @@ export default function Sidebar() {
         onClick={() => setMobileOpen(true)}
         aria-label={t('openNav')}
         aria-expanded={mobileOpen}
-        className="fixed left-3 top-3 z-40 rounded-xl border border-zinc-200 bg-zinc-50/90 p-2 text-zinc-600 shadow-sm backdrop-blur transition-colors hover:bg-zinc-200 hover:text-zinc-900 md:hidden dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+        className="fixed left-3 top-3 z-40 flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50/90 text-zinc-600 shadow-sm backdrop-blur transition-colors hover:bg-zinc-200 hover:text-zinc-900 md:hidden dark:border-zinc-800 dark:bg-zinc-900/90 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
       >
         <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />

@@ -26,12 +26,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Convrs — Modern File Conversion Platform",
     description: "100% Client-Side, fast, and secure file converter.",

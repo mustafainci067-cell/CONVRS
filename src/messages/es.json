@@ -386,5 +386,10 @@
         "description": "Convierte una exportación de contactos vCard a una tabla CSV, o una lista CSV en un .vcf importable."
       }
     }
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "description": "La página que buscas no existe o se ha movido. Revisa la URL o vuelve al inicio.",
+    "home": "Volver al inicio"
   }
 }

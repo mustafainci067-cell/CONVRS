@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
             Gizlilik Politikası
           </h1>
           <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-            Son güncelleme: 31 Ağustos 2026
+            Son güncelleme: 1 Eylül 2026
           </p>
         </header>
 
@@ -83,19 +83,65 @@ export default function PrivacyPolicyPage() {
 
         <section className="mt-8">
           <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-            4. Çerezler ve İstatistikler
+            4. Çerezler, Google Analytics ve Google AdSense
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Hizmetimizin düzgün çalışması için gerekli olan temel ve zorunlu olmayan çerezleri
-            kullanmayız. Site, tercihlerinizi (ör. açık/koyu tema) hatırlamak için yalnızca
-            tarayıcınıza özel yerel depolama (localStorage) alanını kullanabilir; bu veriler
-            cihazınızdan çıkmaz. Çerez (veya görüntüleme tercihi) izninizi&nbsp;
-            <span className="font-medium text-zinc-800 dark:text-zinc-200">
-              &quot;Kabul Et&quot;
-            </span>
-            &nbsp;butonuyla belirttiğinizde bu tercih yalnızca cihazınızda saklanır ve istediğiniz
-            zaman tarayıcı ayarlarınızdan silebilirsiniz. Analitik veya takip çerezleri
-            kullanmayız ve üçüncü taraf reklam ağlarıyla veri paylaşmayız.
+            Site, açık/koyu tema tercihinizi ve çerez izin tercihinizi hatırlamak için tarayıcınıza
+            özel yerel depolama (localStorage) alanını kullanabilir; bu veriler cihazınızdan
+            çıkmaz ve&nbsp;
+            <span className="font-medium text-zinc-800 dark:text-zinc-200">&quot;Kabul Et&quot;</span>
+            &nbsp;butonuyla verdiğiniz tercihi istediğiniz zaman tarayıcı ayarlarınızdan
+            silebilirsiniz.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <span className="font-medium text-zinc-800 dark:text-zinc-200">Google Analytics:</span>{' '}
+            Sitemizin nasıl kullanıldığını anlamak ve site deneyimini iyileştirmek için Google
+            Analytics kullanıyoruz. Google Analytics; sayfa görüntüleme, oturum süresi, yaklaşık
+            coğrafi bölge ve tarayıcı/cihaz türü gibi anonimleştirilmiş ve toplu (agrege) trafik
+            istatistikleri toplar. Bu veriler kişisel olarak sizi tanımlamaz ve Google Analytics
+            tarafından işlenen verilerin içinde, dönüştürdüğünüz dosyaların içeriği{' '}
+            <span className="font-medium text-zinc-800 dark:text-zinc-200">asla</span> yer almaz.
+            Google&apos;ın verileri nasıl kullandığına dair ayrıntıları{' '}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-zinc-800 underline underline-offset-2 transition-colors hover:text-emerald-600 dark:text-zinc-200 dark:hover:text-emerald-400"
+            >
+              Google Gizlilik Politikası
+            </a>{' '}
+            sayfasında bulabilirsiniz.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <span className="font-medium text-zinc-800 dark:text-zinc-200">Google AdSense:</span>{' '}
+            Reklam gösterimi için Google AdSense&apos;i kullanabiliriz. AdSense, reklam yayınlamak
+            ve reklam performansını ölçmek amacıyla çerezler (üçüncü taraf çerezleri dâhil)
+            kullanabilir. Bu çerezler, web üzerindeki ziyaretlerinize dair bilgilere dayanarak size
+            daha alakalı reklamlar gösterilmesine yardımcı olabilir. Reklam kişiselleştirmeyi
+            istediğiniz zaman{' '}
+            <a
+              href="https://adssettings.google.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-zinc-800 underline underline-offset-2 transition-colors hover:text-emerald-600 dark:text-zinc-200 dark:hover:text-emerald-400"
+            >
+              Google Reklam Ayarları
+            </a>{' '}
+            üzerinden yönetebilir veya kapatabilirsiniz. Google&apos;ın ortak site sahipleriyle ne
+            şekilde veri kullandığını görmek için{' '}
+            <a
+              href="https://policies.google.com/technologies/partner-sites"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-zinc-800 underline underline-offset-2 transition-colors hover:text-emerald-600 dark:text-zinc-200 dark:hover:text-emerald-400"
+            >
+              Google&apos;un reklam veri kullanımı
+            </a>{' '}
+            sayfasını inceleyebilirsiniz.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Tarayıcı ayarlarınızdan çerezleri engelleyebilir veya silebilirsiniz; bu durum sitenin
+            temel dosya dönüştürme işlevlerini etkilemez.
           </p>
         </section>
 
@@ -104,9 +150,11 @@ export default function PrivacyPolicyPage() {
             5. Üçüncü Taraf Hizmetleri
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Dönüştürme işlemleri tamamen yerel olarak gerçekleştiği için, dosyalarınız hiçbir
-            üçüncü taraf hizmetine iletilmez. Sitemiz tarafından kullanılan başka hiçbir
-            serviste dosya içeriğiniz işlenmez.
+            Dosya dönüştürme işlemleri tamamen cihazınızda gerçekleştiği için, yüklediğiniz veya
+            ürettiğiniz dosyaların içeriği hiçbir üçüncü taraf hizmetine iletilmez. Bölüm 4&apos;
+            te açıklanan Google Analytics ve Google AdSense hizmetleri yalnızca anonim site kullanım
+            istatistikleri ve reklam gösterimiyle ilgilidir; dosya içerikleriniz bu kapsama asla
+            girmez.
           </p>
         </section>
 
