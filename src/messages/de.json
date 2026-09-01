@@ -40,6 +40,10 @@
       "mute-video": "Video stummschalten",
       "audio-trimmer": "Audio-Trimmer",
       "volume-booster": "Lautstärkerverstärker",
+      "video-speed": "Video-Geschwindigkeit",
+      "video-resizer": "Video-Zuschneider",
+      "voice-recorder": "Voice-Recorder",
+      "speech-to-text": "Sprache zu Text",
       "json-formatter": "JSON-Formatierer",
       "unix-timestamp": "Unix-Zeitstempel-Konverter",
       "uuid-generator": "UUID-Generator",
@@ -200,6 +204,22 @@
       "volume-booster": {
         "title": "Lautstärkerverstärker",
         "description": "Verstärken Sie die Lautstärke leiser Audiodateien um das 1,5-fache, 2-fache oder 3-fache. Unterstützt MP3- und WAV-Formate."
+      },
+      "video-speed": {
+        "title": "Video-Geschwindigkeit",
+        "description": "Passen Sie die Wiedergabegeschwindigkeit Ihres Videos an — 0,5x Zeitlupe, 1,25x, 1,5x oder 2x Schnelllauf — mit ffmpeg im Browser."
+      },
+      "video-resizer": {
+        "title": "Video-Zuschneider",
+        "description": "Ändern Sie die Größe oder schneiden Sie Videos für soziale Medien zu. Konvertieren Sie 16:9 in 9:16 hochformatig oder nutzen Sie eigene Pixelmaße."
+      },
+      "voice-recorder": {
+        "title": "Voice-Recorder",
+        "description": "Nehmen Sie über das Mikrofon in Ihrem Browser auf — mit Start, Pause, Fortsetzen und Beenden. Als WAV/WebM herunterladen."
+      },
+      "speech-to-text": {
+        "title": "Sprache zu Text",
+        "description": "Transkribieren Sie gesprochene Sprache in Echtzeit mit der Web-Speech-API des Browsers und kopieren Sie das Ergebnis mit einem Klick."
       },
       "mp4-to-webm": {
         "title": "MP4 ↔ WebM",

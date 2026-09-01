@@ -40,6 +40,10 @@
       "mute-video": "Mute Video",
       "audio-trimmer": "Audio Trimmer",
       "volume-booster": "Volume Booster",
+      "video-speed": "Video Speed Changer",
+      "video-resizer": "Video Resizer / Cropper",
+      "voice-recorder": "Voice Recorder",
+      "speech-to-text": "Speech to Text",
       "json-formatter": "JSON Formatter & Validator",
       "unix-timestamp": "Unix Timestamp Converter",
       "uuid-generator": "UUID Generator",
@@ -200,6 +204,22 @@
       "volume-booster": {
         "title": "Volume Booster",
         "description": "Boost the volume of quiet audio files by 1.5x, 2x, or 3x. Supports MP3 and WAV formats."
+      },
+      "video-speed": {
+        "title": "Video Speed Changer",
+        "description": "Adjust video playback speed — 0.5x slow motion, 1.25x, 1.5x, or 2x fast motion — with ffmpeg in your browser."
+      },
+      "video-resizer": {
+        "title": "Video Resizer / Cropper",
+        "description": "Resize or crop your videos for social media. Convert 16:9 to 9:16 vertical, or use custom pixel dimensions."
+      },
+      "voice-recorder": {
+        "title": "Voice Recorder",
+        "description": "Record audio from your microphone in the browser with start, pause, resume and finish controls. Download as WAV/WebM."
+      },
+      "speech-to-text": {
+        "title": "Speech to Text",
+        "description": "Transcribe your speech in real-time with the browser Web Speech API and copy the result with one click."
       },
       "mp4-to-webm": {
         "title": "MP4 ↔ WebM",

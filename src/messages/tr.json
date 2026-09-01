@@ -40,6 +40,10 @@
       "mute-video": "Video'yu Sessiz Yap",
       "audio-trimmer": "Ses Kesici",
       "volume-booster": "Ses Seviyesi Arttırıcı",
+      "video-speed": "Video Hız Değiştirici",
+      "video-resizer": "Video Boyut Kırpıcı",
+      "voice-recorder": "Ses Kaydedici",
+      "speech-to-text": "Sesi Metne Çevirici",
       "json-formatter": "JSON Biçimlendirici",
       "unix-timestamp": "Unix Zaman Damgası Dönüştürücü",
       "uuid-generator": "UUID Oluşturucu",
@@ -200,6 +204,22 @@
       "volume-booster": {
         "title": "Ses Seviyesi Arttırıcı",
         "description": "Kısık ses dosyalarınızın seviyesini x1.5, x2 veya x3 oranlarında arttırın. MP3 ve WAV destekler."
+      },
+      "video-speed": {
+        "title": "Video Hız Değiştirici",
+        "description": "Videonuzun oynatma hızını tarayıcınızda ffmpeg ile 0.5x (yavaş çekim), 1.25x, 1.5x veya 2x (hızlı çekim) olarak ayarlayın."
+      },
+      "video-resizer": {
+        "title": "Video Boyut Kırpıcı",
+        "description": "Videolarınızı sosyal medya için boyutlandırın veya kırpın. 16:9 yatay videoyu 9:16 dikeye çevirin ya da özel piksel boyutları girin."
+      },
+      "voice-recorder": {
+        "title": "Ses Kaydedici",
+        "description": "Tarayıcınızdan mikrofonla ses kaydedin; başlat, duraklat, devam et ve bitir kontrolleriyle WAV/WebM olarak indirin."
+      },
+      "speech-to-text": {
+        "title": "Sesi Metne Çevirici",
+        "description": "Mikrofon üzerinden konuşmalarınızı tarayıcının Web Speech API'siyle anlık yazıya dökün ve tek tıkla kopyalayın."
       },
       "mp4-to-webm": {
         "title": "MP4 ↔ WebM",

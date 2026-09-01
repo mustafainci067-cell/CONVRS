@@ -56,6 +56,14 @@ const TOOL_PATHS = [
   '/mp4-to-webm',
   '/wav-to-mp3',
   '/video-to-mp3',
+  '/video-to-gif',
+  '/mute-video',
+  '/audio-trimmer',
+  '/volume-booster',
+  '/video-speed',
+  '/video-resizer',
+  '/voice-recorder',
+  '/speech-to-text',
 ];
 
 const SITEMAP_DATE = new Date('2026-09-01');

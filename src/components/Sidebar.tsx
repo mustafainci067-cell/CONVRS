@@ -129,6 +129,10 @@ const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: "mute-video", path: "/mute-video", status: "active" },
       { nameKey: "audio-trimmer", path: "/audio-trimmer", status: "active" },
       { nameKey: "volume-booster", path: "/volume-booster", status: "active" },
+      { nameKey: "video-speed", path: "/video-speed", status: "active" },
+      { nameKey: "video-resizer", path: "/video-resizer", status: "active" },
+      { nameKey: "voice-recorder", path: "/voice-recorder", status: "active" },
+      { nameKey: "speech-to-text", path: "/speech-to-text", status: "active" },
     ],
   },
 ];
