@@ -125,6 +125,10 @@ const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: "mp4-to-webm", path: "/mp4-to-webm", status: "active" },
       { nameKey: "wav-to-mp3", path: "/wav-to-mp3", status: "active" },
       { nameKey: "video-to-mp3", path: "/video-to-mp3", status: "active" },
+      { nameKey: "video-to-gif", path: "/video-to-gif", status: "active" },
+      { nameKey: "mute-video", path: "/mute-video", status: "active" },
+      { nameKey: "audio-trimmer", path: "/audio-trimmer", status: "active" },
+      { nameKey: "volume-booster", path: "/volume-booster", status: "active" },
     ],
   },
 ];

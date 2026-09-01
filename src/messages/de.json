@@ -36,6 +36,10 @@
       "mp4-to-webm": "MP4 ↔ WebM",
       "wav-to-mp3": "WAV ↔ MP3",
       "video-to-mp3": "Video zu MP3",
+      "video-to-gif": "Video zu GIF",
+      "mute-video": "Video stummschalten",
+      "audio-trimmer": "Audio-Trimmer",
+      "volume-booster": "Lautstärkerverstärker",
       "json-formatter": "JSON-Formatierer",
       "unix-timestamp": "Unix-Zeitstempel-Konverter",
       "uuid-generator": "UUID-Generator",
@@ -180,6 +184,22 @@
       "video-to-mp3": {
         "title": "Video zu MP3",
         "description": "Audio aus Videos mit ffmpeg (im Browser) extrahieren und als MP3 exportieren."
+      },
+      "video-to-gif": {
+        "title": "Video zu GIF",
+        "description": "Verwandeln Sie kurze Videos sofort in animierte GIFs mit einstellbaren FPS-Einstellungen."
+      },
+      "mute-video": {
+        "title": "Video stummschalten",
+        "description": "Entfernen Sie die Audiospur aus Ihrem Video vollständig und exportieren Sie ein stummes Video."
+      },
+      "audio-trimmer": {
+        "title": "Audio-Trimmer",
+        "description": "Trimmen Sie Audiodateien (MP3/WAV) durch Angabe von Start- und Endzeiten, um nur den gewünschten Teil zu extrahieren."
+      },
+      "volume-booster": {
+        "title": "Lautstärkerverstärker",
+        "description": "Verstärken Sie die Lautstärke leiser Audiodateien um das 1,5-fache, 2-fache oder 3-fache. Unterstützt MP3- und WAV-Formate."
       },
       "mp4-to-webm": {
         "title": "MP4 ↔ WebM",

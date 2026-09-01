@@ -36,6 +36,10 @@
       "mp4-to-webm": "MP4 ↔ WebM",
       "wav-to-mp3": "WAV ↔ MP3",
       "video-to-mp3": "Video'dan MP3",
+      "video-to-gif": "Video'dan GIF",
+      "mute-video": "Video'yu Sessiz Yap",
+      "audio-trimmer": "Ses Kesici",
+      "volume-booster": "Ses Seviyesi Arttırıcı",
       "json-formatter": "JSON Biçimlendirici",
       "unix-timestamp": "Unix Zaman Damgası Dönüştürücü",
       "uuid-generator": "UUID Oluşturucu",
@@ -180,6 +184,22 @@
       "video-to-mp3": {
         "title": "Video to MP3",
         "description": "Videolardan sesi ffmpeg ile (tarayıcı içinde) çekip MP3 olarak dışa aktarın."
+      },
+      "video-to-gif": {
+        "title": "Video'dan GIF",
+        "description": "Kısa videolarınızı ayarlanabilir FPS seçenekleriyle anında.animasyonlu GIF'lere dönüştürün."
+      },
+      "mute-video": {
+        "title": "Video'yu Sessiz Yap",
+        "description": "Videonuzun içindeki ses kanalını tamamen kaldırıp sessiz video olarak dışa aktarın."
+      },
+      "audio-trimmer": {
+        "title": "Ses Kesici",
+        "description": "Ses dosyalarınızı (MP3/WAV) başlangıç ve bitiş saniyelerini girerek sadece istediğiniz kısmı kırpın."
+      },
+      "volume-booster": {
+        "title": "Ses Seviyesi Arttırıcı",
+        "description": "Kısık ses dosyalarınızın seviyesini x1.5, x2 veya x3 oranlarında arttırın. MP3 ve WAV destekler."
       },
       "mp4-to-webm": {
         "title": "MP4 ↔ WebM",

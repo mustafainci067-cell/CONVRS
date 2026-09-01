@@ -36,6 +36,10 @@
       "mp4-to-webm": "MP4 ↔ WebM",
       "wav-to-mp3": "WAV ↔ MP3",
       "video-to-mp3": "Video a MP3",
+      "video-to-gif": "Video a GIF",
+      "mute-video": "Silenciar Video",
+      "audio-trimmer": "Recortador de Audio",
+      "volume-booster": "Amplificador de Volumen",
       "json-formatter": "Formateador JSON",
       "unix-timestamp": "Convertidor de Marca de Tiempo Unix",
       "uuid-generator": "Generador de UUID",
@@ -180,6 +184,22 @@
       "video-to-mp3": {
         "title": "Video a MP3",
         "description": "Extraiga el audio de vídeos con ffmpeg (en el navegador) y expórtelo como MP3."
+      },
+      "video-to-gif": {
+        "title": "Video a GIF",
+        "description": "Convierta sus videos cortos en GIFs animados al instante con configuraciones de FPS ajustables."
+      },
+      "mute-video": {
+        "title": "Silenciar Video",
+        "description": "Elimine completamente la pista de audio de su video y exporte un video silencioso."
+      },
+      "audio-trimmer": {
+        "title": "Recortador de Audio",
+        "description": "Recorte archivos de audio (MP3/WAV) especificando los tiempos de inicio y fin para extraer solo lo que necesita."
+      },
+      "volume-booster": {
+        "title": "Amplificador de Volumen",
+        "description": "Aumente el volumen de archivos de audio bajos en 1.5x, 2x o 3x. Soporta formatos MP3 y WAV."
       },
       "mp4-to-webm": {
         "title": "MP4 ↔ WebM",
