@@ -8,7 +8,8 @@
       "document": "Documento y datos",
       "developer": "Herramientas para desarrolladores",
       "media": "Video y audio",
-      "text": "Herramientas de Texto"
+      "text": "Herramientas de Texto",
+      "other": "Otras Herramientas"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -38,7 +39,15 @@
       "json-formatter": "Formateador JSON",
       "unix-timestamp": "Convertidor de Marca de Tiempo Unix",
       "uuid-generator": "Generador de UUID",
-      "case-converter": "Convertidor de Mayúsculas/Minúsculas"
+      "case-converter": "Convertidor de Mayúsculas/Minúsculas",
+      "password-generator": "Generador de Contraseñas",
+      "word-counter": "Contador de Palabras y Caracteres",
+      "lorem-ipsum": "Generador de Lorem Ipsum",
+      "css-js-minifier": "Minificador CSS/JS",
+      "image-to-base64": "Imagen a Base64",
+      "px-rem-em-converter": "Convertidor PX ↔ REM/EM",
+      "html-encode-decode": "Codificar / Decodificar HTML",
+      "screen-viewport-checker": "Verificador de Pantalla/Vista"
     },
     "comingSoon": "Próximamente",
     "theme": {
@@ -203,6 +212,38 @@
       "case-converter": {
         "title": "Convertidor de Mayúsculas/Minúsculas",
         "description": "Convierte cualquier texto al instante a MAYÚSCULAS, minúsculas, Título, camelCase o snake_case."
+      },
+      "password-generator": {
+        "title": "Generador de Contraseñas",
+        "description": "Genera contraseñas fuertes y seguras al instante con un control deslizante de longitud, opciones de tipos de caracteres y copiado con un clic."
+      },
+      "word-counter": {
+        "title": "Contador de Palabras y Caracteres",
+        "description": "Cuenta palabras, caracteres (con y sin espacios), líneas y párrafos en tiempo real mientras escribes."
+      },
+      "lorem-ipsum": {
+        "title": "Generador de Lorem Ipsum",
+        "description": "Genera texto de relleno Lorem Ipsum clásico al instante según la cantidad de párrafos, oraciones o palabras."
+      },
+      "css-js-minifier": {
+        "title": "Minificador CSS/JS",
+        "description": "Elimina comentarios y espacios innecesarios de CSS o JavaScript con regex, reduciendo el código a una sola línea minificada."
+      },
+      "image-to-base64": {
+        "title": "Imagen a Base64",
+        "description": "Arrastra o elige una imagen y conviértela al instante en una URI de datos Base64, en tu navegador."
+      },
+      "px-rem-em-converter": {
+        "title": "Convertidor PX ↔ REM/EM",
+        "description": "Convierte al instante entre px, rem y em, con tamaño de fuente base ajustable (por defecto 16px)."
+      },
+      "html-encode-decode": {
+        "title": "Codificar / Decodificar HTML",
+        "description": "Convierte etiquetas HTML a entidades como &lt; &gt;, o decodifícalas de vuelta a texto legible."
+      },
+      "screen-viewport-checker": {
+        "title": "Verificador de Pantalla/Vista",
+        "description": "Muestra en vivo la resolución de pantalla, el tamaño de ventana (innerWidth/Height) y la densidad de píxeles, actualizándose al redimensionar."
       }
     }
   }

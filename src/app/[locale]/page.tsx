@@ -37,6 +37,14 @@ const tools: Tool[] = [
   { href: '/unix-timestamp', nameKey: 'unix-timestamp', status: 'active' },
   { href: '/uuid-generator', nameKey: 'uuid-generator', status: 'active' },
   { href: '/case-converter', nameKey: 'case-converter', status: 'active' },
+  { href: '/password-generator', nameKey: 'password-generator', status: 'active' },
+  { href: '/word-counter', nameKey: 'word-counter', status: 'active' },
+  { href: '/lorem-ipsum', nameKey: 'lorem-ipsum', status: 'active' },
+  { href: '/css-js-minifier', nameKey: 'css-js-minifier', status: 'active' },
+  { href: '/image-to-base64', nameKey: 'image-to-base64', status: 'active' },
+  { href: '/px-rem-em-converter', nameKey: 'px-rem-em-converter', status: 'active' },
+  { href: '/html-encode-decode', nameKey: 'html-encode-decode', status: 'active' },
+  { href: '/screen-viewport-checker', nameKey: 'screen-viewport-checker', status: 'active' },
 ];
 
 export default async function Home() {

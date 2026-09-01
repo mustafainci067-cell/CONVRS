@@ -68,6 +68,7 @@ const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: "ico-to-png", path: "/ico-to-png", status: "active" },
       { nameKey: "image-compressor", path: "/image-compressor", status: "active" },
       { nameKey: "remove-background", path: "/remove-background", status: "active" },
+      { nameKey: "image-to-base64", path: "/image-to-base64", status: "active" },
     ],
   },
   {
@@ -94,12 +95,24 @@ const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: "json-formatter", path: "/json-formatter", status: "active" },
       { nameKey: "unix-timestamp", path: "/unix-timestamp", status: "active" },
       { nameKey: "uuid-generator", path: "/uuid-generator", status: "active" },
+      { nameKey: "password-generator", path: "/password-generator", status: "active" },
+      { nameKey: "css-js-minifier", path: "/css-js-minifier", status: "active" },
+      { nameKey: "px-rem-em-converter", path: "/px-rem-em-converter", status: "active" },
+      { nameKey: "html-encode-decode", path: "/html-encode-decode", status: "active" },
     ],
   },
   {
     titleKey: "text",
     items: [
       { nameKey: "case-converter", path: "/case-converter", status: "active" },
+      { nameKey: "word-counter", path: "/word-counter", status: "active" },
+      { nameKey: "lorem-ipsum", path: "/lorem-ipsum", status: "active" },
+    ],
+  },
+  {
+    titleKey: "other",
+    items: [
+      { nameKey: "screen-viewport-checker", path: "/screen-viewport-checker", status: "active" },
     ],
   },
   {

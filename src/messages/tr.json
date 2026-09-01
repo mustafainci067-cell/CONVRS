@@ -8,7 +8,8 @@
       "document": "Belge & Veri",
       "developer": "Geliştirici Araçları",
       "media": "Video & Ses",
-      "text": "Metin Araçları"
+      "text": "Metin Araçları",
+      "other": "Diğer Araçlar"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -38,7 +39,15 @@
       "json-formatter": "JSON Biçimlendirici",
       "unix-timestamp": "Unix Zaman Damgası Dönüştürücü",
       "uuid-generator": "UUID Oluşturucu",
-      "case-converter": "Metin Harf Çevirici"
+      "case-converter": "Metin Harf Çevirici",
+      "password-generator": "Şifre Oluşturucu",
+      "word-counter": "Kelime ve Karakter Sayacı",
+      "lorem-ipsum": "Lorem Ipsum Oluşturucu",
+      "css-js-minifier": "CSS/JS Sıkıştırıcı",
+      "image-to-base64": "Görselden Base64",
+      "px-rem-em-converter": "PX ↔ REM/EM Dönüştürücü",
+      "html-encode-decode": "HTML Encode / Decode",
+      "screen-viewport-checker": "Ekran / Görünüm Denetleyici"
     },
     "comingSoon": "Yakında",
     "theme": {
@@ -203,6 +212,38 @@
       "case-converter": {
         "title": "Metin Harf Çevirici",
         "description": "Herhangi bir metni anında UPPERCASE, lowercase, Title Case, camelCase ve snake_case formatlarına dönüştürür."
+      },
+      "password-generator": {
+        "title": "Şifre Oluşturucu",
+        "description": "Uzunluk kaydırıcısı, karakter türü seçenekleri ve tek tıkla kopyalama ile anında güçlü, güvenli rastgele şifre üretir."
+      },
+      "word-counter": {
+        "title": "Kelime ve Karakter Sayacı",
+        "description": "Yazdıkça kelime, karakter (boşluksuz dahil), satır ve paragraf sayısını gerçek zamanlı hesaplar."
+      },
+      "lorem-ipsum": {
+        "title": "Lorem Ipsum Oluşturucu",
+        "description": "Girdiğiniz paragraf, cümle veya kelime sayısına göre anında klasik Lorem Ipsum sahte metni üretir."
+      },
+      "css-js-minifier": {
+        "title": "CSS/JS Sıkıştırıcı",
+        "description": "CSS veya JavaScript kodundaki yorumları ve gereksiz boşlukları Regex ile temizleyip tek satıra (minified) indirir."
+      },
+      "image-to-base64": {
+        "title": "Görselden Base64",
+        "description": "Bir görseli sürükleyip bırakın veya seçin; tarayıcınızda anında Base64 data URI'sine dönüşür."
+      },
+      "px-rem-em-converter": {
+        "title": "PX ↔ REM/EM Dönüştürücü",
+        "description": "Ayarlanabilir temel font boyutuyla (varsayılan 16px) px, rem ve em ölçüleri arasında anında dönüşüm."
+      },
+      "html-encode-decode": {
+        "title": "HTML Encode / Decode",
+        "description": "HTML etiketlerini &lt;, &gt; gibi entity'lere çevirir veya tersini yapıp okunabilir hale getirir."
+      },
+      "screen-viewport-checker": {
+        "title": "Ekran / Görünüm Denetleyici",
+        "description": "Mevcut ekran çözünürlüğünü, tarayıcı pencere boyutunu (innerWidth/Height) ve piksel yoğunluğunu canlı olarak gösterir; pencere boyutlandıkça güncellenir."
       }
     }
   }

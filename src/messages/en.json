@@ -8,7 +8,8 @@
       "document": "Document & Data",
       "developer": "Developer Tools",
       "media": "Video & Audio",
-      "text": "Text Tools"
+      "text": "Text Tools",
+      "other": "Other Tools"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -38,7 +39,15 @@
       "json-formatter": "JSON Formatter & Validator",
       "unix-timestamp": "Unix Timestamp Converter",
       "uuid-generator": "UUID Generator",
-      "case-converter": "Case Converter"
+      "case-converter": "Case Converter",
+      "password-generator": "Password Generator",
+      "word-counter": "Word & Character Counter",
+      "lorem-ipsum": "Lorem Ipsum Generator",
+      "css-js-minifier": "CSS/JS Minifier",
+      "image-to-base64": "Image to Base64",
+      "px-rem-em-converter": "PX ↔ REM/EM Converter",
+      "html-encode-decode": "HTML Encode / Decode",
+      "screen-viewport-checker": "Screen / Viewport Checker"
     },
     "comingSoon": "Soon",
     "theme": {
@@ -203,6 +212,38 @@
       "case-converter": {
         "title": "Case Converter",
         "description": "Instantly convert any text to UPPERCASE, lowercase, Title Case, camelCase or snake_case."
+      },
+      "password-generator": {
+        "title": "Password Generator",
+        "description": "Generate strong, randomly secure passwords instantly with a length slider, character-type toggles and one-click copy."
+      },
+      "word-counter": {
+        "title": "Word & Character Counter",
+        "description": "Count words, characters (with and without spaces), lines and paragraphs in real time as you type."
+      },
+      "lorem-ipsum": {
+        "title": "Lorem Ipsum Generator",
+        "description": "Generate placeholder paragraphs, sentences or words of classic Lorem Ipsum text on demand."
+      },
+      "css-js-minifier": {
+        "title": "CSS/JS Minifier",
+        "description": "Strip comments and collapse whitespace from CSS or JavaScript with regex, reducing it to a single minified line."
+      },
+      "image-to-base64": {
+        "title": "Image to Base64",
+        "description": "Drop or pick an image and convert it instantly to a Base64 data URI, entirely in your browser."
+      },
+      "px-rem-em-converter": {
+        "title": "PX ↔ REM/EM Converter",
+        "description": "Convert between px, rem and em sizes instantly, with an adjustable base font size (default 16px)."
+      },
+      "html-encode-decode": {
+        "title": "HTML Encode / Decode",
+        "description": "Escape HTML tags into entities like &lt; and &gt;, or decode them back into readable text."
+      },
+      "screen-viewport-checker": {
+        "title": "Screen / Viewport Checker",
+        "description": "See your current screen resolution, window size (innerWidth/Height) and pixel ratio live, updating as you resize."
       }
     }
   }

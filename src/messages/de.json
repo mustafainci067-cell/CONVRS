@@ -8,7 +8,8 @@
       "document": "Dokument & Daten",
       "developer": "Entwicklerwerkzeuge",
       "media": "Video & Audio",
-      "text": "Textwerkzeuge"
+      "text": "Textwerkzeuge",
+      "other": "Weitere Werkzeuge"
     },
     "tools": {
       "heic-to-jpg": "HEIC → JPG",
@@ -38,7 +39,15 @@
       "json-formatter": "JSON-Formatierer",
       "unix-timestamp": "Unix-Zeitstempel-Konverter",
       "uuid-generator": "UUID-Generator",
-      "case-converter": "Textfall-Konverter"
+      "case-converter": "Textfall-Konverter",
+      "password-generator": "Passwort-Generator",
+      "word-counter": "Wort- und Zeichenzähler",
+      "lorem-ipsum": "Lorem-Ipsum-Generator",
+      "css-js-minifier": "CSS/JS-Minifier",
+      "image-to-base64": "Bild zu Base64",
+      "px-rem-em-converter": "PX ↔ REM/EM-Konverter",
+      "html-encode-decode": "HTML encodieren/decodieren",
+      "screen-viewport-checker": "Bildschirm-/Ansichtstest"
     },
     "comingSoon": "Bald",
     "theme": {
@@ -203,6 +212,38 @@
       "case-converter": {
         "title": "Textfall-Konverter",
         "description": "Wandeln Sie beliebigen Text sofort in GROSSSCHREIBUNG, Kleinschreibung, Titelschreibweise, camelCase oder snake_case um."
+      },
+      "password-generator": {
+        "title": "Passwort-Generator",
+        "description": "Erzeugt sofort starke, sichere Zufallspasswörter mit einem Längen-Slider, Zeichentyp-Optionen und Ein-Klick-Kopieren."
+      },
+      "word-counter": {
+        "title": "Wort- und Zeichenzähler",
+        "description": "Zählt beim Tippen in Echtzeit Wörter, Zeichen (mit und ohne Leerzeichen), Zeilen und Absätze."
+      },
+      "lorem-ipsum": {
+        "title": "Lorem-Ipsum-Generator",
+        "description": "Erzeugt auf Wunsch sofort Platzhaltertexte (Lorem Ipsum) als Absätze, Sätze oder Wörter."
+      },
+      "css-js-minifier": {
+        "title": "CSS/JS-Minifier",
+        "description": "Entfernt Kommentare und unnötige Leerzeichen aus CSS oder JavaScript per Regex und reduziert den Code auf eine kompakte Zeile."
+      },
+      "image-to-base64": {
+        "title": "Bild zu Base64",
+        "description": "Ziehen Sie ein Bild hinein oder wählen Sie es aus – es wird sofort zu einer Base64-Data-URI im Browser konvertiert."
+      },
+      "px-rem-em-converter": {
+        "title": "PX ↔ REM/EM-Konverter",
+        "description": "Konvertiert sofort zwischen px-, rem- und em-Größen mit einstellbarer Basis-Schriftgröße (Standard 16px)."
+      },
+      "html-encode-decode": {
+        "title": "HTML encodieren/decodieren",
+        "description": "Escaped HTML-Tags in Entitäten wie &lt; &gt; oder zurück in lesbaren Text, direkt im Browser."
+      },
+      "screen-viewport-checker": {
+        "title": "Bildschirm-/Ansichtstest",
+        "description": "Zeigt Auflösung, Fenstergröße (innerWidth/Height) und Pixeldichte live an – aktualisiert sich beim Größenändern."
       }
     }
   }
