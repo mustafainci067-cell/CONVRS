@@ -53,6 +53,12 @@
       "lorem-ipsum": "Lorem Ipsum Generator",
       "css-js-minifier": "CSS/JS Minifier",
       "image-to-base64": "Image to Base64",
+      "image-resizer": "Image Resizer",
+      "image-cropper": "Image Cropper",
+      "image-filters": "Image Filters",
+      "watermark-adder": "Watermark Adder",
+      "color-palette-extractor": "Color Palette Extractor",
+      "exif-cleaner": "EXIF Cleaner",
       "px-rem-em-converter": "PX ↔ REM/EM Converter",
       "html-encode-decode": "HTML Encode / Decode",
       "screen-viewport-checker": "Screen / Viewport Checker",
@@ -280,6 +286,30 @@
       "image-to-base64": {
         "title": "Image to Base64",
         "description": "Drop or pick an image and convert it instantly to a Base64 data URI, entirely in your browser."
+      },
+      "image-resizer": {
+        "title": "Image Resizer",
+        "description": "Resize images by width and height in pixels or percentage, keeping or unlocking the aspect ratio."
+      },
+      "image-cropper": {
+        "title": "Image Cropper",
+        "description": "Crop images by dragging a selection or choosing preset ratios like 1:1, 16:9 and 3:2."
+      },
+      "image-filters": {
+        "title": "Image Filters",
+        "description": "Apply Grayscale, Sepia, Blur, Brightness and Contrast with a live preview."
+      },
+      "watermark-adder": {
+        "title": "Watermark Adder",
+        "description": "Add a text watermark with custom color, opacity, size and position."
+      },
+      "color-palette-extractor": {
+        "title": "Color Palette Extractor",
+        "description": "Extract the dominant colors from any image as a palette with HEX codes and CSS."
+      },
+      "exif-cleaner": {
+        "title": "EXIF Metadata Cleaner",
+        "description": "Inspect and strip hidden EXIF metadata like GPS location, device and date from your photos."
       },
       "px-rem-em-converter": {
         "title": "PX ↔ REM/EM Converter",

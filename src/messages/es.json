@@ -53,6 +53,12 @@
       "lorem-ipsum": "Generador de Lorem Ipsum",
       "css-js-minifier": "Minificador CSS/JS",
       "image-to-base64": "Imagen a Base64",
+      "image-resizer": "Redimensionador de imágenes",
+      "image-cropper": "Recortadora de imágenes",
+      "image-filters": "Filtros de imagen",
+      "watermark-adder": "Añadir marca de agua",
+      "color-palette-extractor": "Extractor de paleta de colores",
+      "exif-cleaner": "Limpiador EXIF",
       "px-rem-em-converter": "Convertidor PX ↔ REM/EM",
       "html-encode-decode": "Codificar / Decodificar HTML",
       "screen-viewport-checker": "Verificador de Pantalla/Vista",
@@ -280,6 +286,30 @@
       "image-to-base64": {
         "title": "Imagen a Base64",
         "description": "Arrastra o elige una imagen y conviértela al instante en una URI de datos Base64, en tu navegador."
+      },
+      "image-resizer": {
+        "title": "Redimensionador de imágenes",
+        "description": "Redimensiona imágenes por ancho y alto en píxeles o porcentaje, manteniendo o liberando la proporción."
+      },
+      "image-cropper": {
+        "title": "Recortadora de imágenes",
+        "description": "Recorta imágenes arrastrando una selección o con proporciones como 1:1, 16:9 y 3:2."
+      },
+      "image-filters": {
+        "title": "Filtros de imagen",
+        "description": "Aplica escala de grises, sepia, desenfoque, brillo y contraste con vista previa en vivo."
+      },
+      "watermark-adder": {
+        "title": "Añadir marca de agua",
+        "description": "Añade una marca de agua de texto con color, opacidad, tamaño y posición personalizados."
+      },
+      "color-palette-extractor": {
+        "title": "Extractor de paleta de colores",
+        "description": "Extrae los colores dominantes de cualquier imagen como paleta con códigos HEX y CSS."
+      },
+      "exif-cleaner": {
+        "title": "Limpiador EXIF",
+        "description": "Inspecciona y elimina los metadatos EXIF ocultos como ubicación GPS, dispositivo y fecha."
       },
       "px-rem-em-converter": {
         "title": "Convertidor PX ↔ REM/EM",

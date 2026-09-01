@@ -53,6 +53,12 @@
       "lorem-ipsum": "Lorem Ipsum Oluşturucu",
       "css-js-minifier": "CSS/JS Sıkıştırıcı",
       "image-to-base64": "Görselden Base64",
+      "image-resizer": "Görsel Yeniden Boyutlandırıcı",
+      "image-cropper": "Görsel Kırpıcı",
+      "image-filters": "Görsel Filtreleri",
+      "watermark-adder": "Filigran Ekleme",
+      "color-palette-extractor": "Renk Paleti Çıkarıcı",
+      "exif-cleaner": "EXIF Temizleyici",
       "px-rem-em-converter": "PX ↔ REM/EM Dönüştürücü",
       "html-encode-decode": "HTML Encode / Decode",
       "screen-viewport-checker": "Ekran / Görünüm Denetleyici",
@@ -280,6 +286,30 @@
       "image-to-base64": {
         "title": "Görselden Base64",
         "description": "Bir görseli sürükleyip bırakın veya seçin; tarayıcınızda anında Base64 data URI'sine dönüşür."
+      },
+      "image-resizer": {
+        "title": "Görsel Yeniden Boyutlandırıcı",
+        "description": "Görselleri piksel veya yüzde cinsinden yeniden boyutlandırın; en-boy oranını koruyun veya serbest bırakın."
+      },
+      "image-cropper": {
+        "title": "Görsel Kırpıcı",
+        "description": "Fareyle alan seçerek veya 1:1, 16:9 gibi hazır oranlarla görseli kırpın."
+      },
+      "image-filters": {
+        "title": "Görsel Filtreleri",
+        "description": "Gri Tonlama, Sepia, Bulanıklık, Parlaklık ve Kontrast'ı canlı önizlemeyle uygulayın."
+      },
+      "watermark-adder": {
+        "title": "Filigran Ekleme",
+        "description": "Görsellerinize özel renk, saydamlık, boyut ve konumla metin filigranı ekleyin."
+      },
+      "color-palette-extractor": {
+        "title": "Renk Paleti Çıkarıcı",
+        "description": "Herhangi bir görseldeki en baskın renkleri HEX kodları ve CSS ile birlikte çıkarın."
+      },
+      "exif-cleaner": {
+        "title": "EXIF Temizleyici",
+        "description": "Fotoğraflarınızdaki gizli EXIF verilerini (konum, cihaz, tarih) görüntüleyin ve temizleyin."
       },
       "px-rem-em-converter": {
         "title": "PX ↔ REM/EM Dönüştürücü",

@@ -53,6 +53,12 @@
       "lorem-ipsum": "Lorem-Ipsum-Generator",
       "css-js-minifier": "CSS/JS-Minifier",
       "image-to-base64": "Bild zu Base64",
+      "image-resizer": "Bildgrößen-Änderer",
+      "image-cropper": "Bild-Zuschneider",
+      "image-filters": "Bildfilter",
+      "watermark-adder": "Wasserzeichen-Hinzufüger",
+      "color-palette-extractor": "Farbpaletten-Extraktor",
+      "exif-cleaner": "EXIF-Reiniger",
       "px-rem-em-converter": "PX ↔ REM/EM-Konverter",
       "html-encode-decode": "HTML encodieren/decodieren",
       "screen-viewport-checker": "Bildschirm-/Ansichtstest",
@@ -280,6 +286,30 @@
       "image-to-base64": {
         "title": "Bild zu Base64",
         "description": "Ziehen Sie ein Bild hinein oder wählen Sie es aus – es wird sofort zu einer Base64-Data-URI im Browser konvertiert."
+      },
+      "image-resizer": {
+        "title": "Bildgrößen-Änderer",
+        "description": "Bilder in Pixel oder Prozent skalieren – Seitenverhältnis beibehalten oder frei ändern."
+      },
+      "image-cropper": {
+        "title": "Bild-Zuschneider",
+        "description": "Bilder per Drag-and-drop zuschneiden oder Vorgaben wie 1:1, 16:9 und 3:2 nutzen."
+      },
+      "image-filters": {
+        "title": "Bildfilter",
+        "description": "Graustufen, Sepia, Unschärfe, Helligkeit und Kontrast mit Live-Vorschau anwenden."
+      },
+      "watermark-adder": {
+        "title": "Wasserzeichen-Hinzufüger",
+        "description": "Text-Wasserzeichen mit eigener Farbe, Deckkraft, Größe und Position hinzufügen."
+      },
+      "color-palette-extractor": {
+        "title": "Farbpaletten-Extraktor",
+        "description": "Die dominanten Farben jedes Bildes als Palette mit HEX-Codes und CSS extrahieren."
+      },
+      "exif-cleaner": {
+        "title": "EXIF-Reiniger",
+        "description": "Versteckte EXIF-Daten wie GPS-Standort, Gerät und Datum anzeigen und entfernen."
       },
       "px-rem-em-converter": {
         "title": "PX ↔ REM/EM-Konverter",

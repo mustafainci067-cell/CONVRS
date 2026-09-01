@@ -35,6 +35,12 @@ export const categoryConfigs: NavCategoryConfig[] = [
       { nameKey: 'image-compressor', path: '/image-compressor', status: 'active' },
       { nameKey: 'remove-background', path: '/remove-background', status: 'active' },
       { nameKey: 'image-to-base64', path: '/image-to-base64', status: 'active' },
+      { nameKey: 'image-resizer', path: '/image-resizer', status: 'active' },
+      { nameKey: 'image-cropper', path: '/image-cropper', status: 'active' },
+      { nameKey: 'image-filters', path: '/image-filters', status: 'active' },
+      { nameKey: 'watermark-adder', path: '/watermark-adder', status: 'active' },
+      { nameKey: 'color-palette-extractor', path: '/color-palette-extractor', status: 'active' },
+      { nameKey: 'exif-cleaner', path: '/exif-cleaner', status: 'active' },
     ],
   },
   {
