@@ -21,6 +21,12 @@ export default async function Footer() {
           >
             {t("terms")}
           </Link>
+          <a
+            href="mailto:support@convrs.org"
+            className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
+          >
+            {t("contact")}
+          </a>
         </nav>
       </div>
     </footer>

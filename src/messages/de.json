@@ -70,7 +70,8 @@
   "Footer": {
     "copyright": "© 2026 Convrs",
     "privacy": "Datenschutzrichtlinie",
-    "terms": "Nutzungsbedingungen"
+    "terms": "Nutzungsbedingungen",
+    "contact": "support@convrs.org"
   },
   "LanguageSwitcher": {
     "label": "Sprache"
