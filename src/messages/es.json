@@ -59,7 +59,11 @@
       "sql-formatter": "Formateador/Minificador SQL",
       "text-diff": "Comparador de Textos",
       "box-shadow-generator": "Generador de CSS Box-Shadow",
-      "meta-tag-generator": "Generador de Meta Etiquetas (SEO)"
+      "meta-tag-generator": "Generador de Meta Etiquetas (SEO)",
+      "chmod-calculator": "Calculadora Chmod",
+      "js-keycode": "Visor de código de tecla JS",
+      "tailwind-palette": "Generador de paleta de colores Tailwind",
+      "url-parser": "Analizador de parámetros URL"
     },
     "comingSoon": "Próximamente",
     "theme": {
@@ -304,6 +308,22 @@
       "meta-tag-generator": {
         "title": "Generador de Meta Etiquetas (SEO)",
         "description": "Genera meta tags HTML y Open Graph con una vista previa en vivo de Google."
+      },
+      "chmod-calculator": {
+        "title": "Calculadora Chmod",
+        "description": "Convierta permisos de archivos Linux en valores chmod numéricos (755) y simbólicos (-rwxr-xr-x) al instante."
+      },
+      "js-keycode": {
+        "title": "Visor de código de tecla JS",
+        "description": "Presione cualquier tecla y vea sus valores keyCode, key y code al instante."
+      },
+      "tailwind-palette": {
+        "title": "Generador de paleta de colores Tailwind",
+        "description": "Genere tonos 50–950 compatibles con Tailwind desde cualquier color HEX y cópielos con un clic."
+      },
+      "url-parser": {
+        "title": "Analizador de parámetros URL",
+        "description": "Divida cualquier URL compleja en sus partes y parámetros de consulta en una tabla legible."
       }
     }
   }

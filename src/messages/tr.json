@@ -59,7 +59,11 @@
       "sql-formatter": "SQL Biçimlendirici & Sıkıştırıcı",
       "text-diff": "Metin Fark Bulucu",
       "box-shadow-generator": "CSS Box-Shadow Oluşturucu",
-      "meta-tag-generator": "Meta Etiket (SEO) Üretici"
+      "meta-tag-generator": "Meta Etiket (SEO) Üretici",
+      "chmod-calculator": "Chmod Hesaplayıcı",
+      "js-keycode": "JS Tuş Kodu Görüntüleyici",
+      "tailwind-palette": "Tailwind Renk Paleti Üretici",
+      "url-parser": "URL Parametre Ayrıştırıcı"
     },
     "comingSoon": "Yakında",
     "theme": {
@@ -304,6 +308,22 @@
       "meta-tag-generator": {
         "title": "Meta Etiket (SEO) Üretici",
         "description": "HTML meta ve Open Graph etiketlerini canlı Google arama önizlemesiyle üretir."
+      },
+      "chmod-calculator": {
+        "title": "Chmod Hesaplayıcı",
+        "description": "Linux dosya izinlerini anında sayısal (755) ve sembolik (-rwxr-xr-x) chmod değerlerine dönüştürün."
+      },
+      "js-keycode": {
+        "title": "JS Tuş Kodu Görüntüleyici",
+        "description": "Klavyede bastığınız her tuşun keyCode, key ve code değerlerini anında görün."
+      },
+      "tailwind-palette": {
+        "title": "Tailwind Renk Paleti Üretici",
+        "description": "Herhangi bir HEX renkten Tailwind uyumlu 50-950 tonlarını üretin ve tek tıkla kopyalayın."
+      },
+      "url-parser": {
+        "title": "URL Parametre Ayrıştırıcı",
+        "description": "Karmaşık bir URL'yi parçalarına ve sorgu parametrelerine okunaklı bir tabloya dökün."
       }
     }
   }

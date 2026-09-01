@@ -1,6 +1,7 @@
 import { Link } from '@/i18n/navigation';
 import { getTranslations } from 'next-intl/server';
 import Faq from '@/components/FAQ';
+import { categoryConfigs } from '@/config/nav';
 
 type Tool = {
   href: string;
@@ -8,56 +9,15 @@ type Tool = {
   status: 'active' | 'coming-soon';
 };
 
-const tools: Tool[] = [
-  { href: '/heic-to-jpg', nameKey: 'heic-to-jpg', status: 'active' },
-  { href: '/jpg-to-webp', nameKey: 'jpg-to-webp', status: 'active' },
-  { href: '/png-to-jpg', nameKey: 'png-to-jpg', status: 'active' },
-  { href: '/svg-to-png', nameKey: 'svg-to-png', status: 'active' },
-  { href: '/webp-to-png', nameKey: 'webp-to-png', status: 'active' },
-  { href: '/ico-to-png', nameKey: 'ico-to-png', status: 'active' },
-  { href: '/pdf-to-jpg', nameKey: 'pdf-to-jpg', status: 'active' },
-  { href: '/json-to-csv', nameKey: 'json-to-csv', status: 'active' },
-  { href: '/xml-to-json', nameKey: 'xml-to-json', status: 'active' },
-  { href: '/markdown-to-html', nameKey: 'markdown-to-html', status: 'active' },
-  { href: '/xlsx-to-csv', nameKey: 'xlsx-to-csv', status: 'active' },
-  { href: '/base64-encoder', nameKey: 'base64-encoder', status: 'active' },
-  { href: '/url-converter', nameKey: 'url-converter', status: 'active' },
-  { href: '/qr-generator', nameKey: 'qr-generator', status: 'active' },
-  { href: '/pdf-merge-split', nameKey: 'pdf-merge-split', status: 'active' },
-  { href: '/docx-to-pdf', nameKey: 'docx-to-pdf', status: 'active' },
-  { href: '/image-compressor', nameKey: 'image-compressor', status: 'active' },
-  { href: '/remove-background', nameKey: 'remove-background', status: 'active' },
-  { href: '/video-to-mp3', nameKey: 'video-to-mp3', status: 'active' },
-  { href: '/mp4-to-webm', nameKey: 'mp4-to-webm', status: 'active' },
-  { href: '/wav-to-mp3', nameKey: 'wav-to-mp3', status: 'active' },
-  { href: '/video-to-gif', nameKey: 'video-to-gif', status: 'active' },
-  { href: '/mute-video', nameKey: 'mute-video', status: 'active' },
-  { href: '/audio-trimmer', nameKey: 'audio-trimmer', status: 'active' },
-  { href: '/volume-booster', nameKey: 'volume-booster', status: 'active' },
-  { href: '/video-speed', nameKey: 'video-speed', status: 'active' },
-  { href: '/video-resizer', nameKey: 'video-resizer', status: 'active' },
-  { href: '/voice-recorder', nameKey: 'voice-recorder', status: 'active' },
-  { href: '/speech-to-text', nameKey: 'speech-to-text', status: 'active' },
-  { href: '/jwt-decoder', nameKey: 'jwt-decoder', status: 'active' },
-  { href: '/hash-generator', nameKey: 'hash-generator', status: 'active' },
-  { href: '/color-converter', nameKey: 'color-converter', status: 'active' },
-  { href: '/json-formatter', nameKey: 'json-formatter', status: 'active' },
-  { href: '/unix-timestamp', nameKey: 'unix-timestamp', status: 'active' },
-  { href: '/uuid-generator', nameKey: 'uuid-generator', status: 'active' },
-  { href: '/case-converter', nameKey: 'case-converter', status: 'active' },
-  { href: '/password-generator', nameKey: 'password-generator', status: 'active' },
-  { href: '/word-counter', nameKey: 'word-counter', status: 'active' },
-  { href: '/lorem-ipsum', nameKey: 'lorem-ipsum', status: 'active' },
-  { href: '/css-js-minifier', nameKey: 'css-js-minifier', status: 'active' },
-  { href: '/image-to-base64', nameKey: 'image-to-base64', status: 'active' },
-  { href: '/px-rem-em-converter', nameKey: 'px-rem-em-converter', status: 'active' },
-  { href: '/html-encode-decode', nameKey: 'html-encode-decode', status: 'active' },
-  { href: '/screen-viewport-checker', nameKey: 'screen-viewport-checker', status: 'active' },
-  { href: '/sql-formatter', nameKey: 'sql-formatter', status: 'active' },
-  { href: '/text-diff', nameKey: 'text-diff', status: 'active' },
-  { href: '/box-shadow-generator', nameKey: 'box-shadow-generator', status: 'active' },
-  { href: '/meta-tag-generator', nameKey: 'meta-tag-generator', status: 'active' },
-];
+// Home grid'i de Sidebar ile ayni kaynaktan (src/config/nav.ts) beslenir;
+// yeni bir arac eklendiginde burada da otomatik gorunur.
+const tools: Tool[] = categoryConfigs.flatMap((category) =>
+  category.items.map((item) => ({
+    href: item.path,
+    nameKey: item.nameKey,
+    status: item.status,
+  }))
+);
 
 export default async function Home() {
   const t = await getTranslations('Home');

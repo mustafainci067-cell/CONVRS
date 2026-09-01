@@ -59,7 +59,11 @@
       "sql-formatter": "SQL Formatter & Minifier",
       "text-diff": "Text Diff Checker",
       "box-shadow-generator": "CSS Box-Shadow Generator",
-      "meta-tag-generator": "Meta Tag (SEO) Generator"
+      "meta-tag-generator": "Meta Tag (SEO) Generator",
+      "chmod-calculator": "Chmod Calculator",
+      "js-keycode": "JS KeyCode Viewer",
+      "tailwind-palette": "Tailwind Color Palette",
+      "url-parser": "URL Parameter Parser"
     },
     "comingSoon": "Soon",
     "theme": {
@@ -304,6 +308,22 @@
       "meta-tag-generator": {
         "title": "Meta Tag (SEO) Generator",
         "description": "Generate HTML meta and Open Graph tags with a live Google search preview."
+      },
+      "chmod-calculator": {
+        "title": "Chmod Calculator",
+        "description": "Convert Linux file permissions to numeric (755) and symbolic (-rwxr-xr-x) chmod values instantly."
+      },
+      "js-keycode": {
+        "title": "JS KeyCode Viewer",
+        "description": "Press any key and see its keyCode, key and code values instantly."
+      },
+      "tailwind-palette": {
+        "title": "Tailwind Color Palette",
+        "description": "Generate Tailwind-style 50–950 shades from any HEX color and copy them with a click."
+      },
+      "url-parser": {
+        "title": "URL Parameter Parser",
+        "description": "Break any complex URL into its parts and query parameters in a readable table."
       }
     }
   }

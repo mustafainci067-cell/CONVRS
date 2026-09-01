@@ -1,70 +1,17 @@
 import type { MetadataRoute } from 'next';
+import { activeToolPaths } from '@/config/nav';
 
 const BASE_URL = 'https://convrs.org';
 
 // next-intl routing.ts ile senkron tutulmali
 const LOCALES = ['en', 'tr', 'de', 'es'] as const;
 
-// Sidebar / home grid'i ile ayni olan tum aktif arac yollari.
-// Yeni bir arac eklerken bu listeye de eklemeyi unutma.
+// Aktif arac yollari artik Sidebar'in da kullandigi merkezi liste olan
+// src/config/nav.ts'ten gelir. Yeni bir arac eklerken yalnizca oraya ekle;
+// bu liste otomatik olarak guncellenir.
 // NOT: Bu site localePrefix:'always' kullandigi icin her sayfa
 // /{locale}/... altinda sunulur; kok URL'de sayfa yoktur.
-const TOOL_PATHS = [
-  // Gorsel Dönüştürücüler
-  '/heic-to-jpg',
-  '/jpg-to-webp',
-  '/png-to-jpg',
-  '/svg-to-png',
-  '/webp-to-png',
-  '/ico-to-png',
-  '/image-compressor',
-  '/remove-background',
-  '/image-to-base64',
-  // Belge & Veri
-  '/json-to-csv',
-  '/xml-to-json',
-  '/markdown-to-html',
-  '/pdf-to-jpg',
-  '/pdf-merge-split',
-  '/docx-to-pdf',
-  '/xlsx-to-csv',
-  // Geliştirici Araçları
-  '/base64-encoder',
-  '/url-converter',
-  '/qr-generator',
-  '/jwt-decoder',
-  '/hash-generator',
-  '/color-converter',
-  '/json-formatter',
-  '/unix-timestamp',
-  '/uuid-generator',
-  '/password-generator',
-  '/css-js-minifier',
-  '/px-rem-em-converter',
-  '/html-encode-decode',
-  '/sql-formatter',
-  '/box-shadow-generator',
-  '/meta-tag-generator',
-  // Metin Araçları
-  '/case-converter',
-  '/word-counter',
-  '/lorem-ipsum',
-  '/text-diff',
-  // Diğer Araçlar
-  '/screen-viewport-checker',
-  // Video & Ses
-  '/mp4-to-webm',
-  '/wav-to-mp3',
-  '/video-to-mp3',
-  '/video-to-gif',
-  '/mute-video',
-  '/audio-trimmer',
-  '/volume-booster',
-  '/video-speed',
-  '/video-resizer',
-  '/voice-recorder',
-  '/speech-to-text',
-];
+const TOOL_PATHS: string[] = activeToolPaths;
 
 const SITEMAP_DATE = new Date('2026-09-01');
 

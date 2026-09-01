@@ -59,7 +59,11 @@
       "sql-formatter": "SQL-Formatierung & Minifier",
       "text-diff": "Text-Vergleich",
       "box-shadow-generator": "CSS Box-Shadow-Generator",
-      "meta-tag-generator": "Meta-Tag (SEO)-Generator"
+      "meta-tag-generator": "Meta-Tag (SEO)-Generator",
+      "chmod-calculator": "Chmod-Rechner",
+      "js-keycode": "JS-Tastencode-Anzeiger",
+      "tailwind-palette": "Tailwind-Farbpaletten-Generator",
+      "url-parser": "URL-Parameter-Parser"
     },
     "comingSoon": "Bald",
     "theme": {
@@ -304,6 +308,22 @@
       "meta-tag-generator": {
         "title": "Meta-Tag (SEO)-Generator",
         "description": "Generiert HTML-Meta- und Open-Graph-Tags mit einer Live-Google-Suchvorschau."
+      },
+      "chmod-calculator": {
+        "title": "Chmod-Rechner",
+        "description": "Konvertiert Linux-Dateiberechtigungen sofort in numerische (755) und symbolische (-rwxr-xr-x) Chmod-Werte."
+      },
+      "js-keycode": {
+        "title": "JS-Tastencode-Anzeiger",
+        "description": "Zeigt keyCode, key und code jeder gedrückten Taste sofort an."
+      },
+      "tailwind-palette": {
+        "title": "Tailwind-Farbpaletten-Generator",
+        "description": "Generiert Tailwind-kompatible 50–950-Töne aus jeder HEX-Farbe und kopiert sie mit einem Klick."
+      },
+      "url-parser": {
+        "title": "URL-Parameter-Parser",
+        "description": "Zerlegt jede komplexe URL in ihre Teile und Query-Parameter in einer übersichtlichen Tabelle."
       }
     }
   }
