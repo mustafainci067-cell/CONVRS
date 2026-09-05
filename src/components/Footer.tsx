@@ -1,6 +1,5 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import BuyMeCoffeeButton from "@/components/BuyMeCoffeeButton";
 
 export default async function Footer() {
   const t = await getTranslations("Footer");
@@ -23,6 +22,12 @@ export default async function Footer() {
             >
               {t("terms")}
             </Link>
+            <Link
+              href="/cookie-policy"
+              className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
+            >
+              {t("cookie")}
+            </Link>
             <a
               href="mailto:support@convrs.org"
               className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
@@ -30,7 +35,6 @@ export default async function Footer() {
               {t("contact")}
             </a>
           </div>
-          <BuyMeCoffeeButton />
         </nav>
       </div>
     </footer>

@@ -184,6 +184,10 @@ export default function MediaConverter({ mode }: { mode: MediaMode }) {
   const [isWasmLoading, setIsWasmLoading] = useState(false);
   const [wasmReady, setWasmReady] = useState(false);
   const ffmpegRef = useRef<FFmpeg | null>(null);
+  // Surden yukleme yarisi: dosya secimi (onceden yukle) ile "Convert" tiklamasi
+  // ayni anda ensureWasmEngine cagirabilir; ortak in-flight promise iki kez
+  // load() calistirmayi onler.
+  const wasmPromiseRef = useRef<Promise<FFmpeg | null> | null>(null);
 
   useEffect(() => {
     return () => {
@@ -191,26 +195,32 @@ export default function MediaConverter({ mode }: { mode: MediaMode }) {
     };
   }, [convertedUrl]);
 
-  const ensureWasmEngine = useCallback(async (): Promise<FFmpeg | null> => {
-    if (ffmpegRef.current?.loaded) return ffmpegRef.current;
+  const ensureWasmEngine = useCallback((): Promise<FFmpeg | null> => {
+    if (ffmpegRef.current?.loaded) return Promise.resolve(ffmpegRef.current);
+    if (wasmPromiseRef.current) return wasmPromiseRef.current;
+
     setIsWasmLoading(true);
-    try {
-      const { FFmpeg } = await import('@ffmpeg/ffmpeg');
-      const { toBlobURL } = await import('@ffmpeg/util');
-      if (!ffmpegRef.current) ffmpegRef.current = new FFmpeg();
-      await ffmpegRef.current.load({
-        coreURL: await toBlobURL(`${FFMPEG_CORE_BASE}/ffmpeg-core.js`, 'text/javascript'),
-        wasmURL: await toBlobURL(`${FFMPEG_CORE_BASE}/ffmpeg-core.wasm`, 'application/wasm'),
-      });
-      setWasmReady(true);
-      return ffmpegRef.current;
-    } catch (error) {
-      console.error('WASM Error:', error);
-      setErrorMsg('Dönüştürme motoru yüklenemedi. Lütfen sayfayı yenileyin.');
-      return null;
-    } finally {
-      setIsWasmLoading(false);
-    }
+    wasmPromiseRef.current = (async (): Promise<FFmpeg | null> => {
+      try {
+        const { FFmpeg } = await import('@ffmpeg/ffmpeg');
+        const { toBlobURL } = await import('@ffmpeg/util');
+        if (!ffmpegRef.current) ffmpegRef.current = new FFmpeg();
+        await ffmpegRef.current.load({
+          coreURL: await toBlobURL(`${FFMPEG_CORE_BASE}/ffmpeg-core.js`, 'text/javascript'),
+          wasmURL: await toBlobURL(`${FFMPEG_CORE_BASE}/ffmpeg-core.wasm`, 'application/wasm'),
+        });
+        setWasmReady(true);
+        return ffmpegRef.current;
+      } catch (error) {
+        console.error('WASM Error:', error);
+        setErrorMsg('Dönüştürme motoru yüklenemedi. Lütfen sayfayı yenileyin.');
+        return null;
+      } finally {
+        setIsWasmLoading(false);
+        wasmPromiseRef.current = null;
+      }
+    })();
+    return wasmPromiseRef.current;
   }, []);
 
   const resetSelection = () => {

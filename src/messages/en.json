@@ -102,7 +102,8 @@
   "Cookie": {
     "message": "We use cookies to provide you with a better experience. By using our site, you accept our ",
     "policyLink": "cookie policy",
-    "accept": "Accept"
+    "accept": "Accept",
+    "reject": "Reject"
   },
   "Dropzone": {
     "default": "Drop your {file} file here, or browse",
@@ -113,6 +114,7 @@
     "copyright": "© 2026 Convrs",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
+    "cookie": "Cookie Policy",
     "contact": "support@convrs.org"
   },
   "LanguageSwitcher": {

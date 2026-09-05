@@ -9,7 +9,7 @@
  *           vCard alan adlarina esler (Buyuk/kucuk duyarsiz).
  */
 
-import { csvToJson } from './data-convert';
+import { csvToJson, sanitizeCsvCell } from './data-convert';
 
 const CRLF = '\r\n';
 
@@ -139,7 +139,8 @@ export function vcfToCsv(vcf: string): string {
   const headers = FIELDS.map((f) => f.column);
   const escapeCell = (cell?: string) => {
     if (!cell) return '';
-    return /[",\r\n]/.test(cell) ? `"${cell.replaceAll('"', '""')}"` : cell;
+    const safe = sanitizeCsvCell(cell);
+    return /[",\r\n]/.test(safe) ? `"${safe.replaceAll('"', '""')}"` : safe;
   };
 
   const lines = [headers.join(',')];

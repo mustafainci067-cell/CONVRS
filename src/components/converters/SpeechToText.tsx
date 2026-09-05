@@ -145,6 +145,9 @@ export default function SpeechToText() {
   const watchdogRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didStartRef = useRef(false);
   const stoppingRef = useRef(false);
+  // Unmount sonrasi zamanlayicilarin yeni recognition baslatmasini onler
+  // (aksi halde continuous recognition sayfadan ayrildiktan sonra da canli kalir).
+  const mountedRef = useRef(true);
   // Otomatik yeniden baslatma (onend) icin en guncel spawn fonksiyonunu tutar.
   const latestSpawnRef = useRef<() => void>(() => {});
   // Chrome, ayni `onresult` olayini (final + interim ayrimiyla) tekrar tekrar
@@ -154,6 +157,7 @@ export default function SpeechToText() {
 
   useEffect(() => {
     return () => {
+      mountedRef.current = false;
       if (watchdogRef.current) clearTimeout(watchdogRef.current);
       recognitionRef.current?.abort();
     };
@@ -168,6 +172,8 @@ export default function SpeechToText() {
   const spawnRecognition = useCallback(() => {
     const SR = getSpeechRecognition();
     if (!SR) return;
+    // Unmount sonrasi cagrilirsa yeni recognition baslatma (mikrofon acik kalir).
+    if (!mountedRef.current) return;
 
     const prev = recognitionRef.current;
     if (prev) {
@@ -220,7 +226,7 @@ export default function SpeechToText() {
       // yeniden baslat. Mevcut transcript korunur, kaldigi yerden devam eder.
       recognitionRef.current = null;
       setTimeout(() => {
-        if (!stoppingRef.current) latestSpawnRef.current();
+        if (!stoppingRef.current && mountedRef.current) latestSpawnRef.current();
       }, 300);
     };
 

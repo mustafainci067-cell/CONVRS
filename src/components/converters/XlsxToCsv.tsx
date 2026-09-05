@@ -7,6 +7,7 @@ import {
   DOCUMENT_SIZE_LIMIT_MB,
   matchesValidFormat,
 } from '@/lib/file-validation';
+import { sanitizeCsvCell } from '@/lib/data-convert';
 import {
   ConverterHeading,
   ConverterShell,
@@ -40,6 +41,58 @@ const isCsv = (file: File) =>
     mimes: ['text/csv', 'application/vnd.ms-excel'],
     extensions: ['csv'],
   });
+
+/**
+ * Canli formül hucrelerini duz metne cevirir: hesaplanmis deger varsa onu
+ * korur, yoksa formül metnini deger yapar. Boylece uretilen xlsx/csv icinde
+ * harici formül yurutulmez ve (hesaplanmis degeri olmayan) hucreler veri
+ * kaybına ugramaz.
+ */
+function neutralizeFormulaCells(sheet: XLSX.WorkSheet): void {
+  const ref = sheet['!ref'];
+  if (!ref) return;
+  const range = XLSX.utils.decode_range(ref);
+  for (let R = range.s.r; R <= range.e.r; R++) {
+    for (let C = range.s.c; C <= range.e.c; C++) {
+      const cell = sheet[XLSX.utils.encode_cell({ r: R, c: C })];
+      if (!cell || cell.f === undefined) continue;
+
+      if (cell.v !== undefined && cell.v !== null) {
+        cell.t = typeof cell.v === 'number' ? 'n' : typeof cell.v === 'boolean' ? 'b' : 's';
+      } else {
+        cell.t = 's';
+        cell.v = cell.f;
+        cell.w = undefined;
+      }
+      delete cell.f;
+      cell.F = undefined;
+    }
+  }
+}
+
+/**
+ * CSV ciktisinda formül operatoruyle baslayan metin hucrelerini nötralize
+ * eder. (CSV yeniden acildiginda Excel/LibreOffice bu degerleri formül
+ * olarak yorumlayabilir; xlsx icinde string tip güvenli oldugu icin bu adim
+ * yalnizca CSV yonunde uygulanir.)
+ */
+function neutralizeCsvOutput(sheet: XLSX.WorkSheet): void {
+  const ref = sheet['!ref'];
+  if (!ref) return;
+  const range = XLSX.utils.decode_range(ref);
+  for (let R = range.s.r; R <= range.e.r; R++) {
+    for (let C = range.s.c; C <= range.e.c; C++) {
+      const cell = sheet[XLSX.utils.encode_cell({ r: R, c: C })];
+      if (cell && typeof cell.v === 'string') {
+        const safe = sanitizeCsvCell(cell.v);
+        if (safe !== cell.v) {
+          cell.v = safe;
+          cell.w = undefined;
+        }
+      }
+    }
+  }
+}
 
 export default function XlsxToCsv() {
   const [direction, setDirection] = useState<Direction>('xlsx-to-csv');
@@ -100,6 +153,8 @@ export default function XlsxToCsv() {
           throw new Error('Excel dosyasında sayfa bulunamadı.');
         }
 
+        neutralizeFormulaCells(workbook.Sheets[sheetName]);
+        neutralizeCsvOutput(workbook.Sheets[sheetName]);
         const rawCsv = XLSX.utils.sheet_to_csv(workbook.Sheets[sheetName]);
         // Excel'in UTF-8 CSV'yi dogru acmasi icin tek bir BOM garantile
         const csv = '﻿' + rawCsv.replace(/^﻿/, '');
@@ -115,6 +170,7 @@ export default function XlsxToCsv() {
           throw new Error('CSV dosyasında veri bulunamadı.');
         }
 
+        neutralizeFormulaCells(source.Sheets[sheetName]);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, source.Sheets[sheetName], 'Sheet1');
         const arr = XLSX.write(workbook, {

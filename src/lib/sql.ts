@@ -8,7 +8,7 @@
  *           yapilarinin yani sira cok satirli VALUES bloklarini da destekler.
  */
 
-import { parseCsv } from './data-convert';
+import { parseCsv, sanitizeCsvCell } from './data-convert';
 
 /** Tek bir CSV hucresini SQL string literali olarak kaçışlar. */
 function sqlEscape(value: string): string {
@@ -108,8 +108,9 @@ export function sqlToCsv(input: string): string {
   }
 
   const escapeCell = (cell: string) => {
-    if (/[",\r\n]/.test(cell)) return `"${cell.replaceAll('"', '""')}"`;
-    return cell;
+    const safe = sanitizeCsvCell(cell);
+    if (/[",\r\n]/.test(safe)) return `"${safe.replaceAll('"', '""')}"`;
+    return safe;
   };
 
   const linesOut = [columns.map(escapeCell).join(',')];

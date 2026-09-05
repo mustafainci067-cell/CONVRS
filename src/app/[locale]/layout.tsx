@@ -8,10 +8,10 @@ import { notFound } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import ConsentGate from "@/components/ConsentGate";
+import BuyMeCoffeeButton from "@/components/BuyMeCoffeeButton";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,22 +60,23 @@ export default async function LocaleLayout({
         >
           <NextIntlClientProvider messages={messages}>
             <Sidebar />
-            {/* Mobilde sabit hamburger butonuna yer acmak icin ust bosluk;
-                masaustunde (md ve ustu) sifirlanir */}
-            <div className="flex h-full flex-1 flex-col overflow-y-auto pt-14 md:pt-0">
+            {/* Sag-ust kosede sabit "Buy me a coffee" butonuna yer acmak icin
+                ust bosluk her ekran boyutunda korunur; buton boylece mobilde
+                hamburger, masaustunde ise converter rozetinin uzerine binmez. */}
+            <div className="flex h-full flex-1 flex-col overflow-y-auto pt-14">
               {children}
               <Footer />
             </div>
+            {/* Sitenin sag-ust kosesi. Sabit; z-30 oldugu icin mobil cekmece
+                acilinca karartmanin (z-40) altinda kalir ve hamburgerle ayni
+                hizada durur. */}
+            <BuyMeCoffeeButton className="fixed right-5 top-3 z-30 shadow-sm" />
             <CookieBanner />
           </NextIntlClientProvider>
+          {/* Rıza kapısı: analitik/reklam scriptleri yalnızca kullanıcı çerezleri
+              "Kabul Et" ile onayladıysa yüklenir. */}
+          <ConsentGate />
         </ThemeProvider>
-        <GoogleAnalytics gaId="G-B25N2GY4TC" />
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7839667460775178"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

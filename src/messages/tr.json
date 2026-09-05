@@ -102,7 +102,8 @@
   "Cookie": {
     "message": "Size daha iyi bir deneyim sunmak için çerezler kullanıyoruz. Sitemizi kullanarak ",
     "policyLink": "çerez politikamızı",
-    "accept": "Kabul Et"
+    "accept": "Kabul Et",
+    "reject": "Reddet"
   },
   "Dropzone": {
     "default": "{file} dosyanızı buraya sürükle-bırak veya gözat",
@@ -113,6 +114,7 @@
     "copyright": "© 2026 Convrs",
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
+    "cookie": "Çerez Politikası",
     "contact": "support@convrs.org"
   },
   "LanguageSwitcher": {

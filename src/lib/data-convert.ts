@@ -5,11 +5,23 @@
 
 const NEEDS_QUOTING = /[",\r\n]/;
 
-function escapeCsvValue(value: unknown): string {
-  if (value === null || value === undefined) return '';
+/**
+ * Spreadsheet formül enjeksiyonunu (CSV Injection) onler: hucre degeri bir
+ * formül operatoruyle (= + - @) basliyorsa basina koruyucu tek tirnak ekler.
+ * Boylece Excel/LibreOffice acildiginda deger formül olarak calistirilmaz.
+ * Oncesindeki bosluk/sekme da dikkate alinir (Excel import sirasinda boşlugu
+ * sıyırıp formül haline getirebilir).
+ */
+const FORMULA_LEAD = /^[ \t]*[=+\-@]/;
 
-  const raw =
-    typeof value === 'object' ? JSON.stringify(value) : String(value);
+export function sanitizeCsvCell(value: unknown): string {
+  if (value === null || value === undefined) return '';
+  const raw = typeof value === 'object' ? JSON.stringify(value) : String(value);
+  return raw && FORMULA_LEAD.test(raw) ? `'${raw}` : raw;
+}
+
+function escapeCsvValue(value: unknown): string {
+  const raw = sanitizeCsvCell(value);
 
   return NEEDS_QUOTING.test(raw) ? `"${raw.replaceAll('"', '""')}"` : raw;
 }

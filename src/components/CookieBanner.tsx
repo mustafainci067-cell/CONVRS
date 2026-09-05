@@ -3,24 +3,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-
-const STORAGE_KEY = 'convrs-cookie-consent';
+import { getConsent, setConsent } from '@/lib/consent';
 
 export default function CookieBanner() {
   const [show, setShow] = useState(false);
   const t = useTranslations('Cookie');
 
-  // İlk render'dan sonra localStorage okunur; empty state ile server arasında
+  // İlk render'dan sonra onay durumu okunur; empty state ile server arasında
   // hydration uyumsuzluğu oluşmaz (banner yalnızca istemcide görünür).
   useEffect(() => {
-    let hidden = false;
-    try {
-      hidden = Boolean(localStorage.getItem(STORAGE_KEY));
-    } catch {
-      // localStorage erişilemezse banner her seferinde gösterilir (güvenli varsayılan)
-      hidden = false;
-    }
-    if (!hidden) {
+    // localStorage erişilemezse banner her seferinde gösterilir (güvenli varsayılan)
+    const consent = getConsent();
+    if (consent === null) {
       // localStorage yalnızca hydration sonrası okunabilen harici bir sistemdir;
       // banner görünürlüğünü buradan ayarlamak zorunludur.
       // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -29,11 +23,12 @@ export default function CookieBanner() {
   }, []);
 
   const handleAccept = () => {
-    try {
-      localStorage.setItem(STORAGE_KEY, 'accepted');
-    } catch {
-      // kaydetme başarısız olsa bile banner'ı kapat; tercih oturum boyunca geçerli
-    }
+    setConsent('accepted');
+    setShow(false);
+  };
+
+  const handleReject = () => {
+    setConsent('rejected');
     setShow(false);
   };
 
@@ -45,14 +40,21 @@ export default function CookieBanner() {
         <p className="flex-1 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
           {t('message')}
           <Link
-            href="/privacy-policy"
+            href="/cookie-policy"
             className="font-medium text-zinc-900 underline underline-offset-2 transition-colors hover:text-emerald-600 dark:text-zinc-100 dark:hover:text-emerald-400"
           >
             {t('policyLink')}
           </Link>
           .
         </p>
-        <div className="flex w-full shrink-0 items-center justify-end gap-4 sm:w-auto">
+        <div className="flex w-full shrink-0 items-center justify-end gap-3 sm:w-auto">
+          <button
+            type="button"
+            onClick={handleReject}
+            className="rounded-xl border border-zinc-300 bg-transparent px-5 py-2.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-200/60 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+          >
+            {t('reject')}
+          </button>
           <button
             type="button"
             onClick={handleAccept}
