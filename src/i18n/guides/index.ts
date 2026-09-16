@@ -22,8 +22,14 @@ import hashFunctionGuide from "./hash-function-guide";
 import base64Guide from "./base64-guide";
 import videoToGifGuide from "./video-to-gif-guide";
 import qrCodeGuide from "./qr-code-guide";
+import colorConversionGuide from "./color-conversion-guide";
+import audioFormatsQualityGuide from "./audio-formats-quality-guide";
+import htmlEncodingGuide from "./html-encoding-guide";
 
 export const guides: GuideDefinition[] = [
+  audioFormatsQualityGuide,
+  htmlEncodingGuide,
+  colorConversionGuide,
   clientSideProcessingPrivacy,
   webassemblyBrowserCapabilities,
   secureFileConversionGuide,
