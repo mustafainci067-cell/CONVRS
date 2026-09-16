@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import JwtDecoder from '@/components/converters/JwtDecoder';
-
-export const metadata: Metadata = {
-  title: 'JWT Decoder — Convrs',
-  description:
-    'Decode a JWT token and read its Header and Payload as formatted JSON, 100% client-side.',
-};
+export const generateMetadata = generateToolMetadata("/jwt-decoder");
 
 export default function JwtDecoderPage() {
-  return <JwtDecoder />;
+  return (
+    <>
+      <JwtDecoder />
+      <ToolJsonLd path="/jwt-decoder" />
+      <ToolSeoContent path="/jwt-decoder" />
+      <SEOContentBlock path="/jwt-decoder" />
+    </>
+  );
 }
+

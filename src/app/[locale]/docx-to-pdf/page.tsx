@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import DocxToPdf from '@/components/converters/DocxToPdf';
-
-export const metadata: Metadata = {
-  title: 'DOCX to PDF — Convrs',
-  description:
-    'Read a Word (.docx) document and typeset its text into a PDF with mammoth and pdf-lib, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/docx-to-pdf");
 
 export default function DocxToPdfPage() {
-  return <DocxToPdf />;
+  return (
+    <>
+      <DocxToPdf />
+      <ToolJsonLd path="/docx-to-pdf" />
+      <ToolSeoContent path="/docx-to-pdf" />
+      <SEOContentBlock path="/docx-to-pdf" />
+    </>
+  );
 }
+

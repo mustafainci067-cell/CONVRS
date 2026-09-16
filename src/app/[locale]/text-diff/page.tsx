@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import TextDiff from '@/components/converters/TextDiff';
-
-export const metadata: Metadata = {
-  title: 'Text Diff Checker — Convrs',
-  description:
-    'Compare two texts and highlight added, removed and changed lines side by side, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/text-diff");
 
 export default function TextDiffPage() {
-  return <TextDiff />;
+  return (
+    <>
+      <TextDiff />
+      <ToolJsonLd path="/text-diff" />
+      <ToolSeoContent path="/text-diff" />
+      <SEOContentBlock path="/text-diff" />
+    </>
+  );
 }
+

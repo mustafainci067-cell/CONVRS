@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ColorPaletteExtractor from '@/components/converters/ColorPaletteExtractor';
-
-export const metadata: Metadata = {
-  title: 'Color Palette Extractor — Convrs',
-  description:
-    'Extract the dominant colors from any image and get a beautiful palette with HEX codes, plus exportable CSS variables — entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/color-palette-extractor");
 
 export default function ColorPaletteExtractorPage() {
-  return <ColorPaletteExtractor />;
+  return (
+    <>
+      <ColorPaletteExtractor />
+      <ToolJsonLd path="/color-palette-extractor" />
+      <ToolSeoContent path="/color-palette-extractor" />
+      <SEOContentBlock path="/color-palette-extractor" />
+    </>
+  );
 }
+

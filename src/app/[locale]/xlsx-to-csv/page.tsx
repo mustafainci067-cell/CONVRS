@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import XlsxToCsv from '@/components/converters/XlsxToCsv';
-
-export const metadata: Metadata = {
-  title: 'XLSX ↔ CSV — Convrs',
-  description:
-    'Convert Excel (.xlsx) files to CSV, or CSV back to Excel — with SheetJS. Runs 100% in your browser, no upload.',
-};
+export const generateMetadata = generateToolMetadata("/xlsx-to-csv");
 
 export default function XlsxToCsvPage() {
-  return <XlsxToCsv />;
+  return (
+    <>
+      <XlsxToCsv />
+      <ToolJsonLd path="/xlsx-to-csv" />
+      <ToolSeoContent path="/xlsx-to-csv" />
+      <SEOContentBlock path="/xlsx-to-csv" />
+    </>
+  );
 }

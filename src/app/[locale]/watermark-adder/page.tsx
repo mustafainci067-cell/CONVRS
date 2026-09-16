@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import WatermarkAdder from '@/components/converters/WatermarkAdder';
-
-export const metadata: Metadata = {
-  title: 'Watermark Adder — Convrs',
-  description:
-    'Add a text watermark to your images with custom text, color, opacity, size and position — entirely in your browser.',
-};
+export const generateMetadata = generateToolMetadata("/watermark-adder");
 
 export default function WatermarkAdderPage() {
-  return <WatermarkAdder />;
+  return (
+    <>
+      <WatermarkAdder />
+      <ToolJsonLd path="/watermark-adder" />
+      <ToolSeoContent path="/watermark-adder" />
+      <SEOContentBlock path="/watermark-adder" />
+    </>
+  );
 }
+

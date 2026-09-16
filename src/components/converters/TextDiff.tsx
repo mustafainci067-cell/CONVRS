@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { ConverterShell } from './ConverterShell';
+import { ConverterHeading, ConverterShell } from './ConverterShell';
 
 type DiffLine = {
   type: 'added' | 'removed' | 'unchanged';
@@ -81,6 +81,10 @@ export default function TextDiff() {
 
   return (
     <ConverterShell from="Original" to="Changed" badge="Diff">
+      <ConverterHeading
+        title="Text Diff Checker"
+        description="Compare two texts side by side with highlighted added, removed and changed lines."
+      />
       <div className="space-y-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>

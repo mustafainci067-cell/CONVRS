@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ImageConverter from '@/components/converters/ImageConverter';
-
-export const metadata: Metadata = {
-  title: 'WebP to PNG Converter — Convrs',
-  description:
-    'Convert WebP images to lossless, transparent PNG with HTML5 Canvas. 100% client-side, no upload.',
-};
+export const generateMetadata = generateToolMetadata("/webp-to-png");
 
 export default function WebpToPngPage() {
-  return <ImageConverter mode="webp-to-png" />;
+  return (
+    <>
+      <ImageConverter mode="webp-to-png" />
+      <ToolJsonLd path="/webp-to-png" />
+      <ToolSeoContent path="/webp-to-png" />
+      <SEOContentBlock path="/webp-to-png" />
+    </>
+  );
 }

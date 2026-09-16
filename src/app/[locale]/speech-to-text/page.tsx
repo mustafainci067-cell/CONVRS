@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import SpeechToText from '@/components/converters/SpeechToText';
-
-export const metadata: Metadata = {
-  title: 'Speech to Text — Convrs',
-  description:
-    'Transcribe your speech in real-time with the browser Web Speech API. Copy the transcribed text with one click. 100% client-side.',
-};
+export const generateMetadata = generateToolMetadata("/speech-to-text");
 
 export default function SpeechToTextPage() {
-  return <SpeechToText />;
+  return (
+    <>
+      <SpeechToText />
+      <ToolJsonLd path="/speech-to-text" />
+      <ToolSeoContent path="/speech-to-text" />
+      <SEOContentBlock path="/speech-to-text" />
+    </>
+  );
 }

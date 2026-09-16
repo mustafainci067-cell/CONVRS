@@ -1,4 +1,47 @@
 {
+  "Seo": {
+    "homeTitle": "Kostenloser Online-Dateikonverter — 100 % im Browser, ohne Upload | Convrs",
+    "homeDescription": "Konvertieren Sie HEIC, JPG, PNG, WebP, PDF, DOCX, XLSX, MP4, MP3 und über 60 Formate kostenlos und 100 % in Ihrem Browser. Ihre Dateien verlassen niemals Ihr Gerät.",
+    "home": "Startseite"
+  },
+  "ToolContent": {
+    "about": "Über dieses Tool",
+    "jpg-to-webp": {
+      "title": "JPG-zu-WebP-Konverter — kleinere Bilder, 100 % im Browser",
+      "description": [
+        "Konvertieren Sie JPG-Fotos in Googles WebP-Format — kostenlos, unbegrenzt und vollständig in Ihrem Browser. WebP erzeugt bei gleicher Bildqualität durchgehend kleinere Dateien als JPG, sodass Ihre Seiten schneller laden, Ihre Bandbreitenkosten sinken und Ihre Besucher ein besseres Erlebnis haben. Es gibt nichts zu installieren und kein Konto anzulegen; Sie öffnen das Tool, ziehen Ihre Bilder hinein und laden die WebP-Ergebnisse herunter.",
+        "Alles geschieht auf Ihrem Gerät. Convrs nutzt einen WebAssembly-Codec, der Ihre Fotos direkt in dem Browser-Tab dekodiert und neu kodiert, in dem Sie Ihre Dateien auswählen. Ihre Bilder werden nie auf einen Server hochgeladen, nie gespeichert und mit niemandem geteilt. Keine Anmeldung, kein Tracking, keine versteckte Cloud-Verarbeitung — sobald die Seite geladen ist, funktioniert die Konvertierung sogar ganz ohne Internetverbindung.",
+        "Warum JPG in WebP konvertieren? WebP ist ein modernes Bildformat von Google, das sowohl verlustbehaftete als auch verlustfreie Komprimierung unterstützt. Bei typischen Fotos ist eine gut eingestellte WebP-Datei oft 25–35 % kleiner als das Äquivalent in JPG. Das bedeutet messbar schnellere Seitenladezeiten, weniger Datenverbrauch auf Mobilgeräten und bessere Core Web Vitals — die Signale, mit denen Suchmaschinen Seiten bewerten.",
+        "Der Konverter ist ideal für Webentwickler, Blogger, Online-Shops und Fotografen, die Bilder im Web veröffentlichen. Verwenden Sie WebP für die Auslieferung — Hero-Bilder, Galerien, Produktfotos und Hintergründe — und behalten Sie für die Bearbeitung ein Original in RAW oder JPG Ihrer Kamera. Mit dem Qualitätsregler können Sie Dateigröße und Bildqualität abwägen und erhalten so das kleinste Bild, das trotzdem großartig aussieht."
+      ],
+      "features": [
+        "100 % clientseitig — die Konvertierung läuft lokal über eine WebAssembly-Engine; Ihre Datei verlässt niemals Ihr Gerät.",
+        "Keine Konten, keine Wasserzeichen, keine Warteschlange — einfach konvertieren und herunterladen.",
+        "Bis zu 25–35 % kleinere Dateien als JPG bei gleicher Bildqualität.",
+        "Einstellbare Qualität und ein verlustfreier Modus für pixelgenaue Ergebnisse.",
+        "Stapelgeeignet — konvertieren Sie so viele JPGs, wie Sie möchten, nacheinander.",
+        "Datenschutz durch Design — keine Server-Roundtrips, keine Protokolle, nichts zu löschen."
+      ],
+      "faqs": [
+        {
+          "question": "Wird mein JPG auf einen Server hochgeladen?",
+          "answer": "Nein. Die Konvertierung wird von einem WebAssembly-Codec in Ihrem Browser ausgeführt. Ihr Bild wird lokal auf Ihrem Gerät verarbeitet und niemals über das Netzwerk übertragen — es gibt nichts abzufangen, zu speichern oder zurückzuziehen."
+        },
+        {
+          "question": "Behält WebP meine Bildqualität?",
+          "answer": "Bei gleicher Bildqualität ist WebP meist 25–35 % leichter als JPG. Passen Sie den Qualitätsregler an Ihren Geschmack an — erhöhen Sie ihn für nahezu verlustfreie Details oder senken Sie ihn für die kleinstmögliche Datei."
+        },
+        {
+          "question": "Wann sollte ich WebP statt JPG verwenden?",
+          "answer": "Wählen Sie WebP für alles, was über das Web ausgeliefert wird: Produktbilder, Blogfotos, Galerien, Hintergründe. Bewahren Sie ein Original-JPG oder RAW-Master offline zur Bearbeitung auf. Dank der On-Device-Konvertierung mit Convrs können Sie WebP-Kopien jederzeit erstellen, ohne ein einziges Pixel hochzuladen."
+        },
+        {
+          "question": "Gibt es Grenzen bei Dateigröße oder Anzahl der Bilder?",
+          "answer": "Nein. Da die Konvertierung lokal erfolgt, bestimmen Sie die Grenzen. Dateien bis 20 MB werden unterstützt, und Sie können so viele Bilder konvertieren, wie Sie möchten — nichts wird auf einem Server eingereiht, berechnet oder protokolliert."
+        }
+      ]
+    }
+  },
   "Sidebar": {
     "openNav": "Navigationsmenü öffnen",
     "collapse": "Seitenleiste einklappen",
@@ -83,7 +126,9 @@
       "toDark": "Zum dunklen Modus wechseln",
       "lightMode": "Heller Modus",
       "darkMode": "Dunkler Modus"
-    }
+    },
+    "guides": "Ratgeber",
+    "mainNav": "Hauptnavigation"
   },
   "Faq": {
     "title": "Häufig gestellte Fragen",
@@ -115,7 +160,17 @@
     "privacy": "Datenschutzrichtlinie",
     "terms": "Nutzungsbedingungen",
     "cookie": "Cookie-Richtlinie",
-    "contact": "support@convrs.org"
+    "about": "Über uns",
+    "contactPage": "Kontakt",
+    "contact": "support@convrs.org",
+    "guides": "Ratgeber"
+  },
+  "Guides": {
+    "eyebrow": "Blog",
+    "title": "Ratgeber & Artikel",
+    "description": "Ausführliche Erklärungen zu client-seitiger Verarbeitung, WebAssembly und sicheren Dateikonvertierungen — für das browser-native, datenschutzbewusste Web.",
+    "readMore": "Ratgeber lesen",
+    "backToGuides": "Alle Ratgeber"
   },
   "LanguageSwitcher": {
     "label": "Sprache"
@@ -393,5 +448,18 @@
     "title": "Seite nicht gefunden",
     "description": "Die gesuchte Seite existiert nicht oder wurde verschoben. Überprüfen Sie die URL oder kehren Sie zur Startseite zurück.",
     "home": "Zur Startseite"
+  },
+  "Ads": {
+    "adLabel": "Werbung",
+    "sponsoredLabel": "Gesponsert",
+    "affiliateDisclosure": "Diese Seite enthält Affiliate-Links. Wenn Sie darüber einkaufen, kann die Website eine Provision erhalten, ohne dass Ihnen zusätzliche Kosten entstehen."
+  },
+  "A11y": {
+    "breadcrumb": "Breadcrumb-Navigation",
+    "relatedTools": "Verwandte Werkzeuge",
+    "skipToContent": "Zum Inhalt springen",
+    "mainNav": "Hauptnavigation",
+    "footerNav": "Footer-Navigation",
+    "legalNav": "Rechtliches"
   }
 }

@@ -1,15 +1,24 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
+import { getRouteLocale } from "@/i18n/locale";
 
 export default async function Footer() {
-  const t = await getTranslations("Footer");
+  const locale = await getRouteLocale();
+  const t = await getTranslations({ locale, namespace: "Footer" });
+  const tA11y = await getTranslations({ locale, namespace: "A11y" });
 
   return (
     <footer className="mt-auto border-t border-zinc-200 dark:border-zinc-800/60">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center justify-between gap-4 px-8 py-6 font-mono text-xs text-zinc-500 dark:text-zinc-400 sm:flex-row">
         <span>{t("copyright")}</span>
-        <nav className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-          <div className="flex items-center gap-6">
+        <nav aria-label={tA11y("footerNav")} className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <Link
+              href="/about"
+              className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
+            >
+              {t("about")}
+            </Link>
             <Link
               href="/privacy-policy"
               className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
@@ -28,12 +37,18 @@ export default async function Footer() {
             >
               {t("cookie")}
             </Link>
-            <a
-              href="mailto:support@convrs.org"
+            <Link
+              href="/contact"
               className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
             >
-              {t("contact")}
-            </a>
+              {t("contactPage")}
+            </Link>
+            <Link
+              href="/guides"
+              className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
+            >
+              {t("guides")}
+            </Link>
           </div>
         </nav>
       </div>

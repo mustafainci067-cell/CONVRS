@@ -18,7 +18,8 @@ export async function generateMetadata({
   const { locale } = await params;
   const doc = termsContent[locale as Locale] ?? termsContent.en;
   return {
-    title: `${doc.title} — Convrs`,
+    // Marka son eki layout'taki title.template ("%s — Convrs") tarafindan eklenir.
+    title: doc.title,
     description: descriptions[locale] ?? descriptions.en,
   };
 }

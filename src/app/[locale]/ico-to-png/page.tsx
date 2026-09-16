@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ImageConverter from '@/components/converters/ImageConverter';
-
-export const metadata: Metadata = {
-  title: 'ICO ↔ PNG Converter — Convrs',
-  description:
-    'Convert ICO icon files to crisp, transparent PNG — or build an ICO icon from a PNG. Runs entirely on your device.',
-};
+export const generateMetadata = generateToolMetadata("/ico-to-png");
 
 export default function IcoToPngPage() {
-  return <ImageConverter mode="ico-to-png" />;
+  return (
+    <>
+      <ImageConverter mode="ico-to-png" />
+      <ToolJsonLd path="/ico-to-png" />
+      <ToolSeoContent path="/ico-to-png" />
+      <SEOContentBlock path="/ico-to-png" />
+    </>
+  );
 }

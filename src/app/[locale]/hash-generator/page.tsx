@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import HashGenerator from '@/components/converters/HashGenerator';
-
-export const metadata: Metadata = {
-  title: 'Hash Generator — Convrs',
-  description:
-    'Generate SHA-1, SHA-256 and SHA-512 hashes of any text using the browser Web Crypto API.',
-};
+export const generateMetadata = generateToolMetadata("/hash-generator");
 
 export default function HashGeneratorPage() {
-  return <HashGenerator />;
+  return (
+    <>
+      <HashGenerator />
+      <ToolJsonLd path="/hash-generator" />
+      <ToolSeoContent path="/hash-generator" />
+      <SEOContentBlock path="/hash-generator" />
+    </>
+  );
 }
+

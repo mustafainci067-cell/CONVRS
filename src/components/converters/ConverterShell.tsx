@@ -29,6 +29,7 @@ export function ConverterShell({
   badge?: React.ReactNode;
   children: React.ReactNode;
 }) {
+  const tA11y = useTranslations('A11y');
   return (
     <main className="flex min-h-full flex-col items-center justify-between p-5 font-sans selection:bg-zinc-200 sm:p-8 dark:selection:bg-zinc-800">
       <header className="flex w-full max-w-4xl items-center justify-between border-b border-zinc-200 py-4 dark:border-zinc-800/60">
@@ -46,7 +47,7 @@ export function ConverterShell({
 
       <footer className="mt-8 flex w-full max-w-4xl flex-col items-center justify-between gap-4 border-t border-zinc-200 py-6 text-xs text-zinc-500 md:flex-row dark:border-zinc-800/60">
         <p>© 2026 Convrs. Built for performance and privacy.</p>
-        <nav className="flex gap-6 font-mono">
+        <nav aria-label={tA11y('legalNav')} className="flex gap-6 font-mono">
           <Link
             href="/privacy-policy"
             className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"

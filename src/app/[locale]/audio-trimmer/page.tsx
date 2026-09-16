@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import VideoAudioTools from '@/components/converters/VideoAudioTools';
-
-export const metadata: Metadata = {
-  title: 'Audio Trimmer — Convrs',
-  description:
-    'Trim your audio files (MP3/WAV) by specifying start and end times. Extract only the part you need. 100% client-side processing.',
-};
+export const generateMetadata = generateToolMetadata("/audio-trimmer");
 
 export default function AudioTrimmerPage() {
-  return <VideoAudioTools mode="audio-trimmer" />;
+  return (
+    <>
+      <VideoAudioTools mode="audio-trimmer" />
+      <ToolJsonLd path="/audio-trimmer" />
+      <ToolSeoContent path="/audio-trimmer" />
+      <SEOContentBlock path="/audio-trimmer" />
+    </>
+  );
 }
+

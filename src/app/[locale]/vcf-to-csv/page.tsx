@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import VcfToCsv from '@/components/converters/VcfToCsv';
-
-export const metadata: Metadata = {
-  title: 'VCF (vCard) ↔ CSV — Convrs',
-  description:
-    'Convert a vCard (.vcf) contact export to a CSV table, or a CSV contact list to an importable .vcf file. Runs entirely in your browser.',
-};
+export const generateMetadata = generateToolMetadata("/vcf-to-csv");
 
 export default function VcfToCsvPage() {
-  return <VcfToCsv />;
+  return (
+    <>
+      <VcfToCsv />
+      <ToolJsonLd path="/vcf-to-csv" />
+      <ToolSeoContent path="/vcf-to-csv" />
+      <SEOContentBlock path="/vcf-to-csv" />
+    </>
+  );
 }
+

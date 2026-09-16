@@ -1,7 +1,12 @@
 import { Link } from '@/i18n/navigation';
 import { getTranslations } from 'next-intl/server';
+import { getRouteLocale } from '@/i18n/locale';
+import AdUnit from '@/components/AdUnit';
+import JsonLd from '@/components/JsonLd';
+import { AD_SLOT_HOMEPAGE } from '@/lib/ads';
 import Faq from '@/components/FAQ';
 import { categoryConfigs } from '@/config/nav';
+import { SITE_URL } from '@/i18n/routing';
 
 type Tool = {
   href: string;
@@ -20,8 +25,9 @@ const tools: Tool[] = categoryConfigs.flatMap((category) =>
 );
 
 export default async function Home() {
-  const t = await getTranslations('Home');
-  const tFaq = await getTranslations('Faq');
+  const locale = await getRouteLocale();
+  const t = await getTranslations({ locale, namespace: 'Home' });
+  const tFaq = await getTranslations({ locale, namespace: 'Faq' });
 
   const toolName = (key: string) => t(`tools.${key}.title`);
   const toolDescription = (key: string) => t(`tools.${key}.description`);
@@ -59,13 +65,25 @@ export default async function Home() {
     })),
   };
 
+  // SEO: ItemList — ana sayfadaki arac grid'i icin structured data.
+  const activeTools = tools.filter((t) => t.status === 'active');
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Convrs — Free Online Privacy-First Tools',
+    numberOfItems: activeTools.length,
+    itemListElement: activeTools.map((tool, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${SITE_URL}/${locale}${tool.href}`,
+      name: toolName(tool.nameKey),
+    })),
+  };
+
   return (
     <main className="flex flex-1 flex-col items-center p-5 font-sans sm:p-8">
       <div className="w-full max-w-3xl">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
+        <JsonLd data={[faqJsonLd, itemListJsonLd]} />
         <section className="flex flex-col items-center gap-4 pt-8 pb-12 text-center sm:pt-12 sm:pb-16">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
             Convrs
@@ -120,6 +138,10 @@ export default async function Home() {
             )
           )}
         </div>
+
+        {/* Faz 4 — Ana sayfa reklam yuvası: araç tablosu ile SSS arasında.
+            Config'de slot id yoksa hiç görünmez (slot idsiz üretim güvenli). */}
+        <AdUnit slot={AD_SLOT_HOMEPAGE} format="rectangle" className="mt-10" />
 
         <Faq />
       </div>

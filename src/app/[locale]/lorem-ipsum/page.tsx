@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import LoremIpsum from '@/components/converters/LoremIpsum';
-
-export const metadata: Metadata = {
-  title: 'Lorem Ipsum Generator — Convrs',
-  description:
-    'Generate placeholder Lorem Ipsum paragraphs, sentences or words instantly, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/lorem-ipsum");
 
 export default function LoremIpsumPage() {
-  return <LoremIpsum />;
+  return (
+    <>
+      <LoremIpsum />
+      <ToolJsonLd path="/lorem-ipsum" />
+      <ToolSeoContent path="/lorem-ipsum" />
+      <SEOContentBlock path="/lorem-ipsum" />
+    </>
+  );
 }

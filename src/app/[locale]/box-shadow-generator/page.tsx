@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import BoxShadowGenerator from '@/components/converters/BoxShadowGenerator';
-
-export const metadata: Metadata = {
-  title: 'CSS Box-Shadow Generator — Convrs',
-  description:
-    'Visually create CSS box-shadow with live preview, adjustable sliders and one-click copy, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/box-shadow-generator");
 
 export default function BoxShadowGeneratorPage() {
-  return <BoxShadowGenerator />;
+  return (
+    <>
+      <BoxShadowGenerator />
+      <ToolJsonLd path="/box-shadow-generator" />
+      <ToolSeoContent path="/box-shadow-generator" />
+      <SEOContentBlock path="/box-shadow-generator" />
+    </>
+  );
 }
+

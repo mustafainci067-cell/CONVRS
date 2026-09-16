@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import DataConverter from '@/components/converters/DataConverter';
-
-export const metadata: Metadata = {
-  title: 'JSON to CSV Converter — Convrs',
-  description:
-    'Convert JSON to CSV and CSV to JSON in your browser. No backend, no API, your data never leaves the device.',
-};
+export const generateMetadata = generateToolMetadata("/json-to-csv");
 
 export default function JsonToCsvPage() {
-  return <DataConverter mode="json-to-csv" />;
+  return (
+    <>
+      <DataConverter mode="json-to-csv" />
+      <ToolJsonLd path="/json-to-csv" />
+      <ToolSeoContent path="/json-to-csv" />
+      <SEOContentBlock path="/json-to-csv" />
+    </>
+  );
 }
+

@@ -1,3 +1,7 @@
+# Convrs — convrs.org
+# Site tamamen client-side calisir; gizlenmesi gereken ozel bir yol yoktur.
+# Tum sayfalar dizinlenebilir.
+
 User-agent: *
 Allow: /
 

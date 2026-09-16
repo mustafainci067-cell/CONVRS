@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import CsvToSql from '@/components/converters/CsvToSql';
-
-export const metadata: Metadata = {
-  title: 'CSV ↔ SQL — Convrs',
-  description:
-    'Turn a CSV file into INSERT SQL statements (with a custom table name), or parse SQL INSERTs back into CSV. Runs entirely in your browser.',
-};
+export const generateMetadata = generateToolMetadata("/csv-to-sql");
 
 export default function CsvToSqlPage() {
-  return <CsvToSql />;
+  return (
+    <>
+      <CsvToSql />
+      <ToolJsonLd path="/csv-to-sql" />
+      <ToolSeoContent path="/csv-to-sql" />
+      <SEOContentBlock path="/csv-to-sql" />
+    </>
+  );
 }
+

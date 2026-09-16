@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { activeToolPaths } from '@/config/nav';
+import { guideSlugs } from '@/i18n/guides';
 
 const BASE_URL = 'https://convrs.org';
 
@@ -12,6 +13,18 @@ const LOCALES = ['en', 'tr', 'de', 'es'] as const;
 // NOT: Bu site localePrefix:'always' kullandigi icin her sayfa
 // /{locale}/... altinda sunulur; kok URL'de sayfa yoktur.
 const TOOL_PATHS: string[] = activeToolPaths;
+
+// Yasal / bilgilendirme sayfalari (tum dillerde). AdSense incelemesi ve SEO icin gerekli.
+const INFO_PATHS: string[] = [
+  '/about',
+  '/privacy-policy',
+  '/terms-of-service',
+  '/cookie-policy',
+  '/contact',
+];
+
+// /guides blog sayfalari — indeks + rehber slug'lari (slug tum dillerde ayni).
+const GUIDE_PATHS: string[] = ['/guides', ...guideSlugs.map((slug) => `/guides/${slug}`)];
 
 const SITEMAP_DATE = new Date('2026-09-01');
 
@@ -48,6 +61,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified,
         changeFrequency: 'weekly',
         priority: 0.8,
+        alternates: alternates(path),
+      });
+    }
+  }
+
+  // Bilgilendirme sayfalari (her dil × her sayfa; priority 0.6)
+  for (const path of INFO_PATHS) {
+    for (const locale of LOCALES) {
+      entries.push({
+        url: `${BASE_URL}/${locale}${path}`,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.6,
+        alternates: alternates(path),
+      });
+    }
+  }
+
+  // Rehber/blog sayfalari (her dil × her slug; priority 0.7)
+  for (const path of GUIDE_PATHS) {
+    for (const locale of LOCALES) {
+      entries.push({
+        url: `${BASE_URL}/${locale}${path}`,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.7,
         alternates: alternates(path),
       });
     }

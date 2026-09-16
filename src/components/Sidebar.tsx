@@ -211,7 +211,7 @@ export default function Sidebar() {
           </button>
         </div>
 
-        <nav className="flex-1 space-y-6 overflow-y-auto p-4">
+        <nav aria-label={t('mainNav')} className="flex-1 space-y-6 overflow-y-auto p-4">
           {categoryConfigs.map((category) => (
             <div key={category.titleKey} className="space-y-2">
               {isOpen && (
@@ -268,6 +268,25 @@ export default function Sidebar() {
             </div>
           ))}
         </nav>
+
+        {/* Guides (Blog) linki — araç kategorilerinin altında, dil/tema seçimlerinin üstünde */}
+        <div className="border-t border-zinc-200 px-4 pt-4 pb-0 dark:border-zinc-800/60">
+          <Link
+            href="/guides"
+            onClick={() => setMobileOpen(false)}
+            className={cn(
+              'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
+              'text-zinc-600 hover:bg-zinc-200/60 hover:text-zinc-900',
+              'dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-200',
+              !isOpen && 'justify-center px-0'
+            )}
+          >
+            {isOpen && <span className="flex-1 truncate">{t('guides')}</span>}
+            {!isOpen && (
+              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+            )}
+          </Link>
+        </div>
 
         <div className="space-y-2 border-t border-zinc-200 p-4 dark:border-zinc-800/60">
           <LanguageSwitcher isOpen={isOpen} />

@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import CssJsMinifier from '@/components/converters/CssJsMinifier';
-
-export const metadata: Metadata = {
-  title: 'CSS / JS Minifier — Convrs',
-  description:
-    'Strip comments and collapse whitespace from CSS or JavaScript with regex, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/css-js-minifier");
 
 export default function CssJsMinifierPage() {
-  return <CssJsMinifier />;
+  return (
+    <>
+      <CssJsMinifier />
+      <ToolJsonLd path="/css-js-minifier" />
+      <ToolSeoContent path="/css-js-minifier" />
+      <SEOContentBlock path="/css-js-minifier" />
+    </>
+  );
 }

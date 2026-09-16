@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import CaseConverter from '@/components/converters/CaseConverter';
-
-export const metadata: Metadata = {
-  title: 'Case Converter — Convrs',
-  description:
-    'Instantly convert text to UPPERCASE, lowercase, Title Case, camelCase and snake_case, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/case-converter");
 
 export default function CaseConverterPage() {
-  return <CaseConverter />;
+  return (
+    <>
+      <CaseConverter />
+      <ToolJsonLd path="/case-converter" />
+      <ToolSeoContent path="/case-converter" />
+      <SEOContentBlock path="/case-converter" />
+    </>
+  );
 }
+

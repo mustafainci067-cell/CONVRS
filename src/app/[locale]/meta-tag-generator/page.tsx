@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import MetaTagGenerator from '@/components/converters/MetaTagGenerator';
-
-export const metadata: Metadata = {
-  title: 'Meta Tag (SEO) Generator — Convrs',
-  description:
-    'Generate HTML meta tags for SEO and Open Graph with a live Google search preview, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/meta-tag-generator");
 
 export default function MetaTagGeneratorPage() {
-  return <MetaTagGenerator />;
+  return (
+    <>
+      <MetaTagGenerator />
+      <ToolJsonLd path="/meta-tag-generator" />
+      <ToolSeoContent path="/meta-tag-generator" />
+      <SEOContentBlock path="/meta-tag-generator" />
+    </>
+  );
 }
+

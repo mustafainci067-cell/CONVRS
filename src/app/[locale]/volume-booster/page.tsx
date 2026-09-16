@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import VideoAudioTools from '@/components/converters/VideoAudioTools';
-
-export const metadata: Metadata = {
-  title: 'Volume Booster — Convrs',
-  description:
-    'Boost the volume of quiet audio files by 1.5x, 2x, or 3x. Supports MP3 and WAV formats. 100% client-side processing.',
-};
+export const generateMetadata = generateToolMetadata("/volume-booster");
 
 export default function VolumeBoosterPage() {
-  return <VideoAudioTools mode="volume-booster" />;
+  return (
+    <>
+      <VideoAudioTools mode="volume-booster" />
+      <ToolJsonLd path="/volume-booster" />
+      <ToolSeoContent path="/volume-booster" />
+      <SEOContentBlock path="/volume-booster" />
+    </>
+  );
 }
+

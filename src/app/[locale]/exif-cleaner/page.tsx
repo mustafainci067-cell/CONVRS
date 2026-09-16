@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ExifCleaner from '@/components/converters/ExifCleaner';
-
-export const metadata: Metadata = {
-  title: 'EXIF Metadata Cleaner — Convrs',
-  description:
-    'Inspect and strip hidden EXIF metadata like GPS location, device and date from your photos to protect your privacy — entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/exif-cleaner");
 
 export default function ExifCleanerPage() {
-  return <ExifCleaner />;
+  return (
+    <>
+      <ExifCleaner />
+      <ToolJsonLd path="/exif-cleaner" />
+      <ToolSeoContent path="/exif-cleaner" />
+      <SEOContentBlock path="/exif-cleaner" />
+    </>
+  );
 }
+

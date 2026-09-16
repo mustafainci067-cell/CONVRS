@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ColorConverter from '@/components/converters/ColorConverter';
-
-export const metadata: Metadata = {
-  title: 'Color Converter — Convrs',
-  description:
-    'Convert between HEX, RGB and HSL color codes instantly, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/color-converter");
 
 export default function ColorConverterPage() {
-  return <ColorConverter />;
+  return (
+    <>
+      <ColorConverter />
+      <ToolJsonLd path="/color-converter" />
+      <ToolSeoContent path="/color-converter" />
+      <SEOContentBlock path="/color-converter" />
+    </>
+  );
 }
+

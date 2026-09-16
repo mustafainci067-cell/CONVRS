@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import VideoAudioTools from '@/components/converters/VideoAudioTools';
-
-export const metadata: Metadata = {
-  title: 'Video Speed Changer — Convrs',
-  description:
-    'Adjust video playback speed — 0.5x slow motion, 1.25x, 1.5x, or 2x fast motion. 100% client-side processing with ffmpeg.',
-};
+export const generateMetadata = generateToolMetadata("/video-speed");
 
 export default function VideoSpeedPage() {
-  return <VideoAudioTools mode="video-speed" />;
+  return (
+    <>
+      <VideoAudioTools mode="video-speed" />
+      <ToolJsonLd path="/video-speed" />
+      <ToolSeoContent path="/video-speed" />
+      <SEOContentBlock path="/video-speed" />
+    </>
+  );
 }

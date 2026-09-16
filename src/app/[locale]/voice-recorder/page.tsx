@@ -1,12 +1,17 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import VoiceRecorder from '@/components/converters/VoiceRecorder';
-
-export const metadata: Metadata = {
-  title: 'Online Voice Recorder — Convrs',
-  description:
-    'Record audio from your microphone directly in the browser. Start, pause, resume and finish — download as WAV/WebM. 100% client-side.',
-};
+export const generateMetadata = generateToolMetadata("/voice-recorder");
 
 export default function VoiceRecorderPage() {
-  return <VoiceRecorder />;
+  return (
+    <>
+      <VoiceRecorder />
+      <ToolJsonLd path="/voice-recorder" />
+      <ToolSeoContent path="/voice-recorder" />
+      <SEOContentBlock path="/voice-recorder" />
+    </>
+  );
 }

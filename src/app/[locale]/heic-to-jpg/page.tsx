@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ImageConverter from '@/components/converters/ImageConverter';
-
-export const metadata: Metadata = {
-  title: 'HEIC to JPG Converter — Convrs',
-  description:
-    'Convert Apple HEIC photos to JPG directly in your browser. No upload, 100% client-side.',
-};
+export const generateMetadata = generateToolMetadata("/heic-to-jpg");
 
 export default function HeicToJpgPage() {
-  return <ImageConverter mode="heic-to-jpg" />;
+  return (
+    <>
+      <ImageConverter mode="heic-to-jpg" />
+      <ToolJsonLd path="/heic-to-jpg" />
+      <ToolSeoContent path="/heic-to-jpg" />
+      <SEOContentBlock path="/heic-to-jpg" />
+    </>
+  );
 }
+

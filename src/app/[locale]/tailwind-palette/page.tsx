@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import TailwindPalette from '@/components/converters/TailwindPalette';
-
-export const metadata: Metadata = {
-  title: 'Tailwind Color Palette — Convrs',
-  description:
-    'Generate Tailwind-style color shades (50 → 950) from any HEX color and copy them with a click, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/tailwind-palette");
 
 export default function TailwindPalettePage() {
-  return <TailwindPalette />;
+  return (
+    <>
+      <TailwindPalette />
+      <ToolJsonLd path="/tailwind-palette" />
+      <ToolSeoContent path="/tailwind-palette" />
+      <SEOContentBlock path="/tailwind-palette" />
+    </>
+  );
 }
+

@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import XlsxToJson from '@/components/converters/XlsxToJson';
-
-export const metadata: Metadata = {
-  title: 'XLSX ↔ JSON — Convrs',
-  description:
-    'Convert an Excel workbook to pretty JSON records, or a JSON array of objects to an .xlsx file. Parsed entirely in your browser with SheetJS.',
-};
+export const generateMetadata = generateToolMetadata("/xlsx-to-json");
 
 export default function XlsxToJsonPage() {
-  return <XlsxToJson />;
+  return (
+    <>
+      <XlsxToJson />
+      <ToolJsonLd path="/xlsx-to-json" />
+      <ToolSeoContent path="/xlsx-to-json" />
+      <SEOContentBlock path="/xlsx-to-json" />
+    </>
+  );
 }
+

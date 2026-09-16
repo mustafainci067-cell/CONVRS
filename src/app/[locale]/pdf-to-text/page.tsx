@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import PdfToText from '@/components/converters/PdfToText';
-
-export const metadata: Metadata = {
-  title: 'PDF to Text — Convrs',
-  description:
-    'Extract raw text from a PDF with pdf.js and copy or download it as a .txt file. 100% in your browser — your document never leaves your device.',
-};
+export const generateMetadata = generateToolMetadata("/pdf-to-text");
 
 export default function PdfToTextPage() {
-  return <PdfToText />;
+  return (
+    <>
+      <PdfToText />
+      <ToolJsonLd path="/pdf-to-text" />
+      <ToolSeoContent path="/pdf-to-text" />
+      <SEOContentBlock path="/pdf-to-text" />
+    </>
+  );
 }
+

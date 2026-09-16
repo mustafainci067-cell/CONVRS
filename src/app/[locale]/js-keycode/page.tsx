@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import JsKeyCode from '@/components/converters/JsKeyCode';
-
-export const metadata: Metadata = {
-  title: 'JS KeyCode Viewer — Convrs',
-  description:
-    'Press any key and see its event.keyCode, event.key and event.code values live, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/js-keycode");
 
 export default function JsKeyCodePage() {
-  return <JsKeyCode />;
+  return (
+    <>
+      <JsKeyCode />
+      <ToolJsonLd path="/js-keycode" />
+      <ToolSeoContent path="/js-keycode" />
+      <SEOContentBlock path="/js-keycode" />
+    </>
+  );
 }
+

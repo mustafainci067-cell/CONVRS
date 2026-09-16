@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ImageConverter from '@/components/converters/ImageConverter';
-
-export const metadata: Metadata = {
-  title: 'PNG to JPG Converter — Convrs',
-  description:
-    'Convert PNG images to JPG (and back) with HTML5 Canvas. Runs 100% in your browser, no upload.',
-};
+export const generateMetadata = generateToolMetadata("/png-to-jpg");
 
 export default function PngToJpgPage() {
-  return <ImageConverter mode="png-to-jpg" />;
+  return (
+    <>
+      <ImageConverter mode="png-to-jpg" />
+      <ToolJsonLd path="/png-to-jpg" />
+      <ToolSeoContent path="/png-to-jpg" />
+      <SEOContentBlock path="/png-to-jpg" />
+    </>
+  );
 }
+

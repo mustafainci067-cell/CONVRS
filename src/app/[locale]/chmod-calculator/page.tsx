@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import ChmodCalculator from '@/components/converters/ChmodCalculator';
-
-export const metadata: Metadata = {
-  title: 'Chmod Calculator — Convrs',
-  description:
-    'Convert Linux/Unix file permissions to numeric (755) and symbolic (-rwxr-xr-x) chmod values instantly, entirely client-side.',
-};
+export const generateMetadata = generateToolMetadata("/chmod-calculator");
 
 export default function ChmodCalculatorPage() {
-  return <ChmodCalculator />;
+  return (
+    <>
+      <ChmodCalculator />
+      <ToolJsonLd path="/chmod-calculator" />
+      <ToolSeoContent path="/chmod-calculator" />
+      <SEOContentBlock path="/chmod-calculator" />
+    </>
+  );
 }
+

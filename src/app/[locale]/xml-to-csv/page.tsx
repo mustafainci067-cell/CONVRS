@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import XmlToCsv from '@/components/converters/XmlToCsv';
-
-export const metadata: Metadata = {
-  title: 'XML ↔ CSV — Convrs',
-  description:
-    'Flatten repeated XML records into a CSV table, or wrap CSV rows into well-formed XML. All done in your browser.',
-};
+export const generateMetadata = generateToolMetadata("/xml-to-csv");
 
 export default function XmlToCsvPage() {
-  return <XmlToCsv />;
+  return (
+    <>
+      <XmlToCsv />
+      <ToolJsonLd path="/xml-to-csv" />
+      <ToolSeoContent path="/xml-to-csv" />
+      <SEOContentBlock path="/xml-to-csv" />
+    </>
+  );
 }
+

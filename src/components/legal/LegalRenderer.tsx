@@ -1,5 +1,8 @@
 import type { Block, LegalDocument, Rich } from "@/i18n/legal/types";
 import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { getRouteLocale } from "@/i18n/locale";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 function RichText({ parts, base }: { parts: Rich[]; base?: string }) {
   return (
@@ -170,10 +173,20 @@ function BlockRenderer({ block, index }: { block: Block; index: number }) {
   }
 }
 
-export default function LegalRenderer({ doc }: { doc: LegalDocument }) {
+export default async function LegalRenderer({ doc }: { doc: LegalDocument }) {
+  const locale = await getRouteLocale();
+  const tSeo = await getTranslations({ locale, namespace: "Seo" });
+  const tA11y = await getTranslations({ locale, namespace: "A11y" });
+
+  const breadcrumbItems = [
+    { label: tSeo("home"), href: "/" },
+    { label: doc.title },
+  ];
+
   return (
     <main className="flex flex-1 flex-col items-center p-8 font-sans">
       <div className="w-full max-w-3xl animate-fade-in">
+        <Breadcrumbs label={tA11y("breadcrumb")} items={breadcrumbItems} />
         <header className="border-b border-zinc-200 pt-6 pb-8 dark:border-zinc-800/60">
           <p className="mb-2 font-mono text-xs uppercase tracking-wider text-zinc-500">
             {doc.eyebrow}

@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import MediaConverter from '@/components/converters/MediaConverter';
-
-export const metadata: Metadata = {
-  title: 'MP4 ↔ WebM — Convrs',
-  description:
-    'Convert MP4 video to WebM or WebM back to MP4 using ffmpeg in your browser.',
-};
+export const generateMetadata = generateToolMetadata("/mp4-to-webm");
 
 export default function Mp4ToWebmPage() {
-  return <MediaConverter mode="mp4-to-webm" />;
+  return (
+    <>
+      <MediaConverter mode="mp4-to-webm" />
+      <ToolJsonLd path="/mp4-to-webm" />
+      <ToolSeoContent path="/mp4-to-webm" />
+      <SEOContentBlock path="/mp4-to-webm" />
+    </>
+  );
 }
+

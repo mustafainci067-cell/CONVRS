@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { ConverterShell } from './ConverterShell';
+import { ConverterHeading, ConverterShell } from './ConverterShell';
 
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -57,6 +57,10 @@ export default function MetaTagGenerator() {
 
   return (
     <ConverterShell from="SEO" to="HTML" badge="Meta">
+      <ConverterHeading
+        title="Meta Tag (SEO) Generator"
+        description="Generate HTML meta and Open Graph tags with a live Google search preview."
+      />
       <div className="space-y-6">
         {/* Form */}
         <div className="space-y-4">

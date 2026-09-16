@@ -1,12 +1,18 @@
-import type { Metadata } from 'next';
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
 import VideoAudioTools from '@/components/converters/VideoAudioTools';
-
-export const metadata: Metadata = {
-  title: 'Mute Video — Convrs',
-  description:
-    'Remove the audio track from your video completely. Export a silent video in the same format. 100% client-side processing.',
-};
+export const generateMetadata = generateToolMetadata("/mute-video");
 
 export default function MuteVideoPage() {
-  return <VideoAudioTools mode="mute-video" />;
+  return (
+    <>
+      <VideoAudioTools mode="mute-video" />
+      <ToolJsonLd path="/mute-video" />
+      <ToolSeoContent path="/mute-video" />
+      <SEOContentBlock path="/mute-video" />
+    </>
+  );
 }
+

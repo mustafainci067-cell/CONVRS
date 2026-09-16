@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ConverterShell } from './ConverterShell';
+import { ConverterHeading, ConverterShell } from './ConverterShell';
 
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -124,6 +124,10 @@ export default function SqlFormatter() {
 
   return (
     <ConverterShell from="SQL" to="Result" badge="SQL">
+      <ConverterHeading
+        title="SQL Formatter & Minifier"
+        description="Format complex SQL queries with proper indentation or minify them to a single line."
+      />
       <div className="mb-6">
         <div className="mb-3 flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.5)]" />

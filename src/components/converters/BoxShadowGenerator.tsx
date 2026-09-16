@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ConverterShell } from './ConverterShell';
+import { ConverterHeading, ConverterShell } from './ConverterShell';
 
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -103,6 +103,10 @@ export default function BoxShadowGenerator() {
 
   return (
     <ConverterShell from="Shadow" to="CSS" badge="Generator">
+      <ConverterHeading
+        title="CSS Box-Shadow Generator"
+        description="Visually create CSS box-shadow with live preview, adjustable sliders and instant code copy."
+      />
       <div className="space-y-6">
         {/* Live preview */}
         <div className="flex items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-100/50 p-8 dark:border-zinc-800 dark:bg-zinc-900/40">
