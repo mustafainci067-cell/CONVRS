@@ -145,7 +145,7 @@ export const privacyContent: LegalContent = {
             items: [
               [
                 { text: "Çerez izin tercihi", bold: true },
-                " (",
+                ' (',
                 { text: "convrs-cookie-consent", code: true },
                 "): Çerez kabul tercihinizi hatırlamak için kullanılır.",
               ],
@@ -527,7 +527,7 @@ export const privacyContent: LegalContent = {
             items: [
               [
                 { text: "Cookie consent preference", bold: true },
-                " (",
+                ' (',
                 { text: "convrs-cookie-consent", code: true },
                 "): used to remember your cookie acceptance preference.",
               ],
@@ -907,7 +907,7 @@ export const privacyContent: LegalContent = {
             items: [
               [
                 { text: "Cookie-Einwilligungspräferenz", bold: true },
-                " (",
+                ' (',
                 { text: "convrs-cookie-consent", code: true },
                 "): dient zum Speichern Ihrer Cookie-Akzeptanzpräferenz.",
               ],
@@ -1287,7 +1287,7 @@ export const privacyContent: LegalContent = {
             items: [
               [
                 { text: "Preferencia de consentimiento de cookies", bold: true },
-                " (",
+                ' (',
                 { text: "convrs-cookie-consent", code: true },
                 "): se utiliza para recordar su preferencia de aceptación de cookies.",
               ],

@@ -1,11 +1,21 @@
 import type { Metadata } from 'next';
+import { generateConverterMetadata } from '@/lib/seo';
 import PdfToText from '@/components/converters/PdfToText';
 
-export const metadata: Metadata = {
-  title: 'PDF to Text — Convrs',
-  description:
-    'Extract raw text from a PDF with pdf.js and copy or download it as a .txt file. 100% in your browser — your document never leaves your device.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateConverterMetadata({
+    locale,
+    title: 'PDF to Text Extractor',
+    description:
+      'Extract text from a PDF in your browser and copy or download it as .txt. 100% client-side, no upload.',
+    path: '/pdf-to-text',
+  });
+}
 
 export default function PdfToTextPage() {
   return <PdfToText />;

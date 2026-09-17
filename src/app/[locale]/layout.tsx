@@ -50,7 +50,7 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} flex h-screen overflow-hidden bg-white text-zinc-900 antialiased dark:bg-[#0a0a0a] dark:text-zinc-100`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen bg-white text-zinc-900 antialiased dark:bg-[#0a0a0a] dark:text-zinc-100`}
       >
         <ThemeProvider
           attribute="class"
@@ -63,7 +63,7 @@ export default async function LocaleLayout({
             {/* Sag-ust kosede sabit "Buy me a coffee" butonuna yer acmak icin
                 ust bosluk her ekran boyutunda korunur; buton boylece mobilde
                 hamburger, masaustunde ise converter rozetinin uzerine binmez. */}
-            <div className="flex h-full flex-1 flex-col overflow-y-auto pt-14">
+            <div className="flex flex-1 flex-col pt-14">
               {children}
               <Footer />
             </div>

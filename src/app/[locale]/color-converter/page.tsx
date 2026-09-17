@@ -1,11 +1,21 @@
 import type { Metadata } from 'next';
+import { generateConverterMetadata } from '@/lib/seo';
 import ColorConverter from '@/components/converters/ColorConverter';
 
-export const metadata: Metadata = {
-  title: 'Color Converter — Convrs',
-  description:
-    'Convert between HEX, RGB and HSL color codes instantly, entirely client-side.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateConverterMetadata({
+    locale,
+    title: 'Color Converter',
+    description:
+      'Convert HEX, RGB, and HSL color codes into one another instantly, mathematically. No backend, no upload.',
+    path: '/color-converter',
+  });
+}
 
 export default function ColorConverterPage() {
   return <ColorConverter />;

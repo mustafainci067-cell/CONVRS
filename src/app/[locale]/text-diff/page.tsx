@@ -1,11 +1,21 @@
 import type { Metadata } from 'next';
+import { generateConverterMetadata } from '@/lib/seo';
 import TextDiff from '@/components/converters/TextDiff';
 
-export const metadata: Metadata = {
-  title: 'Text Diff Checker — Convrs',
-  description:
-    'Compare two texts and highlight added, removed and changed lines side by side, entirely client-side.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return generateConverterMetadata({
+    locale,
+    title: 'Text Diff Checker',
+    description:
+      'Compare two texts side by side with highlighted added, removed and changed lines. Runs in your browser, no upload.',
+    path: '/text-diff',
+  });
+}
 
 export default function TextDiffPage() {
   return <TextDiff />;

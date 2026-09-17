@@ -170,8 +170,8 @@ export default function Sidebar() {
           // Mobil: soldan kayan cekmece (kapaliyken ekran disinda)
           'fixed inset-y-0 left-0 w-72 max-w-[85vw]',
           mobileOpen ? 'translate-x-0' : '-translate-x-full',
-          // Masaustu: statik sutun, daraltilabilir (w-72 / w-20)
-          'md:static md:inset-auto md:max-w-none md:translate-x-0',
+          // Masaustu: sticky sutun, daraltilabilir (w-72 / w-20)
+          'md:sticky md:top-0 md:h-screen md:inset-auto md:max-w-none md:translate-x-0',
           isOpen ? 'md:w-72' : 'md:w-20'
         )}
       >
@@ -270,6 +270,31 @@ export default function Sidebar() {
         </nav>
 
         <div className="space-y-2 border-t border-zinc-200 p-4 dark:border-zinc-800/60">
+          {/* Guides link */}
+          <Link
+            href="/guides"
+            onClick={() => setMobileOpen(false)}
+            className={cn(
+              'flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
+              pathname.includes('/guides')
+                ? 'bg-zinc-200/70 text-zinc-900 dark:bg-zinc-800/80 dark:text-zinc-100'
+                : 'text-zinc-600 hover:bg-zinc-200/60 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-200',
+              !isOpen && 'justify-center px-0'
+            )}
+            title="Guides & Tutorials"
+          >
+            {/* Book icon */}
+            <svg className={iconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.6}
+                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+              />
+            </svg>
+            {isOpen && <span className="flex-1 truncate">Guides</span>}
+          </Link>
+
           <LanguageSwitcher isOpen={isOpen} />
           <ThemeSwitch isOpen={isOpen} />
         </div>

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { activeToolPaths } from '@/config/nav';
+import { getAllGuideSlugs } from '@/lib/guides';
 
 const BASE_URL = 'https://convrs.org';
 
@@ -49,6 +50,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'weekly',
         priority: 0.8,
         alternates: alternates(path),
+      });
+    }
+  }
+
+  // Rehber listesi (her dil; priority 0.7)
+  for (const locale of LOCALES) {
+    entries.push({
+      url: `${BASE_URL}/${locale}/guides`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+      alternates: alternates('/guides'),
+    });
+  }
+
+  // Tekil rehberler (her dil × her slug; priority 0.7)
+  const guideSlugs = getAllGuideSlugs('en');
+  for (const slug of guideSlugs) {
+    for (const locale of LOCALES) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/guides/${slug}`,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: alternates(`/guides/${slug}`),
       });
     }
   }

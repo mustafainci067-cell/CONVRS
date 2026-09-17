@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
+import AdSlot from '@/components/AdSlot';
 
 /**
  * Tum donusturucu sayfalarinin ortak gorsel kabugu.
@@ -41,6 +42,13 @@ export function ConverterShell({
           </span>
         )}
       </header>
+
+      {/* Reklam: header altı leaderboard — UX'i bozmamak için max-w-xl ile hizalanır */}
+      <AdSlot
+        slotId="YOUR_SLOT_ID"
+        format="horizontal"
+        className="w-full max-w-xl py-2"
+      />
 
       <div className="my-auto flex w-full max-w-xl flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10">{children}</div>
 
@@ -290,6 +298,13 @@ export function ResultPanel({
       >
         {label}
       </a>
+
+      {/* Reklam: "İndir" butonu hemen altı — dönüşüm tamamlanan kullanıcı için ideal pozisyon */}
+      <AdSlot
+        slotId="YOUR_SLOT_ID"
+        format="rectangle"
+        className="w-full"
+      />
     </div>
   );
 }
