@@ -157,7 +157,7 @@
         "description": "ICO ikonlarını şeffaf PNG'ye çevirin ya da PNG'den ICO ikonu üretin."
       },
       "pdf-to-jpg": {
-        "title": "PDF ↔ Image",
+        "title": "PDF ↔ Görsel",
         "description": "PDF sayfalarını JPG olarak çıkarın ya da birden çok görseli pdf-lib ile tek PDF'te birleştirin."
       },
       "json-to-csv": {
@@ -177,19 +177,19 @@
         "description": "Excel (.xlsx) dosyalarınızı CSV'ye çevirin ya da CSV'yi Excel çalışma kitabına dönüştürün."
       },
       "base64-encoder": {
-        "title": "Base64 Encoder",
+        "title": "Base64 Kodlayıcı",
         "description": "Metni UTF-8 güvenli Base64'e çevirin ya da Base64 kodunu geri okuyun."
       },
       "url-converter": {
-        "title": "URL Converter",
+        "title": "URL Dönüştürücü",
         "description": "URL'leri encode/decode edin. İki alan anlık senkron çalışır, veri cihazdan çıkmaz."
       },
       "qr-generator": {
-        "title": "QR Generator",
+        "title": "QR Oluşturucu",
         "description": "Metin, bağlantı veya mesajınızı tarayıcıda anında taranabilir QR koda çevirin."
       },
       "pdf-merge-split": {
-        "title": "PDF Merge & Split",
+        "title": "PDF Birleştir/Böl",
         "description": "Birden çok PDF'i pdf-lib ile tarayıcınızda tek bir belgede birleştirin."
       },
       "docx-to-pdf": {
@@ -197,15 +197,15 @@
         "description": "Word (.docx) belgelerinizi mammoth ile okuyup pdf-lib ile PDF olarak basın."
       },
       "image-compressor": {
-        "title": "Image Compressor",
+        "title": "Görsel Sıkıştırıcı",
         "description": "JPG, PNG ve WebP görsellerinizi HTML5 Canvas ile kalitesini düşürüp boyutunu küçülterek sıkıştırın."
       },
       "remove-background": {
-        "title": "Remove Background",
+        "title": "Arka Plan Kaldırma",
         "description": "JPG, PNG ve WebP görsellerinizin arka planını tarayıcı içi AI modeliyle kaldırıp şeffaf PNG elde edin."
       },
       "video-to-mp3": {
-        "title": "Video to MP3",
+        "title": "Videodan MP3'e",
         "description": "Videolardan sesi ffmpeg ile (tarayıcı içinde) çekip MP3 olarak dışa aktarın."
       },
       "video-to-gif": {
@@ -249,15 +249,15 @@
         "description": "WAV sesini MP3'e ya da MP3'ü WAV'a ffmpeg ile tarayıcınızda çevirin."
       },
       "jwt-decoder": {
-        "title": "JWT Decoder",
+        "title": "JWT Çözücü",
         "description": "JWT token'larınızın header ve payload bölümlerini doğrudan tarayıcıda çözüp JSON olarak okuyun."
       },
       "hash-generator": {
-        "title": "Hash Generator",
+        "title": "Hash Oluşturucu",
         "description": "Metinlerinize Web Crypto ile anlık SHA-1, SHA-256 ve SHA-512 hash üretin."
       },
       "color-converter": {
-        "title": "Color Converter",
+        "title": "Renk Dönüştürücü",
         "description": "HEX, RGB ve HSL renk kodlarını matematiksel olarak anında birbirine dönüştürün."
       },
       "json-formatter": {
@@ -325,7 +325,7 @@
         "description": "Ayarlanabilir temel font boyutuyla (varsayılan 16px) px, rem ve em ölçüleri arasında anında dönüşüm."
       },
       "html-encode-decode": {
-        "title": "HTML Encode / Decode",
+        "title": "HTML Kodla/Çöz",
         "description": "HTML etiketlerini &lt;, &gt; gibi entity'lere çevirir veya tersini yapıp okunabilir hale getirir."
       },
       "screen-viewport-checker": {
@@ -388,6 +388,11 @@
         "title": "VCF (vCard) ↔ CSV",
         "description": "Rehber yedeğinizi (vCard) CSV tablosuna çevirin ya da CSV listesini telefon rehberine aktarın."
       }
+    },
+    "guides": {
+      "title": "Rehberler ve Makaleler",
+      "desc": "Tüm dosya formatları için kapsamlı rehberleri ve öğreticileri okuyun.",
+      "link": "Rehberlere Göz Atın →"
     }
   },
   "NotFound": {

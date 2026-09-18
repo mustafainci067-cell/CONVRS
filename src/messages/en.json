@@ -388,6 +388,11 @@
         "title": "VCF (vCard) ↔ CSV",
         "description": "Convert a vCard contact export to a CSV table, or a CSV contact list into an importable .vcf."
       }
+    },
+    "guides": {
+      "title": "Guides & Articles",
+      "desc": "Read comprehensive guides and tutorials for all file formats.",
+      "link": "Browse Guides →"
     }
   },
   "NotFound": {

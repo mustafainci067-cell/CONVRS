@@ -73,6 +73,38 @@ export default async function Home() {
           <p className="max-w-lg text-base text-zinc-400 sm:text-lg">{t('tagline')}</p>
         </section>
 
+        {/* Big Guides Banner */}
+        <div className="mb-6">
+          <Link
+            href="/guides"
+            className="group relative flex w-full flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-gradient-to-br from-zinc-50 to-zinc-100 p-8 transition-all hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:from-zinc-900/40 dark:to-zinc-900/80 dark:hover:border-zinc-700 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div className="z-10 flex flex-col items-start gap-2">
+              <span className="flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-600 dark:border-emerald-900/50 dark:bg-emerald-900/20 dark:text-emerald-400">
+                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                {t('guides.title')}
+              </span>
+              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                {t('guides.title')}
+              </h2>
+              <p className="max-w-md text-sm text-zinc-600 dark:text-zinc-400">
+                {t('guides.desc')}
+              </p>
+            </div>
+            
+            <div className="z-10 mt-6 flex shrink-0 items-center gap-2 sm:mt-0">
+              <span className="font-mono text-sm font-medium text-emerald-600 transition-colors group-hover:text-emerald-700 dark:text-emerald-400 dark:group-hover:text-emerald-300">
+                {t('guides.link')}
+              </span>
+            </div>
+
+            {/* Decorative background shape */}
+            <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-emerald-500/10 blur-2xl transition-all group-hover:bg-emerald-500/20 dark:bg-emerald-400/5" />
+          </Link>
+        </div>
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {tools.map((tool) =>
             tool.status === 'active' ? (
