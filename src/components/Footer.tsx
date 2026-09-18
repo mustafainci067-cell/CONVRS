@@ -11,6 +11,12 @@ export default async function Footer() {
         <nav className="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
           <div className="flex items-center gap-6">
             <Link
+              href="/about-us"
+              className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
+            >
+              {t("about")}
+            </Link>
+            <Link
               href="/privacy-policy"
               className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
             >
@@ -28,12 +34,12 @@ export default async function Footer() {
             >
               {t("cookie")}
             </Link>
-            <a
-              href="mailto:support@convrs.org"
+            <Link
+              href="/contact"
               className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-200"
             >
               {t("contact")}
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

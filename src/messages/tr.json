@@ -112,10 +112,11 @@
   },
   "Footer": {
     "copyright": "© 2026 Convrs",
+    "about": "Hakkımızda",
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
     "cookie": "Çerez Politikası",
-    "contact": "support@convrs.org"
+    "contact": "İletişim"
   },
   "LanguageSwitcher": {
     "label": "Dil"

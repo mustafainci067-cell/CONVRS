@@ -112,10 +112,11 @@
   },
   "Footer": {
     "copyright": "© 2026 Convrs",
+    "about": "Über uns",
     "privacy": "Datenschutzrichtlinie",
     "terms": "Nutzungsbedingungen",
     "cookie": "Cookie-Richtlinie",
-    "contact": "support@convrs.org"
+    "contact": "Kontakt"
   },
   "LanguageSwitcher": {
     "label": "Sprache"
