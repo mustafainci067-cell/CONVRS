@@ -31,7 +31,7 @@ export function ConverterShell({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex min-h-full flex-col items-center justify-between p-5 font-sans selection:bg-zinc-200 sm:p-8 dark:selection:bg-zinc-800">
+    <div className="flex w-full flex-col items-center p-5 font-sans selection:bg-zinc-200 sm:p-8 dark:selection:bg-zinc-800">
       <header className="flex w-full max-w-4xl items-center justify-between border-b border-zinc-200 py-4 dark:border-zinc-800/60">
         <span className="font-mono text-xs uppercase tracking-wider text-zinc-500">
           {from} ➝ {to}
@@ -51,25 +51,7 @@ export function ConverterShell({
       />
 
       <div className="my-auto flex w-full max-w-xl flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10">{children}</div>
-
-      <footer className="mt-8 flex w-full max-w-4xl flex-col items-center justify-between gap-4 border-t border-zinc-200 py-6 text-xs text-zinc-500 md:flex-row dark:border-zinc-800/60">
-        <p>© 2026 Convrs. Built for performance and privacy.</p>
-        <nav className="flex gap-6 font-mono">
-          <Link
-            href="/privacy-policy"
-            className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"
-          >
-            Privacy Policy
-          </Link>
-          <Link
-            href="/terms-of-service"
-            className="transition-colors hover:text-zinc-800 dark:hover:text-zinc-300"
-          >
-            Terms of Use
-          </Link>
-        </nav>
-      </footer>
-    </main>
+    </div>
   );
 }
 
