@@ -618,41 +618,30 @@ const tr: GuideDocument = {
       items: [
         [
           { text: "Konteynerlarda sabit piksel genişlikleri: ", bold: true },
-          {
-            text: "Bir sarmalayıcıya width: 960px koymak katı bir sınır oluşturur. 768px'lik bir tablette konteyner taşar ve yatay kaydırma çubuğu tetikler. Bunun yerine yüzde veya rem değerleriyle max-width kullanın — düzen her zaman küçülebilir.",
-          },
+          "Bir sarmalayıcıya width: 960px koymak katı bir sınır oluşturur. 768px'lik bir tablette konteyner taşar ve yatay kaydırma çubuğu tetikler. Bunun yerine yüzde veya rem değerleriyle max-width kullanın — düzen her zaman küçülebilir.",
         ],
         [
           { text: "100vw kaydırma çubuğu taşması: ", bold: true },
-          {
-            text: "",
-            { text: "100vw", code: true },
-            " birimi, dikey kaydırma çubuğu dahil viewport genişliğinin %100'ü demektir. Kaydırılabilir içerikli bir sayfada bu, roughly 15-17px'lik (kaydırma çubuğu genişliği) yatay taşmaya neden olur. Bunun yerine gövdede veya sarmalayıcıda ",
-            { text: "100%", code: true },
-            " kullanın — kaydırma çubuğunu hariç tutar.",
-          },
+          { text: "100vw", code: true },
+          " birimi, dikey kaydırma çubuğu dahil viewport genişliğinin %100'ü demektir. Kaydırılabilir içerikli bir sayfada bu, roughly 15-17px'lik (kaydırma çubuğu genişliği) yatay taşmaya neden olur. Bunun yerine gövdede veya sarmalayıcıda ",
+          { text: "100%", code: true },
+          " kullanın — kaydırma çubuğunu hariç tutar.",
         ],
         [
           { text: "Mobilde çok küçük yazı tipi boyutları: ", bold: true },
-          {
-            text: "14px veya 16px body font-size masaüstünde iyi görünür ancak telefonlarda, özellikle uzun okumalarda dar hissedilebilir. Çözüm masaüstü metnini büyütmek değil, mobil tabanı biraz daha yüksekte (örn. 16-18px) ayarlamak ve masaüstü breakpoint'lerinin rem oranlarıyla küçültmesine izin vermektir. Apple, okunabilirlik için minimum 11pt (yaklaşık 14.6px) önermektedir.",
-          },
+          "14px veya 16px body font-size masaüstünde iyi görünür ancak telefonlarda, özellikle uzun okumalarda dar hissedilebilir. Çözüm masaüstü metnini büyütmek değil, mobil tabanı biraz daha yüksekte (örn. 16-18px) ayarlamak ve masaüstü breakpoint'lerinin rem oranlarıyla küçültmesine izin vermektir. Apple, okunabilirlik için minimum 11pt (yaklaşık 14.6px) önermektedir.",
         ],
         [
           { text: "Kısıtlanmamış genişlikteki görseller: ", bold: true },
-          {
-            text: "Sabit genişliğe veya hiç kısıtlama olmayan bir görsel, konteynerini zorlayarak taşar. Tüm içerik görsellerine ",
-            { text: "max-width: 100%; height: auto;", code: true },
-            " uygulayarak ebeveyniyle birlikte küçülmelerini sağlayın.",
-          },
+          "Sabit genişliğe veya hiç kısıtlama olmayan bir görsel, konteynerini zorlayarak taşar. Tüm içerik görsellerine ",
+          { text: "max-width: 100%; height: auto;", code: true },
+          " uygulayarak ebeveyniyle birlikte küçülmelerini sağlayın.",
         ],
         [
           { text: "Gerçek sorunları gizleyen gizli taşma: ", bold: true },
-          {
-            text: "Yatay kaydırmayı gizlemek için üst öğeye ",
-            { text: "overflow: hidden", code: true },
-            " uygulamak bir belirti düzeltmesidir. Düzen hâlâ bozuktur; yalnızca göremiyorsunuz. Taşmaya neden olan öğeyi bulmak için tarayıcınızın duyarlı denetim aracını kullanın.",
-          },
+          "Yatay kaydırmayı gizlemek için üst öğeye ",
+          { text: "overflow: hidden", code: true },
+          " uygulamak bir belirti düzeltmesidir. Düzen hâlâ bozuktur; yalnızca göremiyorsunuz. Taşmaya neden olan öğeyi bulmak için tarayıcınızın duyarlı denetim aracını kullanın.",
         ],
       ],
     },
@@ -803,7 +792,7 @@ const de: GuideDocument = {
 
     {
       type: "h2",
-      content: ["CSS-Breakpoints: Konventionen, keine Gesetze"] },
+      content: ["CSS-Breakpoints: Konventionen, keine Gesetze"],
     },
     {
       type: "p",
@@ -988,41 +977,31 @@ const de: GuideDocument = {
       items: [
         [
           { text: "Fixe Pixelbreiten auf Containern: ", bold: true },
-          {
-            text: "width: 960px auf einen Wrapper zu setzen, erzeugt eine harte Grenze. Auf einem 768px-Tablet überläuft der Container und löst horizontales Scrollen aus. Verwenden Sie stattdessen max-width mit Prozent- oder rem-Werten — das Layout kann immer schrumpfen.",
-          },
+          "width: 960px auf einen Wrapper zu setzen, erzeugt eine harte Grenze. Auf einem 768px-Tablet überläuft der Container und löst horizontales Scrollen aus. Verwenden Sie stattdessen max-width mit Prozent- oder rem-Werten — das Layout kann immer schrumpfen.",
         ],
         [
           { text: "100vw Scrollleisten-Überlauf: ", bold: true },
-          {
-            text: "Die Einheit ",
-            { text: "100vw", code: true },
-            " bedeutet 100% der Viewport-Breite einschließlich einer vertikalen Scrollleiste. Auf einer Seite mit scrollbarem Inhalt verursacht dies einen horizontalen Überlauf von etwa 15-17px (der Scrollleisten-Breite). Verwenden Sie stattdessen ",
-            { text: "100%", code: true },
-            " am Body oder einem Wrapper — es schließt die Scrollleiste aus.",
-          },
+          "Die Einheit ",
+          { text: "100vw", code: true },
+          " bedeutet 100% der Viewport-Breite einschließlich einer vertikalen Scrollleiste. Auf einer Seite mit scrollbarem Inhalt verursacht dies einen horizontalen Überlauf von etwa 15-17px (der Scrollleisten-Breite). Verwenden Sie stattdessen ",
+          { text: "100%", code: true },
+          " am Body oder einem Wrapper — es schließt die Scrollleiste aus.",
         ],
         [
           { text: "Zu kleine Schriftgrößen auf Mobil: ", bold: true },
-          {
-            text: "Eine body font-size von 14px oder 16px sieht auf dem Desktop gut aus, kann sich aber auf Handys, besonders beim längeren Lesen, geengt anfühlen. Die Lösung ist nicht, Desktop-Text zu vergrößern, sondern die mobile Basis etwas höher zu setzen (z.B. 16-18px) und Desktop-Breakpoints bei Bedarf über rem-Verhältnisse verkleinern zu lassen. Apple empfiehlt mindestens 11pt (ca. 14.6px) für Lesbarkeit.",
-          },
+          "Eine body font-size von 14px oder 16px sieht auf dem Desktop gut aus, kann sich aber auf Handys, besonders beim längeren Lesen, geengt anfühlen. Die Lösung ist nicht, Desktop-Text zu vergrößern, sondern die mobile Basis etwas höher zu setzen (z.B. 16-18px) und Desktop-Breakpoints bei Bedarf über rem-Verhältnisse verkleinern zu lassen. Apple empfiehlt mindestens 11pt (ca. 14.6px) für Lesbarkeit.",
         ],
         [
           { text: "Bilder ohne Größenbeschränkung: ", bold: true },
-          {
-            text: "Ein Bild mit fester Breite oder ohne Beschränkung drängt an seinem Container vorbei. Wenden Sie ",
-            { text: "max-width: 100%; height: auto;", code: true },
-            " auf alle Inhaltsbilder an, damit sie mit ihrem Elternteil schrumpfen.",
-          },
+          "Ein Bild mit fester Breite oder ohne Beschränkung drängt an seinem Container vorbei. Wenden Sie ",
+          { text: "max-width: 100%; height: auto;", code: true },
+          " auf alle Inhaltsbilder an, damit sie mit ihrem Elternteil schrumpfen.",
         ],
         [
           { text: "Versteckter Überlauf kaschiert echte Probleme: ", bold: true },
-          {
-            text: "Auf einem Elternteil ",
-            { text: "overflow: hidden", code: true },
-            { text: "anzuwenden, um horizontales Scrollen zu verstecken, ist eine Symptombehandlung. Das Layout ist immer noch kaputt, Sie können es nur nicht sehen. Verwenden Sie den responsiven Inspektor Ihres Browsers, um das Element zu finden, das den Überlauf verursacht.",
-          },
+          "Auf einem Elternteil ",
+          { text: "overflow: hidden", code: true },
+          " anzuwenden, um horizontales Scrollen zu verstecken, ist eine Symptombehandlung. Das Layout ist immer noch kaputt, Sie können es nur nicht sehen. Verwenden Sie den responsiven Inspektor Ihres Browsers, um das Element zu finden, das den Überlauf verursacht.",
         ],
       ],
     },
@@ -1357,41 +1336,31 @@ const es: GuideDocument = {
       items: [
         [
           { text: "Anchos fijos en píxeles en contenedores: ", bold: true },
-          {
-            text: "Poner width: 960px en un contenedor crea un límite duro. En un tablet de 768px el contenedor se desborda y activa scroll horizontal. Usa max-width con valores porcentuales o rem en su lugar — el layout siempre puede encogerse.",
-          },
+          "Poner width: 960px en un contenedor crea un límite duro. En un tablet de 768px el contenedor se desborda y activa scroll horizontal. Usa max-width con valores porcentuales o rem en su lugar — el layout siempre puede encogerse.",
         ],
         [
           { text: "Desbordamiento del scrollbar en 100vw: ", bold: true },
-          {
-            text: "La unidad ",
-            { text: "100vw", code: true },
-            " significa 100% del ancho del viewport incluyendo cualquier barra de desplazamiento vertical. En una página con contenido desplazable esto causa un desbordamiento horizontal de aproximadamente 15-17px (el ancho del scrollbar). Usa ",
-            { text: "100%", code: true },
-            " en el body o un contenedor en su lugar — excluye la barra de desplazamiento.",
-          },
+          "La unidad ",
+          { text: "100vw", code: true },
+          " significa 100% del ancho del viewport incluyendo cualquier barra de desplazamiento vertical. En una página con contenido desplazable esto causa un desbordamiento horizontal de aproximadamente 15-17px (el ancho del scrollbar). Usa ",
+          { text: "100%", code: true },
+          " en el body o un contenedor en su lugar — excluye la barra de desplazamiento.",
         ],
         [
           { text: "Tamaños de fuente demasiado pequeños en móvil: ", bold: true },
-          {
-            text: "Un body font-size de 14px o 16px se ve bien en escritorio pero puede sentirse apretado en móviles, especialmente para lectura prolongada. La solución no es aumentar el texto del escritorio sino establecer la base móvil un poco más alta (ej. 16-18px) y dejar que los breakpoints de escritorio reduzcan mediante proporciones rem si es necesario. Apple recomienda un mínimo de 11pt (aprox. 14.6px) para legibilidad.",
-          },
+          "Un body font-size de 14px o 16px se ve bien en escritorio pero puede sentirse apretado en móviles, especialmente para lectura prolongada. La solución no es aumentar el texto del escritorio sino establecer la base móvil un poco más alta (ej. 16-18px) y dejar que los breakpoints de escritorio reduzcan mediante proporciones rem si es necesario. Apple recomienda un mínimo de 11pt (aprox. 14.6px) para legibilidad.",
         ],
         [
           { text: "Imágenes sin restricción de ancho: ", bold: true },
-          {
-            text: "Una imagen con ancho fijo o sin restricción empuja fuera de su contenedor. Aplica ",
-            { text: "max-width: 100%; height: auto;", code: true },
-            " a todas las imágenes de contenido para que se encuegan con su padre.",
-          },
+          "Una imagen con ancho fijo o sin restricción empuja fuera de su contenedor. Aplica ",
+          { text: "max-width: 100%; height: auto;", code: true },
+          " a todas las imágenes de contenido para que se encuegan con su padre.",
         ],
         [
           { text: "Overflow oculto que enmascara problemas reales: ", bold: true },
-          {
-            text: "Aplicar ",
-            { text: "overflow: hidden", code: true },
-            " a un padre para ocultar el scroll horizontal es un parche de síntomas. El diseño sigue roto; simplemente no puedes verlo. Usa el inspector responsive del navegador para encontrar el elemento que causa el desbordamiento.",
-          },
+          "Aplicar ",
+          { text: "overflow: hidden", code: true },
+          " a un padre para ocultar el scroll horizontal es un parche de síntomas. El diseño sigue roto; simplemente no puedes verlo. Usa el inspector responsive del navegador para encontrar el elemento que causa el desbordamiento.",
         ],
       ],
     },

@@ -54,7 +54,7 @@ const en: GuideDocument = {
       { text: "&amp;gt;", code: true },
       " (>), ",
       { text: "&amp;quot;", code: true },
-      " ("), ",
+      ' ("), ',
       { text: "&amp;apos;", code: true },
       " ('). The HTML5 spec also defines ",
       { text: "&amp;nbsp;", code: true },
@@ -89,16 +89,16 @@ const en: GuideDocument = {
       " attribute without encoding, the attacker can break out of the attribute and inject arbitrary HTML.",
     ]},
     { type: "code", lang: "html", content: `<!-- DANGEROUS: user input injected raw -->
-<div class="comment">${userComment}</div>
+<div class="comment">\${userComment}</div>
 
 <!-- SAFE: user input encoded before injection -->
-<div class="comment">${encodeHtml(userComment)}</div>
+<div class="comment">\${encodeHtml(userComment)}</div>
 
 <!-- DANGEROUS: name injected into attribute -->
-<img src="photo.jpg" alt="${userName}">
+<img src="photo.jpg" alt="\${userName}">
 
 <!-- SAFE: name encoded inside attribute -->
-<img src="photo.jpg" alt="${encodeHtml(userName)}">` },
+<img src="photo.jpg" alt="\${encodeHtml(userName)}">` },
 
     { type: "h2", content: ["HTML encoding vs URL encoding: they solve different problems"] },
     { type: "p", content: [
@@ -387,7 +387,7 @@ const tr: GuideDocument = {
       { text: "&amp;gt;", code: true },
       " (>), ",
       { text: "&amp;quot;", code: true },
-      " ("), ",
+      ' ("), ',
       { text: "&amp;apos;", code: true },
       " ('). HTML5 spec'i ayrıca kesme yer boşluğu için ",
       { text: "&amp;nbsp;", code: true },
@@ -422,16 +422,16 @@ const tr: GuideDocument = {
       " özniteliğine eklerseniz, saldırgan öznitelikten çıkarak keyfi HTML enjekte edebilir.",
     ]},
     { type: "code", lang: "html", content: `<!-- TEHLİKELİ: kullanıcı girdisi ham olarak enjekte edildi -->
-<div class="comment">${userComment}</div>
+<div class="comment">\${userComment}</div>
 
 <!-- GÜVENLİ: kullanıcı girdisi enjeksiyondan önce kodlandı -->
-<div class="comment">${encodeHtml(userComment)}</div>
+<div class="comment">\${encodeHtml(userComment)}</div>
 
 <!-- TEHLİKELİ: ad özniteliğe kodlanmadan eklendi -->
-<img src="photo.jpg" alt="${userName}">
+<img src="photo.jpg" alt="\${userName}">
 
 <!-- GÜVENLİ: ad öznitelik içinde kodlandı -->
-<img src="photo.jpg" alt="${encodeHtml(userName)}">` },
+<img src="photo.jpg" alt="\${encodeHtml(userName)}">` },
 
     { type: "h2", content: ["HTML kodlaması ile URL kodlaması: farklı sorunları çözerler"] },
     { type: "p", content: [
@@ -524,7 +524,7 @@ const tr: GuideDocument = {
     { type: "p", content: [
       "Her iki sorunu da önlemenin yolu net bir kuraldır: ",
       { text: "tek seferde, çıkış noktasında kodlayın ve asla öncesinde kodlamayın.", bold: true },
-      Ham değeri veritabanınızda saklayın. HTML markup'a eklediğiniz anda HTML kodlaması uygulayın. Kaydederken kodlamayın, arka uç işlevleri arasında geçirirken kodlamayın, şablon değişkenine saklarken kodlamayın. Tek noktadan kodlama çift kodlamayı önler; çıkışta tutarlı kodlama eksik kodlamayı önler.",
+      " Ham değeri veritabanınızda saklayın. HTML markup'a eklediğiniz anda HTML kodlaması uygulayın. Kaydederken kodlamayın, arka uç işlevleri arasında geçirirken kodlamayın, şablon değişkenine saklarken kodlamayın. Tek noktadan kodlama çift kodlamayı önler; çıkışta tutarlı kodlama eksik kodlamayı önler.",
     ]},
     { type: "code", lang: "js", content: `// YANLIŞ: depolama sırasında kodlama
 db.save({ comment: encodeHtml(userInput) }); // çift kodlama riski
@@ -720,7 +720,7 @@ const de: GuideDocument = {
       { text: "&amp;gt;", code: true },
       " (>), ",
       { text: "&amp;quot;", code: true },
-      " ("), ",
+      ' ("), ',
       { text: "&amp;apos;", code: true },
       " ('). Die HTML5-Spezifikation definiert zudem ",
       { text: "&amp;nbsp;", code: true },
@@ -755,16 +755,16 @@ const de: GuideDocument = {
       "-Attribut einfügen, kann der Angreifer das Attribut verlassen und beliebiges HTML injizieren.",
     ]},
     { type: "code", lang: "html", content: `<!-- GEFÄHRLICH: Benutzereingabe uncodiert injiziert -->
-<div class="comment">${userComment}</div>
+<div class="comment">\${userComment}</div>
 
 <!-- SICHER: Benutzereingabe vor der Injektion kodiert -->
-<div class="comment">${encodeHtml(userComment)}</div>
+<div class="comment">\${encodeHtml(userComment)}</div>
 
 <!-- GEFÄHRLICH: Name ohne Kodierung in Attribut -->
-<img src="photo.jpg" alt="${userName}">
+<img src="photo.jpg" alt="\${userName}">
 
 <!-- SICHER: Name innerhalb des Attributs kodiert -->
-<img src="photo.jpg" alt="${encodeHtml(userName)}">` },
+<img src="photo.jpg" alt="\${encodeHtml(userName)}">` },
 
     { type: "h2", content: ["HTML-Kodierung vs. URL-Kodierung: sie lösen verschiedene Probleme"] },
     { type: "p", content: [
@@ -810,7 +810,7 @@ const de: GuideDocument = {
         { text: "JSON innerhalb von Script-Tags: ", bold: true },
         { text: "Serverseitig gerendertes JSON, das in einem " },
         { text: "<script>", code: true },
-        "-Block eingebettet ist, erfordert sorgfältige Behandlung. Strings, die " },
+        "-Block eingebettet ist, erfordert sorgfältige Behandlung. Strings, die ",
         { text: "</script>", code: true },
         { text: " enthalten, schließen das Script-Tag vorzeitig. Das sichere Muster: < und > in JSON-String-Werten kodieren oder einen " },
         { text: "type=\"application/json\"", code: true },
@@ -1053,7 +1053,7 @@ const es: GuideDocument = {
       { text: "&amp;gt;", code: true },
       " (>), ",
       { text: "&amp;quot;", code: true },
-      " ("), ",
+      ' ("), ',
       { text: "&amp;apos;", code: true },
       " ('). La especificación HTML5 también define ",
       { text: "&amp;nbsp;", code: true },
@@ -1088,16 +1088,16 @@ const es: GuideDocument = {
       " sin codificar, el atacante puede salir del atributo e inyectar HTML arbitrario.",
     ]},
     { type: "code", lang: "html", content: `<!-- PELIGROSO: entrada del usuario inyectada sin codificar -->
-<div class="comment">${userComment}</div>
+<div class="comment">\${userComment}</div>
 
 <!-- SEGURO: entrada del usuario codificada antes de la inyección -->
-<div class="comment">${encodeHtml(userComment)}</div>
+<div class="comment">\${encodeHtml(userComment)}</div>
 
 <!-- PELIGROSO: nombre inyectado en atributo sin codificar -->
-<img src="photo.jpg" alt="${userName}">
+<img src="photo.jpg" alt="\${userName}">
 
 <!-- SEGURO: nombre codificado dentro del atributo -->
-<img src="photo.jpg" alt="${encodeHtml(userName)}">` },
+<img src="photo.jpg" alt="\${encodeHtml(userName)}">` },
 
     { type: "h2", content: ["Codificación HTML vs codificación URL: resuelven problemas diferentes"] },
     { type: "p", content: [
