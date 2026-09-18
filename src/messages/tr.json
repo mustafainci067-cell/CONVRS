@@ -161,9 +161,6 @@
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
     "cookie": "Çerez Politikası",
-<<<<<<< HEAD
-    "contact": "İletişim"
-=======
     "about": "Hakkımızda",
     "contactPage": "İletişim",
     "contact": "support@convrs.org",
@@ -175,7 +172,6 @@
     "description": "İstemci tarafında işleme, WebAssembly ve güvenli dosya dönüşümleri üzerine uzun okumalar — tarayıcı yerel, gizlilik öncelikli web için yazıldı.",
     "readMore": "Rehberi oku",
     "backToGuides": "Tüm rehberler"
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   },
   "LanguageSwitcher": {
     "label": "Dil"

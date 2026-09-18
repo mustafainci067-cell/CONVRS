@@ -161,9 +161,6 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Uso",
     "cookie": "Política de Cookies",
-<<<<<<< HEAD
-    "contact": "Contacto"
-=======
     "about": "Sobre nosotros",
     "contactPage": "Contacto",
     "contact": "support@convrs.org",
@@ -175,7 +172,6 @@
     "description": "Explicaciones extensas sobre procesamiento local, WebAssembly y conversión segura de archivos — escritas para la web nativa del navegador y centrada en la privacidad.",
     "readMore": "Leer la guía",
     "backToGuides": "Todas las guías"
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   },
   "LanguageSwitcher": {
     "label": "Idioma"

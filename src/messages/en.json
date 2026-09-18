@@ -161,9 +161,6 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "cookie": "Cookie Policy",
-<<<<<<< HEAD
-    "contact": "Contact Us"
-=======
     "about": "About",
     "contactPage": "Contact",
     "contact": "support@convrs.org",
@@ -175,7 +172,6 @@
     "description": "Long-form explainers on client-side processing, WebAssembly, and secure file conversions — written for the browser-native, privacy-first web.",
     "readMore": "Read the guide",
     "backToGuides": "All guides"
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   },
   "LanguageSwitcher": {
     "label": "Language"

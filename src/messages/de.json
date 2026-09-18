@@ -161,9 +161,6 @@
     "privacy": "Datenschutzrichtlinie",
     "terms": "Nutzungsbedingungen",
     "cookie": "Cookie-Richtlinie",
-<<<<<<< HEAD
-    "contact": "Kontakt"
-=======
     "about": "Über uns",
     "contactPage": "Kontakt",
     "contact": "support@convrs.org",
@@ -175,7 +172,6 @@
     "description": "Ausführliche Erklärungen zu client-seitiger Verarbeitung, WebAssembly und sicheren Dateikonvertierungen — für das browser-native, datenschutzbewusste Web.",
     "readMore": "Ratgeber lesen",
     "backToGuides": "Alle Ratgeber"
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   },
   "LanguageSwitcher": {
     "label": "Sprache"

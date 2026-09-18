@@ -1,85 +1,3 @@
-<<<<<<< HEAD
-import { type LegalContent, links, SUPPORT_EMAIL } from "./types";
-
-export const aboutContent: LegalContent = {
-  en: {
-    eyebrow: "Our Mission",
-    title: "About Us",
-    updatedLabel: "Last Updated",
-    updatedDate: "2026-09-18",
-    intro: [
-      [
-        "Welcome to ",
-        { text: "convrs.org", bold: true },
-        ", your privacy-first digital toolbox. Our mission is to provide fast, secure, and accessible tools that run entirely in your browser."
-      ]
-    ],
-    sections: [
-      {
-        heading: ["The Zero-Backend Philosophy"],
-        blocks: [
-          {
-            type: "p",
-            content: [
-              "We noticed a major problem with most online converters and tools: they require you to upload your sensitive files to their servers. This not only wastes time with uploads and downloads but poses a massive security and privacy risk."
-            ]
-          },
-          {
-            type: "p",
-            content: [
-              "At convrs.org, we operate on a ",
-              { text: "100% Zero-Backend architecture", bold: true },
-              ". Using modern WebAssembly (Wasm) and HTML5 technologies, all file processing happens directly on your device. Whether you are compressing images, splitting PDFs, or converting formats, your files never leave your computer."
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["Why Choose Us?"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              [{ text: "Total Privacy:", bold: true }, " No uploads. No servers. Your data remains strictly yours."],
-              [{ text: "Lightning Fast:", bold: true }, " Eliminate the latency of uploading and downloading large files."],
-              [{ text: "Uncapped Limits:", bold: true }, " Forget restrictive file size limits imposed by cloud providers."],
-              [{ text: "Free to Use:", bold: true }, " We offer powerful tools entirely for free, supported ethically by AdSense."]
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["Contact the Team"],
-        divider: true,
-        blocks: [
-          {
-            type: "contact",
-            title: "We would love to hear from you. For feedback, feature requests, or support, please reach out:",
-            lines: [
-              [{ text: "Email: ", bold: true }, { text: SUPPORT_EMAIL, url: links.contactMail }],
-              [{ text: "GitHub: ", bold: true }, { text: "convrs-repo", url: "https://github.com/mustafainci067-cell/convrs", external: true }]
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  tr: {
-    eyebrow: "Misyonumuz",
-    title: "Hakkımızda",
-    updatedLabel: "Son Güncelleme",
-    updatedDate: "18 Eylül 2026",
-    intro: [
-      [
-        "Gizlilik odaklı dijital araç çantanız ",
-        { text: "convrs.org", bold: true },
-        "'a hoş geldiniz. Misyonumuz, tamamen tarayıcınızda çalışan hızlı, güvenli ve erişilebilir araçlar sunmaktır."
-      ]
-    ],
-    sections: [
-      {
-        heading: ["Zero-Backend (Sıfır Sunucu) Felsefesi"],
-=======
 import type { LegalContent } from "./types";
 import { links } from "./types";
 
@@ -113,15 +31,10 @@ export const aboutContent: LegalContent = {
     sections: [
       {
         heading: ["1. Convrs Nedir?"],
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
         blocks: [
           {
             type: "p",
             content: [
-<<<<<<< HEAD
-              "Çevrimiçi dönüştürücülerin çoğunda büyük bir sorun fark ettik: Hassas dosyalarınızı kendi sunucularına yüklemenizi istiyorlar. Bu sadece vakit kaybı değil, aynı zamanda devasa bir güvenlik riski."
-            ]
-=======
               "Convrs, tarayıcı tabanlı, ",
               { text: "kapsamlı bir dosya işleme araç setidir", bold: true },
               ". Görsel dönüştürme (HEIC, JPG, PNG, WebP, ICO), belge işleme (PDF, DOCX, XLSX), ses ve video araçları (MP4, MP3, WAV, WebM; kırpma, birleştirme, sıkıştırma, karartma) ile metin ve kod araçları (JSON, YAML, CSV, SQL, HTML, markdown, hash, JWT, base64) dahil onlarca kategoriyi kapsar. Bunların arasında yeniden boyutlandırma, kırpma, arka plan temizleme, sıkıştırma, filtre ve format değiştirme gibi popüler işlemler de yer alır.",
@@ -173,36 +86,10 @@ export const aboutContent: LegalContent = {
                 "Hiçbir analitik veya izleme, dosyalarınızla ilişkilendirilmez.",
               ],
             ],
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
           },
           {
             type: "p",
             content: [
-<<<<<<< HEAD
-              "convrs.org olarak ",
-              { text: "%100 Zero-Backend (Sıfır Sunucu) mimarisiyle", bold: true },
-              " çalışıyoruz. Modern WebAssembly ve HTML5 teknolojilerini kullanarak, tüm dosya işlemlerinin doğrudan cihazınızda gerçekleşmesini sağlıyoruz. Dosyalarınız bilgisayarınızdan asla dışarı çıkmaz."
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["Neden Bizi Seçmelisiniz?"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              [{ text: "Tam Gizlilik:", bold: true }, " Yükleme yok. Sunucu yok. Verileriniz size ait kalır."],
-              [{ text: "Şimşek Hızında:", bold: true }, " Büyük dosyaları yükleme ve indirme bekleme süresi ortadan kalkar."],
-              [{ text: "Sınırsız:", bold: true }, " Bulut sağlayıcılarının uyguladığı sıkı dosya boyutu sınırlarını unutun."],
-              [{ text: "Ücretsiz:", bold: true }, " Güçlü araçları tamamen ücretsiz olarak sunuyoruz."]
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["Ekip ile İletişim"],
-=======
               "Hiçbir şey cihazınızdan ayrılmadığı için içeriğiniz; biz dahil kimse tarafından ",
               { text: "ele geçirilemez, okunamaz, saklanamaz veya para kazanılamaz", bold: true },
               ". Dönüştürdüğünüz belge, görsel veya videonun başından sonuna dek tek kopyası sizdedir.",
@@ -347,38 +234,10 @@ export const aboutContent: LegalContent = {
       },
       {
         heading: ["8. Bizimle İletişime Geçin"],
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
         divider: true,
         blocks: [
           {
             type: "contact",
-<<<<<<< HEAD
-            title: "Geri bildirim, özellik talepleri veya destek için lütfen bize ulaşın:",
-            lines: [
-              [{ text: "E-posta: ", bold: true }, { text: SUPPORT_EMAIL, url: links.contactMail }],
-              [{ text: "GitHub: ", bold: true }, { text: "convrs-repo", url: "https://github.com/mustafainci067-cell/convrs", external: true }]
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  de: {
-    eyebrow: "Unsere Mission",
-    title: "Über uns",
-    updatedLabel: "Zuletzt aktualisiert",
-    updatedDate: "18. September 2026",
-    intro: [
-      [
-        "Willkommen bei ",
-        { text: "convrs.org", bold: true },
-        ", Ihrem datenschutzorientierten digitalen Werkzeugkasten. Unsere Mission ist es, schnelle, sichere Werkzeuge bereitzustellen, die vollständig in Ihrem Browser laufen."
-      ]
-    ],
-    sections: [
-      {
-        heading: ["Die Zero-Backend-Philosophie"],
-=======
             title: "Size Nasıl Yardımcı Olabiliriz?",
             lines: [
               [
@@ -678,15 +537,10 @@ export const aboutContent: LegalContent = {
     sections: [
       {
         heading: ["1. Was ist Convrs?"],
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
         blocks: [
           {
             type: "p",
             content: [
-<<<<<<< HEAD
-              "Wir haben ein großes Problem bei den meisten Online-Konvertern festgestellt: Sie verlangen, dass Sie Ihre sensiblen Dateien auf ihre Server hochladen. Das ist ein massives Sicherheits- und Datenschutzrisiko."
-            ]
-=======
               "Convrs ist eine browserbasierte ",
               { text: "umfassende Datei-Toolbox", bold: true },
               ". Sie umfasst Bildkonvertierung (HEIC, JPG, PNG, WebP, ICO), Dokumentverarbeitung (PDF, DOCX, XLSX), Audio- und Video-Tools (MP4, MP3, WAV, WebM; Zuschneiden, Zusammenführen, Komprimieren, Stummschalten) sowie Text- und Code-Utilities (JSON, YAML, CSV, SQL, HTML, Markdown, Hash, JWT, Base64). Beliebte Funktionen wie Skalieren, Zuschneiden, Hintergrundentfernung, Komprimierung, Filter und Formatkonvertierung sind alle enthalten.",
@@ -738,64 +592,10 @@ export const aboutContent: LegalContent = {
                 "Keine Analyse oder Nachverfolgung wird jemals mit Ihren Dateien verknüpft.",
               ],
             ],
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
           },
           {
             type: "p",
             content: [
-<<<<<<< HEAD
-              "Bei convrs.org arbeiten wir mit einer ",
-              { text: "100% Zero-Backend-Architektur", bold: true },
-              ". Mithilfe von WebAssembly und HTML5 erfolgt die gesamte Dateiverarbeitung direkt auf Ihrem Gerät."
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["Warum wir?"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              [{ text: "Vollständiger Datenschutz:", bold: true }, " Keine Uploads. Keine Server."],
-              [{ text: "Blitzschnell:", bold: true }, " Keine Wartezeiten durch Uploads."],
-              [{ text: "Unbegrenzt:", bold: true }, " Vergessen Sie restriktive Dateigrößenbeschränkungen."],
-              [{ text: "Kostenlos:", bold: true }, " Wir bieten leistungsstarke Tools völlig kostenlos an."]
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["Kontaktieren Sie das Team"],
-        divider: true,
-        blocks: [
-          {
-            type: "contact",
-            title: "Für Feedback, Support oder Anfragen erreichen Sie uns unter:",
-            lines: [
-              [{ text: "E-Mail: ", bold: true }, { text: SUPPORT_EMAIL, url: links.contactMail }]
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  es: {
-    eyebrow: "Nuestra Misión",
-    title: "Sobre nosotros",
-    updatedLabel: "Última actualización",
-    updatedDate: "18 de septiembre de 2026",
-    intro: [
-      [
-        "Bienvenido a ",
-        { text: "convrs.org", bold: true },
-        ", su caja de herramientas digital centrada en la privacidad."
-      ]
-    ],
-    sections: [
-      {
-        heading: ["La filosofía de cero servidores"],
-=======
               "Da nichts Ihr Gerät verlässt, kann Ihr Inhalt nicht ",
               { text: "abgefangen, gelesen, gespeichert oder monetarisiert", bold: true },
               " werden — weder von uns noch von sonst jemandem. Egal ob Dokument, Bild oder Video: Die einzige Kopie, die jemals existiert, ist die in Ihren Händen.",
@@ -805,35 +605,10 @@ export const aboutContent: LegalContent = {
       },
       {
         heading: ["3. Wie Konvertierungen funktionieren"],
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
         blocks: [
           {
             type: "p",
             content: [
-<<<<<<< HEAD
-              "En convrs.org operamos con una ",
-              { text: "arquitectura 100% Zero-Backend", bold: true },
-              ". Usando WebAssembly y HTML5, todo el procesamiento de archivos ocurre directamente en su dispositivo."
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["¿Por qué elegirnos?"],
-        blocks: [
-          {
-            type: "list",
-            items: [
-              [{ text: "Privacidad Total:", bold: true }, " Sin cargas. Sin servidores."],
-              [{ text: "Rápido:", bold: true }, " Elimine la latencia de subir y bajar archivos."],
-              [{ text: "Gratis:", bold: true }, " Ofrecemos herramientas de forma gratuita."]
-            ]
-          }
-        ]
-      },
-      {
-        heading: ["Contacto"],
-=======
               "Wenn Sie eine Datei auswählen, lädt das Tool den benötigten Encoder aus unserem statischen Content-Delivery-Network (CDN) und führt die Konvertierung mithilfe von WebAssembly vollständig auf dem Prozessor Ihres Geräts aus. Moderne Browser führen diesen Code nativ auf Ihrem Rechner aus — deshalb werden selbst hochauflösende Dateien schnell verarbeitet.",
             ],
           },
@@ -965,23 +740,10 @@ export const aboutContent: LegalContent = {
       },
       {
         heading: ["8. Kontaktieren Sie uns"],
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
         divider: true,
         blocks: [
           {
             type: "contact",
-<<<<<<< HEAD
-            title: "Para comentarios o soporte, contáctenos en:",
-            lines: [
-              [{ text: "Correo: ", bold: true }, { text: SUPPORT_EMAIL, url: links.contactMail }]
-            ]
-          }
-        ]
-      }
-    ]
-  }
-};
-=======
             title: "Wie können wir Ihnen helfen?",
             lines: [
               [
@@ -1252,4 +1014,3 @@ export const aboutContent: LegalContent = {
     ],
   },
 };
->>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
