@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import VideoAudioTools from '@/components/converters/VideoAudioTools';
@@ -154,5 +155,23 @@ export default async function VideoToGifPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import VideoAudioTools from '@/components/converters/VideoAudioTools';
+export const generateMetadata = generateToolMetadata("/video-to-gif");
+
+export default function VideoToGifPage() {
+  return (
+    <>
+      <VideoAudioTools mode="video-to-gif" />
+      <ToolJsonLd path="/video-to-gif" />
+      <ToolSeoContent path="/video-to-gif" />
+      <SEOContentBlock path="/video-to-gif" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

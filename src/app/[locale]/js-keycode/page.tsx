@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import JsKeyCode from '@/components/converters/JsKeyCode';
@@ -181,5 +182,23 @@ export default async function JsKeycodePage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import JsKeyCode from '@/components/converters/JsKeyCode';
+export const generateMetadata = generateToolMetadata("/js-keycode");
+
+export default function JsKeyCodePage() {
+  return (
+    <>
+      <JsKeyCode />
+      <ToolJsonLd path="/js-keycode" />
+      <ToolSeoContent path="/js-keycode" />
+      <SEOContentBlock path="/js-keycode" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

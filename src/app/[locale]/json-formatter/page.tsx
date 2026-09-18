@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import JsonFormatter from '@/components/converters/JsonFormatter';
@@ -181,5 +182,23 @@ export default async function JsonFormatterPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import JsonFormatter from '@/components/converters/JsonFormatter';
+export const generateMetadata = generateToolMetadata("/json-formatter");
+
+export default function JsonFormatterPage() {
+  return (
+    <>
+      <JsonFormatter />
+      <ToolJsonLd path="/json-formatter" />
+      <ToolSeoContent path="/json-formatter" />
+      <SEOContentBlock path="/json-formatter" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

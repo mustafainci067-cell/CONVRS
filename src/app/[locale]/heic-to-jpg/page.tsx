@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ImageConverter from '@/components/converters/ImageConverter';
@@ -177,5 +178,23 @@ export default async function HeicToJpgPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ImageConverter from '@/components/converters/ImageConverter';
+export const generateMetadata = generateToolMetadata("/heic-to-jpg");
+
+export default function HeicToJpgPage() {
+  return (
+    <>
+      <ImageConverter mode="heic-to-jpg" />
+      <ToolJsonLd path="/heic-to-jpg" />
+      <ToolSeoContent path="/heic-to-jpg" />
+      <SEOContentBlock path="/heic-to-jpg" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

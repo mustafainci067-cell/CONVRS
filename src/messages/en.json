@@ -1,4 +1,47 @@
 {
+  "Seo": {
+    "homeTitle": "Free Online File Converter — 100% In-Browser, No Upload | Convrs",
+    "homeDescription": "Convert HEIC, JPG, PNG, WebP, PDF, DOCX, XLSX, MP4, MP3 and 60+ formats for free, 100% inside your browser. Your files never leave your device.",
+    "home": "Home"
+  },
+  "ToolContent": {
+    "about": "About this tool",
+    "jpg-to-webp": {
+      "title": "JPG to WebP Converter — Lighter Images, 100% in Your Browser",
+      "description": [
+        "Turn JPG photos into Google’s WebP format — free, unlimited, and entirely inside your browser. WebP consistently produces smaller files than JPG at the same visual quality, so your pages load faster, your bandwidth costs drop, and your visitors have a better experience. There is nothing to install and no account to sign up for; you open the tool, drop in your images, and download the WebP results.",
+        "Everything happens on your device. Convrs runs a WebAssembly codec that decodes and re-encodes your photos right in the browser tab where you chose your files. Your images are never uploaded to a server, never stored anywhere, and never shared with anyone. No sign-up, no tracking, no hidden cloud processing — once the page has loaded, conversion can even run with your internet connection switched off.",
+        "Why convert JPG to WebP? WebP is a modern image format created by Google, and it supports both lossy and lossless compression. For typical photographs, a well-tuned WebP file is often 25–35% smaller than the equivalent JPG. That means measurably faster page loads, lower data usage on mobile, and better Core Web Vitals — the signals search engines use to rank pages.",
+        "The converter is ideal for web developers, bloggers, online stores, and photographers who publish images on the web. Use WebP for delivery — headers, galleries, product photos and backgrounds — while keeping an original copy in your camera’s raw or JPG format for editing. The quality slider lets you balance file size and visual fidelity, so you get the smallest image that still looks great."
+      ],
+      "features": [
+        "100% client-side — the conversion runs locally through a WebAssembly engine; your file never leaves your device.",
+        "No accounts, no watermarks, no upload queue — just convert and download.",
+        "Up to 25–35% smaller files than JPG at matched visual quality.",
+        "Adjustable quality and a lossless mode for pixel-perfect results.",
+        "Batch-friendly — convert as many JPGs as you need, one after another.",
+        "Private by design — no server round-trips, no logs, nothing to delete."
+      ],
+      "faqs": [
+        {
+          "question": "Is my JPG uploaded to a server?",
+          "answer": "No. The conversion is executed by a WebAssembly codec inside your browser. Your image is processed locally on your device and never transmitted over the network, so there is nothing to intercept, store, or revoke."
+        },
+        {
+          "question": "Will WebP keep my image quality?",
+          "answer": "At the same visual quality, WebP is usually 25–35% lighter than JPG. Use the quality slider to match your taste — raise it for near-lossless detail or lower it for the smallest possible file."
+        },
+        {
+          "question": "When should I use WebP instead of JPG?",
+          "answer": "Choose WebP for anything delivered over the web: product images, blog photos, galleries, backgrounds. Keep an original JPG or RAW master offline for editing. Thanks to on-device conversion with Convrs, you can create WebP copies whenever you need them, without uploading a single pixel."
+        },
+        {
+          "question": "Are there limits on file size or number of images?",
+          "answer": "No. Because conversion is handled locally, you set the boundaries. Files up to 20 MB are supported, and you can convert as many images as you like — nothing is queued, billed, or logged on a server."
+        }
+      ]
+    }
+  },
   "Sidebar": {
     "openNav": "Open navigation menu",
     "collapse": "Collapse sidebar",
@@ -83,7 +126,9 @@
       "toDark": "Switch to dark mode",
       "lightMode": "Light mode",
       "darkMode": "Dark mode"
-    }
+    },
+    "guides": "Guides",
+    "mainNav": "Main navigation"
   },
   "Faq": {
     "title": "Frequently Asked Questions",
@@ -116,7 +161,21 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "cookie": "Cookie Policy",
+<<<<<<< HEAD
     "contact": "Contact Us"
+=======
+    "about": "About",
+    "contactPage": "Contact",
+    "contact": "support@convrs.org",
+    "guides": "Guides"
+  },
+  "Guides": {
+    "eyebrow": "Blog",
+    "title": "Guides & Articles",
+    "description": "Long-form explainers on client-side processing, WebAssembly, and secure file conversions — written for the browser-native, privacy-first web.",
+    "readMore": "Read the guide",
+    "backToGuides": "All guides"
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   },
   "LanguageSwitcher": {
     "label": "Language"
@@ -399,5 +458,18 @@
     "title": "Page not found",
     "description": "The page you're looking for doesn't exist or was moved. Check the URL or head back to the home page.",
     "home": "Back to home"
+  },
+  "Ads": {
+    "adLabel": "Advertisement",
+    "sponsoredLabel": "Sponsored",
+    "affiliateDisclosure": "This page contains affiliate links. If you buy through them, the site may earn a commission at no extra cost to you."
+  },
+  "A11y": {
+    "breadcrumb": "Breadcrumb",
+    "relatedTools": "Related tools",
+    "skipToContent": "Skip to content",
+    "mainNav": "Main navigation",
+    "footerNav": "Footer navigation",
+    "legalNav": "Legal"
   }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import VideoAudioTools from '@/components/converters/VideoAudioTools';
@@ -177,5 +178,23 @@ export default async function VolumeBoosterPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import VideoAudioTools from '@/components/converters/VideoAudioTools';
+export const generateMetadata = generateToolMetadata("/volume-booster");
+
+export default function VolumeBoosterPage() {
+  return (
+    <>
+      <VideoAudioTools mode="volume-booster" />
+      <ToolJsonLd path="/volume-booster" />
+      <ToolSeoContent path="/volume-booster" />
+      <SEOContentBlock path="/volume-booster" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

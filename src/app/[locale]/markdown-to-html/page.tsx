@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import MarkdownToHtml from '@/components/converters/MarkdownToHtml';
@@ -181,5 +182,22 @@ export default async function MarkdownToHtmlPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import MarkdownToHtml from '@/components/converters/MarkdownToHtml';
+export const generateMetadata = generateToolMetadata("/markdown-to-html");
+
+export default function MarkdownToHtmlPage() {
+  return (
+    <>
+      <MarkdownToHtml />
+      <ToolJsonLd path="/markdown-to-html" />
+      <ToolSeoContent path="/markdown-to-html" />
+      <SEOContentBlock path="/markdown-to-html" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

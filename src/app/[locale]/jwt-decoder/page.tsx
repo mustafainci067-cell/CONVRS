@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import JwtDecoder from '@/components/converters/JwtDecoder';
@@ -181,5 +182,23 @@ export default async function JwtDecoderPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import JwtDecoder from '@/components/converters/JwtDecoder';
+export const generateMetadata = generateToolMetadata("/jwt-decoder");
+
+export default function JwtDecoderPage() {
+  return (
+    <>
+      <JwtDecoder />
+      <ToolJsonLd path="/jwt-decoder" />
+      <ToolSeoContent path="/jwt-decoder" />
+      <SEOContentBlock path="/jwt-decoder" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import VideoAudioTools from '@/components/converters/VideoAudioTools';
@@ -177,5 +178,23 @@ export default async function AudioTrimmerPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import VideoAudioTools from '@/components/converters/VideoAudioTools';
+export const generateMetadata = generateToolMetadata("/audio-trimmer");
+
+export default function AudioTrimmerPage() {
+  return (
+    <>
+      <VideoAudioTools mode="audio-trimmer" />
+      <ToolJsonLd path="/audio-trimmer" />
+      <ToolSeoContent path="/audio-trimmer" />
+      <SEOContentBlock path="/audio-trimmer" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import VoiceRecorder from '@/components/converters/VoiceRecorder';
@@ -181,5 +182,22 @@ export default async function VoiceRecorderPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import VoiceRecorder from '@/components/converters/VoiceRecorder';
+export const generateMetadata = generateToolMetadata("/voice-recorder");
+
+export default function VoiceRecorderPage() {
+  return (
+    <>
+      <VoiceRecorder />
+      <ToolJsonLd path="/voice-recorder" />
+      <ToolSeoContent path="/voice-recorder" />
+      <SEOContentBlock path="/voice-recorder" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

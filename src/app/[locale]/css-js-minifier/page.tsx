@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import CssJsMinifier from '@/components/converters/CssJsMinifier';
@@ -181,5 +182,22 @@ export default async function CssJsMinifierPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import CssJsMinifier from '@/components/converters/CssJsMinifier';
+export const generateMetadata = generateToolMetadata("/css-js-minifier");
+
+export default function CssJsMinifierPage() {
+  return (
+    <>
+      <CssJsMinifier />
+      <ToolJsonLd path="/css-js-minifier" />
+      <ToolSeoContent path="/css-js-minifier" />
+      <SEOContentBlock path="/css-js-minifier" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

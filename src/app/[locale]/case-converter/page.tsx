@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import CaseConverter from '@/components/converters/CaseConverter';
@@ -181,5 +182,23 @@ export default async function CaseConverterPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import CaseConverter from '@/components/converters/CaseConverter';
+export const generateMetadata = generateToolMetadata("/case-converter");
+
+export default function CaseConverterPage() {
+  return (
+    <>
+      <CaseConverter />
+      <ToolJsonLd path="/case-converter" />
+      <ToolSeoContent path="/case-converter" />
+      <SEOContentBlock path="/case-converter" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

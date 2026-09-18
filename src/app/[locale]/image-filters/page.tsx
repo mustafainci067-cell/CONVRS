@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ImageFilters from '@/components/converters/ImageFilters';
@@ -181,5 +182,23 @@ export default async function ImageFiltersPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ImageFilters from '@/components/converters/ImageFilters';
+export const generateMetadata = generateToolMetadata("/image-filters");
+
+export default function ImageFiltersPage() {
+  return (
+    <>
+      <ImageFilters />
+      <ToolJsonLd path="/image-filters" />
+      <ToolSeoContent path="/image-filters" />
+      <SEOContentBlock path="/image-filters" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

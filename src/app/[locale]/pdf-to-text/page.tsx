@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import PdfToText from '@/components/converters/PdfToText';
@@ -181,5 +182,23 @@ export default async function PdfToTextPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import PdfToText from '@/components/converters/PdfToText';
+export const generateMetadata = generateToolMetadata("/pdf-to-text");
+
+export default function PdfToTextPage() {
+  return (
+    <>
+      <PdfToText />
+      <ToolJsonLd path="/pdf-to-text" />
+      <ToolSeoContent path="/pdf-to-text" />
+      <SEOContentBlock path="/pdf-to-text" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

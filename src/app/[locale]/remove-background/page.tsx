@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import RemoveBackground from '@/components/converters/RemoveBackground';
@@ -181,5 +182,23 @@ export default async function RemoveBackgroundPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import RemoveBackground from '@/components/converters/RemoveBackground';
+export const generateMetadata = generateToolMetadata("/remove-background");
+
+export default function RemoveBackgroundPage() {
+  return (
+    <>
+      <RemoveBackground />
+      <ToolJsonLd path="/remove-background" />
+      <ToolSeoContent path="/remove-background" />
+      <SEOContentBlock path="/remove-background" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import UrlConverter from '@/components/converters/UrlConverter';
@@ -181,5 +182,22 @@ export default async function UrlConverterPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import UrlConverter from '@/components/converters/UrlConverter';
+export const generateMetadata = generateToolMetadata("/url-converter");
+
+export default function UrlConverterPage() {
+  return (
+    <>
+      <UrlConverter />
+      <ToolJsonLd path="/url-converter" />
+      <ToolSeoContent path="/url-converter" />
+      <SEOContentBlock path="/url-converter" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

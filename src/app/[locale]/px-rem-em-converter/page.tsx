@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import PxRemEmConverter from '@/components/converters/PxRemEmConverter';
@@ -181,5 +182,22 @@ export default async function PxRemEmConverterPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import PxRemEmConverter from '@/components/converters/PxRemEmConverter';
+export const generateMetadata = generateToolMetadata("/px-rem-em-converter");
+
+export default function PxRemEmConverterPage() {
+  return (
+    <>
+      <PxRemEmConverter />
+      <ToolJsonLd path="/px-rem-em-converter" />
+      <ToolSeoContent path="/px-rem-em-converter" />
+      <SEOContentBlock path="/px-rem-em-converter" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

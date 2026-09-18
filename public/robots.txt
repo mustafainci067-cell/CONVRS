@@ -1,4 +1,14 @@
+<<<<<<< HEAD
 User-agent: *
 Allow: /
 
+=======
+# Convrs — convrs.org
+# Site tamamen client-side calisir; gizlenmesi gereken ozel bir yol yoktur.
+# Tum sayfalar dizinlenebilir.
+
+User-agent: *
+Allow: /
+
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
 Sitemap: https://convrs.org/sitemap.xml

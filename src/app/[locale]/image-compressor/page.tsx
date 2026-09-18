@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ImageCompressor from '@/components/converters/ImageCompressor';
@@ -154,5 +155,23 @@ export default async function ImageCompressorPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ImageCompressor from '@/components/converters/ImageCompressor';
+export const generateMetadata = generateToolMetadata("/image-compressor");
+
+export default function ImageCompressorPage() {
+  return (
+    <>
+      <ImageCompressor />
+      <ToolJsonLd path="/image-compressor" />
+      <ToolSeoContent path="/image-compressor" />
+      <SEOContentBlock path="/image-compressor" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

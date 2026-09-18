@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import UrlParser from '@/components/converters/UrlParser';
@@ -181,5 +182,23 @@ export default async function UrlParserPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import UrlParser from '@/components/converters/UrlParser';
+export const generateMetadata = generateToolMetadata("/url-parser");
+
+export default function UrlParserPage() {
+  return (
+    <>
+      <UrlParser />
+      <ToolJsonLd path="/url-parser" />
+      <ToolSeoContent path="/url-parser" />
+      <SEOContentBlock path="/url-parser" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

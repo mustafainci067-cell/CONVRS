@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import WatermarkAdder from '@/components/converters/WatermarkAdder';
@@ -181,5 +182,23 @@ export default async function WatermarkAdderPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import WatermarkAdder from '@/components/converters/WatermarkAdder';
+export const generateMetadata = generateToolMetadata("/watermark-adder");
+
+export default function WatermarkAdderPage() {
+  return (
+    <>
+      <WatermarkAdder />
+      <ToolJsonLd path="/watermark-adder" />
+      <ToolSeoContent path="/watermark-adder" />
+      <SEOContentBlock path="/watermark-adder" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

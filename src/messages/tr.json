@@ -1,4 +1,47 @@
 {
+  "Seo": {
+    "homeTitle": "Ücretsiz Online Dosya Dönüştürücü — %100 Tarayıcıda, Yüklemesiz | Convrs",
+    "homeDescription": "HEIC, JPG, PNG, WebP, PDF, DOCX, XLSX, MP4, MP3 ve 60+ formatı ücretsiz, %100 tarayıcınızda dönüştürün. Dosyalarınız asla cihazınızdan çıkmaz.",
+    "home": "Ana Sayfa"
+  },
+  "ToolContent": {
+    "about": "Bu aracı hakkında",
+    "jpg-to-webp": {
+      "title": "JPG → WebP Dönüştürücü — Daha Hafif Görseller, %100 Tarayıcında",
+      "description": [
+        "JPG fotoğraflarınızı Google’ın WebP formatına dönüştürün — ücretsiz, sınırsız ve tamamen tarayıcınızın içinde. WebP, aynı görsel kalitede JPG’den tutarlı biçimde daha küçük dosyalar üretir; böylece sayfalarınız daha hızlı açılır, bant genişliği maliyetiniz düşer ve ziyaretçileriniz daha iyi bir deneyim yaşar. Kurulacak bir şey yok, hesap açmanız gerekmiyor; aracı açın, görsellerinizi sürükleyin ve sonuçları indirin.",
+        "Her şey cihazınızda gerçekleşir. Convrs, fotoğraflarınızı seçtiğiniz tarayıcı sekmesinde çözen ve yeniden kodlayan bir WebAssembly kodeki kullanır. Görselleriniz hiçbir sunucuya yüklenmez, hiçbir yerde saklanmaz ve kimseyle paylaşılmaz. Kayıt yok, izleme yok, gizli bulut işleme yok — sayfa yüklendikten sonra dönüştürme, internet bağlantınız kapalıyken bile çalışabilir.",
+        "Neden JPG’den WebP’ye dönüştürmelisiniz? WebP, Google tarafından oluşturulmuş; hem kayıplı hem kayıpsız sıkıştırmayı destekleyen modern bir görüntü biçimidir. Tipik fotoğraflarda iyi ayarlanmış bir WebP dosyası, aynı kalitedeki JPG’den genellikle %25–35 daha küçüktür. Bu, ölçülebilir şekilde daha hızlı sayfa yüklenmesi, mobilde daha az veri kullanımı ve arama motorlarının sıralamada kullandığı daha iyi Core Web Vitals değerleri demektir.",
+        "Bu dönüştürücü; web’de görsel yayınlayan geliştiriciler, blog yazarları, çevrimiçi mağazalar ve fotoğrafçılar için idealdir. Web dağıtımı için WebP kullanın — başlık görselleri, galeriler, ürün fotoğrafları ve arka planlar — düzenleme için makinenizdeki orijinal RAW veya JPG kopyayı saklayın. Kaydırıcı, dosya boyutu ile görsel kalite arasında denge kurmanızı sağlar; böylece harika görünen en küçük görüntüyü elde edersiniz."
+      ],
+      "features": [
+        "%100 istemci tarafı — dönüştürme yerel bir WebAssembly motoruyla cihazınızda çalışır; dosyanız asla cihazınızdan çıkmaz.",
+        "Hesap yok, filigran yok, bekleme kuyruğu yok — sadece dönüştürün ve indirin.",
+        "Aynı görsel kalitede JPG’den %25–35’e kadar daha küçük dosyalar.",
+        "Ayarlanabilir kalite ve piksel mükemmelliği için kayıpsız mod.",
+        "Toplu dönüştürmeye uygun — isteğiniz kadar JPG’yi arka arkaya dönüştürün.",
+        "Gizlilik öncelikli tasarım — sunucu turu yok, kayıt yok, silinecek bir şey yok."
+      ],
+      "faqs": [
+        {
+          "question": "JPG dosyam sunucuya yükleniyor mu?",
+          "answer": "Hayır. Dönüştürme, tarayıcınızın içinde çalışan bir WebAssembly kodekiyle gerçekleştirilir. Görseliniz cihazınızda yerel olarak işlenir ve ağ üzerinden asla gönderilmez; ele geçirilecek, saklanacak ya da iptal edilecek bir şey yoktur."
+        },
+        {
+          "question": "WebP görüntü kalitemi korur mu?",
+          "answer": "Aynı görsel kalitede WebP genellikle JPG’den %25–35 daha hafiftir. Kaydırıcıyı zevkinize göre ayarlayın — kayıpsıza yakın ayrıntı için yükseltin veya en küçük dosya için düşürün."
+        },
+        {
+          "question": "WebP’yi ne zaman JPG yerine kullanmalıyım?",
+          "answer": "Web üzerinden aktarılan her şey için WebP’yi seçin: ürün görselleri, blog fotoğrafları, galeriler, arka planlar. Düzenleme için orijinal JPG veya RAW kopyayı cihazınızda saklayın. Convrs ile cihaz içi dönüştürme sayesinde tek bir piksel yüklemeden, ihtiyaç duyduğunuzda WebP kopyaları oluşturabilirsiniz."
+        },
+        {
+          "question": "Dosya boyutu veya görsel sayısı sınırı var mı?",
+          "answer": "Hayır. Dönüştürme yerel olarak yapıldığı için sınırları siz belirlersiniz. 20 MB’a kadar dosyalar desteklenir ve dilediğiniz kadar görsel dönüştürebilirsiniz — sunucuda hiçbir şey kuyruğa alınmaz, faturalandırılmaz ya da kaydedilmez."
+        }
+      ]
+    }
+  },
   "Sidebar": {
     "openNav": "Gezinti menüsünü aç",
     "collapse": "Kenar çubuğunu daralt",
@@ -83,7 +126,9 @@
       "toDark": "Koyu moda geç",
       "lightMode": "Açık mod",
       "darkMode": "Koyu mod"
-    }
+    },
+    "guides": "Rehberler",
+    "mainNav": "Ana gezinme"
   },
   "Faq": {
     "title": "Sıkça Sorulan Sorular",
@@ -116,7 +161,21 @@
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
     "cookie": "Çerez Politikası",
+<<<<<<< HEAD
     "contact": "İletişim"
+=======
+    "about": "Hakkımızda",
+    "contactPage": "İletişim",
+    "contact": "support@convrs.org",
+    "guides": "Rehberler"
+  },
+  "Guides": {
+    "eyebrow": "Blog",
+    "title": "Rehberler & Yazılar",
+    "description": "İstemci tarafında işleme, WebAssembly ve güvenli dosya dönüşümleri üzerine uzun okumalar — tarayıcı yerel, gizlilik öncelikli web için yazıldı.",
+    "readMore": "Rehberi oku",
+    "backToGuides": "Tüm rehberler"
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   },
   "LanguageSwitcher": {
     "label": "Dil"
@@ -399,5 +458,18 @@
     "title": "Sayfa bulunamadı",
     "description": "Aradığınız sayfa bulunamadı veya taşınmış olabilir. Adresi kontrol edin ya da ana sayfaya dönün.",
     "home": "Ana sayfaya dön"
+  },
+  "Ads": {
+    "adLabel": "Reklam",
+    "sponsoredLabel": "Sponsorlu",
+    "affiliateDisclosure": "Bu sayfadaki bazı bağlantılar ortaklık bağlantısıdır. Bu bağlantılardan satın alım yaparsanız, size ek maliyet olmadan siteye küçük bir komisyon ödenebilir."
+  },
+  "A11y": {
+    "breadcrumb": "Gezinti yolu",
+    "relatedTools": "İlgili araçlar",
+    "skipToContent": "İçeriğe atla",
+    "mainNav": "Ana gezinme",
+    "footerNav": "Alt bilgi gezinmesi",
+    "legalNav": "Yasal"
   }
 }

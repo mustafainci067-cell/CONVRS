@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import MetaTagGenerator from '@/components/converters/MetaTagGenerator';
@@ -181,5 +182,23 @@ export default async function MetaTagGeneratorPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import MetaTagGenerator from '@/components/converters/MetaTagGenerator';
+export const generateMetadata = generateToolMetadata("/meta-tag-generator");
+
+export default function MetaTagGeneratorPage() {
+  return (
+    <>
+      <MetaTagGenerator />
+      <ToolJsonLd path="/meta-tag-generator" />
+      <ToolSeoContent path="/meta-tag-generator" />
+      <SEOContentBlock path="/meta-tag-generator" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

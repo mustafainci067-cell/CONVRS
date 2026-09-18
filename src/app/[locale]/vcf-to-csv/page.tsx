@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import VcfToCsv from '@/components/converters/VcfToCsv';
@@ -181,5 +182,23 @@ export default async function VcfToCsvPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import VcfToCsv from '@/components/converters/VcfToCsv';
+export const generateMetadata = generateToolMetadata("/vcf-to-csv");
+
+export default function VcfToCsvPage() {
+  return (
+    <>
+      <VcfToCsv />
+      <ToolJsonLd path="/vcf-to-csv" />
+      <ToolSeoContent path="/vcf-to-csv" />
+      <SEOContentBlock path="/vcf-to-csv" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

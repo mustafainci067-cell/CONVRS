@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import Base64Encoder from '@/components/converters/Base64Encoder';
@@ -181,5 +182,23 @@ export default async function Base64EncoderPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import Base64Encoder from '@/components/converters/Base64Encoder';
+export const generateMetadata = generateToolMetadata("/base64-encoder");
+
+export default function Base64EncoderPage() {
+  return (
+    <>
+      <Base64Encoder />
+      <ToolJsonLd path="/base64-encoder" />
+      <ToolSeoContent path="/base64-encoder" />
+      <SEOContentBlock path="/base64-encoder" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

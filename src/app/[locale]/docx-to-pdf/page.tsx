@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import DocxToPdf from '@/components/converters/DocxToPdf';
@@ -181,5 +182,23 @@ export default async function DocxToPdfPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import DocxToPdf from '@/components/converters/DocxToPdf';
+export const generateMetadata = generateToolMetadata("/docx-to-pdf");
+
+export default function DocxToPdfPage() {
+  return (
+    <>
+      <DocxToPdf />
+      <ToolJsonLd path="/docx-to-pdf" />
+      <ToolSeoContent path="/docx-to-pdf" />
+      <SEOContentBlock path="/docx-to-pdf" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

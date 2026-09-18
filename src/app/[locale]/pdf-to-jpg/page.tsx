@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import PdfToJpgConverter from '@/components/converters/PdfToJpgConverter';
@@ -181,5 +182,23 @@ export default async function PdfToJpgPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import PdfToJpgConverter from '@/components/converters/PdfToJpgConverter';
+export const generateMetadata = generateToolMetadata("/pdf-to-jpg");
+
+export default function PdfToJpgPage() {
+  return (
+    <>
+      <PdfToJpgConverter />
+      <ToolJsonLd path="/pdf-to-jpg" />
+      <ToolSeoContent path="/pdf-to-jpg" />
+      <SEOContentBlock path="/pdf-to-jpg" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

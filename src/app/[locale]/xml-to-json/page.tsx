@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import XmlToJson from '@/components/converters/XmlToJson';
@@ -181,5 +182,22 @@ export default async function XmlToJsonPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import XmlToJson from '@/components/converters/XmlToJson';
+export const generateMetadata = generateToolMetadata("/xml-to-json");
+
+export default function XmlToJsonPage() {
+  return (
+    <>
+      <XmlToJson />
+      <ToolJsonLd path="/xml-to-json" />
+      <ToolSeoContent path="/xml-to-json" />
+      <SEOContentBlock path="/xml-to-json" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

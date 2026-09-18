@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ImageToBase64 from '@/components/converters/ImageToBase64';
@@ -181,5 +182,22 @@ export default async function ImageToBase64Page({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ImageToBase64 from '@/components/converters/ImageToBase64';
+export const generateMetadata = generateToolMetadata("/image-to-base64");
+
+export default function ImageToBase64Page() {
+  return (
+    <>
+      <ImageToBase64 />
+      <ToolJsonLd path="/image-to-base64" />
+      <ToolSeoContent path="/image-to-base64" />
+      <SEOContentBlock path="/image-to-base64" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

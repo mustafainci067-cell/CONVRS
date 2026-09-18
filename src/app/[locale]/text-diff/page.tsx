@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import TextDiff from '@/components/converters/TextDiff';
@@ -181,5 +182,23 @@ export default async function TextDiffPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import TextDiff from '@/components/converters/TextDiff';
+export const generateMetadata = generateToolMetadata("/text-diff");
+
+export default function TextDiffPage() {
+  return (
+    <>
+      <TextDiff />
+      <ToolJsonLd path="/text-diff" />
+      <ToolSeoContent path="/text-diff" />
+      <SEOContentBlock path="/text-diff" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

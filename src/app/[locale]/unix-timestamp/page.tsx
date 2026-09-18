@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import UnixTimestamp from '@/components/converters/UnixTimestamp';
@@ -181,5 +182,23 @@ export default async function UnixTimestampPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import UnixTimestamp from '@/components/converters/UnixTimestamp';
+export const generateMetadata = generateToolMetadata("/unix-timestamp");
+
+export default function UnixTimestampPage() {
+  return (
+    <>
+      <UnixTimestamp />
+      <ToolJsonLd path="/unix-timestamp" />
+      <ToolSeoContent path="/unix-timestamp" />
+      <SEOContentBlock path="/unix-timestamp" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

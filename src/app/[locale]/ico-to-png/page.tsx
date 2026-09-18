@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ImageConverter from '@/components/converters/ImageConverter';
@@ -177,5 +178,22 @@ export default async function IcoToPngPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ImageConverter from '@/components/converters/ImageConverter';
+export const generateMetadata = generateToolMetadata("/ico-to-png");
+
+export default function IcoToPngPage() {
+  return (
+    <>
+      <ImageConverter mode="ico-to-png" />
+      <ToolJsonLd path="/ico-to-png" />
+      <ToolSeoContent path="/ico-to-png" />
+      <SEOContentBlock path="/ico-to-png" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

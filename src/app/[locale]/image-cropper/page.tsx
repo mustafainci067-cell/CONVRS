@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ImageCropper from '@/components/converters/ImageCropper';
@@ -181,5 +182,23 @@ export default async function ImageCropperPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ImageCropper from '@/components/converters/ImageCropper';
+export const generateMetadata = generateToolMetadata("/image-cropper");
+
+export default function ImageCropperPage() {
+  return (
+    <>
+      <ImageCropper />
+      <ToolJsonLd path="/image-cropper" />
+      <ToolSeoContent path="/image-cropper" />
+      <SEOContentBlock path="/image-cropper" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

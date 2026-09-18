@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import LoremIpsum from '@/components/converters/LoremIpsum';
@@ -181,5 +182,22 @@ export default async function LoremIpsumPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import LoremIpsum from '@/components/converters/LoremIpsum';
+export const generateMetadata = generateToolMetadata("/lorem-ipsum");
+
+export default function LoremIpsumPage() {
+  return (
+    <>
+      <LoremIpsum />
+      <ToolJsonLd path="/lorem-ipsum" />
+      <ToolSeoContent path="/lorem-ipsum" />
+      <SEOContentBlock path="/lorem-ipsum" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

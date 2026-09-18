@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import TailwindPalette from '@/components/converters/TailwindPalette';
@@ -181,5 +182,23 @@ export default async function TailwindPalettePage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import TailwindPalette from '@/components/converters/TailwindPalette';
+export const generateMetadata = generateToolMetadata("/tailwind-palette");
+
+export default function TailwindPalettePage() {
+  return (
+    <>
+      <TailwindPalette />
+      <ToolJsonLd path="/tailwind-palette" />
+      <ToolSeoContent path="/tailwind-palette" />
+      <SEOContentBlock path="/tailwind-palette" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

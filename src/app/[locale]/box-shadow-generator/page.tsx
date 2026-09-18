@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import BoxShadowGenerator from '@/components/converters/BoxShadowGenerator';
@@ -181,5 +182,23 @@ export default async function BoxShadowGeneratorPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import BoxShadowGenerator from '@/components/converters/BoxShadowGenerator';
+export const generateMetadata = generateToolMetadata("/box-shadow-generator");
+
+export default function BoxShadowGeneratorPage() {
+  return (
+    <>
+      <BoxShadowGenerator />
+      <ToolJsonLd path="/box-shadow-generator" />
+      <ToolSeoContent path="/box-shadow-generator" />
+      <SEOContentBlock path="/box-shadow-generator" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

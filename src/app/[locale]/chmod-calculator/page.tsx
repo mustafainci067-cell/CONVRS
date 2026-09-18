@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ChmodCalculator from '@/components/converters/ChmodCalculator';
@@ -181,5 +182,23 @@ export default async function ChmodCalculatorPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ChmodCalculator from '@/components/converters/ChmodCalculator';
+export const generateMetadata = generateToolMetadata("/chmod-calculator");
+
+export default function ChmodCalculatorPage() {
+  return (
+    <>
+      <ChmodCalculator />
+      <ToolJsonLd path="/chmod-calculator" />
+      <ToolSeoContent path="/chmod-calculator" />
+      <SEOContentBlock path="/chmod-calculator" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

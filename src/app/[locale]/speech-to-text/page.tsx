@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import SpeechToText from '@/components/converters/SpeechToText';
@@ -181,5 +182,22 @@ export default async function SpeechToTextPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import SpeechToText from '@/components/converters/SpeechToText';
+export const generateMetadata = generateToolMetadata("/speech-to-text");
+
+export default function SpeechToTextPage() {
+  return (
+    <>
+      <SpeechToText />
+      <ToolJsonLd path="/speech-to-text" />
+      <ToolSeoContent path="/speech-to-text" />
+      <SEOContentBlock path="/speech-to-text" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }

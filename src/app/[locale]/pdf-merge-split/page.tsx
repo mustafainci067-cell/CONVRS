@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import PdfMerge from '@/components/converters/PdfMerge';
@@ -154,5 +155,23 @@ export default async function PdfMergeSplitPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import PdfMerge from '@/components/converters/PdfMerge';
+export const generateMetadata = generateToolMetadata("/pdf-merge-split");
+
+export default function PdfMergeSplitPage() {
+  return (
+    <>
+      <PdfMerge />
+      <ToolJsonLd path="/pdf-merge-split" />
+      <ToolSeoContent path="/pdf-merge-split" />
+      <SEOContentBlock path="/pdf-merge-split" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

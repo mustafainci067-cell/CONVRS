@@ -1,4 +1,47 @@
 {
+  "Seo": {
+    "homeTitle": "Conversor de archivos en línea gratis — 100 % en el navegador, sin subir | Convrs",
+    "homeDescription": "Convierta HEIC, JPG, PNG, WebP, PDF, DOCX, XLSX, MP4, MP3 y más de 60 formatos gratis, 100 % en su navegador. Sus archivos nunca salen de su dispositivo.",
+    "home": "Inicio"
+  },
+  "ToolContent": {
+    "about": "Acerca de esta herramienta",
+    "jpg-to-webp": {
+      "title": "Convertidor de JPG a WebP — archivos más ligeros, 100 % en el navegador",
+      "description": [
+        "Convierta sus fotos JPG al formato WebP de Google — gratis, sin límites y enteramente dentro de su navegador. WebP genera de forma constante archivos más pequeños que JPG con la misma calidad visual, de modo que sus páginas cargan más rápido, su consumo de datos se reduce y sus visitantes disfrutan de una mejor experiencia. No hay nada que instalar ni cuentas que crear: abra la herramienta, arrastre sus imágenes y descargue los resultados en WebP.",
+        "Todo ocurre en su dispositivo. Convrs utiliza un códec WebAssembly que decodifica y recodifica sus fotos directamente en la pestaña del navegador donde elige sus archivos. Sus imágenes nunca se suben a un servidor, nunca se almacenan en ningún sitio y nunca se comparten con nadie. Sin registro, sin seguimiento, sin procesamiento en la nube oculto: una vez cargada la página, la conversión funciona incluso sin conexión a internet.",
+        "¿Por qué convertir de JPG a WebP? WebP es un formato de imagen moderno creado por Google que admite compresión tanto con pérdida como sin pérdida. En fotografías habituales, un archivo WebP bien ajustado suele ser un 25–35 % más pequeño que el JPG equivalente. Eso significa tiempos de carga notablemente más rápidos, menos datos en el móvil y mejores Core Web Vitals — las señales que los buscadores usan para posicionar las páginas.",
+        "Este convertidor es ideal para desarrolladores web, blogueros, tiendas en línea y fotógrafos que publican imágenes en internet. Use WebP para la entrega web — imágenes de portada, galerías, fotos de producto y fondos — y conserve una copia original en RAW o JPG de su cámara para la edición. El control deslizante le permite equilibrar tamaño y calidad visual, para obtener la imagen más pequeña que siga viéndose muy bien."
+      ],
+      "features": [
+        "100 % en el cliente — la conversión se ejecuta localmente con un motor WebAssembly; su archivo nunca sale de su dispositivo.",
+        "Sin cuentas, sin marcas de agua, sin colas de espera — solo convierta y descargue.",
+        "Archivos hasta un 25–35 % más pequeños que JPG con la misma calidad visual.",
+        "Calidad ajustable y un modo sin pérdida para resultados perfectos píxel a píxel.",
+        "Apto para lotes — convierta tantos JPG como necesite, uno tras otro.",
+        "Privacidad por diseño — sin idas y venidas al servidor, sin registros, nada que borrar."
+      ],
+      "faqs": [
+        {
+          "question": "¿Se sube mi JPG a un servidor?",
+          "answer": "No. La conversión la ejecuta un códec WebAssembly dentro de su navegador. Su imagen se procesa localmente en su dispositivo y nunca se transmite por internet, así que no hay nada que interceptar, almacenar o revocar."
+        },
+        {
+          "question": "¿WebP conserva mi calidad de imagen?",
+          "answer": "Con la misma calidad visual, WebP suele ser un 25–35 % más ligero que JPG. Ajuste el control de calidad a su gusto: súbalo para detalles casi sin pérdida o bájelo para obtener el archivo más pequeño posible."
+        },
+        {
+          "question": "¿Cuándo debo usar WebP en lugar de JPG?",
+          "answer": "Elija WebP para todo lo que se entregue por internet: fotos de producto, imágenes de blog, galerías y fondos. Conserve un original en JPG o RAW para editar sin conexión. Gracias a la conversión local de Convrs, puede crear copias WebP cuando quiera, sin subir ni un solo píxel."
+        },
+        {
+          "question": "¿Hay límites de tamaño de archivo o número de imágenes?",
+          "answer": "No. Como la conversión se realiza localmente, usted marca los límites. Se admiten archivos de hasta 20 MB y puede convertir todas las imágenes que desee: nada se encola, factura o registra en un servidor."
+        }
+      ]
+    }
+  },
   "Sidebar": {
     "openNav": "Abrir menú de navegación",
     "collapse": "Contraer barra lateral",
@@ -83,7 +126,9 @@
       "toDark": "Cambiar al modo oscuro",
       "lightMode": "Modo claro",
       "darkMode": "Modo oscuro"
-    }
+    },
+    "guides": "Guías",
+    "mainNav": "Navegación principal"
   },
   "Faq": {
     "title": "Preguntas frecuentes",
@@ -116,7 +161,21 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Uso",
     "cookie": "Política de Cookies",
+<<<<<<< HEAD
     "contact": "Contacto"
+=======
+    "about": "Sobre nosotros",
+    "contactPage": "Contacto",
+    "contact": "support@convrs.org",
+    "guides": "Guías"
+  },
+  "Guides": {
+    "eyebrow": "Blog",
+    "title": "Guías y artículos",
+    "description": "Explicaciones extensas sobre procesamiento local, WebAssembly y conversión segura de archivos — escritas para la web nativa del navegador y centrada en la privacidad.",
+    "readMore": "Leer la guía",
+    "backToGuides": "Todas las guías"
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   },
   "LanguageSwitcher": {
     "label": "Idioma"
@@ -399,5 +458,18 @@
     "title": "Página no encontrada",
     "description": "La página que buscas no existe o se ha movido. Revisa la URL o vuelve al inicio.",
     "home": "Volver al inicio"
+  },
+  "Ads": {
+    "adLabel": "Publicidad",
+    "sponsoredLabel": "Patrocinado",
+    "affiliateDisclosure": "Esta página contiene enlaces de afiliados. Si compras a través de ellos, el sitio puede recibir una comisión sin coste adicional para ti."
+  },
+  "A11y": {
+    "breadcrumb": "Ruta de navegación",
+    "relatedTools": "Herramientas relacionadas",
+    "skipToContent": "Saltar al contenido",
+    "mainNav": "Navegación principal",
+    "footerNav": "Navegación del pie de página",
+    "legalNav": "Legal"
   }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import SqlFormatter from '@/components/converters/SqlFormatter';
@@ -181,5 +182,23 @@ export default async function SqlFormatterPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import SqlFormatter from '@/components/converters/SqlFormatter';
+export const generateMetadata = generateToolMetadata("/sql-formatter");
+
+export default function SqlFormatterPage() {
+  return (
+    <>
+      <SqlFormatter />
+      <ToolJsonLd path="/sql-formatter" />
+      <ToolSeoContent path="/sql-formatter" />
+      <SEOContentBlock path="/sql-formatter" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

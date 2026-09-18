@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import DataConverter from '@/components/converters/DataConverter';
@@ -177,5 +178,23 @@ export default async function JsonToCsvPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import DataConverter from '@/components/converters/DataConverter';
+export const generateMetadata = generateToolMetadata("/json-to-csv");
+
+export default function JsonToCsvPage() {
+  return (
+    <>
+      <DataConverter mode="json-to-csv" />
+      <ToolJsonLd path="/json-to-csv" />
+      <ToolSeoContent path="/json-to-csv" />
+      <SEOContentBlock path="/json-to-csv" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+

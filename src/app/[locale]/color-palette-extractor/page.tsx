@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import type { Metadata } from 'next';
 import { generateConverterMetadata } from '@/lib/seo';
 import ColorPaletteExtractor from '@/components/converters/ColorPaletteExtractor';
@@ -181,5 +182,23 @@ export default async function ColorPaletteExtractorPage({
         </div>
       </section>
     </div>
+=======
+import ToolJsonLd from "@/components/ToolJsonLd";
+import ToolSeoContent from "@/components/ToolSeoContent";
+import SEOContentBlock from "@/components/SEOContentBlock";
+import { generateToolMetadata } from "@/i18n/toolMetadata";
+import ColorPaletteExtractor from '@/components/converters/ColorPaletteExtractor';
+export const generateMetadata = generateToolMetadata("/color-palette-extractor");
+
+export default function ColorPaletteExtractorPage() {
+  return (
+    <>
+      <ColorPaletteExtractor />
+      <ToolJsonLd path="/color-palette-extractor" />
+      <ToolSeoContent path="/color-palette-extractor" />
+      <SEOContentBlock path="/color-palette-extractor" />
+    </>
+>>>>>>> 7f6c5a9156f4438bbb6bf69a717233857ce699eb
   );
 }
+
