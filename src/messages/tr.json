@@ -186,6 +186,11 @@
     "tagline": "Tüm dönüşümler doğrudan tarayıcınızda gerçekleşir. Dosyalarınız cihazınızdan asla çıkmaz.",
     "openTool": "Aracı aç →",
     "available": "Kullanılabilir",
+    "guidesCard": {
+      "title": "Rehberler ve Makaleler",
+      "description": "Dosya formatları, dönüşümler ve web araçları hakkında kapsamlı rehberler — bilmeniz gereken her şey.",
+      "link": "Rehberlere göz at →"
+    },
     "tools": {
       "heic-to-jpg": {
         "title": "HEIC → JPG",

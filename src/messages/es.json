@@ -186,6 +186,11 @@
     "tagline": "Todas las conversiones ocurren directamente en su navegador. Sus archivos nunca salen de su dispositivo.",
     "openTool": "Abrir herramienta →",
     "available": "Disponible",
+    "guidesCard": {
+      "title": "Guías y Artículos",
+      "description": "Guías detalladas sobre formatos de archivo, conversiones y herramientas web — aprende todo lo que necesitas saber.",
+      "link": "Ver guías →"
+    },
     "tools": {
       "heic-to-jpg": {
         "title": "HEIC → JPG",

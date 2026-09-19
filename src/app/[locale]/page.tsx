@@ -92,6 +92,27 @@ export default async function Home() {
         </section>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {/* ── Rehberler (Guides) Kartı ── */}
+          <Link
+            href="/guides"
+            className="group col-span-1 sm:col-span-2 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-6 transition-all hover:border-indigo-400 hover:shadow-md dark:border-indigo-900 dark:bg-indigo-950/30 dark:hover:border-indigo-700"
+          >
+            <div className="mb-3 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">📖</span>
+                <h2 className="text-lg font-semibold text-indigo-900 dark:text-indigo-200">
+                  {t('guidesCard.title')}
+                </h2>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed text-indigo-700 dark:text-indigo-400">
+              {t('guidesCard.description')}
+            </p>
+            <span className="mt-4 inline-block font-mono text-xs text-indigo-500 transition-colors group-hover:text-indigo-800 dark:group-hover:text-indigo-300">
+              {t('guidesCard.link')}
+            </span>
+          </Link>
+
           {tools.map((tool) =>
             tool.status === 'active' ? (
               <Link

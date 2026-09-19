@@ -186,6 +186,11 @@
     "tagline": "All conversions happen directly in your browser. Your files never leave your device.",
     "openTool": "Open tool →",
     "available": "Available",
+    "guidesCard": {
+      "title": "Guides & Articles",
+      "description": "In-depth guides on file formats, conversions, and web tools — learn everything you need to know.",
+      "link": "Browse guides →"
+    },
     "tools": {
       "heic-to-jpg": {
         "title": "HEIC → JPG",
