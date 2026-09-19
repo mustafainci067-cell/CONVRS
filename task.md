@@ -4,6 +4,11 @@
 - [x] `consent.ts` → env var'lardan oku
 - [x] `src/lib/seo.ts` → generateConverterMetadata yardımcı fonksiyonu
 - [x] `src/components/AdSlot.tsx` → reklam slot bileşeni
+- [x] TXT
+- [x] DOCX
+- [x] XLSX
+- [x] VCF
+- [x] MD
 - [x] `ConsentGate.tsx` → next/script strategy="afterInteractive"
 - [x] `ConverterShell.tsx` → header altı ve ResultPanel altına AdSlot ekle
 - [x] Tüm converter page.tsx → generateMetadata + OG + Twitter
