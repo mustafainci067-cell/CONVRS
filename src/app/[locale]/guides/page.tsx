@@ -41,6 +41,7 @@ export default async function GuidesIndexPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Guides" });
+  const tSidebar = await getTranslations({ locale, namespace: "Sidebar" });
 
   // TS formatlı rehberleri haritala
   const tsGuides = guidesByRecency.map((guide) => {
@@ -97,7 +98,7 @@ export default async function GuidesIndexPage({
             return (
               <Accordion 
                 key={cat} 
-                title={<span className="text-xl font-semibold capitalize tracking-tight text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">{cat} Tools</span>} 
+                title={<span className="text-xl font-semibold uppercase tracking-wider text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">{tSidebar(`categories.${cat}`)}</span>} 
                 defaultOpen={true}
                 className="border-b border-zinc-200 dark:border-zinc-800/60"
               >

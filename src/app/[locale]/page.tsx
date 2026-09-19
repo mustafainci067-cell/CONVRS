@@ -7,6 +7,7 @@ import { AD_SLOT_HOMEPAGE } from '@/lib/ads';
 import Faq from '@/components/FAQ';
 import { categoryConfigs } from '@/config/nav';
 import { SITE_URL } from '@/i18n/routing';
+import Accordion from '@/components/ui/Accordion';
 
 type Tool = {
   href: string;
@@ -115,13 +116,17 @@ export default async function Home() {
           </Link>
 
           {categoryConfigs.map((category) => (
-            <section key={category.titleKey} className="flex flex-col gap-5">
-              <div className="flex items-center gap-3 border-b border-zinc-200 pb-2 dark:border-zinc-800/60">
-                <h2 className="text-xl font-semibold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
+            <Accordion
+              key={category.titleKey}
+              title={
+                <span className="text-xl font-semibold uppercase tracking-wider text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">
                   {tSidebar(`categories.${category.titleKey}`)}
-                </h2>
-              </div>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                </span>
+              }
+              defaultOpen={true}
+              className="border-b border-zinc-200 dark:border-zinc-800/60 pb-2"
+            >
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-4 pb-6">
                 {category.items.map((tool) =>
                   tool.status === 'active' ? (
                     <Link
@@ -168,7 +173,7 @@ export default async function Home() {
                   )
                 )}
               </div>
-            </section>
+            </Accordion>
           ))}
         </div>
 
