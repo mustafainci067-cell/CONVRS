@@ -7,6 +7,7 @@ import { useTheme } from 'next-themes';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { cn } from '@/lib/utils';
 import { categoryConfigs } from '@/config/nav';
+import Accordion from '@/components/ui/Accordion';
 
 const iconClass = 'w-4 h-4 shrink-0';
 
@@ -212,13 +213,8 @@ export default function Sidebar() {
         </div>
 
         <nav aria-label={t('mainNav')} className="flex-1 space-y-6 overflow-y-auto p-4">
-          {categoryConfigs.map((category) => (
-            <div key={category.titleKey} className="space-y-2">
-              {isOpen && (
-                <p className="flex items-center gap-2 px-2 font-mono text-[11px] uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
-                  <span>{t(`categories.${category.titleKey}`)}</span>
-                </p>
-              )}
+          {categoryConfigs.map((category) => {
+            const itemsList = (
               <div className="space-y-1">
                 {category.items.map((item) => {
                   const isActiveRoute = item.status === 'active' && pathname === item.path;
@@ -265,8 +261,24 @@ export default function Sidebar() {
                   );
                 })}
               </div>
-            </div>
-          ))}
+            );
+
+            return (
+              <div key={category.titleKey} className="space-y-2">
+                {isOpen ? (
+                  <Accordion
+                    title={<span className="font-mono text-[11px] uppercase tracking-wider text-zinc-500 dark:text-zinc-500">{t(`categories.${category.titleKey}`)}</span>}
+                    defaultOpen={true}
+                    buttonClassName="py-1 px-2 rounded-lg"
+                  >
+                    {itemsList}
+                  </Accordion>
+                ) : (
+                  itemsList
+                )}
+              </div>
+            );
+          })}
         </nav>
 
         {/* Guides (Blog) linki — araç kategorilerinin altında, dil/tema seçimlerinin üstünde */}

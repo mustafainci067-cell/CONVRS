@@ -7,6 +7,7 @@ import { SITE_URL } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { getAllGuides } from "@/lib/guides";
+import Accordion from "@/components/ui/Accordion";
 
 // /guides blog indeksi. Sayfa üzerinde dinamik segment yok; locale yalnızca
 // üstteki [locale]/layout.tsx generateStaticParams'ından gelir (SSG).
@@ -94,12 +95,12 @@ export default async function GuidesIndexPage({
             const categoryGuides = allGuides.filter((g) => g.category === cat);
             if (categoryGuides.length === 0) return null;
             return (
-              <section key={cat} className="flex flex-col gap-6">
-                <div className="flex items-center gap-3 border-b border-zinc-200 pb-3 dark:border-zinc-800/60">
-                  <h2 className="text-xl font-semibold capitalize tracking-tight text-zinc-900 dark:text-zinc-100">
-                    {cat}
-                  </h2>
-                </div>
+              <Accordion 
+                key={cat} 
+                title={<span className="text-xl font-semibold capitalize tracking-tight text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">{cat} Tools</span>} 
+                defaultOpen={true}
+                className="border-b border-zinc-200 dark:border-zinc-800/60"
+              >
                 <div className="flex flex-col gap-6">
                   {categoryGuides.map((doc, index) => {
                     return (
@@ -150,7 +151,7 @@ export default async function GuidesIndexPage({
                     );
                   })}
                 </div>
-              </section>
+              </Accordion>
             );
           })}
         </div>

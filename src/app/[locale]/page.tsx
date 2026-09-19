@@ -27,6 +27,7 @@ const tools: Tool[] = categoryConfigs.flatMap((category) =>
 export default async function Home() {
   const locale = await getRouteLocale();
   const t = await getTranslations({ locale, namespace: 'Home' });
+  const tSidebar = await getTranslations({ locale, namespace: 'Sidebar' });
   const tFaq = await getTranslations({ locale, namespace: 'Faq' });
 
   const toolName = (key: string) => t(`tools.${key}.title`);
@@ -91,11 +92,11 @@ export default async function Home() {
           <p className="max-w-lg text-base text-zinc-400 sm:text-lg">{t('tagline')}</p>
         </section>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="flex flex-col gap-12">
           {/* ── Rehberler (Guides) Kartı ── */}
           <Link
             href="/guides"
-            className="group col-span-1 sm:col-span-2 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-6 transition-all hover:border-indigo-400 hover:shadow-md dark:border-indigo-900 dark:bg-indigo-950/30 dark:hover:border-indigo-700"
+            className="group rounded-2xl border border-indigo-200 bg-indigo-50/60 p-6 transition-all hover:border-indigo-400 hover:shadow-md dark:border-indigo-900 dark:bg-indigo-950/30 dark:hover:border-indigo-700"
           >
             <div className="mb-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -113,51 +114,62 @@ export default async function Home() {
             </span>
           </Link>
 
-          {tools.map((tool) =>
-            tool.status === 'active' ? (
-              <Link
-                key={tool.href}
-                href={tool.href}
-                className="group rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700"
-              >
-                <div className="mb-3 flex items-center justify-between">
-                  <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
-                    {toolName(tool.nameKey)}
-                  </h2>
-                  <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase text-emerald-600 dark:text-emerald-400">
-                    <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                    {t('available')}
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {toolDescription(tool.nameKey)}
-                </p>
-                <span className="mt-4 inline-block font-mono text-xs text-zinc-600 transition-colors group-hover:text-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-300">
-                  {t('openTool')}
-                </span>
-              </Link>
-            ) : (
-              <div
-                key={tool.href}
-                aria-disabled="true"
-                title={`${toolName(tool.nameKey)} — Coming Soon`}
-                className="cursor-not-allowed rounded-2xl border border-zinc-200/70 bg-zinc-100/40 p-6 opacity-70 dark:border-zinc-800/50 dark:bg-zinc-900/20"
-              >
-                <div className="mb-3 flex items-center justify-between">
-                  <h2 className="text-lg font-medium text-zinc-500 dark:text-zinc-400">
-                    {toolName(tool.nameKey)}
-                  </h2>
-                  <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase text-zinc-400 dark:text-zinc-500">
-                    <span className="h-2 w-2 rounded-full bg-zinc-400 dark:bg-zinc-600" />
-                    {t('available')}
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-500">
-                  {toolDescription(tool.nameKey)}
-                </p>
+          {categoryConfigs.map((category) => (
+            <section key={category.titleKey} className="flex flex-col gap-5">
+              <div className="flex items-center gap-3 border-b border-zinc-200 pb-2 dark:border-zinc-800/60">
+                <h2 className="text-xl font-semibold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
+                  {tSidebar(`categories.${category.titleKey}`)}
+                </h2>
               </div>
-            )
-          )}
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {category.items.map((tool) =>
+                  tool.status === 'active' ? (
+                    <Link
+                      key={tool.path}
+                      href={tool.path}
+                      className="group rounded-2xl border border-zinc-200 bg-zinc-50 p-6 transition-all hover:border-zinc-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700"
+                    >
+                      <div className="mb-3 flex items-center justify-between">
+                        <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">
+                          {toolName(tool.nameKey)}
+                        </h3>
+                        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase text-emerald-600 dark:text-emerald-400">
+                          <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                          {t('available')}
+                        </span>
+                      </div>
+                      <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {toolDescription(tool.nameKey)}
+                      </p>
+                      <span className="mt-4 inline-block font-mono text-xs text-zinc-600 transition-colors group-hover:text-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-300">
+                        {t('openTool')}
+                      </span>
+                    </Link>
+                  ) : (
+                    <div
+                      key={tool.path}
+                      aria-disabled="true"
+                      title={`${toolName(tool.nameKey)} — Coming Soon`}
+                      className="cursor-not-allowed rounded-2xl border border-zinc-200/70 bg-zinc-100/40 p-6 opacity-70 dark:border-zinc-800/50 dark:bg-zinc-900/20"
+                    >
+                      <div className="mb-3 flex items-center justify-between">
+                        <h3 className="text-lg font-medium text-zinc-500 dark:text-zinc-400">
+                          {toolName(tool.nameKey)}
+                        </h3>
+                        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase text-zinc-400 dark:text-zinc-500">
+                          <span className="h-2 w-2 rounded-full bg-zinc-400 dark:bg-zinc-600" />
+                          {t('available')}
+                        </span>
+                      </div>
+                      <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-500">
+                        {toolDescription(tool.nameKey)}
+                      </p>
+                    </div>
+                  )
+                )}
+              </div>
+            </section>
+          ))}
         </div>
 
         {/* Faz 4 — Ana sayfa reklam yuvası: araç tablosu ile SSS arasında.
