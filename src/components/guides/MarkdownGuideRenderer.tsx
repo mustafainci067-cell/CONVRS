@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { getRouteLocale } from "@/i18n/locale";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import type { GuideData } from "@/lib/guides";
+import AdSlot from "@/components/AdSlot";
 
 export default async function MarkdownGuideRenderer({ doc }: { doc: GuideData }) {
   const locale = await getRouteLocale();
@@ -11,6 +12,18 @@ export default async function MarkdownGuideRenderer({ doc }: { doc: GuideData })
 
   const eyebrow = doc.tags && doc.tags.length > 0 ? doc.tags[0] : "Guide";
   const readingTimeText = doc.readingTime ? `${doc.readingTime} min read` : "5 min read";
+
+  // Makale icerigini ortadan ikiye bolup araya AdSlot yerlestirmek icin
+  const html = doc.contentHtml;
+  const middleIndex = Math.floor(html.length / 2);
+  const splitIndex = html.indexOf('</p>', middleIndex);
+
+  let part1 = html;
+  let part2 = "";
+  if (splitIndex !== -1 && html.length > 1500) {
+    part1 = html.slice(0, splitIndex + 4);
+    part2 = html.slice(splitIndex + 4);
+  }
 
   return (
     <main className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
@@ -42,10 +55,18 @@ export default async function MarkdownGuideRenderer({ doc }: { doc: GuideData })
         </header>
 
         {/* Gövde - Markdown HTML */}
-        <div 
-          className="pb-12 pt-8 prose prose-zinc dark:prose-invert max-w-none prose-a:text-emerald-600 dark:prose-a:text-emerald-400 hover:prose-a:text-emerald-500 prose-headings:font-semibold prose-h2:text-2xl prose-h2:mt-12 prose-p:text-[15px] prose-p:leading-[1.8] prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-li:text-[15px] prose-li:text-zinc-600 dark:prose-li:text-zinc-400"
-          dangerouslySetInnerHTML={{ __html: doc.contentHtml }} 
-        />
+        <div className="pb-12 pt-8 prose prose-zinc dark:prose-invert max-w-none prose-a:text-emerald-600 dark:prose-a:text-emerald-400 hover:prose-a:text-emerald-500 prose-headings:font-semibold prose-h2:text-2xl prose-h2:mt-12 prose-p:text-[15px] prose-p:leading-[1.8] prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-li:text-[15px] prose-li:text-zinc-600 dark:prose-li:text-zinc-400">
+          <div dangerouslySetInnerHTML={{ __html: part1 }} />
+          
+          {part2 && (
+            <>
+              <div className="not-prose my-10">
+                <AdSlot format="horizontal" />
+              </div>
+              <div dangerouslySetInnerHTML={{ __html: part2 }} />
+            </>
+          )}
+        </div>
       </article>
     </main>
   );

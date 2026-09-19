@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
-import { guidesByRecency } from "@/i18n/guides";
+import { guidesByRecency, getCategoryForTsGuide } from "@/i18n/guides";
 import type { Locale } from "@/i18n/guides/types";
 import { SITE_URL } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
@@ -46,6 +46,7 @@ export default async function GuidesIndexPage({
     const doc = guide.content[locale as Locale] ?? guide.content.en;
     return {
       slug: guide.slug,
+      category: getCategoryForTsGuide(guide.slug),
       eyebrow: doc.meta.eyebrow,
       title: doc.meta.title,
       excerpt: doc.meta.excerpt,
@@ -58,6 +59,7 @@ export default async function GuidesIndexPage({
   // MD formatlı rehberleri haritala
   const mdGuides = getAllGuides(locale).map((g) => ({
     slug: g.slug,
+    category: g.category,
     eyebrow: g.tags && g.tags.length > 0 ? g.tags[0] : "Guide",
     title: g.title,
     excerpt: g.description,
@@ -92,7 +94,7 @@ export default async function GuidesIndexPage({
             return (
               <Link
                 key={doc.slug}
-                href={`/guides/${doc.slug}`}
+                href={`/guides/${doc.category}/${doc.slug}`}
                 className={cn(
                   "group relative overflow-hidden rounded-2xl border border-zinc-200 p-6 transition-colors",
                   "hover:border-emerald-400/60 dark:border-zinc-800 dark:hover:border-emerald-500/40",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { getGuideBySlug as getTsGuideBySlug, guideSlugs } from "@/i18n/guides";
+import { getGuideBySlug as getTsGuideBySlug, guideSlugs, getCategoryForTsGuide } from "@/i18n/guides";
 import type { GuideDefinition, Locale } from "@/i18n/guides/types";
 import { routing, SITE_URL } from "@/i18n/routing";
 import GuideRenderer from "@/components/guides/GuideRenderer";
@@ -9,21 +9,20 @@ import GuideJsonLd from "@/components/guides/GuideJsonLd";
 import MarkdownGuideRenderer from "@/components/guides/MarkdownGuideRenderer";
 import { getGuideBySlug as getMdGuideBySlug, getAllGuideSlugs } from "@/lib/guides";
 
-// [locale]/guides/[slug] — tüm (locale × slug) kombinasyonları build'de SSG olur.
-// Locale üstteki layout generateStaticParams'ından, slug buradan gelir.
+// [locale]/guides/[category]/[slug] — tüm (locale × category × slug) kombinasyonları build'de SSG olur.
 export function generateStaticParams() {
-  const entries: { locale: string; slug: string }[] = [];
+  const entries: { locale: string; category: string; slug: string }[] = [];
   for (const locale of routing.locales) {
     // TS Slugs
     for (const slug of guideSlugs) {
-      entries.push({ locale, slug });
+      entries.push({ locale, category: getCategoryForTsGuide(slug), slug });
     }
     // MD Slugs
     const mdSlugs = getAllGuideSlugs(locale);
-    for (const slug of mdSlugs) {
+    for (const { slug, category } of mdSlugs) {
       // Sadece MD'de varsa ekle (çakışmaları önlemek için)
       if (!guideSlugs.includes(slug)) {
-        entries.push({ locale, slug });
+        entries.push({ locale, category, slug });
       }
     }
   }
@@ -33,15 +32,15 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: string; category: string; slug: string }>;
 }): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const { locale, category, slug } = await params;
   
   // Önce TS rehberlerinde ara
   const tsGuide = getTsGuideBySlug(slug);
   if (tsGuide) {
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
-    const url = `${SITE_URL}/${locale}/guides/${slug}`;
+    const url = `${SITE_URL}/${locale}/guides/${category}/${slug}`;
     return {
       title: doc.meta.title,
       description: doc.meta.description,
@@ -59,7 +58,10 @@ export async function generateMetadata({
   // Sonra MD rehberlerinde ara
   const mdGuide = await getMdGuideBySlug(slug, locale);
   if (mdGuide) {
-    const url = `${SITE_URL}/${locale}/guides/${slug}`;
+    // Kategori eşleşmezse
+    if (mdGuide.category !== category) return {};
+
+    const url = `${SITE_URL}/${locale}/guides/${category}/${slug}`;
     return {
       title: mdGuide.title,
       description: mdGuide.description,
@@ -80,14 +82,15 @@ export async function generateMetadata({
 export default async function GuideArticlePage({
   params,
 }: {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: string; category: string; slug: string }>;
 }) {
-  const { locale, slug } = await params;
+  const { locale, category, slug } = await params;
   setRequestLocale(locale);
 
   // Önce TS rehberlerinde ara
   const tsGuide: GuideDefinition | undefined = getTsGuideBySlug(slug);
   if (tsGuide) {
+    if (getCategoryForTsGuide(slug) !== category) notFound();
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
     return (
       <>
@@ -100,6 +103,7 @@ export default async function GuideArticlePage({
   // Sonra MD rehberlerinde ara
   const mdGuide = await getMdGuideBySlug(slug, locale);
   if (mdGuide) {
+    if (mdGuide.category !== category) notFound();
     return (
       <>
         <GuideJsonLd slug={slug} title={mdGuide.title} description={mdGuide.description} />

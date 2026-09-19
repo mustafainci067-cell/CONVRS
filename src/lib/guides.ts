@@ -34,11 +34,14 @@ export type GuideFrontmatter = {
 };
 
 export type GuideData = GuideFrontmatter & {
+  category: string;
   /** Güvenli HTML (marked çıktısı) */
   contentHtml: string;
 };
 
-export type GuideSummary = GuideFrontmatter;
+export type GuideSummary = GuideFrontmatter & {
+  category: string;
+};
 
 /**
  * YAML frontmatter bloğunu basit regex ile parse eder.
@@ -89,6 +92,23 @@ function parseFrontmatter(raw: string): {
 }
 
 /**
+ * Recursively find all markdown files in a directory.
+ */
+function getAllMarkdownFiles(dir: string, fileList: { file: string; category: string }[] = [], category = ''): { file: string; category: string }[] {
+  if (!fs.existsSync(dir)) return fileList;
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const filePath = path.join(dir, file);
+    if (fs.statSync(filePath).isDirectory()) {
+      getAllMarkdownFiles(filePath, fileList, file); // directory name is the category
+    } else if (file.endsWith('.md')) {
+      fileList.push({ file: filePath, category: category || 'misc' });
+    }
+  }
+  return fileList;
+}
+
+/**
  * Tüm rehberlerin frontmatter özetini döner (listelemek için).
  * Tarihe göre azalan sırada sıralanır.
  */
@@ -96,16 +116,18 @@ export function getAllGuides(locale: string): GuideSummary[] {
   const dir = getGuidesDir(locale);
   if (!fs.existsSync(dir)) return [];
 
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+  const mdFiles = getAllMarkdownFiles(dir);
 
-  const guides: GuideSummary[] = files.map((filename) => {
-    const raw = fs.readFileSync(path.join(dir, filename), 'utf8');
+  const guides: GuideSummary[] = mdFiles.map(({ file, category }) => {
+    const raw = fs.readFileSync(file, 'utf8');
     const { data } = parseFrontmatter(raw);
+    const filename = path.basename(file);
     return {
       title: String(data.title ?? ''),
       description: String(data.description ?? ''),
       date: String(data.date ?? ''),
       slug: String(data.slug ?? filename.replace(/\.md$/, '')),
+      category,
       readingTime: typeof data.readingTime === 'number' ? data.readingTime : undefined,
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
     };
@@ -122,10 +144,17 @@ export function getAllGuides(locale: string): GuideSummary[] {
  */
 export async function getGuideBySlug(slug: string, locale: string): Promise<GuideData | null> {
   const dir = getGuidesDir(locale);
-  const filePath = path.join(dir, `${slug}.md`);
-  if (!fs.existsSync(filePath)) return null;
+  if (!fs.existsSync(dir)) return null;
 
-  const raw = fs.readFileSync(filePath, 'utf8');
+  const mdFiles = getAllMarkdownFiles(dir);
+  const matchedFile = mdFiles.find(f => {
+    const filename = path.basename(f.file).replace(/\.md$/, '');
+    return filename === slug;
+  });
+
+  if (!matchedFile) return null;
+
+  const raw = fs.readFileSync(matchedFile.file, 'utf8');
   const { data, content } = parseFrontmatter(raw);
 
   // marked ile Markdown → HTML (async API kullanıyoruz)
@@ -139,6 +168,7 @@ export async function getGuideBySlug(slug: string, locale: string): Promise<Guid
     description: String(data.description ?? ''),
     date: String(data.date ?? ''),
     slug: String(data.slug ?? slug),
+    category: matchedFile.category,
     readingTime: typeof data.readingTime === 'number' ? data.readingTime : undefined,
     tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
     contentHtml,
@@ -146,13 +176,16 @@ export async function getGuideBySlug(slug: string, locale: string): Promise<Guid
 }
 
 /**
- * Tüm slug'ları döner — generateStaticParams için.
+ * Tüm slug'ları ve kategorilerini döner — generateStaticParams için.
  */
-export function getAllGuideSlugs(locale: string): string[] {
+export function getAllGuideSlugs(locale: string): { slug: string; category: string }[] {
   const dir = getGuidesDir(locale);
   if (!fs.existsSync(dir)) return [];
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => f.replace(/\.md$/, ''));
+  
+  const mdFiles = getAllMarkdownFiles(dir);
+  return mdFiles.map(f => ({
+    slug: path.basename(f.file).replace(/\.md$/, ''),
+    category: f.category
+  }));
 }
+

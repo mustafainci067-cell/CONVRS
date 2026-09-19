@@ -10,6 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 import { getRouteLocale } from "@/i18n/locale";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import AdSlot from "@/components/AdSlot";
 
 function RichText({ parts, base }: { parts: Rich[]; base?: string }) {
   return (
@@ -189,6 +190,10 @@ export default async function GuideRenderer({ doc }: { doc: GuideDocument }) {
   const tA11y = await getTranslations({ locale, namespace: "A11y" });
 
   const { meta, blocks } = doc;
+  
+  // Eger yazi uzunsa (blok sayisi > 5), ortasina bir AdSlot koyalim
+  const adSlotIndex = blocks.length > 5 ? Math.floor(blocks.length / 2) : -1;
+
   return (
     <main className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
       <div className="w-full max-w-3xl">
@@ -223,6 +228,11 @@ export default async function GuideRenderer({ doc }: { doc: GuideDocument }) {
           {blocks.map((block, index) => (
             <div key={index}>
               <BlockRenderer block={block} />
+              {index === adSlotIndex && (
+                <div className="my-10">
+                  <AdSlot format="horizontal" />
+                </div>
+              )}
             </div>
           ))}
         </div>
