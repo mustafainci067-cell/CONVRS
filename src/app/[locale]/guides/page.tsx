@@ -6,6 +6,7 @@ import type { Locale } from "@/i18n/guides/types";
 import { SITE_URL } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { getAllGuides } from "@/lib/guides";
 
 // /guides blog indeksi. Sayfa üzerinde dinamik segment yok; locale yalnızca
 // üstteki [locale]/layout.tsx generateStaticParams'ından gelir (SSG).
@@ -40,6 +41,34 @@ export default async function GuidesIndexPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Guides" });
 
+  // TS formatlı rehberleri haritala
+  const tsGuides = guidesByRecency.map((guide) => {
+    const doc = guide.content[locale as Locale] ?? guide.content.en;
+    return {
+      slug: guide.slug,
+      eyebrow: doc.meta.eyebrow,
+      title: doc.meta.title,
+      excerpt: doc.meta.excerpt,
+      readingTime: doc.meta.readingTime,
+      updatedDate: doc.meta.updatedDate,
+      dateValue: new Date(doc.meta.updatedDate).getTime() || 0,
+    };
+  });
+
+  // MD formatlı rehberleri haritala
+  const mdGuides = getAllGuides(locale).map((g) => ({
+    slug: g.slug,
+    eyebrow: g.tags && g.tags.length > 0 ? g.tags[0] : "Guide",
+    title: g.title,
+    excerpt: g.description,
+    readingTime: g.readingTime ? `${g.readingTime} min read` : "5 min read",
+    updatedDate: g.date,
+    dateValue: new Date(g.date).getTime() || 0,
+  }));
+
+  // Hepsini birleştir ve tarihe göre yeniden eskiye sırala
+  const allGuides = [...tsGuides, ...mdGuides].sort((a, b) => b.dateValue - a.dateValue);
+
   return (
     <main className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
       <div className="w-full max-w-4xl animate-fade-in">
@@ -59,12 +88,11 @@ export default async function GuidesIndexPage({
 
         {/* Rehber kartları — en güncel en üstte */}
         <div className="flex flex-col gap-6 py-10">
-          {guidesByRecency.map((guide, index) => {
-            const doc = guide.content[locale as Locale] ?? guide.content.en;
+          {allGuides.map((doc, index) => {
             return (
               <Link
-                key={guide.slug}
-                href={`/guides/${guide.slug}`}
+                key={doc.slug}
+                href={`/guides/${doc.slug}`}
                 className={cn(
                   "group relative overflow-hidden rounded-2xl border border-zinc-200 p-6 transition-colors",
                   "hover:border-emerald-400/60 dark:border-zinc-800 dark:hover:border-emerald-500/40",
@@ -76,13 +104,13 @@ export default async function GuidesIndexPage({
                     <span className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-200 bg-zinc-100 text-[10px] text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    {doc.meta.eyebrow}
+                    {doc.eyebrow}
                   </p>
                   <h2 className="mt-3 text-xl font-semibold tracking-tight text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">
-                    {doc.meta.title}
+                    {doc.title}
                   </h2>
                   <p className="mt-2 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {doc.meta.excerpt}
+                    {doc.excerpt}
                   </p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
                     {t("readMore")}
@@ -102,8 +130,8 @@ export default async function GuidesIndexPage({
                   </span>
                 </div>
                 <div className="flex shrink-0 flex-row gap-3 text-xs text-zinc-500 dark:text-zinc-400 sm:flex-col sm:items-end">
-                  <span>{doc.meta.readingTime}</span>
-                  <span>{doc.meta.updatedDate}</span>
+                  <span>{doc.readingTime}</span>
+                  <span>{doc.updatedDate}</span>
                 </div>
               </Link>
             );
