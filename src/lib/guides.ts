@@ -20,6 +20,7 @@
 import fs from 'fs';
 import path from 'path';
 import { marked } from 'marked';
+import DOMPurify from 'isomorphic-dompurify';
 
 // src/content/guides/[locale] klasörü
 const getGuidesDir = (locale: string) => path.join(process.cwd(), 'src', 'content', 'guides', locale);
@@ -158,10 +159,12 @@ export async function getGuideBySlug(slug: string, locale: string): Promise<Guid
   const { data, content } = parseFrontmatter(raw);
 
   // marked ile Markdown → HTML (async API kullanıyoruz)
-  const contentHtml = await marked(content, {
+  const rawHtml = await marked(content, {
     gfm: true,      // GitHub Flavored Markdown (tablolar, görev listeleri)
     breaks: false,  // Tek satır sonu → <br> değil
   });
+
+  const contentHtml = DOMPurify.sanitize(rawHtml);
 
   return {
     title: String(data.title ?? ''),
