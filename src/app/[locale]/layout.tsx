@@ -77,6 +77,10 @@ export async function generateMetadata({
       title: t("homeTitle"),
       description: t("homeDescription"),
     },
+    icons: {
+      icon: "/favicon.ico",
+      apple: "/favicon.ico",
+    },
   };
 }
 

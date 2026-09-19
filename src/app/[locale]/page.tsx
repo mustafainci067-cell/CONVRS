@@ -108,7 +108,7 @@ export default async function Home() {
             <p className="text-sm leading-relaxed text-indigo-700 dark:text-indigo-400">
               {t('guidesCard.description')}
             </p>
-            <span className="mt-4 inline-block font-mono text-xs text-indigo-500 transition-colors group-hover:text-indigo-800 dark:group-hover:text-indigo-300">
+            <span className="mt-4 inline-block font-mono text-xs text-indigo-600 transition-colors group-hover:text-indigo-800 dark:text-indigo-400 dark:group-hover:text-indigo-300">
               {t('guidesCard.link')}
             </span>
           </Link>
@@ -132,7 +132,7 @@ export default async function Home() {
                 <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                   {toolDescription(tool.nameKey)}
                 </p>
-                <span className="mt-4 inline-block font-mono text-xs text-zinc-500 transition-colors group-hover:text-zinc-800 dark:group-hover:text-zinc-300">
+                <span className="mt-4 inline-block font-mono text-xs text-zinc-600 transition-colors group-hover:text-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-300">
                   {t('openTool')}
                 </span>
               </Link>
