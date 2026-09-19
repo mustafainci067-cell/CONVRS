@@ -1,83 +1,97 @@
 ---
-title: "WebP Dosyası Nedir? Modern Görüntü Formatı Hakkında Her Şey"
-description: "WebP formatına kapsamlı rehber: nedir, nasıl çalışır, Google neden geliştirdi, JPEG ve PNG ile karşılaştırması ve ne zaman kullanmalısınız."
-date: "2024-01-15"
+title: "WebP Nedir? Web İçin Modern Görsel Formatı"
+description: "WebP görüntü formatı hakkında bilmeniz gereken her şey. Kayıplı ve kayıpsız sıkıştırma yöntemlerini, JPEG ve PNG ile karşılaştırmasını ve SEO için neden kritik olduğunu öğrenin."
+date: "2026-09-18"
+tags: ["WebP", "Görsel Formatı", "Web Optimizasyonu", "SEO", "Google"]
 ---
 
-# WebP Dosyası Nedir? Modern Görüntü Formatı Hakkında Her Şey
+# WebP Nedir? Web İçin Modern Görsel Formatı
 
-Web sitesi geliştiriyor ya da performans optimizasyonu yapıyorsanız, WebP formatıyla karşılaşmışsınızdır. Google'ın PageSpeed önerileri, görüntü optimizasyon araçlarının çıktıları ve giderek artan şekilde web görüntüleri için varsayılan format olarak öne çıkmaktadır. Peki WebP tam olarak nedir, nasıl çalışır ve kullanmalı mısınız? Bu rehber tüm bu soruları yanıtlamaktadır.
+On yıllar boyunca web, iki temel görsel formatının hakimiyetindeydi: JPEG (fotoğraflar için) ve PNG (saydamlığa sahip grafikler için). Ancak internet geliştikçe, daha hızlı yüklenen web sitelerine, daha iyi kullanıcı deneyimlerine ve daha gelişmiş mobil performansa olan talep hızla arttı. İşte bu noktada, Google tarafından geliştirilen ve web'de görselleri ele alma şeklimizi kökten değiştirmeyi vaat eden modern, yeni nesil bir görsel formatı olan **WebP** devreye girdi.
 
-## Kökeni: Google WebP'yi Neden Yarattı?
+Bir web sitesi yönetiyor, bir blog yazıyor veya dijital pazarlama alanında çalışıyorsanız, WebP'yi anlamak ve uygulamak artık sadece teknik bir lüks değil, SEO ve web performansı için mutlak bir zorunluluktur. Bu kapsamlı rehberde, WebP hakkında bilmeniz gereken her şeyi inceleyeceğiz: Nasıl çalıştığını, avantajlarını, dezavantajlarını ve geçmişin eski formatlarının yerini neden hızla aldığını keşfedeceğiz.
 
-WebP, Google tarafından geliştirilmiş ve ilk olarak 2010 yılında yayımlanmıştır. Kökeni, Google'ın On2 Technologies'i satın almasıyla elde ettiği VP8 adlı bir video codec bileşenine dayanmaktadır. VP8, verimli video sıkıştırma için tasarlanmıştı. Google'ın mühendisleri, video karelerini sıkıştırmak için kullanılan matematiksel tekniklerin durağan görüntülere de uygulanabileceğini ve bunun eşdeğer görsel kalitede JPEG veya PNG'den daha küçük dosyalar üretebileceğini fark etti.
+## WebP Dosyası Nedir?
 
-Motivasyon açıktı: Görüntüler, çoğu web sitesinde sayfa ağırlığının en büyük kaynağıdır. Daha hızlı sayfa yüklemeleri kullanıcı deneyimini iyileştirir, hemen çıkma oranlarını düşürür ve Google Arama için doğrudan bir sıralama sinyali oluşturur. Görsel kalite kaybı olmaksızın görüntü dosyalarını sürekli küçülten bir format; kullanıcılara, yayıncılara ve arama motorlarına aynı anda yarar sağlar.
+WebP ("weppy" olarak okunur), 2010 yılında Google tarafından geliştirilen bir görsel formatıdır. Temel amacı, web'deki görüntüler için üstün kayıplı (lossy) ve kayıpsız (lossless) sıkıştırma sağlamaktır. Web yöneticileri ve web geliştiricileri, WebP kullanarak web'i daha hızlı hale getiren daha küçük ama daha zengin görseller oluşturabilirler.
+
+Yalnızca kayıplı sıkıştırmayı destekleyen ve saydamlıktan yoksun olan JPEG'in ve yalnızca kayıpsız sıkıştırmayı destekleyip karmaşık fotoğraflar için devasa dosya boyutlarına yol açan PNG'nin aksine WebP, "her derde deva" bir çözüm olarak hareket eder. Şunları destekler:
+
+1. **Kayıplı Sıkıştırma (Lossy):** JPEG gibi, inanılmaz derecede küçük dosya boyutları elde etmek için bazı görsel verileri kalıcı olarak atabilir.
+2. **Kayıpsız Sıkıştırma (Lossless):** PNG gibi, görüntüleri tek bir veri pikselini bile kaybetmeden sıkıştırabilir.
+3. **Alfa Kanalı Saydamlığı:** PNG gibi, saydam arka planları destekler (kayıplı sıkıştırma kullanırken bile, ki bu benzersiz bir özelliktir).
+4. **Animasyon:** GIF gibi animasyonlu görüntüleri destekler, ancak çok daha üstün renk paletleri ve çok daha küçük dosya boyutları ile.
+
+Kısacası WebP, teorik olarak JPEG, PNG ve GIF'i tamamen değiştirebilecek tek bir görüntü formatı olarak tasarlandı.
 
 ## WebP Sıkıştırması Nasıl Çalışır?
 
-WebP tek bir sıkıştırma tekniği değildir. İki farklı modu destekler:
+Görsel kaliteyi bozmadan dosya boyutunda böylesine etkileyici bir düşüş elde etmek için WebP, orijinal olarak VP8 video codec bileşeni (WebM videolarının arkasındaki teknoloji) için geliştirilen son derece gelişmiş öngörücü kodlama (predictive coding) tekniklerine güvenir.
 
-**Kayıplı WebP**, VP8 ile aynı blok tabanlı tahmin çerçevesine dayanır. Kodlayıcı görüntüyü 4×4 piksellik bloklara böler, her bloğu komşularından tahmin eder ve yalnızca tahmin ile gerçek piksel değerleri arasındaki farkı kodlar. Sonuç, ayrık kosinüs dönüşümü (DCT) ile dönüştürülür, nicelenir ve aritmetik kodlama kullanılarak entropi kodlanır. İşlem bazı görsel bilgileri atar — bu nedenle "kayıplı" olarak adlandırılır — ancak atılan bilgi insan görsel algısının sınırlarına göre seçilir.
+### Kayıplı WebP Sıkıştırması (Lossy)
+Kayıplı WebP, bir görüntüyü kodlamak için tahmine dayalı kodlama kullanır. Algoritma, komşu ve zaten kodu çözülmüş bloklardaki piksellerin değerlerine dayanarak belirli bir bloktaki piksellerin değerlerini tahmin eder. Daha sonra yalnızca gerçek değer ile tahmin arasındaki *farkı* kodlar. Bir görüntüdeki (mavi bir gökyüzü gibi) birçok piksel birbirine çok benzediğinden, bu farklar yüksek verimlilikle sıkıştırılabilen inanılmaz derecede küçük sayılardır.
 
-**Kayıpsız WebP** tamamen farklı bir algoritma kullanır. Piksel değerlerinin uzamsal tahmini, renk uzayı dönüşümü, kırmızı ve maviden yeşil kanalın çıkarılması, az renkli görüntüler için palet dönüşümü ve LZ77/Huffman/Aritmetik entropi kodlaması uygular. JPEG'in aksine, kayıpsız WebP her pikseli tam olarak temsil edebilir; bu da ekran görüntüleri, logolar ve metin ağırlıklı grafikler gibi hiçbir ayrıntıyı kaybetmemesi gereken görüntüler için uygundur.
+Bu öngörücü teknik, kayıplı WebP'nin tam olarak aynı kalite indeksindeki benzer JPEG görüntülerinden ortalama **%25 ila %34 daha küçük** dosyalar elde etmesini sağlar.
 
-**Animasyonlu WebP**, animasyonlar için eskiyen GIF formatının yerini almaktadır. GIF kare başına 256 renkle sınırlı olup yalnızca LZW sıkıştırmasını kullanırken, animasyonlu WebP milyonlarca rengi, kare başına hem kayıplı hem kayıpsız sıkıştırmayı ve şeffaflığı destekler. Sonuç, eşdeğer GIF'lerden çok daha küçük animasyonlu içeriktir.
+### Kayıpsız WebP Sıkıştırması (Lossless)
+Kayıpsız WebP, görüntü verilerini hiçbir ayrıntı kaybetmeden sıkıştırmak için tamamen farklı, oldukça karmaşık teknikler kullanır. Uzamsal tahmin, renk uzayı dönüşümleri ve renk indeksleme gibi gelişmiş teknikleri, ardından LZ77 sıkıştırması ve Huffman kodlamasını kullanır.
 
-**Alfa şeffaflıklı WebP**, kayıplı sıkıştırılmış görüntülerin kayıpsız bir alfa kanalına sahip olmasına olanak tanır. Bu, şeffaflık desteği hiç olmayan JPEG'e ve fotoğrafik içerik için çok büyük dosyalar üretebilen PNG'ye kıyasla önemli bir avantajdır.
+Google'ın kapsamlı testlerine göre, kayıpsız WebP görüntüleri eşdeğer PNG görüntülerinden ortalama **%26 daha küçüktür**.
 
-## Dosya Boyutu: Rakamlar
+### Kayıplı Saydamlığın Büyüsü
+WebP'nin en güçlü, ancak genellikle gözden kaçan özelliklerinden biri, kayıplı sıkıştırmayı alfa saydamlığı ile birleştirebilmesidir. Arka planı saydam olan bir ürün fotoğrafınız varsa, eskiden tek bir seçeneğiniz vardı: Onu devasa bir PNG dosyası olarak kaydetmek. WebP ile, dosya boyutunu %60-80 oranında azaltmak için görüntünün fotoğraf kısmına kayıplı sıkıştırma uygulayabilirken, aynı zamanda net, saydam arka planı mükemmel bir şekilde koruyabilirsiniz.
 
-WebP'nin sıkıştırma avantajı, Google'ın kendi kıyaslamaları ve üçüncü taraf testlerle kapsamlı biçimde belgelenmiştir:
+## WebP Kullanmanın Avantajları
 
-- Kayıplı WebP dosyaları, eşdeğer görsel kalitede karşılaştırılabilir JPEG dosyalarından ortalama **%25-34 daha küçüktür**.
-- Kayıpsız WebP dosyaları ortalama olarak PNG dosyalarından **%26 daha küçüktür**.
-- Animasyonlu WebP dosyaları animasyonlu GIF'lerden **%64 daha küçük** ve animasyonlu PNG'lerden **%19 daha küçük** olabilir.
+Web sitelerinizde henüz WebP kullanmıyorsanız, hemen başlamanız için ikna edici nedenler şunlardır:
 
-Bunlar ortalamalardır; sonuçlar görüntü içeriğine göre değişir. Düzgün geçişlere sahip fotoğraflar kayıplı WebP'den en fazla yararlanır. Keskin kenarları, metni veya büyük düz renk alanları olan görüntüler, kayıpsız WebP'de PNG'ye kıyasla daha küçük kazanımlar görebilir.
+### 1. Önemli Ölçüde Daha Küçük Dosya Boyutları
+Bu birincil satış noktasıdır. İster JPEG'leri ister PNG'leri değiştiriyor olun, WebP neredeyse her zaman önemli ölçüde daha küçük bir dosya boyutuyla sonuçlanacaktır. Daha küçük dosyalar, hem web sitesini barındıran sunucu hem de onu görüntüleyen mobil kullanıcı için daha az bant genişliği tüketimi anlamına gelir.
 
-## Tarayıcı ve İşletim Sistemi Desteği
+### 2. Daha Hızlı Sayfa Yükleme Süreleri
+WebP görüntüleri daha küçük olduğu için çok daha hızlı indirilirler. Sayfa hızı, kullanıcı deneyiminin kritik bir bileşenidir. Amazon'un sadece bir saniyelik bir sayfa yükleme yavaşlamasının onlara her yıl 1,6 milyar dolarlık satışa mal olabileceğini hesapladığı meşhurdur. Daha hızlı görüntüler, daha düşük hemen çıkma oranlarına, daha yüksek etkileşime ve daha iyi dönüşüm oranlarına yol açan daha hızlı bir web sitesi anlamına gelir.
 
-WebP, modern tarayıcılar tarafından artık evrensel olarak desteklenmektedir. Chrome 2010'dan beri WebP'yi desteklemektedir. Firefox 2019'da destek ekledi. Safari, macOS Big Sur ve iOS 14'te Safari 14 ile 2020'de destek ekledi. Edge (Chromium tabanlı) 2018'den bu yana desteklemektedir. Internet Explorer WebP'yi hiçbir zaman desteklemedi; ancak IE'nin pazar payı bugün ihmal edilebilir düzeydedir.
+### 3. Muazzam SEO Avantajları (Core Web Vitals)
+Google'ın arama algoritması, sayfa hızını ve kullanıcı deneyimi metriklerini, özellikle **Önemli Web Verileri'ni (Core Web Vitals)** büyük ölçüde hesaba katar. En önemli metriklerden biri, ekrandaki en büyük öğenin (genellikle büyük bir görselin) ne kadar sürede oluşturulduğunu ölçen LCP'dir (Largest Contentful Paint). Görsellerinizi WebP'ye geçirerek LCP süreleriniz önemli ölçüde düşecek ve bu da Google arama sonuçlarında daha üst sıralarda yer almanızı sağlayabilecektir. Hatta Google'ın kendi PageSpeed Insights aracı, JPEG ve PNG'leri aktif olarak işaretler ve web yöneticilerine WebP gibi "Yeni nesil formatlarda resim yayınlayın" uyarısı verir.
 
-İşletim sistemi desteği, tarayıcı desteğini takip etti. macOS 11 Big Sur ve iOS 14, Finder ve Fotoğraflar uygulamasında yerel WebP görüntüleme desteği ekledi. Windows 10, 2020'den itibaren bir codec aracılığıyla WebP desteği ekledi. Android, Google'ın formatı geliştirmedeki rolü göz önüne alındığında şaşırtıcı değil, Android 4.0'dan (2011) bu yana WebP'yi yerel olarak desteklemektedir.
+### 4. Birden Çok Formatın Yerini Alır
+Bir web geliştiricisi, JPEG'ler (fotoğraflar), PNG'ler (grafikler/saydamlık) ve GIF'ler (animasyonlar) için farklı iş akışları sürdürmek yerine tamamen WebP üzerinde standartlaşarak içerik hattını basitleştirebilir.
 
-## WebP'ye Nasıl Dönüştürülür?
+## WebP'nin Dezavantajları ve Sınırlamaları
 
-Yazılım yüklemeden görüntüleri WebP formatına dönüştürmenin en kolay yolu Convrs gibi tarayıcı tabanlı bir araç kullanmaktır. Dosyanız tamamen cihazınızda işlenir — bir sunucuya yüklenmez — bu da görüntülerinizin gizli kalmasını sağlar.
+İnanılmaz teknolojik avantajlarına rağmen WebP tamamen kusursuz değildir.
 
-Toplu dönüştürme veya sunucu tarafı işleme için `cwebp` (Google'ın komut satırı kodlayıcısı), ImageMagick ve `sharp` (bir Node.js kütüphanesi) gibi araçların tümü yüksek kaliteli WebP çıktısı üretir.
+### 1. Eski Tarayıcı Uyumluluğu Sorunu
+Yıllar boyunca WebP'nin önündeki en büyük engel tarayıcı desteğiydi. Apple'ın Safari tarayıcısı uzun bir süre WebP'yi desteklemeyi reddetmesiyle biliniyordu. Ancak 2020'nin sonlarından itibaren (macOS Big Sur ve iOS 14'ün piyasaya sürülmesiyle) **Apple, WebP desteğini Safari'ye resmi olarak ekledi**. Bugün WebP, dünyadaki tüm web tarayıcılarının %97'sinden fazlası tarafından desteklenmektedir (Chrome, Firefox, Edge, Opera ve Safari dahil).
+Ancak, çok eski tarayıcıları (Internet Explorer 11 veya macOS'un çok eski sürümleri gibi) kullanan önemli bir kitleniz varsa, bu kullanıcılar WebP görüntülerini göremeyecektir. Bunu düzeltmek için web geliştiricileri, modern tarayıcılara WebP sunmak ve eski tarayıcılar için JPEG/PNG'ye geri dönmek (fallback) amacıyla HTML `<picture>` etiketlerini kullanmalıdır.
 
-## WebP'nin Avantajları
+### 2. Masaüstü Yazılım Desteği
+Tarayıcılar WebP'yi sevse de, masaüstü işletim sistemleri ve eski görüntü düzenleme yazılımları hala bu konuda hantal olabilir. Bir kullanıcı web sitenizden bilgisayarına bir WebP görüntüsü indirirse, eski varsayılan görüntü görüntüleyicisinin onu açamadığını veya Photoshop'un eski bir sürümünün onu düzenlemek için bir eklenti (plugin) gerektirdiğini görebilir. Bu durum, resimlerinizi kaydetmeye çalışan son kullanıcılar için hayal kırıklığına neden olabilir.
 
-**Daha küçük dosyalar, daha hızlı sayfalar.** Temel avantaj dosya boyutudur. Daha küçük görüntüler daha hızlı sayfa yükleme süresi, barındırma için daha düşük bant genişliği maliyeti ve Core Web Vitals'ta daha iyi puanlar (özellikle Largest Contentful Paint) anlamına gelir.
+### 3. Kodlama Süresi (Encoding Time)
+WebP son derece gelişmiş sıkıştırma algoritmaları kullandığından, bir görüntüyü kodlamak (kaydetmek) basit bir JPEG kaydetmeye kıyasla daha fazla CPU gücü (ve dolayısıyla daha fazla zaman) gerektirir. Bu tek bir görüntü için nadiren fark edilir, ancak bir sunucuda 10.000 görüntüyü toplu olarak dönüştürüyorsanız, önemli ölçüde daha fazla bilgi işlem kaynağı gerektirir.
 
-**Çok yönlülük.** WebP fotoğrafik içeriği, keskin kenarlı grafikleri, animasyonları ve şeffaf görüntüleri — her biri için optimize edilmiş sıkıştırmayla — tek bir formatta ele alır.
+## WebP ve Rakipleri
 
-**Kayıplı sıkıştırmayla alfa şeffaflığı.** Kayıplı sıkıştırmayla kayıpsız şeffaflığı birleştirme yeteneği gerçek anlamda WebP'ye özgüdür. Şeffaf arka plandaki bir ürün görüntüsü artık hacimli bir PNG yerine WebP kullanabilir; bu da çarpıcı dosya boyutu tasarrufları sağlar.
+### WebP ve JPEG
+Web için WebP hemen hemen her zaman JPEG'den üstündür. Aynı kalitede daha küçük dosya boyutları veya aynı dosya boyutunda daha iyi kalite sunar. JPEG'i tercih etmeniz gereken tek zaman, özel olarak kullanıcıların indirip yazdırması için bir görüntü sağlıyorsanız veya agresif web sıkıştırması yerine maksimum, sıkıştırılmamış RAW veya yüksek bit hızlı JPEG'in tercih edildiği profesyonel fotoğrafçılık arşivi yapıyorsanızdır.
 
-**Düşük bit hızlarında iyi kalite.** WebP'nin kalite/boyut oranı JPEG'inkinden daha iyidir; bu da çok küçük dosya boyutlarında WebP'nin eşdeğer bir JPEG'den daha fazla görsel ayrıntı koruduğu anlamına gelir.
+### WebP ve PNG
+WebP Lossless (Kayıpsız), teknik olarak PNG'den üstündür ve kabaca %26 daha küçük dosya boyutları sunar. Dahası, WebP'nin *kayıplı* (lossy) saydamlık yapabilme yeteneği, saydam fotoğrafları içeren kullanım durumlarında PNG'yi açık ara geride bırakır. PNG, yalnızca henüz WebP'yi tam olarak benimsemeyen bir masaüstü tasarım yazılımı ekosistemi içinde çalışıyorsanız daha iyidir.
 
-## WebP'nin Dezavantajları
+### WebP ve AVIF
+Tıpkı WebP'nin JPEG'in yerini alması gibi, **AVIF** (AV1 Görüntü Dosyası Formatı) adı verilen daha yeni bir format da ufukta görünüyor. AVIF, WebP'den bile daha iyi sıkıştırma sunar. Ancak, AVIF kodlaması şu anda son derece yavaştır ve tarayıcı desteği büyümekle birlikte henüz WebP kadar evrensel değildir. Şimdilik WebP, en pratik ve en yaygın olarak desteklenen yeni nesil formattır; AVIF ise son teknoloji ürünü gelecektir.
 
-**Sınırlı profesyonel yazılım desteği.** Tarayıcılar WebP'yi iyi işlerken, birçok masaüstü görüntü düzenleyicisi WebP'yi desteklemiyor veya eklentiler gerektiriyor. Adobe Photoshop, yerel WebP desteğini yalnızca 2021'de ekledi. Affinity Photo ve GIMP destekler; ancak birçok özel araç desteklemiyor.
+## Görseller Nasıl WebP'ye Dönüştürülür?
 
-**Baskı için uygun değil.** WebP'nin renk modeli ve sıkıştırması ekran görüntülemesi için tasarlanmıştır. Baskı iş akışları CMYK renk (RGB değil) ve web'e özgü özellikler olmaksızın kayıpsız formatlar bekler. WebP'yi baskıya yönelik belgeler için asla kullanmayın.
+WebP'nin avantajlarından yararlanmak istiyorsanız, mevcut JPEG ve PNG dosyalarınızı dönüştürmeniz gerekir.
 
-**Kayıplı kalıcı kalite kaybı anlamına gelir.** Kayıplı bir WebP her kod çözme ve yeniden kodlamada kalite bozulur. Her zaman orijinal bir PNG veya TIFF ana dosyasını saklayın ve WebP'yi önceki bir WebP dışa aktarmasından değil, ana dosyadan oluşturun.
-
-**Eski platform desteği.** Çok eski tarayıcılardaki (IE 11, Safari 13 ve altı) kullanıcılar WebP görüntüleyemez. Bugün çoğu site için bu ihmal edilebilir küçük bir kullanıcı oranıdır; ancak analizleriniz anlamlı IE trafiği gösteriyorsa `<picture>` öğesi ve bir JPEG yedekleme güvenli yaklaşım olmaya devam eder.
-
-## WebP ve Diğer Formatlarla Karşılaştırma
-
-| | WebP (kayıplı) | JPEG | PNG |
-|---|---|---|---|
-| Dosya boyutu | En küçük | Orta | En büyük |
-| Şeffaflık desteği | ✅ Evet | ❌ Hayır | ✅ Evet |
-| Animasyon desteği | ✅ Evet | ❌ Hayır | ✅ Evet (APNG) |
-| Düzenleme yazılım desteği | Orta | Evrensel | Evrensel |
-| Baskı desteği | Sınırlı | Mükemmel | İyi |
+- **Çevrimiçi Dönüştürücüler:** Görüntülerinizi doğrudan tarayıcınızda anında WebP'ye dönüştürmek için ücretsiz çevrimiçi araçları (bu web sitesinde sağlanan dönüştürücüler gibi) kullanabilirsiniz.
+- **İçerik Yönetim Sistemleri (CMS):** WordPress kullanıyorsanız, yüklenen tüm resimlerinizi otomatik olarak WebP'ye dönüştürecek ve uyumlu tarayıcılara sunacak çok sayıda eklenti (WebP Express, Smush veya Imagify gibi) vardır.
+- **Görüntü Düzenleme Yazılımı:** Adobe Photoshop, Affinity Photo ve GIMP'in modern sürümlerinin tümü yerel olarak doğrudan WebP'ye aktarımı destekler.
 
 ## Sonuç
 
-WebP, bugün çoğu web görüntüsü için doğru varsayılan formattır. JPEG ve PNG'ye karşı boyut avantajları gerçek ve ölçülebilirdir; modern platformlarda tarayıcı desteği evrenseldir; şeffaflık ve animasyon desteği her yaygın web kullanım senaryosunu kapsar. Temel uyarılar, JPEG ve PNG'nin daha pratik kaldığı profesyonel düzenleme iş akışları ve baskı üretimidir. Bunların dışındaki her şey için — web siteleri, web uygulamaları ve dijital içerik — WebP ilk tercih edilecek formattır.
+WebP artık deneysel bir format değil; modern web performansı için yerleşik bir standarttır. Üstün sıkıştırma, saydamlık desteği ve animasyon yetenekleri sunarak, eski formatları web dağıtımı için etkili bir şekilde modası geçmiş hale getirir.
+
+Web sitenizin ne kadar hızlı yüklendiğine, kullanıcılarınızın ne kadar bant genişliği tükettiğine ve Google'da ne kadar üst sıralarda yer aldığınıza önem veriyorsanız, görsel varlıklarınızı WebP formatına taşımak yapabileceğiniz en yüksek etkili teknik iyileştirmelerden biridir.
