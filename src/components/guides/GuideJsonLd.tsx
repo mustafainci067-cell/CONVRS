@@ -7,16 +7,18 @@ import JsonLd from "@/components/JsonLd";
 
 export default async function GuideJsonLd({
   slug,
+  category,
   title,
   description,
 }: {
   slug: string;
+  category: string;
   title: string;
   description: string;
 }) {
   const locale = await getRouteLocale();
   const tSeo = await getTranslations({ locale, namespace: "Seo" });
-  const url = `${SITE_URL}/${locale}/guides/${slug}`;
+  const url = `${SITE_URL}/${locale}/guides/${category}/${slug}`;
 
   const article = {
     "@context": "https://schema.org",

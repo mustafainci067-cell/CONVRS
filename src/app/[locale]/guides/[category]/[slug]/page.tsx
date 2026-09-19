@@ -94,7 +94,7 @@ export default async function GuideArticlePage({
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
     return (
       <>
-        <GuideJsonLd slug={slug} title={doc.meta.title} description={doc.meta.description} />
+        <GuideJsonLd slug={slug} category={category} title={doc.meta.title} description={doc.meta.description} />
         <GuideRenderer doc={doc} />
       </>
     );
@@ -106,7 +106,7 @@ export default async function GuideArticlePage({
     if (mdGuide.category !== category) notFound();
     return (
       <>
-        <GuideJsonLd slug={slug} title={mdGuide.title} description={mdGuide.description} />
+        <GuideJsonLd slug={slug} category={category} title={mdGuide.title} description={mdGuide.description} />
         <MarkdownGuideRenderer doc={mdGuide} />
       </>
     );

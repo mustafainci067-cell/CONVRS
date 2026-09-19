@@ -88,54 +88,69 @@ export default async function GuidesIndexPage({
           </p>
         </header>
 
-        {/* Rehber kartları — en güncel en üstte */}
-        <div className="flex flex-col gap-6 py-10">
-          {allGuides.map((doc, index) => {
+        {/* Rehber kartları — Kategorize edilmiş */}
+        <div className="flex flex-col gap-12 py-10">
+          {Array.from(new Set(allGuides.map(g => g.category))).map((cat) => {
+            const categoryGuides = allGuides.filter((g) => g.category === cat);
+            if (categoryGuides.length === 0) return null;
             return (
-              <Link
-                key={doc.slug}
-                href={`/guides/${doc.category}/${doc.slug}`}
-                className={cn(
-                  "group relative overflow-hidden rounded-2xl border border-zinc-200 p-6 transition-colors",
-                  "hover:border-emerald-400/60 dark:border-zinc-800 dark:hover:border-emerald-500/40",
-                  "flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"
-                )}
-              >
-                <div className="flex-1">
-                  <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-200 bg-zinc-100 text-[10px] text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    {doc.eyebrow}
-                  </p>
-                  <h2 className="mt-3 text-xl font-semibold tracking-tight text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">
-                    {doc.title}
+              <section key={cat} className="flex flex-col gap-6">
+                <div className="flex items-center gap-3 border-b border-zinc-200 pb-3 dark:border-zinc-800/60">
+                  <h2 className="text-xl font-semibold capitalize tracking-tight text-zinc-900 dark:text-zinc-100">
+                    {cat}
                   </h2>
-                  <p className="mt-2 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {doc.excerpt}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                    {t("readMore")}
-                    <svg
-                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M13 7l5 5-5 5M6 12h12"
-                      />
-                    </svg>
-                  </span>
                 </div>
-                <div className="flex shrink-0 flex-row gap-3 text-xs text-zinc-500 dark:text-zinc-400 sm:flex-col sm:items-end">
-                  <span>{doc.readingTime}</span>
-                  <span>{doc.updatedDate}</span>
+                <div className="flex flex-col gap-6">
+                  {categoryGuides.map((doc, index) => {
+                    return (
+                      <Link
+                        key={doc.slug}
+                        href={`/guides/${doc.category}/${doc.slug}`}
+                        className={cn(
+                          "group relative overflow-hidden rounded-2xl border border-zinc-200 p-6 transition-colors",
+                          "hover:border-emerald-400/60 dark:border-zinc-800 dark:hover:border-emerald-500/40",
+                          "flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"
+                        )}
+                      >
+                        <div className="flex-1">
+                          <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
+                            <span className="flex h-6 w-6 items-center justify-center rounded-md border border-zinc-200 bg-zinc-100 text-[10px] text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+                              {String(index + 1).padStart(2, "0")}
+                            </span>
+                            {doc.eyebrow}
+                          </p>
+                          <h3 className="mt-3 text-xl font-semibold tracking-tight text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">
+                            {doc.title}
+                          </h3>
+                          <p className="mt-2 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+                            {doc.excerpt}
+                          </p>
+                          <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                            {t("readMore")}
+                            <svg
+                              className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M13 7l5 5-5 5M6 12h12"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                        <div className="flex shrink-0 flex-row gap-3 text-xs text-zinc-500 dark:text-zinc-400 sm:flex-col sm:items-end">
+                          <span>{doc.readingTime}</span>
+                          <span>{doc.updatedDate}</span>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
-              </Link>
+              </section>
             );
           })}
         </div>
