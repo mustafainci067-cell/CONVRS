@@ -115,50 +115,7 @@ export default async function SEOContentBlock({ path }: { path: string }) {
         </div>
       )}
 
-      {/* SSS — tarayıcı-okunur <details>/<summary> (JS'siz) */}
-      {faqs.length > 0 && (
-        <div className="mt-12">
-          <div className="mb-6 flex flex-col items-center gap-2 text-center">
-            <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
-              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-              FAQ
-            </span>
-            <h2 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {tFaq("title")}
-            </h2>
-          </div>
-          <div className="space-y-3">
-            {faqs.map((item, index) => (
-              <details
-                key={index}
-                className="group overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 transition-colors dark:border-zinc-800 dark:bg-zinc-900/40"
-              >
-                <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-4 p-5 text-left [&::-webkit-details-marker]:hidden">
-                  <span className="flex-1 text-left text-base font-medium text-zinc-900 dark:text-zinc-100">
-                    {item.question}
-                  </span>
-                  <svg
-                    className="h-5 w-5 shrink-0 text-zinc-500 transition-transform duration-300 group-open:rotate-180 dark:text-zinc-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.6"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {item.answer}
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      )}
+
     </article>
   );
 }

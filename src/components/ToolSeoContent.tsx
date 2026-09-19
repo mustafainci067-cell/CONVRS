@@ -41,6 +41,16 @@ export default async function ToolSeoContent({ path }: { path: string }) {
   const tSeo = await getTranslations({ locale, namespace: "Seo" });
   const tCat = await getTranslations({ locale, namespace: "Sidebar.categories" });
   const tA11y = await getTranslations({ locale, namespace: "A11y" });
+  const tContent = await getTranslations({ locale, namespace: "ToolContent" });
+
+  const toolKey = path.slice(1);
+  let customFaqs: { question: string; answer: string }[] | null = null;
+  if (tContent.has(toolKey)) {
+    const rawContent = tContent.raw(toolKey) as any;
+    if (rawContent?.faqs?.length) {
+      customFaqs = rawContent.faqs;
+    }
+  }
 
   // Kategori bilgisi — ToolJsonLd ile ayni arama: path -> titleKey.
   const categoryEntry = categoryConfigs.find((category) =>
@@ -49,6 +59,8 @@ export default async function ToolSeoContent({ path }: { path: string }) {
 
   const seo = getToolSeoByPath(locale, path, name);
   if (!seo) return null;
+
+  const finalFaqs = customFaqs || seo.faq;
 
   // Ayni kategorideki kardes araclar (en fazla 8) — ilgili araclar blogu.
   const related =
@@ -117,7 +129,7 @@ export default async function ToolSeoContent({ path }: { path: string }) {
 
       {/* SSS — tarayicinin kendi <details> arayüzü (JS'siz, tarayici-okunur) */}
       <div className="space-y-3">
-        {seo.faq.map((item, index) => (
+        {finalFaqs.map((item, index) => (
           <details
             key={index}
             className="group overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 transition-colors dark:border-zinc-800 dark:bg-zinc-900/40"

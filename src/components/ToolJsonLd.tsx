@@ -83,11 +83,22 @@ export default async function ToolJsonLd({ path }: { path: string }) {
   // Faz 3 — sayfadaki "Nasıl yapılır"/SSS bölümüyle birebir aynı kaynaktan.
   const seo = getToolSeoByPath(locale, path, name);
 
-  const faqPage = seo
+  const tContent = await getTranslations({ locale, namespace: "ToolContent" });
+  const toolKey = path.slice(1);
+  let customFaqs: { question: string; answer: string }[] | null = null;
+  if (tContent.has(toolKey)) {
+    const rawContent = tContent.raw(toolKey) as any;
+    if (rawContent?.faqs?.length) {
+      customFaqs = rawContent.faqs;
+    }
+  }
+  const finalFaqs = customFaqs || (seo ? seo.faq : []);
+
+  const faqPage = finalFaqs.length > 0
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: seo.faq.map((item) => ({
+        mainEntity: finalFaqs.map((item) => ({
           "@type": "Question",
           name: item.question,
           acceptedAnswer: { "@type": "Answer", text: item.answer },
