@@ -3,7 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import { guidesByRecency, getCategoryForTsGuide } from "@/i18n/guides";
 import type { Locale } from "@/i18n/guides/types";
-import { SITE_URL } from "@/i18n/routing";
+import { SITE_URL, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { getAllGuides } from "@/lib/guides";
@@ -18,11 +18,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Guides" });
+  const url = getCanonicalUrl(locale, "/guides");
 
   return {
     title: t("title"),
     description: t("description"),
-    alternates: { canonical: `${SITE_URL}/${locale}/guides` },
+    alternates: {
+      canonical: url,
+      languages: getLanguagesFor("/guides"),
+    },
     openGraph: {
       title: t("title"),
       description: t("description"),

@@ -12,7 +12,7 @@ import ConsentGate from "@/components/ConsentGate";
 import BuyMeCoffeeButton from "@/components/BuyMeCoffeeButton";
 import JsonLd from "@/components/JsonLd";
 import { ThemeProvider } from "@/components/theme-provider";
-import { routing, SITE_URL } from "@/i18n/routing";
+import { routing, SITE_URL, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
 const BRAND = "Convrs";
 
@@ -44,7 +44,7 @@ export async function generateMetadata({
   const lang = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
 
   const t = await getTranslations({ locale: lang, namespace: "Seo" });
-  const url = `${SITE_URL}/${lang}`;
+  const url = getCanonicalUrl(lang, "");
 
   return {
     title: {
@@ -56,13 +56,7 @@ export async function generateMetadata({
     metadataBase: new URL(SITE_URL),
     alternates: {
       canonical: url,
-      languages: {
-        "x-default": `${SITE_URL}/en`,
-        en: `${SITE_URL}/en`,
-        tr: `${SITE_URL}/tr`,
-        de: `${SITE_URL}/de`,
-        es: `${SITE_URL}/es`,
-      },
+      languages: getLanguagesFor(""),
     },
     openGraph: {
       title: t("homeTitle"),

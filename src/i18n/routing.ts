@@ -9,4 +9,18 @@ export const routing = defineRouting({
 });
 
 // Kanonik URL'ler, robots/sitemap ve OpenGraph verisi icin site kok adresi.
-export const SITE_URL = 'https://convrs.org';
+export const SITE_URL = 'https://www.convrs.org';
+
+export function getCanonicalUrl(locale: string, path: string): string {
+  const prefix = locale === "tr" ? "" : `/${locale}`;
+  return `${SITE_URL}${prefix}${path}`;
+}
+
+export function getLanguagesFor(path: string): Record<string, string> {
+  const languages: Record<string, string> = {};
+  for (const loc of routing.locales) {
+    languages[loc] = getCanonicalUrl(loc, path);
+  }
+  languages["x-default"] = getCanonicalUrl("tr", path);
+  return languages;
+}

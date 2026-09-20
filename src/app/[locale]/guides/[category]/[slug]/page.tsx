@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getGuideBySlug as getTsGuideBySlug, guideSlugs, getCategoryForTsGuide } from "@/i18n/guides";
 import type { GuideDefinition, Locale } from "@/i18n/guides/types";
-import { routing, SITE_URL } from "@/i18n/routing";
+import { routing, SITE_URL, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 import GuideRenderer from "@/components/guides/GuideRenderer";
 import GuideJsonLd from "@/components/guides/GuideJsonLd";
 import MarkdownGuideRenderer from "@/components/guides/MarkdownGuideRenderer";
@@ -40,11 +40,14 @@ export async function generateMetadata({
   const tsGuide = getTsGuideBySlug(slug);
   if (tsGuide) {
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
-    const url = `${SITE_URL}/${locale}/guides/${category}/${slug}`;
+    const url = getCanonicalUrl(locale, `/guides/${category}/${slug}`);
     return {
       title: doc.meta.title,
       description: doc.meta.description,
-      alternates: { canonical: url },
+      alternates: {
+        canonical: url,
+        languages: getLanguagesFor(`/guides/${category}/${slug}`),
+      },
       openGraph: {
         title: doc.meta.title,
         description: doc.meta.description,
@@ -61,11 +64,14 @@ export async function generateMetadata({
     // Kategori eşleşmezse
     if (mdGuide.category !== category) return {};
 
-    const url = `${SITE_URL}/${locale}/guides/${category}/${slug}`;
+    const url = getCanonicalUrl(locale, `/guides/${category}/${slug}`);
     return {
       title: mdGuide.title,
       description: mdGuide.description,
-      alternates: { canonical: url },
+      alternates: {
+        canonical: url,
+        languages: getLanguagesFor(`/guides/${category}/${slug}`),
+      },
       openGraph: {
         title: mdGuide.title,
         description: mdGuide.description,

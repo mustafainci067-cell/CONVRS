@@ -8,7 +8,7 @@
 import { getTranslations } from "next-intl/server";
 import { getRouteLocale } from "@/i18n/locale";
 import { categoryConfigs } from "@/config/nav";
-import { SITE_URL } from "@/i18n/routing";
+import { SITE_URL, getCanonicalUrl } from "@/i18n/routing";
 import { getToolSeoByPath } from "@/i18n/seo";
 import { getToolDocs } from "@/i18n/toolDocs";
 import JsonLd from "@/components/JsonLd";
@@ -41,7 +41,8 @@ export default async function ToolJsonLd({ path }: { path: string }) {
   const name = tTools(`${entry.nameKey}.title`);
   const description = tTools(`${entry.nameKey}.description`);
   const categoryLabel = tCat(`${entry.categoryKey}`);
-  const canonical = `${SITE_URL}/${locale}${path}`;
+  const canonical = getCanonicalUrl(locale, path);
+  const homeUrl = getCanonicalUrl(locale, "");
 
   // Faz 5 — featureList icin long-form motorundan ozellik listesi.
   const toolDocs = getToolDocs(locale, path, name);
@@ -73,10 +74,20 @@ export default async function ToolJsonLd({ path }: { path: string }) {
         "@type": "ListItem",
         position: 1,
         name: tSeo("home"),
-        item: `${SITE_URL}/${locale}`,
+        item: homeUrl,
       },
-      { "@type": "ListItem", position: 2, name: categoryLabel },
-      { "@type": "ListItem", position: 3, name },
+      { 
+        "@type": "ListItem", 
+        position: 2, 
+        name: categoryLabel,
+        item: `${homeUrl}#${entry.categoryKey}`,
+      },
+      { 
+        "@type": "ListItem", 
+        position: 3, 
+        name,
+        item: canonical,
+      },
     ],
   };
 

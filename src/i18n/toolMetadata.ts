@@ -12,7 +12,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { categoryConfigs } from "@/config/nav";
-import { routing, SITE_URL } from "@/i18n/routing";
+import { routing, SITE_URL, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
 const BRAND = "Convrs";
 
@@ -28,14 +28,6 @@ const pathToNameKey = new Map(activeTools.map((t) => [t.path, t.nameKey]));
 
 function isLocale(value: string): value is "en" | "tr" | "de" | "es" {
   return (routing.locales as readonly string[]).includes(value);
-}
-
-function languagesFor(path: string): Record<string, string> {
-  const languages: Record<string, string> = {};
-  for (const locale of routing.locales) {
-    languages[locale] = `${SITE_URL}/${locale}${path}`;
-  }
-  return languages;
 }
 
 /**
@@ -63,7 +55,7 @@ export function generateToolMetadata(path: string) {
       : path.slice(1).replace(/-/g, " ");
     const description = nameKey ? tTools(`${nameKey}.description`) : "";
 
-    const url = `${SITE_URL}/${lang}${path}`;
+    const url = getCanonicalUrl(lang, path);
     const fullTitle = `${title} — ${BRAND}`;
 
     return {
@@ -73,7 +65,7 @@ export function generateToolMetadata(path: string) {
       description,
       alternates: {
         canonical: url,
-        languages: languagesFor(path),
+        languages: getLanguagesFor(path),
       },
       openGraph: {
         title: fullTitle,

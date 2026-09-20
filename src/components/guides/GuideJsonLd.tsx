@@ -1,7 +1,7 @@
 // Makale sayfası için Article + BreadcrumbList JSON-LD.
 // Slug tüm dillerde ortaktır; locale getRouteLocale() ile okunur (SSG güvenli).
 import { getRouteLocale } from "@/i18n/locale";
-import { SITE_URL } from "@/i18n/routing";
+import { getCanonicalUrl } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import JsonLd from "@/components/JsonLd";
 
@@ -18,7 +18,9 @@ export default async function GuideJsonLd({
 }) {
   const locale = await getRouteLocale();
   const tSeo = await getTranslations({ locale, namespace: "Seo" });
-  const url = `${SITE_URL}/${locale}/guides/${category}/${slug}`;
+  const articleUrl = getCanonicalUrl(locale, `/guides/${category}/${slug}`);
+  const homeUrl = getCanonicalUrl(locale, "");
+  const guidesUrl = getCanonicalUrl(locale, "/guides");
 
   const article = {
     "@context": "https://schema.org",
@@ -28,18 +30,18 @@ export default async function GuideJsonLd({
     inLanguage: locale,
     datePublished: "2026-09-16",
     dateModified: "2026-09-16",
-    author: { "@type": "Organization", name: "Convrs", url: SITE_URL },
-    publisher: { "@type": "Organization", name: "Convrs", url: SITE_URL },
-    mainEntityOfPage: url,
+    author: { "@type": "Organization", name: "Convrs", url: homeUrl },
+    publisher: { "@type": "Organization", name: "Convrs", url: homeUrl },
+    mainEntityOfPage: articleUrl,
   };
 
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: tSeo("home"), item: `${SITE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/${locale}/guides` },
-      { "@type": "ListItem", position: 3, name: title },
+      { "@type": "ListItem", position: 1, name: tSeo("home"), item: homeUrl },
+      { "@type": "ListItem", position: 2, name: "Guides", item: guidesUrl },
+      { "@type": "ListItem", position: 3, name: title, item: articleUrl },
     ],
   };
 
