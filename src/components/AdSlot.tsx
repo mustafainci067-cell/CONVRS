@@ -60,6 +60,9 @@ export default function AdSlot({
   const pushed = useRef(false);
 
   useEffect(() => {
+    // Geçerli bir slotId yoksa AdSense'e istek gönderme (400 Bad Request önleme)
+    if (!slotId || slotId === "YOUR_SLOT_ID") return;
+
     // Strict Mode'da iki kez çalışmayı önle
     if (pushed.current) return;
     pushed.current = true;
@@ -71,10 +74,10 @@ export default function AdSlot({
     } catch {
       // Script henüz yüklenmemişse sessizce geç
     }
-  }, []);
+  }, [slotId]);
 
-  // AdSense client tanımlı değilse (dev ortamı) boş döner
-  if (!ADSENSE_CLIENT) return null;
+  // AdSense client tanımlı değilse veya slot ID henüz belirlenmemişse render etme (CLS ve boş kutu önleme)
+  if (!ADSENSE_CLIENT || !slotId || slotId === "YOUR_SLOT_ID") return null;
 
   return (
     <div

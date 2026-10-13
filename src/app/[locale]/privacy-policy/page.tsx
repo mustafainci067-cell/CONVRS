@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalRenderer from "@/components/legal/LegalRenderer";
 import { privacyContent } from "@/i18n/legal/privacy";
 import type { Locale } from "@/i18n/legal/types";
+import { getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
 const descriptions: Record<string, string> = {
   tr: "Convrs gizlilik politikası: tüm dosya dönüştürme işlemleri %100 kullanıcı tarayıcısında gerçekleşir. Dosyalarınız hiçbir sunucuya yüklenmez, kaydedilmez veya üçüncü şahıslarla paylaşılmaz. KVKK, GDPR ve CCPA uyumluluğu.",
@@ -21,6 +22,10 @@ export async function generateMetadata({
     // Marka son eki layout'taki title.template ("%s — Convrs") tarafindan eklenir.
     title: doc.title,
     description: descriptions[locale] ?? descriptions.en,
+    alternates: {
+      canonical: getCanonicalUrl(locale, "/privacy-policy"),
+      languages: getLanguagesFor("/privacy-policy"),
+    },
   };
 }
 

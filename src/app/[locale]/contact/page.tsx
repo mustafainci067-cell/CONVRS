@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalRenderer from "@/components/legal/LegalRenderer";
 import { contactContent } from "@/i18n/legal/contact";
 import type { Locale } from "@/i18n/legal/types";
+import { getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
 const descriptions: Record<string, string> = {
   tr: "Convrs ile iletişime geçin — support@convrs.org. Tarayıcı içi dosya dönüştürme araçlarımız hakkında sorular, geri bildirim, hata bildirimi ve veri koruma talepleri. 1–2 iş günü içinde yanıt veririz.",
@@ -21,6 +22,10 @@ export async function generateMetadata({
     // Marka son eki layout'taki title.template ("%s — Convrs") tarafindan eklenir.
     title: doc.title,
     description: descriptions[locale] ?? descriptions.en,
+    alternates: {
+      canonical: getCanonicalUrl(locale, "/contact"),
+      languages: getLanguagesFor("/contact"),
+    },
   };
 }
 

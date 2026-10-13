@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://convrs.org";
+const BASE_URL = "https://www.convrs.org";
 
 // OG görsel henüz yoksa bu path'e geçici bir görsel eklenir.
 // Üretim için: public/images/og-default.jpg (1200x630 px önerilir)

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalRenderer from "@/components/legal/LegalRenderer";
 import { aboutContent } from "@/i18n/legal/about";
 import type { Locale } from "@/i18n/legal/types";
+import { getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
 const descriptions: Record<string, string> = {
   tr: "Convrs hakkında — 60'tan fazla tarayıcı içi dosya dönüştürme aracına sahip ücretsiz, gizlilik öncelikli çevrimiçi platform. %100 istemci tarafı, WebAssembly ile çalışır. Dosyalar asla yüklenmez.",
@@ -21,6 +22,10 @@ export async function generateMetadata({
     // Marka son eki layout'taki title.template ("%s — Convrs") tarafindan eklenir.
     title: doc.title,
     description: descriptions[locale] ?? descriptions.en,
+    alternates: {
+      canonical: getCanonicalUrl(locale, "/about"),
+      languages: getLanguagesFor("/about"),
+    },
   };
 }
 

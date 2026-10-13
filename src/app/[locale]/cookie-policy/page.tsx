@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalRenderer from "@/components/legal/LegalRenderer";
 import { cookiesContent } from "@/i18n/legal/cookies";
 import type { Locale } from "@/i18n/legal/types";
+import { getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
 const descriptions: Record<string, string> = {
   tr: "Convrs çerez politikası: kullandığımız çerezlerin türleri, amaçları, süreleri ve bunları nasıl yönetebileceğiniz. KVKK, GDPR ve CCPA uyumlu.",
@@ -21,6 +22,10 @@ export async function generateMetadata({
     // Marka son eki layout'taki title.template ("%s — Convrs") tarafindan eklenir.
     title: doc.title,
     description: descriptions[locale] ?? descriptions.en,
+    alternates: {
+      canonical: getCanonicalUrl(locale, "/cookie-policy"),
+      languages: getLanguagesFor("/cookie-policy"),
+    },
   };
 }
 

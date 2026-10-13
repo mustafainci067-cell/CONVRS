@@ -5,4 +5,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://convrs.org/sitemap.xml
+Sitemap: https://www.convrs.org/sitemap.xml

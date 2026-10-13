@@ -3,7 +3,7 @@ import { activeToolPaths } from '@/config/nav';
 import { guideSlugs, getCategoryForTsGuide } from '@/i18n/guides';
 import { getAllGuideSlugs } from '@/lib/guides';
 
-const BASE_URL = 'https://convrs.org';
+const BASE_URL = 'https://www.convrs.org';
 
 // next-intl routing.ts ile senkron tutulmali
 const LOCALES = ['en', 'tr', 'de', 'es'] as const;
@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of LOCALES) {
       languages[locale] = `${BASE_URL}/${locale}${path}`;
     }
+    languages['x-default'] = `${BASE_URL}/en${path}`;
     return { languages };
   };
 

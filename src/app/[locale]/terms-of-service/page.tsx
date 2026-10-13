@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LegalRenderer from "@/components/legal/LegalRenderer";
 import { termsContent } from "@/i18n/legal/terms";
 import type { Locale } from "@/i18n/legal/types";
+import { getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
 const descriptions: Record<string, string> = {
   tr: "Convrs kullanım şartları: siteyi ve dosya dönüştürme araçlarını kullanırken geçerli olan koşullar, haklar, sorumluluk reddi ve sınırlandırmalar.",
@@ -21,6 +22,10 @@ export async function generateMetadata({
     // Marka son eki layout'taki title.template ("%s — Convrs") tarafindan eklenir.
     title: doc.title,
     description: descriptions[locale] ?? descriptions.en,
+    alternates: {
+      canonical: getCanonicalUrl(locale, "/terms-of-service"),
+      languages: getLanguagesFor("/terms-of-service"),
+    },
   };
 }
 

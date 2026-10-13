@@ -12,8 +12,9 @@ export const routing = defineRouting({
 export const SITE_URL = 'https://www.convrs.org';
 
 export function getCanonicalUrl(locale: string, path: string): string {
-  const prefix = locale === "tr" ? "" : `/${locale}`;
-  return `${SITE_URL}${prefix}${path}`;
+  const prefix = `/${locale}`;
+  const cleanPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
+  return `${SITE_URL}${prefix}${cleanPath}`;
 }
 
 export function getLanguagesFor(path: string): Record<string, string> {
@@ -21,6 +22,6 @@ export function getLanguagesFor(path: string): Record<string, string> {
   for (const loc of routing.locales) {
     languages[loc] = getCanonicalUrl(loc, path);
   }
-  languages["x-default"] = getCanonicalUrl("tr", path);
+  languages["x-default"] = getCanonicalUrl(routing.defaultLocale, path);
   return languages;
 }
