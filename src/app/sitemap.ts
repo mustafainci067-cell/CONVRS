@@ -85,33 +85,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // Rehberler
-  const allSlugMap = new Map<string, string>(); // slug -> category
+  // slug -> { category, locales }: MD rehberlerde slug'lar dile ozeldir; bu yuzden
+  // yalnizca GERCEKTEN var olan (locale, slug) ciftleri sitemap'e girer.
+  // Aksi halde var olmayan URL'ler (404) sitemap'te ve hreflang'de yer alir.
+  const guideMap = new Map<string, { category: string; locales: Set<string> }>();
 
-  // 1. TS Guides
+  // 1. TS Guides: tum dillerde mevcut (eksik dil icin EN'ye dusuyor)
   for (const slug of guideSlugs) {
-    allSlugMap.set(slug, getCategoryForTsGuide(slug));
+    guideMap.set(slug, {
+      category: getCategoryForTsGuide(slug),
+      locales: new Set<string>(LOCALES),
+    });
   }
 
-  // 2. MD Guides (assuming same slugs exist in all locales, we scan all to be safe)
+  // 2. MD Guides: her dilin kendi klasoru taranir
   for (const locale of LOCALES) {
-    const mdSlugs = getAllGuideSlugs(locale);
-    for (const { slug, category } of mdSlugs) {
-      if (!allSlugMap.has(slug)) {
-        allSlugMap.set(slug, category);
+    for (const { slug, category } of getAllGuideSlugs(locale)) {
+      if (guideSlugs.includes(slug)) continue;
+      const existing = guideMap.get(slug);
+      if (existing) {
+        existing.locales.add(locale);
+      } else {
+        guideMap.set(slug, { category, locales: new Set([locale]) });
       }
     }
   }
 
-  // Her dil × her rehber slug'i
-  for (const [slug, category] of allSlugMap.entries()) {
+  for (const [slug, { category, locales }] of guideMap.entries()) {
     const path = `/guides/${category}/${slug}`;
+    const languages: Record<string, string> = {};
     for (const locale of LOCALES) {
+      if (locales.has(locale)) languages[locale] = `${BASE_URL}/${locale}${path}`;
+    }
+    // x-default: EN varsa EN, yoksa ilk mevcut dil
+    const defaultLocale = locales.has('en') ? 'en' : [...locales][0];
+    languages['x-default'] = `${BASE_URL}/${defaultLocale}${path}`;
+    const hasTranslations = locales.size > 1;
+
+    for (const locale of LOCALES) {
+      if (!locales.has(locale)) continue;
       entries.push({
         url: `${BASE_URL}/${locale}${path}`,
         lastModified,
         changeFrequency: 'monthly',
         priority: 0.7,
-        alternates: alternates(path),
+        ...(hasTranslations ? { alternates: { languages } } : {}),
       });
     }
   }

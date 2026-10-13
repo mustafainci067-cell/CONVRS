@@ -65,12 +65,27 @@ export async function generateMetadata({
     if (mdGuide.category !== category) return {};
 
     const url = getCanonicalUrl(locale, `/guides/${category}/${slug}`);
+    // MD rehberlerde slug dile ozeldir: hreflang yalnizca slug'in gercekten var
+    // oldugu dillere verilir (aksi halde 404'e giden alternatifler olusur).
+    const existingLocales = routing.locales.filter((loc) =>
+      getAllGuideSlugs(loc).some((g) => g.slug === slug && g.category === category)
+    );
+    const languages: Record<string, string> = {};
+    for (const loc of existingLocales) {
+      languages[loc] = getCanonicalUrl(loc, `/guides/${category}/${slug}`);
+    }
+    if (existingLocales.length > 1) {
+      languages["x-default"] = getCanonicalUrl(
+        existingLocales.includes("en") ? "en" : existingLocales[0],
+        `/guides/${category}/${slug}`
+      );
+    }
     return {
       title: mdGuide.title,
       description: mdGuide.description,
       alternates: {
         canonical: url,
-        languages: getLanguagesFor(`/guides/${category}/${slug}`),
+        ...(existingLocales.length > 1 ? { languages } : {}),
       },
       openGraph: {
         title: mdGuide.title,

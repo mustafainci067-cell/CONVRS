@@ -28,6 +28,19 @@ const contentSecurityPolicy = [
 ].join("; ");
 
 const nextConfig: NextConfig = {
+  // Kopya yasal URL'ler -> kalici (308) yonlendirme
+  redirects: async () => [
+    {
+      source: "/:locale(en|tr|de|es)/about-us",
+      destination: "/:locale/about",
+      permanent: true,
+    },
+    {
+      source: "/:locale(en|tr|de|es)/terms",
+      destination: "/:locale/terms-of-service",
+      permanent: true,
+    },
+  ],
   // Required for FFmpeg.wasm SharedArrayBuffer support
   headers: async () => [
     {
