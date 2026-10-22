@@ -161,7 +161,6 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Uso",
     "cookie": "Política de Cookies",
-    "about": "Sobre nosotros",
     "contactPage": "Contacto",
     "contact": "support@convrs.org",
     "guides": "Guías"
@@ -172,6 +171,12 @@
     "description": "Explicaciones extensas sobre procesamiento local, WebAssembly y conversión segura de archivos — escritas para la web nativa del navegador y centrada en la privacidad.",
     "readMore": "Leer la guía",
     "backToGuides": "Todas las guías"
+  },
+  "ToolPage": {
+    "howTo": "Cómo se usa",
+    "faq": "Preguntas frecuentes",
+    "relatedGuides": "Profundiza: guías relacionadas",
+    "relatedGuidesSubtitle": "Artículos originales y extensos sobre los formatos, las compensaciones y las buenas prácticas detrás de esta herramienta."
   },
   "LanguageSwitcher": {
     "label": "Idioma"

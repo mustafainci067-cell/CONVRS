@@ -22,6 +22,9 @@ import { AD_SLOT_TOOL_PAGE } from "@/lib/ads";
 import { toolSeoConfigs } from "@/content/toolSeo";
 import { categoryConfigs } from "@/config/nav";
 import { getToolSeoByPath } from "@/i18n/seo";
+import { getGuideBySlug, getCategoryForTsGuide } from "@/i18n/guides";
+import type { Locale as GuideLocale } from "@/i18n/guides/types";
+import { getGuideSlugsForTool } from "@/content/toolGuides";
 
 export default async function ToolSeoContent({ path }: { path: string }) {
   const locale = await getRouteLocale();
@@ -42,6 +45,7 @@ export default async function ToolSeoContent({ path }: { path: string }) {
   const tCat = await getTranslations({ locale, namespace: "Sidebar.categories" });
   const tA11y = await getTranslations({ locale, namespace: "A11y" });
   const tContent = await getTranslations({ locale, namespace: "ToolContent" });
+  const tPage = await getTranslations({ locale, namespace: "ToolPage" });
 
   const toolKey = path.slice(1);
   let customFaqs: { question: string; answer: string }[] | null = null;
@@ -70,6 +74,22 @@ export default async function ToolSeoContent({ path }: { path: string }) {
           .slice(0, 8)
       : [];
 
+  // Konuya yakin uzun-okunur rehberler (sitenin ozgun icerigine iç baglantı).
+  const relatedGuides = getGuideSlugsForTool(path, categoryEntry?.titleKey)
+    .map((slug) => getGuideBySlug(slug))
+    .filter((guide): guide is NonNullable<typeof guide> => Boolean(guide))
+    .slice(0, 3)
+    .map((guide) => {
+      const doc = guide.content[locale as GuideLocale] ?? guide.content.en;
+      return {
+        slug: guide.slug,
+        category: getCategoryForTsGuide(guide.slug),
+        title: doc.meta.title,
+        excerpt: doc.meta.excerpt,
+        readingTime: doc.meta.readingTime,
+      };
+    });
+
   const breadcrumbItems = [
     { label: tSeo("home"), href: "/" },
     ...(categoryEntry ? [{ label: tCat(categoryEntry.titleKey) }] : []),
@@ -89,7 +109,7 @@ export default async function ToolSeoContent({ path }: { path: string }) {
       <div className="mb-8 flex flex-col items-center gap-2 text-center">
         <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
           <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-          How to
+          {tPage("howTo")}
         </span>
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
           {seo.heading}
@@ -117,7 +137,7 @@ export default async function ToolSeoContent({ path }: { path: string }) {
       <div className="mb-8 mt-16 flex flex-col items-center gap-2 text-center">
         <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
           <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-          FAQ
+          {tPage("faq")}
         </span>
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
           {tFaq("title")}
@@ -163,6 +183,45 @@ export default async function ToolSeoContent({ path }: { path: string }) {
 
       {/* Faz 4 — Ortaklık önerisi (config'de kapalıyken görünmez). */}
       <AffiliateBanner className="mt-8" />
+
+      {/* Derinlemesine rehberler: araca konu olarak yakin, sunucuda render edilen
+          baslik + ozet + okuma suresi (crawler icin gercek metin ve iç link). */}
+      {relatedGuides.length > 0 && (
+        <section
+          aria-labelledby="related-guides-heading"
+          className="mt-16 border-t border-zinc-200 pt-10 dark:border-zinc-800/60"
+        >
+          <h2
+            id="related-guides-heading"
+            className="text-center text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100"
+          >
+            {tPage("relatedGuides")}
+          </h2>
+          <p className="mx-auto mb-6 mt-2 max-w-xl text-center text-sm text-zinc-500 dark:text-zinc-400">
+            {tPage("relatedGuidesSubtitle")}
+          </p>
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {relatedGuides.map((guide) => (
+              <li key={guide.slug}>
+                <Link
+                  href={`/guides/${guide.category}/${guide.slug}`}
+                  className="group flex h-full flex-col gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 transition-colors hover:border-emerald-400/60 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-emerald-500/40"
+                >
+                  <span className="text-base font-semibold text-zinc-900 transition-colors group-hover:text-emerald-600 dark:text-zinc-100 dark:group-hover:text-emerald-400">
+                    {guide.title}
+                  </span>
+                  <span className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {guide.excerpt}
+                  </span>
+                  <span className="mt-auto pt-2 font-mono text-xs text-emerald-600 dark:text-emerald-400">
+                    {guide.readingTime} →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* Faz 5 — İlgili araçlar: aynı kategorideki kardeşlere iç bağlantılar
           (konu kümeleri, yalıtılmış sayfa riski yok). */}

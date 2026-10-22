@@ -30,6 +30,19 @@ const contentSecurityPolicy = [
 const nextConfig: NextConfig = {
   // Kopya yasal URL'ler -> kalici (308) yonlendirme
   redirects: async () => [
+    // localePrefix 'always': locale'siz yollar (/guides, /image-to-base64 ...)
+    // gecerli URL degildir. next-intl bunlari 307 (gecici) ile /en/...'a
+    // yonlendirir; Google gecici yonlendirmede kaynak URL'yi kanonik secebilir
+    // (GSC: "Google chose different canonical"). 308 ile sinyaller /en/...'da
+    // birlesir. Kok '/' bilerek disarida: tarayici diline gore yonlendirme
+    // (proxy.ts) calismaya devam eder. Dosya uzantili yollar ve ic yollar
+    // (api, _next, _vercel) haric tutulur.
+    {
+      source:
+        "/:path((?!(?:en|tr|de|es)(?:/|$)|api(?:/|$)|trpc(?:/|$)|_next(?:/|$)|_vercel(?:/|$))(?!.*\\.).+)",
+      destination: "/en/:path",
+      permanent: true,
+    },
     {
       source: "/:locale(en|tr|de|es)/about-us",
       destination: "/:locale/about",

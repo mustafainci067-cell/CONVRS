@@ -161,7 +161,6 @@
     "privacy": "Datenschutzrichtlinie",
     "terms": "Nutzungsbedingungen",
     "cookie": "Cookie-Richtlinie",
-    "about": "Über uns",
     "contactPage": "Kontakt",
     "contact": "support@convrs.org",
     "guides": "Ratgeber"
@@ -172,6 +171,12 @@
     "description": "Ausführliche Erklärungen zu client-seitiger Verarbeitung, WebAssembly und sicheren Dateikonvertierungen — für das browser-native, datenschutzbewusste Web.",
     "readMore": "Ratgeber lesen",
     "backToGuides": "Alle Ratgeber"
+  },
+  "ToolPage": {
+    "howTo": "So geht's",
+    "faq": "FAQ",
+    "relatedGuides": "Mehr erfahren: passende Ratgeber",
+    "relatedGuidesSubtitle": "Ausführliche Originalartikel zu den Formaten, Abwägungen und Best Practices hinter diesem Tool."
   },
   "LanguageSwitcher": {
     "label": "Sprache"

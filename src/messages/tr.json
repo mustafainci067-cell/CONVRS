@@ -161,7 +161,6 @@
     "privacy": "Gizlilik Politikası",
     "terms": "Kullanım Şartları",
     "cookie": "Çerez Politikası",
-    "about": "Hakkımızda",
     "contactPage": "İletişim",
     "contact": "support@convrs.org",
     "guides": "Rehberler"
@@ -172,6 +171,12 @@
     "description": "İstemci tarafında işleme, WebAssembly ve güvenli dosya dönüşümleri üzerine uzun okumalar — tarayıcı yerel, gizlilik öncelikli web için yazıldı.",
     "readMore": "Rehberi oku",
     "backToGuides": "Tüm rehberler"
+  },
+  "ToolPage": {
+    "howTo": "Nasıl yapılır",
+    "faq": "SSS",
+    "relatedGuides": "Derinlemesine oku: ilgili rehberler",
+    "relatedGuidesSubtitle": "Bu aracın arkasındaki biçimleri, ödünleşimleri ve en iyi uygulamaları anlatan özgün uzun makaleler."
   },
   "LanguageSwitcher": {
     "label": "Dil"

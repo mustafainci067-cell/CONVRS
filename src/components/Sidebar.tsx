@@ -212,6 +212,31 @@ export default function Sidebar() {
           </button>
         </div>
 
+        {/* Guides (Blog) linki — logonun hemen altinda: yuksek degerli, metin agirlikli
+            icerige ilk gorunen gezinme ogesi olarak erisim (kullanici + tarayici). */}
+        <div className="border-b border-zinc-200 px-4 py-3 dark:border-zinc-800/60">
+          <Link
+            href="/guides"
+            onClick={() => setMobileOpen(false)}
+            className={cn(
+              'flex items-center gap-3 rounded-xl border px-3 py-2.5 text-sm font-semibold transition-colors',
+              'border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100',
+              'dark:border-emerald-900/40 dark:bg-emerald-950/30 dark:text-emerald-400 dark:hover:bg-emerald-950/60',
+              !isOpen && 'justify-center px-0'
+            )}
+          >
+            <svg className={iconClass} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.6"
+                d="M12 6.25v13m0-13C10.83 5.48 9.25 5 7.5 5S4.17 5.48 3 6.25v13C4.17 18.48 5.75 18 7.5 18s3.33.48 4.5 1.25m0-13C13.17 5.48 14.75 5 16.5 5c1.75 0 3.33.48 4.5 1.25v13C19.83 18.48 18.25 18 16.5 18c-1.75 0-3.33.48-4.5 1.25"
+              />
+            </svg>
+            {isOpen && <span className="flex-1 truncate">{t('guides')}</span>}
+          </Link>
+        </div>
+
         <nav aria-label={t('mainNav')} className="flex-1 space-y-6 overflow-y-auto p-4">
           {categoryConfigs.map((category) => {
             const itemsList = (
@@ -280,25 +305,6 @@ export default function Sidebar() {
             );
           })}
         </nav>
-
-        {/* Guides (Blog) linki — araç kategorilerinin altında, dil/tema seçimlerinin üstünde */}
-        <div className="border-t border-zinc-200 px-4 pt-4 pb-0 dark:border-zinc-800/60">
-          <Link
-            href="/guides"
-            onClick={() => setMobileOpen(false)}
-            className={cn(
-              'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
-              'text-zinc-600 hover:bg-zinc-200/60 hover:text-zinc-900',
-              'dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-200',
-              !isOpen && 'justify-center px-0'
-            )}
-          >
-            {isOpen && <span className="flex-1 truncate">{t('guides')}</span>}
-            {!isOpen && (
-              <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-            )}
-          </Link>
-        </div>
 
         <div className="space-y-2 border-t border-zinc-200 p-4 dark:border-zinc-800/60">
           <LanguageSwitcher isOpen={isOpen} />

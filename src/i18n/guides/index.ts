@@ -25,8 +25,20 @@ import qrCodeGuide from "./qr-code-guide";
 import colorConversionGuide from "./color-conversion-guide";
 import audioFormatsQualityGuide from "./audio-formats-quality-guide";
 import htmlEncodingGuide from "./html-encoding-guide";
+import chmodPermissionsGuide from "./chmod-permissions-guide";
+import cssShadowDesignGuide from "./css-shadow-design-guide";
+import imageResizeCropGuide from "./image-resize-crop-guide";
+import passwordSecurityGuide from "./password-security-guide";
+import responsiveDesignViewportGuide from "./responsive-design-viewport-guide";
+import svgVectorsGuide from "./svg-vectors-for-web";
 
 export const guides: GuideDefinition[] = [
+  svgVectorsGuide,
+  responsiveDesignViewportGuide,
+  passwordSecurityGuide,
+  imageResizeCropGuide,
+  cssShadowDesignGuide,
+  chmodPermissionsGuide,
   audioFormatsQualityGuide,
   htmlEncodingGuide,
   colorConversionGuide,
@@ -71,7 +83,13 @@ const tsGuideCategories: Record<string, string> = {
   'hash-function-guide': 'developer',
   'base64-guide': 'developer',
   'video-to-gif-guide': 'media',
-  'qr-code-guide': 'image'
+  'qr-code-guide': 'image',
+  'chmod-permissions-guide': 'developer',
+  'css-shadow-design-guide': 'developer',
+  'image-resize-crop-guide': 'image',
+  'password-security-guide': 'developer',
+  'responsive-design-viewport-guide': 'developer',
+  'svg-vectors-for-web': 'image',
 };
 
 /** Slug'a göre kategoriyi bulur */
