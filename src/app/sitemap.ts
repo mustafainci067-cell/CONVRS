@@ -20,10 +20,8 @@ const INFO_PATHS: string[] = [
   '/contact',
 ];
 
-const SITEMAP_DATE = new Date('2026-09-01');
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = SITEMAP_DATE;
+  const lastModified = new Date();
 
   const alternates = (path: string) => {
     const languages: Record<string, string> = {};
@@ -54,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${BASE_URL}/${locale}${path}`,
         lastModified,
         changeFrequency: 'weekly',
-        priority: 0.8,
+        priority: 0.9,
         alternates: alternates(path),
       });
     }
@@ -67,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: `${BASE_URL}/${locale}${path}`,
         lastModified,
         changeFrequency: 'monthly',
-        priority: 0.6,
+        priority: 0.5,
         alternates: alternates(path),
       });
     }
