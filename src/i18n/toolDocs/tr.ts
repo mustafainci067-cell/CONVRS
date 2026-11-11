@@ -26,20 +26,21 @@ export const tr: ToolDocPhrases = {
     }
   },
 
-  useCase: (category) => {
+  useCase: (category, name, from, to) => {
+    const src = from === "-na-" ? name : from;
     switch (category) {
       case "image":
-        return "İnsanlar görsel dönüşümü günlük işler için kullanır: web için fotoğrafları küçültmek, baskı veya e-ticaret için dosyaları hazırlamak ya da platformun istediği biçimi sağlamak. İşlem yerelde gerçekleştiği için kalite ayarlarının kontrolü sizde kalır ve orijinalleriniz hiçbir yere gönderilmez.";
+        return `Tasarımcılar, e-ticaret yöneticileri ve geliştiriciler günlük iş akışlarında ${src} dosyalarını ${to} formatına çevirmek için ${name} aracını kullanır: web sitelerinde Core Web Vitals (LCP) hızını artırmak, pazaryeri görsel kurallarını karşılamak veya şeffaf katmanları korumak. ${src} → ${to} dönüşümü tamamen yerelde gerçekleştiği için piksel kalitesinin kontrolü sizde kalır ve orijinalleriniz hiçbir yere gönderilmez.`;
       case "document":
-        return "Doküman dönüşümü, bir dosya bir sınırı aşmak zorunda kaldığında önem kazanır — müşteri farklı bir ofis paketi açtığında, bir yükleme formu yalnızca tek biçimi kabul ettiğinde ya da bir raporun her cihazda aynı basılması gerektiğinde. Bunu tarayıcıda yapmak en riskli adımı ortadan kaldırır: dokümanınızı bilinmeyen bir sunucuya teslim etmeyi.";
+        return `${name} ile ${src} verilerini ${to} biçimine dönüştürmek, dosyalar farklı yazılımlar veya kurumlar arasında taşınırken kritik önem taşır — bir müşteri farklı bir ofis programı kullandığında, resmi bir portal yalnızca ${to} kabul ettiğinde ya da tablo verilerinin veritabanına aktarılması gerektiğinde. Bu işlemi tarayıcıda yapmak en riskli adımı ortadan kaldırır: gizli ${src} belgenizi yabancı bir sunucuya yüklemeyi.`;
       case "developer":
-        return "Tarayıcı tabanlı araçlar, kontrol edilebilir oldukları için tercih edilir. Neyin girdiğini açıkça görür, istediğiniz çıktıyı elde edersiniz ve verilerinizi karşılık vermeden aracı istediğiniz kadar tekrar çalıştırabilirsiniz. Editörünüzle terminaliniz arasına doğal olarak oturur.";
+        return `Yazılım geliştiriciler, üretim ortamındaki veri yapılarını, anahtarları veya kod bloklarını üçüncü taraf sunuculara göndermeden ${to} çıktısı üretmek için ${name} aracını tercih eder. Girdiyi anında denetler, deterministik ${to} sonucunu alır ve editörünüzle terminaliniz arasında güvenle çalışırsınız.`;
       case "text":
-        return "Metin işleri çoğunlukla hızlı ve tekrarlıdır. Bu araç tekrarlı kısmı sizden alır — büyük/küçük harf düzeltme, uzunluk ölçme veya sürüm karşılaştırma — böylece siz metnin gerçekte söylediğine odaklanırsınız. Her şey yerelde işlendiği için gizli taslaklar bile özel kalır.";
+        return `İçerik editörleri ve yazılımcılar için ${src} verisini ${to} yapısına dönüştürmek hız ve doğruluk gerektirir. ${name}, manuel biçimlendirme hatalarını ortadan kaldırırken yayınlanmamış taslaklarınızın ve şirket içi metinlerinizin %100 yerel tarayıcı belleğinde kalmasını sağlar.`;
       case "media":
-        return "Medya dosyaları, üzerinde çalıştığınız en büyük ve en hassas dosyalardır. Onları yerinde işlemek, ses veya görüntünün ağa hiç çıkmadığı anlamına gelir: yükleme çubuğu, sunucu kaydı veya arta kalan kopya yok — yalnızca cihazınızdaki sonuç.";
+        return `Ses ve video dosyaları (${src} → ${to}), üzerinde çalıştığınız en yüksek boyutlu ve en özel içeriklerdir. ${name} aracını cihazınızda yerel olarak çalıştırmak, medyanızın internet ağına hiç çıkmaması demektir: dakikalar süren yükleme çubukları, bulut kuyrukları veya sunucuda kalan kopyalar olmadan doğrudan ${to} çıktısını indirirsiniz.`;
       default:
-        return "Küçük yardımcı araçlar anlık ve öngörülebilir olduklarında güven kazanır. Her şey yerelde çalıştığı için gördüğünüz yanıt, aldığınız yanıttır — bekleme de izleme de yok, hiçbir şey sunucuya gitmez.";
+        return `${name}, ihtiyaç duyduğunuz ${to} sonucunu doğrudan tarayıcı sekmenizde gerçek zamanlı olarak hesaplar. Her şey yerel bellekte çalıştığı için bekleme süresi, izleme veya sunucu trafiği olmadan kesintisiz çalışır.`;
     }
   },
 

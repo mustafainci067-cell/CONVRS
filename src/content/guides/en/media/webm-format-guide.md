@@ -65,7 +65,7 @@ If you are building a website today, WebM offers several killer features that ma
 This is arguably WebM's best feature. A WebM video can have a transparent background. You can film a subject on a green screen, remove the background, and export it as a transparent WebM. When placed on a website, the website's background will show through the video. MP4 does not support transparency.
 
 ### The True GIF Replacement
-As discussed in our [GIF format guide](/gif-format-guide), animated GIFs are massive, inefficient files that destroy page load times. A looping, silent WebM file can provide vastly superior animation quality at a fraction of the file size of a GIF, dramatically improving your website's performance and Core Web Vitals.
+As discussed in our [GIF format guide](/en/guides/image/gif-format-guide), animated GIFs are massive, inefficient files that destroy page load times. A looping, silent WebM file can provide vastly superior animation quality at a fraction of the file size of a GIF, dramatically improving your website's performance and Core Web Vitals.
 
 ---
 

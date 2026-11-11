@@ -101,4 +101,4 @@ YAML'ın insanlar tarafından okunması kolay olsa da, resmi YAML spesifikasyonu
 
 YAML, modern yapılandırma dosyalarının tartışmasız standardıdır. XML ve JSON'un katı, makine dostu katılığını temiz, minimalist, insan tarafından okunabilen bir tasarımla takas etti. Boşluklara dayanması zaman zaman baş ağrısına neden olabilse de, yorumları ve çok satırlı dizeleri destekleme yeteneği onu dünya çapındaki DevOps mühendisleri, sistem yöneticileri ve yazılım geliştiricileri için vazgeçilmez bir araç haline getirmektedir.
 
-Veri yapılarını çevirmeniz gerekirse, yerleşik araçlarımız [YAML'ı JSON'a](/tr/difference-between-yaml-and-json) veya tam tersine anında dönüştürerek size her iki dünyanın da en iyisini sunabilir.
+Veri yapılarını çevirmeniz gerekirse, yerleşik araçlarımız [YAML'ı JSON'a](/tr/json-to-yaml) veya tam tersine anında dönüştürerek size her iki dünyanın da en iyisini sunabilir.

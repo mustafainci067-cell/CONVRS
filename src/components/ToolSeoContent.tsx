@@ -22,6 +22,7 @@ import { AD_SLOT_TOOL_PAGE } from "@/lib/ads";
 import { toolSeoConfigs } from "@/content/toolSeo";
 import { categoryConfigs } from "@/config/nav";
 import { getToolSeoByPath } from "@/i18n/seo";
+import { getToolEngineSummary, type LocaleCode } from "@/i18n/toolSpecs";
 import { getGuideBySlug, getCategoryForTsGuide } from "@/i18n/guides";
 import type { Locale as GuideLocale } from "@/i18n/guides/types";
 import { getGuideSlugsForTool } from "@/content/toolGuides";
@@ -48,11 +49,13 @@ export default async function ToolSeoContent({ path }: { path: string }) {
   const tPage = await getTranslations({ locale, namespace: "ToolPage" });
 
   const toolKey = path.slice(1);
+  const loc = (["en", "tr", "de", "es"].includes(locale) ? locale : "en") as LocaleCode;
+  const engineSummary = getToolEngineSummary(path, loc);
   let customFaqs: { question: string; answer: string }[] | null = null;
   if (tContent.has(toolKey)) {
-    const rawContent = tContent.raw(toolKey) as any;
+    const rawContent = tContent.raw(toolKey) as { faqs?: { question: string; answer: string }[] };
     if (rawContent?.faqs?.length) {
-      customFaqs = rawContent.faqs;
+      customFaqs = [...rawContent.faqs, ...engineSummary.technicalFaq];
     }
   }
 

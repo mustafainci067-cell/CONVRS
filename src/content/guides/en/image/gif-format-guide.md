@@ -79,4 +79,4 @@ In fact, when you upload a "GIF" to Twitter (X) or Discord, the platform actuall
 
 However, as a cultural icon, the GIF is untouchable. Whether it's a technical `.gif` file or a looping WebP, the concept of a short, silent, looping animation used to convey emotion is permanently woven into the fabric of human communication. 
 
-If you need to optimize your website, converting heavy GIFs to modern formats is highly recommended. You can use our **[GIF to MP4 Video Converter](/video-optimization-mp4-gif)** or **[GIF to WebP Converter](/webp-format-guide)** to dramatically improve your page load speeds while keeping the fun of animation alive.
+If you need to optimize your website, converting heavy GIFs to modern formats is highly recommended. You can use our **[GIF to MP4 Video Guide](/en/guides/media/video-optimization-mp4-gif)** or **[WebP Format Guide](/en/guides/image/webp-format-guide)** to dramatically improve your page load speeds while keeping the fun of animation alive.

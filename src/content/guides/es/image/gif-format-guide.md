@@ -79,4 +79,4 @@ De hecho, cuando subes un "GIF" a Twitter (X) o Discord, la plataforma en realid
 
 Sin embargo, como ícono cultural, el GIF es intocable. Ya sea un archivo `.gif` técnico o un WebP en bucle, el concepto de una animación corta, silenciosa y en bucle utilizada para transmitir emociones está tejido permanentemente en el tejido de la comunicación humana.
 
-Si necesitas optimizar tu sitio web, se recomienda encarecidamente convertir GIF pesados a formatos modernos. Puedes utilizar nuestro **[Convertidor de GIF a Video MP4](/es/video-optimization-mp4-gif)** o el **[Convertidor de GIF a WebP](/es/webp-format-guide)** para mejorar drásticamente la velocidad de carga de tus páginas mientras mantienes viva la diversión de la animación.
+Si necesitas optimizar tu sitio web, se recomienda encarecidamente convertir GIF pesados a formatos modernos. Puedes consultar nuestra **[Guía de Optimización MP4 vs GIF](/es/guides/image/optimizacion-video-web-mp4-vs-gif)** o la **[Guía del Formato WebP](/es/guides/image/webp-format-guide)** para mejorar drásticamente la velocidad de carga de tus páginas mientras mantienes viva la diversión de la animación.

@@ -65,7 +65,7 @@ Bugün bir web sitesi oluşturuyorsanız, WebM, modern tasarım için onu tercih
 Bu, WebM'in tartışmasız en iyi özelliğidir. Bir WebM videosu şeffaf bir arka plana sahip olabilir. Bir nesneyi yeşil ekranda filme alabilir, arka planı kaldırabilir ve onu şeffaf bir WebM olarak dışa aktarabilirsiniz. Bir web sitesine yerleştirildiğinde, web sitesinin kendi arka planı videonun arkasından görünür. MP4 şeffaflığı desteklemez.
 
 ### Gerçek GIF Alternatifi
-[GIF formatı rehberimizde](/tr/gif-format-guide) tartışıldığı gibi, animasyonlu GIF'ler sayfa yükleme sürelerini mahveden devasa, verimsiz dosyalardır. Döngüsel, sessiz bir WebM dosyası, bir GIF'in dosya boyutunun çok küçük bir kısmıyla çok daha üstün animasyon kalitesi sunarak web sitenizin performansını ve Önemli Web Verilerini (Core Web Vitals) önemli ölçüde artırabilir.
+[GIF formatı rehberimizde](/tr/guides/image/gif-format-guide) tartışıldığı gibi, animasyonlu GIF'ler sayfa yükleme sürelerini mahveden devasa, verimsiz dosyalardır. Döngüsel, sessiz bir WebM dosyası, bir GIF'in dosya boyutunun çok küçük bir kısmıyla çok daha üstün animasyon kalitesi sunarak web sitenizin performansını ve Önemli Web Verilerini (Core Web Vitals) önemli ölçüde artırabilir.
 
 ---
 

@@ -1,7 +1,9 @@
 // Faz 3 — SEO icerik sablonu: ortak motor.
-// Config (@/content/toolSeo) + dil sozlugu (en/tr/de/es) birlestirilir.
+// Config (@/content/toolSeo) + dil sozlugu (en/tr/de/es) + araca ozel teknik motor
+// (src/i18n/toolSpecs) birlestirilir.
 // Yalnizca sunucu komponentlerinde kullanilir; client bundle'a girmez.
 import { toolSeoConfigs, type ToolSeoConfig } from "@/content/toolSeo";
+import { getToolEngineSummary, type LocaleCode } from "@/i18n/toolSpecs";
 import { en } from "./en";
 import { tr } from "./tr";
 import { de } from "./de";
@@ -19,7 +21,8 @@ export function getToolSeo(
   config: ToolSeoConfig,
   name: string
 ): SeoContent {
-  const p = getSeoDict(locale);
+  const loc = (["en", "tr", "de", "es"].includes(locale) ? locale : "en") as LocaleCode;
+  const p = getSeoDict(loc);
   const { from, to, archetype } = config;
 
   let heading: string;
@@ -45,10 +48,11 @@ export function getToolSeo(
     archetype === "generate" ? p.qHowGenerate(to) : p.qHow(from, to);
 
   const claimFaq = config.claimKeys
-    .slice(0, 2)
     .map((key) => p.claims[key])
     .filter((c): c is SeoClaim => Boolean(c))
     .map((c) => ({ question: c.q, answer: c.a }));
+
+  const engineSummary = getToolEngineSummary(config.path, loc);
 
   const faq = [
     { question: howQuestion, answer: howAnswer },
@@ -57,6 +61,7 @@ export function getToolSeo(
       answer: `${p.aPrivate(name)}${config.media ? p.wasmSentence : ""}`,
     },
     ...claimFaq,
+    ...engineSummary.technicalFaq,
   ];
 
   if (config.sizeLimitMb) {

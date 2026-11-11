@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+import { hasLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { getTranslations } from 'next-intl/server';
 import { getRouteLocale } from '@/i18n/locale';
@@ -6,8 +8,43 @@ import JsonLd from '@/components/JsonLd';
 import { AD_SLOT_HOMEPAGE } from '@/lib/ads';
 import Faq from '@/components/FAQ';
 import { categoryConfigs } from '@/config/nav';
-import { SITE_URL } from '@/i18n/routing';
+import { routing, SITE_URL, getCanonicalUrl, getLanguagesFor } from '@/i18n/routing';
 import Accordion from '@/components/ui/Accordion';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const lang = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
+  const t = await getTranslations({ locale: lang, namespace: 'Seo' });
+  const url = getCanonicalUrl(lang, '');
+
+  return {
+    title: {
+      absolute: t('homeTitle'),
+    },
+    description: t('homeDescription'),
+    alternates: {
+      canonical: url,
+      languages: getLanguagesFor(''),
+    },
+    openGraph: {
+      title: t('homeTitle'),
+      description: t('homeDescription'),
+      url,
+      siteName: 'Convrs',
+      locale: lang,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('homeTitle'),
+      description: t('homeDescription'),
+    },
+  };
+}
 
 type Tool = {
   href: string;
@@ -82,10 +119,23 @@ export default async function Home() {
     })),
   };
 
+  const homeUrl = getCanonicalUrl(locale, '');
+  const tSeo = await getTranslations({ locale, namespace: 'Seo' });
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${homeUrl}#webpage`,
+    url: homeUrl,
+    name: tSeo('homeTitle'),
+    description: tSeo('homeDescription'),
+    inLanguage: locale,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+  };
+
   return (
     <main className="flex flex-1 flex-col items-center p-5 font-sans sm:p-8">
       <div className="w-full max-w-3xl">
-        <JsonLd data={[faqJsonLd, itemListJsonLd]} />
+        <JsonLd data={[webPageJsonLd, faqJsonLd, itemListJsonLd]} />
         <section className="flex flex-col items-center gap-4 pt-8 pb-12 text-center sm:pt-12 sm:pb-16">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-100">
             Convrs

@@ -40,7 +40,7 @@ export const contactContent: LegalContent = {
               ],
               [
                 "Web sitesi: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },
@@ -204,7 +204,7 @@ export const contactContent: LegalContent = {
               ],
               [
                 "Website: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },
@@ -368,7 +368,7 @@ export const contactContent: LegalContent = {
               ],
               [
                 "Website: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },
@@ -532,7 +532,7 @@ export const contactContent: LegalContent = {
               ],
               [
                 "Sitio web: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },

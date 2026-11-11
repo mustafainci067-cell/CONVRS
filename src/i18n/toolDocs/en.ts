@@ -28,20 +28,21 @@ export const en: ToolDocPhrases = {
     }
   },
 
-  useCase: (category) => {
+  useCase: (category, name, from, to) => {
+    const src = from === "-na-" ? name : from;
     switch (category) {
       case "image":
-        return "People rely on image conversion for everyday tasks: shrinking photos for the web, preparing assets for print or e-commerce, or matching a platform's required format. Because the work happens locally, you keep full control over quality and your originals are never sent anywhere.";
+        return `Teams and creators use ${name} to transform ${src} into ${to} for everyday production workflows: optimizing visuals for faster Core Web Vitals (LCP), preparing assets for print or e-commerce marketplaces, or satisfying strict CMS upload rules. Because the ${src} → ${to} conversion happens locally, you keep full control over pixel fidelity and your originals are never sent anywhere.`;
       case "document":
-        return "Document conversion matters whenever a file has to cross a boundary — when a client opens a different office suite, an upload form accepts only one format, or a report must print identically everywhere. Doing it in the browser removes the riskiest step: handing your document to an unknown server.";
+        return `Converting ${src} to ${to} with ${name} is essential whenever a file has to cross software boundaries — when a client opens a different office suite, an enterprise portal accepts only ${to}, or a financial/legal dataset must be ingested cleanly. Doing it in the browser removes the riskiest step: handing your confidential ${src} document to an unknown remote server.`;
       case "developer":
-        return "Browser-based utilities earn their place by being controllable. You see exactly what goes in, you get exactly what comes out, and you can re-run the tool as often as you like without trading your data for it. It fits naturally between your editor and your terminal.";
+        return `Developers rely on ${name} to generate or transform ${to} deterministically without leaving the browser. You inspect the exact input, verify the ${to} output immediately, and re-run the operation as often as needed without pasting production tokens, schemas, or credentials into third-party APIs.`;
       case "text":
-        return "Most text work is quick and repetitive. This tool removes the repetitive part — fixing case, measuring length or comparing versions — so you can focus on what the text actually says. Because everything is processed locally, even confidential drafts stay private.";
+        return `Editorial and localization workflows often require transforming ${src} into ${to} accurately. ${name} eliminates manual formatting errors so you can focus on content quality, while keeping unpublished drafts and internal copy 100% inside local browser memory.`;
       case "media":
-        return "Media files are the heaviest and most sensitive things you handle. Processing them in place means the audio or video never crosses the network: no upload progress bar, no server logs, no copy left behind — just the result on your device.";
+        return `Audio and video streams (${src} → ${to}) are the heaviest and most sensitive files you handle. Running ${name} locally means your media never crosses the network: no multi-gigabyte upload progress bar, no cloud transcoding queue, and no copy left behind — just the ${to} file ready on your device.`;
       default:
-        return "Small utilities earn trust by being instant and predictable. With everything running locally, the answer you see is the answer you get — no waiting, no tracking, and nothing sent to a server.";
+        return `${name} delivers instant, deterministic ${to} results directly in your browser tab. With everything running locally, the output you see is computed in real time on your device — with zero waiting, zero tracking, and nothing sent to a server.`;
     }
   },
 

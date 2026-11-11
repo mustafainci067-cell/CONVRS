@@ -8,7 +8,7 @@ export const privacyContent: LegalContent = {
     title: "Gizlilik Politikası",
     updatedLabel: "Son güncelleme:",
     updatedDate: "5 Eylül 2026",
-    scope: "Geçerli: https://convrs.org — KVKK · GDPR · CCPA uyumlu",
+    scope: "Geçerli: https://www.convrs.org — KVKK · GDPR · CCPA uyumlu",
     note: {
       type: "note",
       tone: "success",
@@ -59,7 +59,7 @@ export const privacyContent: LegalContent = {
               ],
               [
                 "Web sitesi: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },
@@ -390,7 +390,7 @@ export const privacyContent: LegalContent = {
     title: "Privacy Policy",
     updatedLabel: "Last updated:",
     updatedDate: "September 5, 2026",
-    scope: "Applicable to: https://convrs.org — KVKK · GDPR · CCPA compliant",
+    scope: "Applicable to: https://www.convrs.org — KVKK · GDPR · CCPA compliant",
     note: {
       type: "note",
       tone: "success",
@@ -441,7 +441,7 @@ export const privacyContent: LegalContent = {
               ],
               [
                 "Website: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },
@@ -770,7 +770,7 @@ export const privacyContent: LegalContent = {
     title: "Datenschutzrichtlinie",
     updatedLabel: "Zuletzt aktualisiert:",
     updatedDate: "5. September 2026",
-    scope: "Gültig für: https://convrs.org — KVKK · DSGVO · CCPA-konform",
+    scope: "Gültig für: https://www.convrs.org — KVKK · DSGVO · CCPA-konform",
     note: {
       type: "note",
       tone: "success",
@@ -821,7 +821,7 @@ export const privacyContent: LegalContent = {
               ],
               [
                 "Website: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },
@@ -1150,7 +1150,7 @@ export const privacyContent: LegalContent = {
     title: "Política de Privacidad",
     updatedLabel: "Última actualización:",
     updatedDate: "5 de septiembre de 2026",
-    scope: "Válido para: https://convrs.org — conforme a KVKK · RGPD · CCPA",
+    scope: "Válido para: https://www.convrs.org — conforme a KVKK · RGPD · CCPA",
     note: {
       type: "note",
       tone: "success",
@@ -1201,7 +1201,7 @@ export const privacyContent: LegalContent = {
               ],
               [
                 "Sitio web: ",
-                { text: "https://convrs.org", url: "https://convrs.org", external: true },
+                { text: "https://www.convrs.org", url: "https://www.convrs.org", external: true },
               ],
             ],
           },

@@ -26,20 +26,21 @@ export const de: ToolDocPhrases = {
     }
   },
 
-  useCase: (category) => {
+  useCase: (category, name, from, to) => {
+    const src = from === "-na-" ? name : from;
     switch (category) {
       case "image":
-        return "Menschen nutzen Bildkonvertierung für alltägliche Aufgaben: Fotos für das Web verkleinern, Dateien für Druck oder E-Commerce vorbereiten oder das von einer Plattform geforderte Format liefern. Da die Arbeit lokal passiert, behalten Sie die Kontrolle über die Qualität, und Ihre Originale werden nirgendwohin gesendet.";
+        return `Entwickler, Designer und E-Commerce-Teams nutzen ${name}, um ${src} in ${to} für den produktiven Alltag umzuwandeln: Bilder für bessere Core Web Vitals (LCP) optimieren, Assets für Druck und Marktplätze vorbereiten oder Upload-Vorgaben erfüllen. Da die ${src} → ${to} Konvertierung lokal erfolgt, behalten Sie die volle Qualitätskontrolle.`;
       case "document":
-        return "Dokumentkonvertierung wird wichtig, sobald eine Datei eine Grenze überqueren muss — wenn ein Kunde eine andere Office-Suite nutzt, ein Upload-Formular nur ein Format akzeptiert oder ein Bericht überall identisch gedruckt wird. Dies im Browser zu erledigen, entfernt den riskantesten Schritt: die Übergabe Ihres Dokuments an einen unbekannten Server.";
+        return `Die Umwandlung von ${src} in ${to} mit ${name} ist entscheidend, sobald Dateien Systemgrenzen überschreiten — wenn Kunden eine andere Office-Suite nutzen, ein Portal nur ${to} akzeptiert oder strukturierte Tabellen importiert werden müssen. Die Verarbeitung im Browser eliminiert das größte Sicherheitsrisiko: das Hochladen vertraulicher ${src}-Dokumente auf fremde Server.`;
       case "developer":
-        return "Browser-Werkzeuge verdienen sich ihren Platz durch Kontrolle. Sie sehen genau, was hineingeht, bekommen genau das gewünschte Ergebnis und können das Werkzeug beliebig oft erneut ausführen, ohne Ihre Daten dafür zu geben. Es sitzt natürlich zwischen Editor und Terminal.";
+        return `Entwickler setzen auf ${name}, um ${to}-Ausgaben deterministisch direkt im Browser zu erzeugen. Sie prüfen die exakte Eingabe, validieren das ${to}-Ergebnis sofort und geben niemals produktive Token, Schemata oder Zugangsdaten an externe APIs preis.`;
       case "text":
-        return "Textarbeit ist oft schnell und repetitiv. Dieses Werkzeug übernimmt den repetitiven Teil — Groß-/Kleinschreibung, Längenmessung oder Versionsvergleich — damit Sie sich auf den eigentlichen Inhalt konzentrieren. Da alles lokal verarbeitet wird, bleiben selbst vertrauliche Entwürfe privat.";
+        return `Redaktionelle und technische Textarbeit erfordert oft die präzise Umwandlung von ${src} in ${to}. ${name} übernimmt diesen Schritt fehlerfrei, während unveröffentlichte Entwürfe und interne Texte zu 100 % im lokalen Arbeitsspeicher Ihres Browsers verbleiben.`;
       case "media":
-        return "Mediendateien sind die größten und sensibelsten Daten, mit denen Sie arbeiten. Sie vor Ort zu verarbeiten bedeutet, dass Audio oder Video niemals das Netz durchquert: kein Upload-Balken, keine Server-Logs, keine zurückbleibende Kopie — nur das Ergebnis auf Ihrem Gerät.";
+        return `Audio- und Videodateien (${src} → ${to}) gehören zu den größten und sensibelsten Daten. Mit ${name} verlässt Ihre Mediendatei niemals Ihr Gerät: kein minutenlanger Upload, keine Server-Warteschlange und keine verbleibenden Kopien — Sie laden direkt die fertige ${to}-Datei herunter.`;
       default:
-        return "Kleine Werkzeuge gewinnen Vertrauen, indem sie sofort und vorhersagbar sind. Da alles lokal läuft, ist die Antwort, die Sie sehen, auch die, die Sie bekommen — ohne Warten, ohne Tracking und ohne Serverkontakt.";
+        return `${name} liefert sofortige, vorhersagbare ${to}-Ergebnisse direkt in Ihrem Browser-Tab — ohne Wartezeit, ohne Tracking und ohne Serverkontakt.`;
     }
   },
 

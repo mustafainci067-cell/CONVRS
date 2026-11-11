@@ -26,20 +26,21 @@ export const es: ToolDocPhrases = {
     }
   },
 
-  useCase: (category) => {
+  useCase: (category, name, from, to) => {
+    const src = from === "-na-" ? name : from;
     switch (category) {
       case "image":
-        return "La conversión de imágenes se usa para tareas cotidianas: reducir fotos para la web, preparar archivos para impresión o comercio electrónico, o cumplir el formato que exige una plataforma. Como todo ocurre localmente, usted mantiene el control de la calidad y sus originales nunca salen de su dispositivo.";
+        return `Equipos de diseño, comercio electrónico y desarrollo utilizan ${name} para transformar ${src} en ${to} en flujos de trabajo reales: optimizar imágenes para mejorar Core Web Vitals (LCP), preparar recursos para impresión o cumplir requisitos de plataformas. Como la conversión ${src} → ${to} ocurre localmente, usted mantiene el control total de la calidad.`;
       case "document":
-        return "La conversión de documentos importa siempre que un archivo debe cruzar una frontera: cuando un cliente usa otra suite ofimática, un formulario de subida acepta un único formato o un informe debe imprimirse idéntico en cualquier lugar. Hacerlo en el navegador elimina el paso más arriesgado: entregar su documento a un servidor desconocido.";
+        return `Convertir ${src} a ${to} con ${name} resulta clave cuando un archivo debe cruzar fronteras entre sistemas: cuando un cliente usa otra suite ofimática, un portal exige exclusivamente ${to} o se necesita importar datos tabulares. Hacerlo en el navegador elimina el paso más arriesgado: subir documentos ${src} confidenciales a un servidor externo.`;
       case "developer":
-        return "Las utilidades de navegador se ganan su lugar por ser controlables. Usted ve exactamente qué entra, obtiene la salida que necesita y puede repetir la operación tantas veces como quiera sin entregar sus datos a cambio. Encaja de forma natural entre su editor y su terminal.";
+        return `Los desarrolladores confían en ${name} para generar o transformar ${to} de forma determinista sin salir del navegador. Usted controla exactamente qué entra y obtiene la salida ${to} al instante sin exponer tokens, esquemas ni credenciales de producción a APIs de terceros.`;
       case "text":
-        return "El trabajo con texto suele ser rápido y repetitivo. Esta herramienta elimina la parte rutinaria — cambiar mayúsculas, medir la longitud o comparar versiones — para que usted se enfoque en lo que el texto realmente dice. Como todo se procesa localmente, incluso los borradores confidenciales siguen siendo privados.";
+        return `El trabajo editorial y técnico requiere transformar ${src} en ${to} con rapidez y precisión. ${name} automatiza el proceso sin errores manuales, manteniendo borradores confidenciales 100 % dentro de la memoria local del navegador.`;
       case "media":
-        return "Los archivos de medios son los más grandes y sensibles con los que trabaja. Procesarlos en su lugar significa que el audio o el vídeo nunca cruza la red: sin barra de subida, sin registros del servidor y sin copias olvidadas — solo el resultado en su dispositivo.";
+        return `Los archivos de audio y video (${src} → ${to}) son los más pesados y sensibles. Procesarlos localmente con ${name} significa que el archivo nunca cruza la red: sin barras de subida interminables, sin colas en servidores remotos y con el resultado ${to} listo al instante en su dispositivo.`;
       default:
-        return "Las pequeñas utilidades ganan confianza al ser instantáneas y predecibles. Como todo funciona localmente, la respuesta que ve es la respuesta que recibe — sin esperas, sin rastreo y sin enviar nada a un servidor.";
+        return `${name} ofrece resultados ${to} instantáneos y predecibles directamente en su navegador, sin esperas, sin rastreo y sin contacto con servidores.`;
     }
   },
 

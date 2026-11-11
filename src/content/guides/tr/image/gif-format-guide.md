@@ -79,4 +79,4 @@ Aslında, Twitter (X) veya Discord'a bir "GIF" yüklediğinizde, platform bant g
 
 Ancak kültürel bir ikon olarak GIF dokunulmazdır. İster teknik bir `.gif` dosyası, ister döngüsel bir WebP olsun, duygu aktarmak için kullanılan kısa, sessiz, döngüsel animasyon kavramı, insan iletişiminin dokusuna kalıcı olarak işlenmiştir.
 
-Web sitenizi optimize etmeniz gerekiyorsa, ağır GIF'leri modern formatlara dönüştürmeniz şiddetle tavsiye edilir. Animasyon eğlencesini canlı tutarken sayfa yükleme hızlarınızı önemli ölçüde artırmak için **[GIF to MP4 Video Dönüştürücü](/tr/video-optimization-mp4-gif)** veya **[GIF to WebP Dönüştürücü](/tr/webp-format-guide)** araçlarımızı kullanabilirsiniz.
+Web sitenizi optimize etmeniz gerekiyorsa, ağır GIF'leri modern formatlara dönüştürmeniz şiddetle tavsiye edilir. Animasyon eğlencesini canlı tutarken sayfa yükleme hızlarınızı önemli ölçüde artırmak için **[GIF yerine MP4 Video Rehberi](/tr/guides/image/video-animasyon-mp4-gif)** veya **[WebP Formatı Rehberi](/tr/guides/image/webp-format-guide)** içeriklerimizi inceleyebilirsiniz.

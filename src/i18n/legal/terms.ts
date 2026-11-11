@@ -8,7 +8,7 @@ export const termsContent: LegalContent = {
     title: "Kullanım Şartları",
     updatedLabel: "Son güncelleme:",
     updatedDate: "5 Eylül 2026",
-    scope: "Geçerli: https://convrs.org",
+    scope: "Geçerli: https://www.convrs.org",
     note: {
       type: "note",
       tone: "warning",
@@ -249,7 +249,7 @@ export const termsContent: LegalContent = {
     title: "Terms of Service",
     updatedLabel: "Last updated:",
     updatedDate: "September 5, 2026",
-    scope: "Applicable to: https://convrs.org",
+    scope: "Applicable to: https://www.convrs.org",
     note: {
       type: "note",
       tone: "warning",
@@ -490,7 +490,7 @@ export const termsContent: LegalContent = {
     title: "Nutzungsbedingungen",
     updatedLabel: "Zuletzt aktualisiert:",
     updatedDate: "5. September 2026",
-    scope: "Gültig für: https://convrs.org",
+    scope: "Gültig für: https://www.convrs.org",
     note: {
       type: "note",
       tone: "warning",
@@ -731,7 +731,7 @@ export const termsContent: LegalContent = {
     title: "Condiciones de Uso",
     updatedLabel: "Última actualización:",
     updatedDate: "5 de septiembre de 2026",
-    scope: "Válido para: https://convrs.org",
+    scope: "Válido para: https://www.convrs.org",
     note: {
       type: "note",
       tone: "warning",

@@ -65,7 +65,7 @@ Si estás construyendo un sitio web hoy, WebM ofrece varias funciones increíble
 Esta es posiblemente la mejor característica de WebM. Un video WebM puede tener un fondo transparente. Puedes filmar a un sujeto en una pantalla verde, eliminar el fondo y exportarlo como un WebM transparente. Cuando se coloca en un sitio web, el propio fondo del sitio web se verá a través del video. MP4 no admite transparencia.
 
 ### El Verdadero Reemplazo de GIF
-Como se discutió en nuestra [guía del formato GIF](/es/gif-format-guide), los GIF animados son archivos masivos e ineficientes que destruyen los tiempos de carga de las páginas. Un archivo WebM en bucle y silencioso puede proporcionar una calidad de animación muy superior con una fracción del tamaño de archivo de un GIF, mejorando drásticamente el rendimiento de tu sitio web y los Core Web Vitals.
+Como se discutió en nuestra [guía del formato GIF](/es/guides/image/gif-format-guide), los GIF animados son archivos masivos e ineficientes que destruyen los tiempos de carga de las páginas. Un archivo WebM en bucle y silencioso puede proporcionar una calidad de animación muy superior con una fracción del tamaño de archivo de un GIF, mejorando drásticamente el rendimiento de tu sitio web y los Core Web Vitals.
 
 ---
 

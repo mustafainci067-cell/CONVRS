@@ -97,8 +97,8 @@ You might think XML is a relic of the past, but it is hiding in plain sight all 
 Because XML can be quite verbose and difficult to read when minified, developers often need tools to format, parse, or convert XML data into more modern formats like JSON or CSV.
 
 If you have a large XML file and need to extract its data into a spreadsheet or a modern web app, you can use our built-in tools:
-- **[XML to JSON Converter](/xml-to-json):** Instantly converts verbose XML trees into clean, modern JSON objects.
-- **[XML to CSV Converter](/xml-to-csv):** Extracts tabular data from XML nodes and formats it into a spreadsheet-ready CSV file.
+- **[XML to JSON Converter](/en/xml-to-json):** Instantly converts verbose XML trees into clean, modern JSON objects.
+- **[XML to CSV Converter](/en/xml-to-csv):** Extracts tabular data from XML nodes and formats it into a spreadsheet-ready CSV file.
 
 ## Conclusion
 

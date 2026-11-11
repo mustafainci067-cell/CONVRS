@@ -101,4 +101,4 @@ Si bien YAML es fácil de leer para los humanos, la especificación oficial de Y
 
 YAML es el estándar indiscutible para los archivos de configuración modernos. Cambió la rigidez estricta y amigable para las máquinas de XML y JSON por un diseño limpio, minimalista y legible para los humanos. Si bien su dependencia de los espacios en blanco puede causar dolores de cabeza ocasionalmente, su capacidad para admitir comentarios y cadenas de varias líneas lo convierte en una herramienta indispensable para ingenieros de DevOps, administradores de sistemas y desarrolladores de software en todo el mundo.
 
-Si alguna vez necesitas traducir estructuras de datos, nuestras herramientas integradas pueden convertir instantáneamente [YAML a JSON](/es/difference-between-yaml-and-json) o viceversa, brindándote lo mejor de ambos mundos.
+Si alguna vez necesitas traducir estructuras de datos, nuestras herramientas integradas pueden convertir instantáneamente [YAML a JSON](/es/json-to-yaml) o viceversa, brindándote lo mejor de ambos mundos.

@@ -1,14 +1,27 @@
-import { redirect } from "@/i18n/navigation";
+import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
+import { getCanonicalUrl } from "@/i18n/routing";
 
-// /{locale}/terms, eksiksiz şartlar sayfası olan /{locale}/terms-of-service'e
-// yönlendirir (içerik kopyası üretmemek için). AdSense /terms yolunu da görebilir.
-export default async function TermsRedirectPage({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    robots: { index: false, follow: true },
+    alternates: {
+      canonical: getCanonicalUrl(locale, "/terms-of-service"),
+    },
+  };
+}
+
+// Kalıcı (308) yönlendirme: /terms → /terms-of-service (next.config.ts'de de eşleniği var)
+export default async function TermsRedirect({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  redirect({ href: "/terms-of-service", locale });
-  // redirect() bir yanıt fırlatır; bu satır kullanıcıya asla gösterilmez.
-  return null;
+  permanentRedirect(`/${locale}/terms-of-service`);
 }

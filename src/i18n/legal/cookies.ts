@@ -8,7 +8,7 @@ export const cookiesContent: LegalContent = {
     title: "Çerez Politikası",
     updatedLabel: "Son güncelleme:",
     updatedDate: "5 Eylül 2026",
-    scope: "Geçerli: https://convrs.org — KVKK · GDPR · CCPA uyumlu",
+    scope: "Geçerli: https://www.convrs.org — KVKK · GDPR · CCPA uyumlu",
     intro: [
       [
         "Bu Çerez Politikası; 6698 sayılı Kişisel Verilerin Korunması Kanunu (",
@@ -241,7 +241,7 @@ export const cookiesContent: LegalContent = {
     title: "Cookie Policy",
     updatedLabel: "Last updated:",
     updatedDate: "September 5, 2026",
-    scope: "Applicable to: https://convrs.org — KVKK · GDPR · CCPA compliant",
+    scope: "Applicable to: https://www.convrs.org — KVKK · GDPR · CCPA compliant",
     intro: [
       [
         "This Cookie Policy explains the types, purposes, durations of the cookies and browser storage areas used on the Convrs website, and how you can manage these technologies, in accordance with the Turkish Law No. 6698 on the Protection of Personal Data (",
@@ -468,7 +468,7 @@ export const cookiesContent: LegalContent = {
     title: "Cookie-Richtlinie",
     updatedLabel: "Zuletzt aktualisiert:",
     updatedDate: "5. September 2026",
-    scope: "Gültig für: https://convrs.org — KVKK · DSGVO · CCPA-konform",
+    scope: "Gültig für: https://www.convrs.org — KVKK · DSGVO · CCPA-konform",
     intro: [
       [
         "Diese Cookie-Richtlinie erläutert die Arten, Zwecke und Laufzeiten der auf der Website von Convrs verwendeten Cookies und Browser-Speicherbereiche sowie die Möglichkeiten zur Verwaltung dieser Technologien, im Einklang mit dem türkischen Gesetz Nr. 6698 zum Schutz personenbezogener Daten (",
@@ -695,7 +695,7 @@ export const cookiesContent: LegalContent = {
     title: "Política de Cookies",
     updatedLabel: "Última actualización:",
     updatedDate: "5 de septiembre de 2026",
-    scope: "Válido para: https://convrs.org — conforme a KVKK · RGPD · CCPA",
+    scope: "Válido para: https://www.convrs.org — conforme a KVKK · RGPD · CCPA",
     intro: [
       [
         "Esta Política de Cookies explica los tipos, finalidades y duraciones de las cookies y áreas de almacenamiento del navegador utilizadas en el sitio web de Convrs, así como la forma de gestionar estas tecnologías, de conformidad con la Ley turca n.º 6698 sobre Protección de Datos Personales (",

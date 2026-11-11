@@ -3,11 +3,20 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getGuideBySlug as getTsGuideBySlug, guideSlugs, getCategoryForTsGuide } from "@/i18n/guides";
 import type { GuideDefinition, Locale } from "@/i18n/guides/types";
-import { routing, SITE_URL, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
+import { routing, getCanonicalUrl } from "@/i18n/routing";
 import GuideRenderer from "@/components/guides/GuideRenderer";
 import GuideJsonLd from "@/components/guides/GuideJsonLd";
 import MarkdownGuideRenderer from "@/components/guides/MarkdownGuideRenderer";
-import { getGuideBySlug as getMdGuideBySlug, getAllGuideSlugs } from "@/lib/guides";
+import {
+  getGuideBySlug as getMdGuideBySlug,
+  getAllGuideSlugs,
+  getGuideLanguageAlternates,
+} from "@/lib/guides";
+
+// Yalnızca generateStaticParams içinde üretilen rehber yolları geçerlidir;
+// bilinmeyen bir slug/kategori kombinasyonu doğrudan 404 döner (sunucu tarafı
+// dinamik çalışma zamanı hatasını ve 5xx riskini tamamen engeller).
+export const dynamicParams = false;
 
 // [locale]/guides/[category]/[slug] — tüm (locale × category × slug) kombinasyonları build'de SSG olur.
 export function generateStaticParams() {
@@ -35,18 +44,22 @@ export async function generateMetadata({
   params: Promise<{ locale: string; category: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, category, slug } = await params;
-  
+
   // Önce TS rehberlerinde ara
   const tsGuide = getTsGuideBySlug(slug);
   if (tsGuide) {
+    if (getCategoryForTsGuide(slug) !== category) {
+      return { robots: { index: false, follow: false } };
+    }
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
     const url = getCanonicalUrl(locale, `/guides/${category}/${slug}`);
+    const languages = getGuideLanguageAlternates(slug, category);
     return {
       title: doc.meta.title,
       description: doc.meta.description,
       alternates: {
         canonical: url,
-        languages: getLanguagesFor(`/guides/${category}/${slug}`),
+        languages,
       },
       openGraph: {
         title: doc.meta.title,
@@ -62,30 +75,20 @@ export async function generateMetadata({
   const mdGuide = await getMdGuideBySlug(slug, locale);
   if (mdGuide) {
     // Kategori eşleşmezse
-    if (mdGuide.category !== category) return {};
+    if (mdGuide.category !== category) {
+      return { robots: { index: false, follow: false } };
+    }
 
     const url = getCanonicalUrl(locale, `/guides/${category}/${slug}`);
-    // MD rehberlerde slug dile ozeldir: hreflang yalnizca slug'in gercekten var
-    // oldugu dillere verilir (aksi halde 404'e giden alternatifler olusur).
-    const existingLocales = routing.locales.filter((loc) =>
-      getAllGuideSlugs(loc).some((g) => g.slug === slug && g.category === category)
-    );
-    const languages: Record<string, string> = {};
-    for (const loc of existingLocales) {
-      languages[loc] = getCanonicalUrl(loc, `/guides/${category}/${slug}`);
-    }
-    if (existingLocales.length > 1) {
-      languages["x-default"] = getCanonicalUrl(
-        existingLocales.includes("en") ? "en" : existingLocales[0],
-        `/guides/${category}/${slug}`
-      );
-    }
+    const languages = getGuideLanguageAlternates(slug, category);
+    const hasAlternates = Object.keys(languages).length > 1;
+
     return {
       title: mdGuide.title,
       description: mdGuide.description,
       alternates: {
         canonical: url,
-        ...(existingLocales.length > 1 ? { languages } : {}),
+        ...(hasAlternates ? { languages } : {}),
       },
       openGraph: {
         title: mdGuide.title,
@@ -97,7 +100,7 @@ export async function generateMetadata({
     };
   }
 
-  return {};
+  return { robots: { index: false, follow: false } };
 }
 
 export default async function GuideArticlePage({
@@ -115,7 +118,14 @@ export default async function GuideArticlePage({
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
     return (
       <>
-        <GuideJsonLd slug={slug} category={category} title={doc.meta.title} description={doc.meta.description} />
+        <GuideJsonLd
+          slug={slug}
+          category={category}
+          title={doc.meta.title}
+          description={doc.meta.description}
+          datePublished={doc.meta.updatedDate}
+          dateModified={doc.meta.updatedDate}
+        />
         <GuideRenderer doc={doc} />
       </>
     );
@@ -127,7 +137,14 @@ export default async function GuideArticlePage({
     if (mdGuide.category !== category) notFound();
     return (
       <>
-        <GuideJsonLd slug={slug} category={category} title={mdGuide.title} description={mdGuide.description} />
+        <GuideJsonLd
+          slug={slug}
+          category={category}
+          title={mdGuide.title}
+          description={mdGuide.description}
+          datePublished={mdGuide.date}
+          dateModified={mdGuide.date}
+        />
         <MarkdownGuideRenderer doc={mdGuide} />
       </>
     );

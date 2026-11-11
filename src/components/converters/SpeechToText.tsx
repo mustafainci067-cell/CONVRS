@@ -1,7 +1,9 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { ConverterShell, ConverterHeading, ErrorBanner } from './ConverterShell';
+
+const subscribeNoop = () => () => {};
 
 // SpeechRecognition tipleri tarayici API'sine ozeldir; lib.dom'de kismi destek verir.
 type SpeechRecognitionLike = {
@@ -127,8 +129,13 @@ const LANG_OPTIONS = [
 ] as const;
 
 export default function SpeechToText() {
-  // Tarayıcı desteğini render zamanında bir kez hesapla (effect içinde setState yok)
-  const [isSupported] = useState(() => Boolean(getSpeechRecognition()));
+  // SSR/SSG sirasinda true donerek tam arac arayuzunun statik HTML'e basilmasini
+  // saglar; istemci hidrasyonundan sonra gercek tarayici destegi okunur (hydration mismatch onlenir).
+  const isSupported = useSyncExternalStore(
+    subscribeNoop,
+    () => Boolean(getSpeechRecognition()),
+    () => true
+  );
   const [transcript, setTranscript] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);

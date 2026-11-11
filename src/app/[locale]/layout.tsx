@@ -12,7 +12,7 @@ import ConsentGate from "@/components/ConsentGate";
 import BuyMeCoffeeButton from "@/components/BuyMeCoffeeButton";
 import JsonLd from "@/components/JsonLd";
 import { ThemeProvider } from "@/components/theme-provider";
-import { routing, SITE_URL, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
+import { routing, SITE_URL } from "@/i18n/routing";
 
 const BRAND = "Convrs";
 
@@ -20,6 +20,7 @@ const BRAND = "Convrs";
 // aninda sunucu verisi yoktur. setRequestLocale + force-static ile tumu
 // build'de prerender olur (SSG) -> daha hizli TTFB ve saglikli crawl budget.
 export const dynamic = "force-static";
+export const dynamicParams = false;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,8 +45,12 @@ export async function generateMetadata({
   const lang = hasLocale(routing.locales, locale) ? locale : routing.defaultLocale;
 
   const t = await getTranslations({ locale: lang, namespace: "Seo" });
-  const url = getCanonicalUrl(lang, "");
 
+  // ONEMLI: Layout seviyesinde `alternates.canonical` veya `openGraph.url`
+  // tanimlanmaz! Tanimlanirsa kendi metadata'sinda canonical belirtmeyen alt
+  // sayfalar veya 404 sayfalari ana sayfanin canonical etiketini miras alir
+  // (GSC: "Kopya, Google kullanicidan farkli bir standart sayfa secti").
+  // Her sayfa kendi self-referencing canonical URL'sini generateMetadata ile uretir.
   return {
     title: {
       default: t("homeTitle"),
@@ -54,14 +59,9 @@ export async function generateMetadata({
     description: t("homeDescription"),
     applicationName: BRAND,
     metadataBase: new URL(SITE_URL),
-    alternates: {
-      canonical: url,
-      languages: getLanguagesFor(""),
-    },
     openGraph: {
       title: t("homeTitle"),
       description: t("homeDescription"),
-      url,
       siteName: BRAND,
       locale: lang,
       type: "website",

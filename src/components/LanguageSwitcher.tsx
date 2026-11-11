@@ -5,6 +5,7 @@ import { useLocale } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { getTranslatedGuidePathname } from '@/i18n/guideTranslations';
 
 const LOCALES = ['en', 'tr', 'de', 'es'] as const;
 
@@ -46,8 +47,10 @@ export default function LanguageSwitcher({ isOpen }: { isOpen: boolean }) {
   const changeLocale = (nextLocale: (typeof LOCALES)[number]) => {
     setOpen(false);
     if (nextLocale === locale) return;
-    // Ayni sayfayi yeni dilde ac (locale prefix'i next-intl otomatik yonetir)
-    router.replace(pathname, { locale: nextLocale });
+    // Ayni sayfayi yeni dilde ac; dile ozel slug'a sahip MD rehberlerde hedef
+    // dilin karsilik gelen slug/kategori yoluna yonlendir (404 onlenir).
+    const targetPath = getTranslatedGuidePathname(pathname, nextLocale);
+    router.replace(targetPath, { locale: nextLocale });
   };
 
   const currentFlag = FLAGS[locale as (typeof LOCALES)[number]];

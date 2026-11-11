@@ -101,4 +101,4 @@ While YAML is easy for humans to read, the official YAML specification is massiv
 
 YAML is the undisputed standard for modern configuration files. It traded the strict, machine-friendly rigidity of XML and JSON for a clean, minimalist, human-readable design. While its reliance on whitespace can occasionally cause headaches, its ability to support comments and multi-line strings makes it an indispensable tool for DevOps engineers, system administrators, and software developers worldwide. 
 
-If you ever need to translate data structures, our built-in tools can instantly convert [YAML to JSON](/difference-between-yaml-and-json) or vice versa, giving you the best of both worlds.
+If you ever need to translate data structures, our built-in tools can instantly convert [YAML to JSON](/en/json-to-yaml) or vice versa, giving you the best of both worlds.

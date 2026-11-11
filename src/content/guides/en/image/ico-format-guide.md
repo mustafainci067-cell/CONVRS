@@ -85,7 +85,7 @@ To create a proper ICO file for your website:
 1. **Design a Square Image:** Create your logo in a high-resolution, perfectly square format (e.g., 512x512 pixels) using a tool like Illustrator or Figma. Export it as a transparent PNG.
 2. **Use an ICO Converter:** Use a dedicated conversion tool. The tool will take your large PNG, automatically generate the smaller sizes (16x16, 32x32, 48x48), and package them together into a single `.ico` file.
 
-If you have an ICO file and want to extract the images from it, or if you want to convert a PNG into a favicon, our built-in **[ICO Converter Tools](/webp-format-guide)** can handle the complex packaging process for you instantly.
+If you have an ICO file and want to extract the images from it, or if you want to convert a PNG into a favicon, our built-in **[ICO Converter Tools](/en/ico-to-png)** can handle the complex packaging process for you instantly.
 
 ## Conclusion
 

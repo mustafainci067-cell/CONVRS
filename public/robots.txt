@@ -1,8 +1,15 @@
-# Convrs — convrs.org
-# Site tamamen client-side calisir; gizlenmesi gereken ozel bir yol yoktur.
-# Tum sayfalar dizinlenebilir.
+# Convrs — https://www.convrs.org
+# İstemci taraflı dosya ve geliştirici dönüştürme araçları.
+# Yalnızca yönlendirme ara yolları ve dahili API uç noktaları taranmaya kapatılmıştır.
 
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /trpc/
+Disallow: /_vercel/
+Disallow: /about-us$
+Disallow: /terms$
+Disallow: /*/about-us$
+Disallow: /*/terms$
 
 Sitemap: https://www.convrs.org/sitemap.xml

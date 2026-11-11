@@ -1,4 +1,4 @@
-// Faz 2+3 — Arac sayfasi icin SoftwareApplication + BreadcrumbList + FAQPage + HowTo JSON-LD.
+// Faz 2+3 — Arac sayfasi icin WebPage + SoftwareApplication + BreadcrumbList + FAQPage + HowTo JSON-LD.
 // Her arac sayfasi su sekilde cagirir:
 //   <ToolJsonLd path="/webp-to-png" />
 // Arac adi/aciklamasi nav.ts + src/messages/{locale}.json (Home.tools.*) kaynaklidir;
@@ -11,6 +11,7 @@ import { categoryConfigs } from "@/config/nav";
 import { SITE_URL, getCanonicalUrl } from "@/i18n/routing";
 import { getToolSeoByPath } from "@/i18n/seo";
 import { getToolDocs } from "@/i18n/toolDocs";
+import { getToolEngineSummary, type LocaleCode } from "@/i18n/toolSpecs";
 import JsonLd from "@/components/JsonLd";
 
 // schema.org SoftwareApplication.applicationCategory — izin verilen degerler.
@@ -25,6 +26,7 @@ const CATEGORY_APP_TYPE: Record<string, string> = {
 
 export default async function ToolJsonLd({ path }: { path: string }) {
   const locale = await getRouteLocale();
+  const loc = (["en", "tr", "de", "es"].includes(locale) ? locale : "en") as LocaleCode;
 
   const entry = categoryConfigs
     .flatMap((category) =>
@@ -48,9 +50,22 @@ export default async function ToolJsonLd({ path }: { path: string }) {
   const toolDocs = getToolDocs(locale, path, name);
   const featureList = toolDocs?.features ?? [];
 
+  const webPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    url: canonical,
+    name,
+    description,
+    inLanguage: locale,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    mainEntity: { "@id": `${canonical}#software` },
+  };
+
   const softwareApp = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${canonical}#software`,
     name,
     description,
     applicationCategory: CATEGORY_APP_TYPE[entry.categoryKey] ?? "UtilitiesApplication",
@@ -76,15 +91,15 @@ export default async function ToolJsonLd({ path }: { path: string }) {
         name: tSeo("home"),
         item: homeUrl,
       },
-      { 
-        "@type": "ListItem", 
-        position: 2, 
+      {
+        "@type": "ListItem",
+        position: 2,
         name: categoryLabel,
         item: `${homeUrl}#${entry.categoryKey}`,
       },
-      { 
-        "@type": "ListItem", 
-        position: 3, 
+      {
+        "@type": "ListItem",
+        position: 3,
         name,
         item: canonical,
       },
@@ -93,46 +108,55 @@ export default async function ToolJsonLd({ path }: { path: string }) {
 
   // Faz 3 — sayfadaki "Nasıl yapılır"/SSS bölümüyle birebir aynı kaynaktan.
   const seo = getToolSeoByPath(locale, path, name);
+  const engineSummary = getToolEngineSummary(path, loc);
 
   const tContent = await getTranslations({ locale, namespace: "ToolContent" });
   const toolKey = path.slice(1);
   let customFaqs: { question: string; answer: string }[] | null = null;
   if (tContent.has(toolKey)) {
-    const rawContent = tContent.raw(toolKey) as any;
+    const rawContent = tContent.raw(toolKey) as { faqs?: { question: string; answer: string }[] };
     if (rawContent?.faqs?.length) {
-      customFaqs = rawContent.faqs;
+      customFaqs = [...rawContent.faqs, ...engineSummary.technicalFaq];
     }
   }
   const finalFaqs = customFaqs || (seo ? seo.faq : []);
 
-  const faqPage = finalFaqs.length > 0
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: finalFaqs.map((item) => ({
-          "@type": "Question",
-          name: item.question,
-          acceptedAnswer: { "@type": "Answer", text: item.answer },
-        })),
-      }
-    : null;
+  const faqPage =
+    finalFaqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: finalFaqs.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        }
+      : null;
 
   const howTo = seo
     ? {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        name,
+        name: seo.heading,
         description,
         inLanguage: locale,
         step: seo.steps.map((step, i) => ({
           "@type": "HowToStep",
           position: i + 1,
           name: step,
+          text: step,
         })),
       }
     : null;
 
-  const data = [softwareApp, breadcrumb, ...(faqPage ? [faqPage] : []), ...(howTo ? [howTo] : [])];
+  const data = [
+    webPage,
+    softwareApp,
+    breadcrumb,
+    ...(faqPage ? [faqPage] : []),
+    ...(howTo ? [howTo] : []),
+  ];
 
   return <JsonLd data={data} />;
 }

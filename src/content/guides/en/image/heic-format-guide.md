@@ -94,7 +94,7 @@ Apple anticipated the compatibility issue. By default, when you share a HEIC pho
 - *To stop shooting HEIC entirely:* Go to Settings > Camera > Formats > Select "Most Compatible" (This will shoot standard JPGs).
 
 ### 2. Using Online Converters
-If you have HEIC files on your computer that you need to upload to a website or share with someone who can't open them, you can use our **[HEIC to JPG Converter](/heic-to-jpg)**. It runs entirely in your browser using WebAssembly, meaning your private photos are never uploaded to a server—ensuring 100% privacy and lightning-fast conversions.
+If you have HEIC files on your computer that you need to upload to a website or share with someone who can't open them, you can use our **[HEIC to JPG Converter](/en/heic-to-jpg)**. It runs entirely in your browser using WebAssembly, meaning your private photos are never uploaded to a server—ensuring 100% privacy and lightning-fast conversions.
 
 ---
 

@@ -1,10 +1,12 @@
 // Faz 5 — Long-form SEO içerik motoru: ortak montajcı.
-// Config (@/content/toolSeo) + kategori (categoryConfigs) + dil sözlüğü
-// birlikte harmanlanır; SSS, src/i18n/seo motorundan yeniden kullanılır.
+// Config (@/content/toolSeo) + kategori (categoryConfigs) + dil sözlüğü +
+// araca özel teknik mimari (src/i18n/toolSpecs) birlikte harmanlanır;
+// SSS, src/i18n/seo motorundan yeniden kullanılır.
 // Yalnızca sunucu komponentlerinde kullanılır; client bundle'a girmez.
 import { toolSeoConfigs } from "@/content/toolSeo";
 import { categoryConfigs } from "@/config/nav";
 import { getToolSeoByPath } from "@/i18n/seo";
+import { getToolEngineSummary, type LocaleCode } from "@/i18n/toolSpecs";
 import { en } from "./en";
 import { tr } from "./tr";
 import { de } from "./de";
@@ -37,18 +39,24 @@ export function getToolDocs(
   const category = categoryForPath(path);
   if (!category) return null;
 
-  const p = DICTS[locale] ?? en;
+  const loc = (["en", "tr", "de", "es"].includes(locale) ? locale : "en") as LocaleCode;
+  const p = DICTS[loc] ?? en;
   const { archetype, from, to, media } = config;
+  const engineSummary = getToolEngineSummary(path, loc);
 
   return {
     title: p.title(category, name, from, to),
     description: [
       p.intro(archetype, name, from, to),
+      engineSummary.architectureNote,
       p.useCase(category, name, from, to),
       p.privacy(name),
       ...(media ? [p.wasm(name)] : []),
     ],
-    features: p.features(Boolean(media), config.sizeLimitMb),
-    faqs: getToolSeoByPath(locale, path, name)?.faq ?? [],
+    features: [
+      engineSummary.engineName,
+      ...p.features(Boolean(media), config.sizeLimitMb),
+    ],
+    faqs: getToolSeoByPath(loc, path, name)?.faq ?? [],
   };
 }
