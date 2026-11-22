@@ -84,26 +84,20 @@ function normalizeLang(lang: string): string {
   return LANG_ALIASES[code] ?? lang;
 }
 
-// getUserMedia hatalarini kullaniciya net ifade eden mesaja cevirir.
-function micErrorMessage(err: unknown): string {
-  const name = err instanceof DOMException ? err.name : '';
-  switch (name) {
-    case 'NotAllowedError':
-    case 'PermissionDeniedError':
-      return 'Mikrofon izni reddedildi. Adres çubuğundaki kilit simgesinden mikrofon iznini verip tekrar deneyin.';
-    case 'NotFoundError':
-    case 'DevicesNotFoundError':
-      return 'Hiçbir mikrofon bulunamadı. Bir mikrofon bağlayıp tekrar deneyin.';
-    case 'NotReadableError':
-    case 'TrackStartError':
-      return 'Mikrofon şu anda başka bir uygulama tarafından kullanılıyor veya kullanılamıyor.';
-    case 'SecurityError':
-    case 'TypeError':
-      return 'Mikrofon erişimi güvenli bir bağlam gerektirir. Lütfen HTTPS üzerinden erişin.';
-    case 'OverconstrainedError':
-      return 'Mikrofon isteği karşılanamadı. Farklı bir mikrofon seçmeyi deneyin.';
+// Web Speech API hata kodlarini kullaniciya net ifade eden mesaja cevirir.
+function speechErrorMessage(error: string): string {
+  switch (error) {
+    case 'not-allowed':
+    case 'service-not-allowed':
+      return 'Mikrofon veya konuşma tanıma izni reddedildi. Adres çubuğundaki kilit simgesinden mikrofon iznini verip tekrar deneyin.';
+    case 'audio-capture':
+      return 'Mikrofon yakalanamadı. Bir mikrofonun bağlı olduğundan ve başka bir uygulama tarafından kilitlenmediğinden emin olun.';
+    case 'network':
+      return 'Konuşma tanıma servisine bağlanılamadı (ağ hatası). İnternet bağlantınızı kontrol edin; Brave/Opera veya VPN kullanıyorsanız Chrome/Edge ile deneyin.';
+    case 'language-not-supported':
+      return 'Seçilen konuşma dili bu tarayıcıda desteklenmiyor. Lütfen farklı bir dil seçin.';
     default:
-      return 'Mikrofon açılamadı. Tarayıcı ayarlarından izinleri kontrol edip tekrar deneyin.';
+      return `Konuşma tanıma hatası: ${error}`;
   }
 }
 
@@ -136,7 +130,8 @@ export default function SpeechToText() {
     () => Boolean(getSpeechRecognition()),
     () => true
   );
-  const [transcript, setTranscript] = useState('');
+  const [finalTranscript, setFinalTranscript] = useState('');
+  const [interimTranscript, setInterimTranscript] = useState('');
   const [isListening, setIsListening] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
@@ -148,50 +143,61 @@ export default function SpeechToText() {
   }, [selectedLang]);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
-  const transcriptRef = useRef('');
+  const finalTranscriptRef = useRef('');
   const watchdogRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const restartTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didStartRef = useRef(false);
   const stoppingRef = useRef(false);
-  // Unmount sonrasi zamanlayicilarin yeni recognition baslatmasini onler
-  // (aksi halde continuous recognition sayfadan ayrildiktan sonra da canli kalir).
+  // Unmount sonrasi zamanlayicilarin yeni recognition baslatmasini onler.
+  // React Strict Mode remount'larinda false kalmamasi icin effect icinde true set edilir.
   const mountedRef = useRef(true);
   // Otomatik yeniden baslatma (onend) icin en guncel spawn fonksiyonunu tutar.
   const latestSpawnRef = useRef<() => void>(() => {});
-  // Chrome, ayni `onresult` olayini (final + interim ayrimiyla) tekrar tekrar
-  // atesleyebilir; bu ref, hangi sonucun zaten final olarak islendigini takip
-  // ederek ayni metnin 2-3 kez ust uste eklenmesini onler.
+  // Ayni oturumda islenmis final sonuc indeksini takip eder.
   const finalizedUpToRef = useRef(-1);
 
-  useEffect(() => {
-    return () => {
-      mountedRef.current = false;
-      if (watchdogRef.current) clearTimeout(watchdogRef.current);
-      recognitionRef.current?.abort();
-    };
+  const clearTimers = useCallback(() => {
+    if (watchdogRef.current) {
+      clearTimeout(watchdogRef.current);
+      watchdogRef.current = null;
+    }
+    if (restartTimerRef.current) {
+      clearTimeout(restartTimerRef.current);
+      restartTimerRef.current = null;
+    }
   }, []);
 
-  const updateTranscript = (text: string) => {
-    transcriptRef.current = text;
-    setTranscript(text);
-  };
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      stoppingRef.current = true;
+      clearTimers();
+      const rec = recognitionRef.current;
+      if (rec) {
+        rec.onstart = rec.onend = rec.onerror = rec.onresult = null;
+        rec.abort();
+        recognitionRef.current = null;
+      }
+    };
+  }, [clearTimers]);
 
-  // Yeni bir recognition instance olusturur ve mevcut transcript'e ekleyerek devam eder.
+  const fullTranscript = [finalTranscript, interimTranscript].filter(Boolean).join(' ').trim();
+
+  // Yeni bir recognition instance olusturur ve mevcut finalTranscript'e ekleyerek devam eder.
   const spawnRecognition = useCallback(() => {
     const SR = getSpeechRecognition();
-    if (!SR) return;
-    // Unmount sonrasi cagrilirsa yeni recognition baslatma (mikrofon acik kalir).
-    if (!mountedRef.current) return;
+    if (!SR || !mountedRef.current) return;
 
+    clearTimers();
     const prev = recognitionRef.current;
     if (prev) {
       prev.onstart = prev.onend = prev.onerror = prev.onresult = null;
       prev.abort();
     }
-    if (watchdogRef.current) {
-      clearTimeout(watchdogRef.current);
-      watchdogRef.current = null;
-    }
+
     didStartRef.current = false;
+    finalizedUpToRef.current = -1;
 
     const recognition = new SR();
     recognitionRef.current = recognition;
@@ -223,90 +229,96 @@ export default function SpeechToText() {
         clearTimeout(watchdogRef.current);
         watchdogRef.current = null;
       }
-      // Kullanici "Durdur" tikladiyse temizlik yap, durduralim.
+      setInterimTranscript('');
+
+      // Kullanici "Durdur" tikladiysa veya fatal hata alindiysa temizlik yap.
       if (stoppingRef.current) {
         recognitionRef.current = null;
         setIsListening(false);
         return;
       }
-      // Beklenmedik sonlanma (mobilde sik gorunur): kisa bekleme ile otomatik
-      // yeniden baslat. Mevcut transcript korunur, kaldigi yerden devam eder.
+
+      // Beklenmedik sonlanma (sessizlik / mobil): kisa bekleme ile otomatik
+      // yeniden baslat. Mevcut finalTranscript korunur, kaldigi yerden devam eder.
       recognitionRef.current = null;
-      setTimeout(() => {
-        if (!stoppingRef.current && mountedRef.current) latestSpawnRef.current();
+      restartTimerRef.current = setTimeout(() => {
+        restartTimerRef.current = null;
+        if (!stoppingRef.current && mountedRef.current) {
+          latestSpawnRef.current();
+        }
       }, 300);
     };
 
     recognition.onerror = (event) => {
       if (recognitionRef.current !== recognition) return;
-      if (watchdogRef.current) {
-        clearTimeout(watchdogRef.current);
-        watchdogRef.current = null;
-      }
-      if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
-        stoppingRef.current = true;
-        recognitionRef.current = null;
-        setErrorMsg(
-          'Mikrofon erişimi reddedildi. Tarayıcı ayarlarından mikrofon iznini verip tekrar deneyin.'
-        );
-        setIsListening(false);
+      clearTimers();
+      setInterimTranscript('');
+
+      // 'no-speech': Chrome sessizlikte sessizce kapatir; onend otomatik yeniden baslatir.
+      // 'aborted': durdurma/temizleme sirasinda normal.
+      if (event.error === 'no-speech' || event.error === 'aborted') {
         return;
       }
-      // 'no-speech': Chrome sessizlikte sessizce kapatir; mobilde sik gorunur.
-      // Otomatik yeniden baslatma onend tarafindan halledilir.
-      // 'aborted': durdurma/tarayici kapama sirasinda normal.
-      if (event.error !== 'no-speech' && event.error !== 'aborted') {
-        setErrorMsg(`Konuşma tanıma hatası: ${event.error}`);
-        stoppingRef.current = true;
-        recognitionRef.current = null;
-        setIsListening(false);
-      }
+
+      stoppingRef.current = true;
+      recognitionRef.current = null;
+      setIsListening(false);
+      setErrorMsg(speechErrorMessage(event.error));
     };
 
     recognition.onresult = (event) => {
       if (recognitionRef.current !== recognition) return;
-      let finalText = transcriptRef.current;
-      let interimText = '';
+      let appendedFinal = '';
+      let liveInterim = '';
 
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const result = event.results[i];
+        const piece = result[0]?.transcript?.trim() ?? '';
+        if (!piece) continue;
+
         if (result.isFinal) {
-          const spoken = result[0].transcript;
-          // Dedup: ayni cumle daha once eklenmismis mi kontrol et.
-          // Bu, hem Chrome'un coklu onresult ateslemesini hem de
-          // otomatik yeniden baslatma sirasindaki gecis sorunlarini onler.
-          const alreadyIncluded =
-            finalText.endsWith(spoken) || finalText.includes(spoken);
-          if (!alreadyIncluded) {
-            finalText += (finalText ? ' ' : '') + spoken;
-          }
           if (i > finalizedUpToRef.current) {
+            appendedFinal += (appendedFinal ? ' ' : '') + piece;
             finalizedUpToRef.current = i;
           }
         } else {
-          interimText += result[0].transcript;
+          liveInterim += (liveInterim ? ' ' : '') + piece;
         }
       }
 
-      const combined = (finalText + (interimText ? ' ' + interimText : '')).trim();
-      updateTranscript(combined);
+      if (appendedFinal) {
+        const nextFinal = finalTranscriptRef.current
+          ? `${finalTranscriptRef.current} ${appendedFinal}`
+          : appendedFinal;
+        finalTranscriptRef.current = nextFinal;
+        setFinalTranscript(nextFinal);
+      }
+      setInterimTranscript(liveInterim);
     };
 
-    recognition.start();
+    try {
+      recognition.start();
+    } catch {
+      recognitionRef.current = null;
+      setIsListening(false);
+      setErrorMsg('Konuşma tanıma başlatılamadı. Lütfen tekrar deneyin.');
+      return;
+    }
 
-    // 4sn icinde onstart gelmezse Google speech servisi calismiyor olabilir.
+    // 10sn icinde onstart gelmezse (izin penceresi beklerken erken kesmemek icin) uyar.
     watchdogRef.current = setTimeout(() => {
       if (recognitionRef.current !== recognition) return;
       if (!didStartRef.current && !stoppingRef.current) {
+        stoppingRef.current = true;
         recognition.abort();
         recognitionRef.current = null;
         setIsListening(false);
         setErrorMsg(
-          'Mikrofon açıldı ama konuşma tanıma servisi yanıt vermedi. Sayfayı yenileyip tekrar deneyin; kalıcıysa Chrome veya Edge tarayıcısını kullanın.'
+          'Konuşma tanıma servisi yanıt vermedi. Mikrofon iznini onayladığınızdan emin olun; sorun sürerse Chrome veya Edge kullanın.'
         );
       }
-    }, 4000);
-  }, []);
+    }, 10000);
+  }, [clearTimers]);
 
   // En guncel spawnRecognition'u ref'e isaret et; onend icindeki
   // yeniden baslatma her zaman en yeni fonksiyonu cagirsin.
@@ -314,57 +326,56 @@ export default function SpeechToText() {
     latestSpawnRef.current = spawnRecognition;
   }, [spawnRecognition]);
 
-  const handleStart = useCallback(async () => {
+  const handleStart = useCallback(() => {
     setErrorMsg(null);
     setCopied(false);
 
-    // Once mikrofon erisimini onayla.
-    if (typeof navigator !== 'undefined' && navigator.mediaDevices?.getUserMedia) {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        stream.getTracks().forEach((track) => track.stop());
-      } catch (err) {
-        setErrorMsg(micErrorMessage(err));
-        setIsListening(false);
-        return;
-      }
-    } else {
-      setErrorMsg(
-        'Mikrofon erişimi kullanılamıyor. Deployed site (HTTPS) veya localhost üzerinden Chrome/Edge ile erişin.'
-      );
-      setIsListening(false);
+    if (typeof window !== 'undefined' && !window.isSecureContext) {
+      setErrorMsg('Mikrofon erişimi güvenli bağlantı (HTTPS) gerektirir.');
       return;
     }
 
     stoppingRef.current = false;
-    finalizedUpToRef.current = -1;
     spawnRecognition();
   }, [spawnRecognition]);
 
   const handleStop = useCallback(() => {
     stoppingRef.current = true;
-    recognitionRef.current?.stop();
+    clearTimers();
+    try {
+      recognitionRef.current?.stop();
+    } catch {
+      // zaten durmus olabilir
+    }
     setIsListening(false);
-  }, []);
+  }, [clearTimers]);
 
   const handleClear = useCallback(() => {
     stoppingRef.current = true;
-    recognitionRef.current?.abort();
-    updateTranscript('');
+    clearTimers();
+    const rec = recognitionRef.current;
+    if (rec) {
+      rec.onstart = rec.onend = rec.onerror = rec.onresult = null;
+      rec.abort();
+      recognitionRef.current = null;
+    }
+    finalTranscriptRef.current = '';
+    setFinalTranscript('');
+    setInterimTranscript('');
     setIsListening(false);
     setCopied(false);
-  }, []);
+  }, [clearTimers]);
 
   const handleCopy = useCallback(async () => {
-    if (!transcript) return;
+    if (!fullTranscript) return;
     try {
-      await navigator.clipboard.writeText(transcript);
+      await navigator.clipboard.writeText(fullTranscript);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
       setErrorMsg('Metin kopyalanamadı. Lütfen manuel seçip kopyalayın.');
     }
-  }, [transcript]);
+  }, [fullTranscript]);
 
   if (!isSupported) {
     return (
@@ -475,7 +486,7 @@ export default function SpeechToText() {
             </button>
           )}
 
-          {transcript && (
+          {fullTranscript && (
             <button
               type="button"
               onClick={handleClear}
@@ -499,9 +510,15 @@ export default function SpeechToText() {
         {/* Metin kutusu */}
         <div className="w-full space-y-3">
           <div className="relative min-h-[200px] w-full rounded-2xl border border-zinc-200 bg-white p-5 shadow-inner dark:border-zinc-800 dark:bg-zinc-900/60">
-            {transcript ? (
+            {fullTranscript ? (
               <p className="whitespace-pre-wrap font-mono text-sm leading-relaxed text-zinc-800 dark:text-zinc-200">
-                {transcript}
+                {finalTranscript}
+                {interimTranscript && (
+                  <span className="text-zinc-400 dark:text-zinc-500">
+                    {finalTranscript ? ' ' : ''}
+                    {interimTranscript}
+                  </span>
+                )}
               </p>
             ) : (
               <p className="font-mono text-sm leading-relaxed text-zinc-400 dark:text-zinc-600">
@@ -510,12 +527,12 @@ export default function SpeechToText() {
                   : 'Konuşulanları yazıya dökmeye başlamak için "Başlat" butonuna tıklayın ve konuşun.'}
               </p>
             )}
-            {isListening && transcript && (
+            {isListening && fullTranscript && (
               <span className="pointer-events-none absolute right-4 bottom-3 inline-block h-4 w-2 animate-pulse rounded-sm bg-red-500" />
             )}
           </div>
 
-          {transcript && (
+          {fullTranscript && (
             <button
               type="button"
               onClick={handleCopy}
