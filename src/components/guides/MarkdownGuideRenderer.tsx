@@ -26,7 +26,7 @@ export default async function MarkdownGuideRenderer({ doc }: { doc: GuideData })
   }
 
   return (
-    <main className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
+    <div className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
       <div className="w-full max-w-3xl">
         <Breadcrumbs
           label={tA11y("breadcrumb")}
@@ -68,6 +68,6 @@ export default async function MarkdownGuideRenderer({ doc }: { doc: GuideData })
           )}
         </div>
       </article>
-    </main>
+    </div>
   );
 }

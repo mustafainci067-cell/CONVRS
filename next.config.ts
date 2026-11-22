@@ -17,12 +17,12 @@ const contentSecurityPolicy = [
   "manifest-src 'self'",
   "upgrade-insecure-requests",
   "worker-src 'self' blob: https://unpkg.com https://staticimgly.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://staticimgly.com https://pagead2.googlesyndication.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://*.gstatic.com https://*.googlesyndication.com https://www.google.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://staticimgly.com https://pagead2.googlesyndication.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://*.gstatic.com https://*.googlesyndication.com https://www.google.com https://*.doubleclick.net https://*.googleadservices.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com",
   "script-src-attr 'none'",
   "child-src blob:",
-  "connect-src 'self' blob: https://unpkg.com https://staticimgly.com https://www.google-analytics.com https://analytics.google.com https://*.googlesyndication.com https://*.doubleclick.net https://*.gstatic.com https://www.googleadservices.com https://www.google.com",
+  "connect-src 'self' blob: https://unpkg.com https://staticimgly.com https://www.google-analytics.com https://analytics.google.com https://*.googlesyndication.com https://*.doubleclick.net https://*.gstatic.com https://www.googleadservices.com https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com",
   "img-src 'self' data: blob: https:",
-  "frame-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.gstatic.com",
+  "frame-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://*.gstatic.com https://*.googlesyndication.com https://*.doubleclick.net https://www.google.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com",
   "media-src 'self' blob: data:",
   "font-src 'self' data: https://fonts.gstatic.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
@@ -92,19 +92,11 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
   ],
-  // Required for FFmpeg.wasm SharedArrayBuffer support
+  // Global guvenlik basliklari; COOP/COEP yalnizca coklu is parcacikli WASM araci (/remove-background) ile sinirlidir.
   headers: async () => [
     {
       source: "/(.*)",
       headers: [
-        {
-          key: "Cross-Origin-Opener-Policy",
-          value: "same-origin",
-        },
-        {
-          key: "Cross-Origin-Embedder-Policy",
-          value: "require-corp",
-        },
         // ── Eklenen guvenlik basliklari ──────────────────────────────
         {
           key: "Content-Security-Policy",
@@ -137,6 +129,29 @@ const nextConfig: NextConfig = {
         {
           key: "Cross-Origin-Resource-Policy",
           value: "same-origin",
+        },
+      ],
+    },
+    // onnxruntime coklu is parcacigi icin yalnizca bu sayfada cross-origin izolasyon
+    {
+      source: "/:locale(en|tr|de|es)/remove-background",
+      headers: [
+        {
+          key: "Cross-Origin-Opener-Policy",
+          value: "same-origin",
+        },
+        {
+          key: "Cross-Origin-Embedder-Policy",
+          value: "require-corp",
+        },
+      ],
+    },
+    {
+      source: "/favicon.ico",
+      headers: [
+        {
+          key: "X-Robots-Tag",
+          value: "noindex",
         },
       ],
     },

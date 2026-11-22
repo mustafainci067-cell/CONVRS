@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { getGuideBySlug as getTsGuideBySlug, guideSlugs, getCategoryForTsGuide } from "@/i18n/guides";
+import {
+  getGuideBySlug as getTsGuideBySlug,
+  guideSlugs,
+  getCategoryForTsGuide,
+  isTsGuideIndexable,
+  getTsGuideIsoDate,
+} from "@/i18n/guides";
 import type { GuideDefinition, Locale } from "@/i18n/guides/types";
 import { routing, getCanonicalUrl } from "@/i18n/routing";
 import GuideRenderer from "@/components/guides/GuideRenderer";
@@ -53,14 +59,18 @@ export async function generateMetadata({
     }
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
     const url = getCanonicalUrl(locale, `/guides/${category}/${slug}`);
-    const languages = getGuideLanguageAlternates(slug, category);
+    const indexable = isTsGuideIndexable(slug, locale);
+    const languages = indexable ? getGuideLanguageAlternates(slug, category) : undefined;
     return {
       title: doc.meta.title,
       description: doc.meta.description,
-      alternates: {
-        canonical: url,
-        languages,
-      },
+      ...(!indexable ? { robots: { index: false, follow: true } } : {}),
+      alternates: indexable
+        ? {
+            canonical: url,
+            languages,
+          }
+        : { canonical: url },
       openGraph: {
         title: doc.meta.title,
         description: doc.meta.description,
@@ -116,6 +126,7 @@ export default async function GuideArticlePage({
   if (tsGuide) {
     if (getCategoryForTsGuide(slug) !== category) notFound();
     const doc = tsGuide.content[locale as Locale] ?? tsGuide.content.en;
+    const iso = getTsGuideIsoDate(tsGuide);
     return (
       <>
         <GuideJsonLd
@@ -123,8 +134,8 @@ export default async function GuideArticlePage({
           category={category}
           title={doc.meta.title}
           description={doc.meta.description}
-          datePublished={doc.meta.updatedDate}
-          dateModified={doc.meta.updatedDate}
+          datePublished={iso}
+          dateModified={iso}
         />
         <GuideRenderer doc={doc} />
       </>

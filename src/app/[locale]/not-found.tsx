@@ -12,7 +12,7 @@ export default function NotFound() {
   const t = useTranslations('NotFound');
 
   return (
-    <main className="flex min-h-full flex-1 flex-col items-center justify-center p-5 font-sans sm:p-8">
+    <div className="flex flex-1 flex-col items-center justify-center p-5 font-sans sm:p-8">
       <div className="w-full max-w-md animate-fade-in space-y-6 text-center">
         <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-emerald-600 dark:text-emerald-400">
           404
@@ -40,6 +40,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

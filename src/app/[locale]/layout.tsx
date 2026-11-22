@@ -75,6 +75,7 @@ export async function generateMetadata({
       icon: "/favicon.ico",
       apple: "/favicon.ico",
     },
+    other: { "google-adsense-account": "ca-pub-7839667460775178" },
   };
 }
 
@@ -120,8 +121,10 @@ export default async function LocaleLayout({
             {/* Sag-ust kosede sabit "Buy me a coffee" butonuna yer acmak icin
                 ust bosluk her ekran boyutunda korunur; buton boylece mobilde
                 hamburger, masaustunde ise converter rozetinin uzerine binmez. */}
-            <div id="main-content" className="flex h-full flex-1 flex-col overflow-y-auto pt-14">
-              {children}
+            <div className="flex h-full flex-1 flex-col overflow-y-auto pt-14">
+              <main id="main-content" className="flex flex-1 flex-col">
+                {children}
+              </main>
               <Footer />
             </div>
             {/* Sitenin sag-ust kosesi. Sabit; z-30 oldugu icin mobil cekmece

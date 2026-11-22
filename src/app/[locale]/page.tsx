@@ -133,7 +133,7 @@ export default async function Home() {
   };
 
   return (
-    <main className="flex flex-1 flex-col items-center p-5 font-sans sm:p-8">
+    <div className="flex flex-1 flex-col items-center p-5 font-sans sm:p-8">
       <div className="w-full max-w-3xl">
         <JsonLd data={[webPageJsonLd, faqJsonLd, itemListJsonLd]} />
         <section className="flex flex-col items-center gap-4 pt-8 pb-12 text-center sm:pt-12 sm:pb-16">
@@ -233,6 +233,6 @@ export default async function Home() {
 
         <Faq />
       </div>
-    </main>
+    </div>
   );
 }

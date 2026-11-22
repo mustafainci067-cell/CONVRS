@@ -13,6 +13,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { categoryConfigs } from "@/config/nav";
 import { routing, SITE_URL, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
+import { buildToolHeading, buildToolMetaDescription } from "@/i18n/toolHeadings";
 
 const BRAND = "Convrs";
 
@@ -55,21 +56,24 @@ export function generateToolMetadata(path: string) {
       : path.slice(1).replace(/-/g, " ");
     const description = nameKey ? tTools(`${nameKey}.description`) : "";
 
+    const { seoTitle } = buildToolHeading(lang, title);
+    const metaDescription = buildToolMetaDescription(lang, description);
+
     const url = getCanonicalUrl(lang, path);
-    const fullTitle = `${title} — ${BRAND}`;
+    const fullTitle = `${seoTitle} — ${BRAND}`;
 
     return {
       // Sayfa title'i yalnizca arac adidir; marka son eki layout'taki
       // title.template ("%s — Convrs") tarafindan eklenir.
-      title,
-      description,
+      title: seoTitle,
+      description: metaDescription,
       alternates: {
         canonical: url,
         languages: getLanguagesFor(path),
       },
       openGraph: {
         title: fullTitle,
-        description,
+        description: metaDescription,
         url,
         siteName: BRAND,
         locale: lang,
@@ -78,7 +82,7 @@ export function generateToolMetadata(path: string) {
       twitter: {
         card: "summary_large_image",
         title: fullTitle,
-        description,
+        description: metaDescription,
       },
     };
   };

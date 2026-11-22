@@ -2,7 +2,7 @@
 // Yeni bir rehber eklemek: makale dosyasını src/i18n/guides/ altında oluştur,
 // buraya import edip `guides` dizisine ekle. Slug tüm dillerde ortaktır;
 // {locale}/guides/{slug} sayfası ve sitemap buradan beslenir.
-import type { GuideDefinition } from "./types";
+import type { GuideDefinition, GuideDocument, Rich, Locale } from "./types";
 
 import clientSideProcessingPrivacy from "./client-side-processing-privacy";
 import webassemblyBrowserCapabilities from "./webassembly-browser-capabilities";
@@ -106,4 +106,76 @@ export function getGuideBySlug(slug: string): GuideDefinition | undefined {
 export const guideSlugs: string[] = guides.map((guide) => guide.slug);
 
 /** /guides index sayfasında kart sıralaması: son eklenen/güncellenen en üstte. */
-export const guidesByRecency: GuideDefinition[] = [...guides].reverse();
+export const guidesByRecency: GuideDefinition[] = [...guides].reverse();
+
+export const MIN_INDEXABLE_GUIDE_WORDS = 400;
+
+function richToText(parts: Rich[]): string {
+  return parts.map((r) => (typeof r === "string" ? r : r.text)).join(" ");
+}
+
+export function countGuideWords(doc: GuideDocument): number {
+  const chunks: string[] = [doc.meta.title, doc.meta.description];
+  for (const block of doc.blocks) {
+    if (block.type === "p" || block.type === "h2" || block.type === "h3") {
+      chunks.push(richToText(block.content));
+    } else if (block.type === "list") {
+      for (const item of block.items) {
+        chunks.push(richToText(item));
+      }
+    } else if (block.type === "note") {
+      if (block.title) chunks.push(block.title);
+      chunks.push(richToText(block.content));
+    } else if (block.type === "table") {
+      chunks.push(...block.columns);
+      for (const row of block.rows) {
+        chunks.push(...row);
+      }
+    }
+  }
+  return chunks.join(" ").trim().split(/\s+/).filter(Boolean).length;
+}
+
+const tsIndexableCache = new Map<string, boolean>();
+
+export function isTsGuideIndexable(slug: string, locale: string): boolean {
+  if (locale === "en") return true;
+  const cacheKey = `${locale}:${slug}`;
+  const cached = tsIndexableCache.get(cacheKey);
+  if (cached !== undefined) return cached;
+
+  const guide = getGuideBySlug(slug);
+  const doc = guide?.content[locale as Locale];
+  const result = Boolean(doc && countGuideWords(doc) >= MIN_INDEXABLE_GUIDE_WORDS);
+  tsIndexableCache.set(cacheKey, result);
+  return result;
+}
+
+const EN_MONTHS: Record<string, string> = {
+  january: "01",
+  february: "02",
+  march: "03",
+  april: "04",
+  may: "05",
+  june: "06",
+  july: "07",
+  august: "08",
+  september: "09",
+  october: "10",
+  november: "11",
+  december: "12",
+};
+
+export function getTsGuideIsoDate(
+  guide: GuideDefinition,
+  fallback = "2026-03-01"
+): string {
+  const raw = (guide.content.en?.meta.updatedDate ?? "").trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
+  const m = raw.match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})$/);
+  if (!m) return fallback;
+  const month = EN_MONTHS[m[1].toLowerCase()];
+  if (!month) return fallback;
+  const day = m[2].padStart(2, "0");
+  return `${m[3]}-${month}-${day}`;
+}

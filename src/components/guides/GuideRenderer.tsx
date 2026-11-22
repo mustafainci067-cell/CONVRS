@@ -195,7 +195,7 @@ export default async function GuideRenderer({ doc }: { doc: GuideDocument }) {
   const adSlotIndex = blocks.length > 5 ? Math.floor(blocks.length / 2) : -1;
 
   return (
-    <main className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
+    <div className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
       <div className="w-full max-w-3xl">
         <Breadcrumbs
           label={tA11y("breadcrumb")}
@@ -237,6 +237,6 @@ export default async function GuideRenderer({ doc }: { doc: GuideDocument }) {
           ))}
         </div>
       </article>
-    </main>
+    </div>
   );
 }

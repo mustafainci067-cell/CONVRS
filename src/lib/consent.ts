@@ -6,8 +6,8 @@ export const CONSENT_KEY = "convrs-cookie-consent";
 
 // ID'ler .env.local'den okunur; hardcoded bırakılmaz.
 // NEXT_PUBLIC_ prefix'i Next.js'in client bundle'a dahil etmesi için gereklidir.
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
-export const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-B25N2GY4TC";
+export const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-7839667460775178";
 
 export type Consent = "accepted" | "rejected" | null;
 

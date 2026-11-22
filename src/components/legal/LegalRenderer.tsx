@@ -184,7 +184,7 @@ export default async function LegalRenderer({ doc }: { doc: LegalDocument }) {
   ];
 
   return (
-    <main className="flex flex-1 flex-col items-center p-8 font-sans">
+    <div className="flex flex-1 flex-col items-center p-8 font-sans">
       <div className="w-full max-w-3xl animate-fade-in">
         <Breadcrumbs label={tA11y("breadcrumb")} items={breadcrumbItems} />
         <header className="border-b border-zinc-200 pt-6 pb-8 dark:border-zinc-800/60">
@@ -224,6 +224,6 @@ export default async function LegalRenderer({ doc }: { doc: LegalDocument }) {
           </section>
         ))}
       </div>
-    </main>
+    </div>
   );
 }

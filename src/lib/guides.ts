@@ -20,7 +20,7 @@
 import fs from "fs";
 import path from "path";
 import { marked } from "marked";
-import { guideSlugs, getCategoryForTsGuide } from "@/i18n/guides";
+import { guideSlugs, getCategoryForTsGuide, isTsGuideIndexable } from "@/i18n/guides";
 import { findLocalizedGuideGroup, type GuideLocaleCode } from "@/i18n/guideTranslations";
 import { routing, getCanonicalUrl } from "@/i18n/routing";
 
@@ -266,6 +266,7 @@ export function getGuideLanguageAlternates(
     const tsCat = getCategoryForTsGuide(slug);
     const languages: Record<string, string> = {};
     for (const loc of routing.locales) {
+      if (!isTsGuideIndexable(slug, loc)) continue;
       languages[loc] = getCanonicalUrl(loc, `/guides/${tsCat}/${slug}`);
     }
     languages["x-default"] = getCanonicalUrl(

@@ -1,6 +1,11 @@
 import type { MetadataRoute } from "next";
 import { activeToolPaths } from "@/config/nav";
-import { guidesByRecency, getCategoryForTsGuide } from "@/i18n/guides";
+import {
+  guidesByRecency,
+  getCategoryForTsGuide,
+  isTsGuideIndexable,
+  getTsGuideIsoDate,
+} from "@/i18n/guides";
 import { getAllGuideSlugs, getGuideLanguageAlternates } from "@/lib/guides";
 import { routing, getCanonicalUrl, getLanguagesFor } from "@/i18n/routing";
 
@@ -77,14 +82,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  // 5. TS Rehberleri (12 rehber × 4 dil = 48 URL)
+  // 5. TS Rehberleri (yalnizca indeks eşigini gecen ceviriler dahil edilir)
   for (const guide of guidesByRecency) {
     const category = getCategoryForTsGuide(guide.slug);
     const path = `/guides/${category}/${guide.slug}`;
     const languages = getGuideLanguageAlternates(guide.slug, category);
-    const lastModified = guide.content.en.meta.updatedDate || STATIC_LAST_MODIFIED;
+    const lastModified = getTsGuideIsoDate(guide);
 
     for (const locale of LOCALES) {
+      if (!isTsGuideIndexable(guide.slug, locale)) continue;
       entries.push({
         url: getCanonicalUrl(locale, path),
         lastModified,

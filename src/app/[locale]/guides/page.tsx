@@ -78,7 +78,7 @@ export default async function GuidesIndexPage({
   const allGuides = [...tsGuides, ...mdGuides].sort((a, b) => b.dateValue - a.dateValue);
 
   return (
-    <main className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
+    <div className="flex flex-1 flex-col items-center px-5 py-10 sm:px-8">
       <div className="w-full max-w-4xl animate-fade-in">
         {/* Sayfa başlığı */}
         <header className="border-b border-zinc-200 pb-10 text-center dark:border-zinc-800/60">
@@ -161,6 +161,6 @@ export default async function GuidesIndexPage({
           })}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

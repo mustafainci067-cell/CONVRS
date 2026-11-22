@@ -1,9 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/navigation';
+import { categoryConfigs } from '@/config/nav';
+import { buildToolHeading } from '@/i18n/toolHeadings';
 import { cn } from '@/lib/utils';
+
+const PATH_TO_KEY = new Map(
+  categoryConfigs.flatMap((c) => c.items).map((i) => [i.path, i.nameKey] as const)
+);
 
 /**
  * Tum donusturucu sayfalarinin ortak gorsel kabugu.
@@ -31,7 +37,7 @@ export function ConverterShell({
 }) {
   const tA11y = useTranslations('A11y');
   return (
-    <main className="flex min-h-full flex-col items-center justify-between p-5 font-sans selection:bg-zinc-200 sm:p-8 dark:selection:bg-zinc-800">
+    <section className="flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-between p-5 font-sans selection:bg-zinc-200 sm:p-8 dark:selection:bg-zinc-800">
       <header className="flex w-full max-w-4xl items-center justify-between border-b border-zinc-200 py-4 dark:border-zinc-800/60">
         <span className="font-mono text-xs uppercase tracking-wider text-zinc-500">
           {from} ➝ {to}
@@ -62,7 +68,7 @@ export function ConverterShell({
           </Link>
         </nav>
       </footer>
-    </main>
+    </section>
   );
 }
 
@@ -119,13 +125,27 @@ export function DirectionToggle({
 }
 
 export function ConverterHeading({ title, description }: { title: string; description: string }) {
+  const pathname = usePathname();
+  const locale = useLocale();
+  const tTools = useTranslations('Home.tools');
+  const nameKey = PATH_TO_KEY.get(pathname);
+
+  let h1 = title;
+  let desc = description;
+  if (nameKey && tTools.has(`${nameKey}.title`)) {
+    h1 = buildToolHeading(locale, tTools(`${nameKey}.title`)).h1;
+    if (tTools.has(`${nameKey}.description`)) {
+      desc = tTools(`${nameKey}.description`);
+    }
+  }
+
   return (
     <div className="space-y-3 text-center">
       <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-        {title}
+        {h1}
       </h1>
       <p className="mx-auto max-w-md text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-        {description}
+        {desc}
       </p>
     </div>
   );
