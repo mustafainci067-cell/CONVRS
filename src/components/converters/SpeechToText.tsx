@@ -487,10 +487,11 @@ export default function SpeechToText() {
 
   const fullTranscript = [finalTranscript, interimTranscript].filter(Boolean).join(' ').trim();
 
-  // Whisper Web Worker'i tembel (lazy) olustur
+  // Whisper Web Worker'i tembel (lazy) olustur — public/ altindan saf ES Module Worker
+  // olarak yuklenir; boylece Turbopack classic-worker sarmali ve blob: dynamic import hatasi olusmaz.
   const ensureWorker = useCallback(() => {
     if (workerRef.current) return workerRef.current;
-    const worker = new Worker(new URL('./whisper.worker.ts', import.meta.url), {
+    const worker = new Worker('/whisper-worker.mjs', {
       type: 'module',
     });
     worker.onmessage = (
