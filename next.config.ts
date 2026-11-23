@@ -17,7 +17,7 @@ const contentSecurityPolicy = [
   "manifest-src 'self'",
   "upgrade-insecure-requests",
   "worker-src 'self' blob: https://unpkg.com https://staticimgly.com https://cdn.jsdelivr.net",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://staticimgly.com https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://*.gstatic.com https://*.googlesyndication.com https://www.google.com https://*.doubleclick.net https://*.googleadservices.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: https://unpkg.com https://staticimgly.com https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://www.googletagmanager.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://*.gstatic.com https://*.googlesyndication.com https://www.google.com https://*.doubleclick.net https://*.googleadservices.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com",
   "script-src-attr 'none'",
   "child-src blob:",
   "connect-src 'self' blob: https://unpkg.com https://staticimgly.com https://huggingface.co https://*.hf.co https://cdn.jsdelivr.net https://www.google-analytics.com https://analytics.google.com https://*.googlesyndication.com https://*.doubleclick.net https://*.gstatic.com https://www.googleadservices.com https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com",

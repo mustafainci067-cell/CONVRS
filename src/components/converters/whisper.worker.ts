@@ -7,8 +7,11 @@ import { pipeline, env } from '@huggingface/transformers';
 // is parcacikli WASM kullan (Opera, Brave, Firefox, Safari, Chrome, Edge uyumlu).
 env.allowLocalModels = false;
 env.useBrowserCache = true;
-if (!self.crossOriginIsolated && env.backends?.onnx?.wasm) {
-  env.backends.onnx.wasm.numThreads = 1;
+if (env.backends?.onnx?.wasm) {
+  env.backends.onnx.wasm.proxy = false;
+  if (!self.crossOriginIsolated) {
+    env.backends.onnx.wasm.numThreads = 1;
+  }
 }
 
 const MODEL_ID = 'Xenova/whisper-tiny';
